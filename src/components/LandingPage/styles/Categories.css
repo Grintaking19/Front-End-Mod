@@ -7,3 +7,25 @@
     font-size: 22px;
     color: #F05537;
 }
+
+.popular-in{
+    font-weight: 600;
+    color: #39364F;
+    font-family: Montserrat, sans-serif;
+    margin-left: 110px;
+    /* margin-top: 20px; */
+    margin-bottom: 20px;
+}
+
+.location{
+    display: flex;
+}
+
+
+.location--text{
+    font-weight: 600;
+    color: #39364F;
+    font-family: Montserrat, sans-serif;
+    margin-left: 10px;
+
+}
