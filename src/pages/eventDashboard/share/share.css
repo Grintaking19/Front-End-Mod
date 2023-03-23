@@ -1,5 +1,5 @@
 .share {
-    background-color: grey;
+    background-color: #fff;
     width: 75%;
     min-height: 200px;
 }
@@ -15,6 +15,35 @@
 .event-url-container {
     margin-top: 32px;
     padding: 0 52px 0 12px;
+    display: grid;
+    grid-template-columns: 1fr 192px;
+    grid-template-rows: 22px 22px;
+    grid-template-areas: 
+    "h h"
+    "v i";
+}
+
+.event-url-title {
+    grid-area: h;
+}
+.event-url-value {
+    grid-area: v;
+    overflow: hidden;
+}
+
+.event-url-icons {
+    grid-area: i;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    color: #3d64ff;
+}
+
+.copy-icon {
+    margin-right: 8px;
+    margin-left: 20px;
 }
 
 .quick-share-container {
@@ -25,7 +54,7 @@
 .event-url-title,
 .quick-share-title,
 .event-url-value {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
     font-family: sans-serif;
     line-height: normal;
