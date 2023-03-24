@@ -10,7 +10,7 @@
 }
 
 .navbar-k {
-    background-color: blue;
+    background-color: #ffffff;
     grid-area: n;
 }
 
@@ -23,7 +23,7 @@
 }
 
 .body-container {
-    background-color: aliceblue;
+    background-color: rgb(255, 255, 255);
     grid-area: b;
     display: flex;
     justify-content: center;
@@ -36,7 +36,6 @@
 }
 
 .insights-container {
-    background-color: yellow;
     width: 100%;
     height: 50%;
     display: grid;
@@ -56,9 +55,17 @@
 }
 
 .stats-container {
-    background-color: orange;
+    background-color: rgb(255, 255, 255);
     width: 100%;
     height: 50%;
+    margin: 24px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    overflow: scroll;
+    grid-template-areas: 
+    "sc sc oac"
+    "oc oc oac"
 }
 
 .header {
@@ -95,6 +102,19 @@
     font-family: "Roboto", sans-serif;
 }
 
+.ds-sales-container {
+    grid-area: sc;
+}
+
+.ds-orders-container {
+    grid-area: oc;
+}
+
+.ds-other-actions-container {
+    grid-area: oac;
+}
+
+
 
 @media screen and (max-width: 960px) {
     .event-dashboard {
@@ -127,5 +147,12 @@
         "c c c"
         "t t t"
         "s s s";
+    }
+
+    .stats-container {
+        grid-template-areas: 
+        "sc sc sc"
+        "oc oc oc"
+        "oac oac oac";
     }
 }

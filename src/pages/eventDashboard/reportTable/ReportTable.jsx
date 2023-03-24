@@ -1,35 +1,43 @@
 import "./reportTable.css";
 
-function ReportTable() {
-    let rowData = [["General Admission", "$10.00", "0/20"], ["VIP", "$20.00", "0/20"], ["VVIP", "$30.00", "0/20"]];
+function ReportTable(props) {
 
     return (
         <div className="report-table-container">
             <div className="report-table-header">
-                <h3>Sales by ticket type</h3>
+                <h3>{props.title}</h3>
             </div>
             <div className="report-table-body">  
                 <table class="table table-hover table-borderless">
                     <thead>
                         <tr>
-                        <th scope="col">Ticket Type</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Sold</th>
+                            {props.tableHeaders.map((header, index) => {
+                                return (
+                                    <th scope="col" key={index}>{header}</th>
+                                );
+                            })}
                         </tr>
                     </thead>
                     <tbody>
-                        {rowData.map((row, index) => {
-                            return (
-                                <tr key={index}>
-                                    <td>{row[0]}</td>
-                                    <td>{row[1]}</td>
-                                    <td><a href="#">{row[2]}</a></td>
-                                </tr>
-                            );
-                        })}
+                        {props.tableRows[0].length !== 0 ? (
+                            props.tableRows.map((row, index) => {
+                                return (
+                                    <tr key={index}>
+                                        {row.map((cell, index) => {
+                                            if (props.reportType === "tickets" && index === 2) {
+                                                cell = <a href="#">{cell}</a>
+                                            }
+                                            return (
+                                                <td key={index}>{cell}</td>
+                                            );
+                                        })}
+                                    </tr>
+                                );
+                            })
+                        ):null}
                     </tbody>
                 </table>
-                {rowData.length === 0 ? (
+                {props.tableRows[0].length === 0 ? (
                     <div className="empty-data-container">
                         <div className="empty-data-icon">
                             <div class="eds-empty-state__graphic eds-align--center">
@@ -60,12 +68,12 @@ function ReportTable() {
                                     </span>
                             </div>
                         </div>
-                        <p>No tickets sold yet</p>
+                        <p>No {props.reportType} for this event yet</p>
                     </div>
                 ):null}
             </div>
             <div className="report-table-footer">
-                <a href="#">Go to all ticket sales</a>
+                <a href="#">Go to all {props.reportType}</a>
             </div>
         </div>
     );
