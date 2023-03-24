@@ -25,8 +25,9 @@ function EventDashboard() {
                         </div>
                         <TodoList />
                         <Share />
-                        <div className="recommended-list">
-                        </div>
+                    </div>
+                    <div className="divider">
+                        <hr />
                     </div>
                     <div className="stats-container">
                     </div>
