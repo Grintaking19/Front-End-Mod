@@ -66,20 +66,20 @@
     flex-direction: row;
     flex-wrap: nowrap;
     overflow: scroll;
-    flex-basis: 75%;
+    flex-basis: 66.67%;
 }
 
 .todo-list {
-    width: 25%;
+    width: 33.33%;
 }
 
 .share {
-    width: 75%;
+    width: 66.67%;
 }
 
 .recommended-list {
     background-color: black;
-    width: 25%;
+    width: 33.33%;
     min-height: 200px;
 }
 
