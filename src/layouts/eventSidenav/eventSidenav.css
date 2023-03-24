@@ -1,5 +1,50 @@
-.event-sidenav {
-    background-color: green;
+.es {
+    background-color: #f8f7fa;
     width: 288px;
     height: 100%;
+}
+
+.es-header {
+    height: 244px;
+}
+
+.es-list {
+    background-color: blue;
+}
+
+.es-go-back-container {
+    padding: 20px 0 16px 20px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.es-go-back-container svg {
+    margin-right: 12px;
+}
+
+.event-status-button {
+    margin: 16px 0 0 20px;
+}
+
+.es-event-description {
+    padding: 16px 24px 24px 24px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.es-event-description-title a {
+    font-size: 1.5rem;
+    color: black;
+}
+
+.es-event-description-title a:hover {
+    text-decoration: underline;
+    color: #3e60e4;
+}
+
+.es-event-description-date {
+    color: #4b4d63;
+}
+
+.es-event-description-preview a svg {
+    color: #3e60e4;
+    margin: 0 0 6px 6px;
 }
