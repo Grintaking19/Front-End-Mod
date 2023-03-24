@@ -3,7 +3,7 @@ import CreatorSidenav from "../../layouts/creatorSidenav/CreatorSidenav";
 import EventSidenav from "../../layouts/eventSidenav/EventSidenav";
 import Card from "./card/Card";
 import Share from "./share/Share";
-import TodoList from "./todoList/TodoList";
+import ActionList from "./actionList/ActionList";
 import ReportTable from "./reportTable/ReportTable";
 
 
@@ -40,6 +40,37 @@ function EventDashboard() {
         footer: ["Open ", <a href="#">page views report</a>]
     }
 
+    let todoListProps = {
+        title: "Your to-do list",
+        taskItems: [
+            {
+                icon: [
+                    <i>
+                        <svg viewBox="0 0 24 24">
+                            <path d="M10 13v-2h4v2zm6 5V6h-.4C15 7.4 13.8 8.4 12 8.4S9 7.4 8.4 6H8v12h.4c.6-1.4 1.8-2.4 3.6-2.4s3 1 3.6 2.4zM14 4h4v16h-4s0-2.4-2-2.4-2 2.4-2 2.4H6V4h4s0 2.4 2 2.4S14 4 14 4z">
+                            </path>
+                        </svg>
+                    </i>
+                ],
+                content: "Your Event doesn't have any tickets",
+                action: [<a href="#">Create tickets</a>]
+            }
+        ]
+    }
+
+    let otherActionsProps = {
+        title: "Other Attendee Actions",
+        taskItems: [
+            {
+                icon: [
+                    <i class="eds-vector-image eds-icon--xsmall eds-vector-image--ui-blue" data-spec="icon" data-testid="icon" aria-hidden="true"><svg class="line-chart_svg__eds-icon--line-chart__svg" viewBox="0 0 24 24"><path class="line-chart_svg__eds-icon--line-chart__base" fill-rule="evenodd" clip-rule="evenodd" d="M3 21v-5.9l2.8-2.4c.4.3.8.4 1.2.4.6 0 1.1-.3 1.5-.7l2.5 1.3v.4c0 1.1.9 2 2 2s2-.9 2-2c0-.3-.1-.6-.2-.9l3-2.5c.3.2.7.4 1.2.4 1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2c0 .3.1.6.2.9l-3 2.5c-.3-.2-.7-.4-1.2-.4-.6 0-1.1.3-1.5.7L9 11.5v-.4c0-1.1-.9-2-2-2s-2 .9-2 2c0 .3.1.6.2.9L3 13.8V2H2v20h20v-1H3zM19 8.1c.6 0 1 .4 1 1s-.4 1-1 1-1-.4-1-1c0-.5.4-1 1-1zm-6 5c.6 0 1 .4 1 1s-.4 1-1 1-1-.4-1-1c0-.5.4-1 1-1zm-6-3c.6 0 1 .4 1 1s-.4 1-1 1-1-.4-1-1c0-.5.4-1 1-1z"></path></svg></i>
+                ],
+                content: "",
+                action: [<a href="#">Attendee summary report</a>]
+            }
+        ]
+    }
+
     return (
         <div className="event-dashboard">
             <div className="navbar-k">
@@ -56,7 +87,7 @@ function EventDashboard() {
                             <Card {...ticketsSummaryCardProps} />
                             <Card {...pageViewsCardProps} />
                         </div>
-                        <TodoList />
+                        <ActionList {...todoListProps} />
                         <Share />
                     </div>
                     <div className="divider">
@@ -70,7 +101,7 @@ function EventDashboard() {
                             <ReportTable {...ordersTableProps} />
                         </div>
                         <div className="ds-other-actions-container">
-                            <TodoList />
+                            <ActionList {...otherActionsProps} />
                         </div>
                     </div>
                 </div>
