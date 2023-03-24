@@ -1,0 +1,60 @@
+.report-table-container {
+    padding-left: 12px;
+    margin-top: 24px;
+    overflow: scroll;
+}
+
+.report-table-header h3 {
+    font-size: 24px;
+    font-weight: 700;
+    font-family: "Roboto", sans-serif;
+}
+
+.report-table-body {
+    margin-top: 24px;
+    margin-right: 12px;
+    overflow: scroll;
+}
+
+.report-table-body table thead tr th {
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.report-table-body table tbody tr td {
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+
+.report-table-footer {
+    font-size: 0.875rem;
+    margin-top: 12px;
+    margin-right: 12px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.empty-data-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.empty-data-icon {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+p {
+    font-size: 0.875rem;
+}
+
+.table {
+    border-bottom: 1px solid #dee2e6;
+}
