@@ -29,3 +29,10 @@
     margin-left: 10px;
 
 }
+
+.categories-tabs{
+    font-family: Montserrat, sans-serif;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}

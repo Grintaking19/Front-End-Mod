@@ -9,21 +9,35 @@ import {BiDrink} from "react-icons/bi"
 
 export default function Categories(){
     return (
-
-
-
-
         <div>
-
-          
-
           <div class="album py-5 bg-light">
           <div class="location">
           <h2 class="popular-in">Popular in</h2>
           <h2 class="location--text" style={{color: '#3659E3'}}>Cairo</h2>
           </div>
-          {/* <h4 class="">Check out trending categories</h4> */}
+
           <div class="container">
+          <div class="categories-tabs">
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#">Online</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Today</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">This weekend</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Free</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Charity & Causes</a>
+              </li>
+              </ul>
+          </div>
+          {/* <h4 class="">Check out trending categories</h4> */}
+          
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
               <div class="col">
                 <div class="card shadow-sm" style={{width: '18rem'}}>
@@ -93,10 +107,5 @@ export default function Categories(){
               </div>
               </div>
         </div>
-
-
-
-
-
     )
 }
