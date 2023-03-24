@@ -1,5 +1,4 @@
 import "./eventDashboard.css";
-import CreatorSidenav from "../../layouts/creatorSidenav/CreatorSidenav";
 import EventSidenav from "../../layouts/eventSidenav/EventSidenav";
 import Card from "./card/Card";
 import Share from "./share/Share";
