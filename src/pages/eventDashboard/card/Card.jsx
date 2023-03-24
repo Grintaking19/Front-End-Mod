@@ -1,23 +1,23 @@
 import './card.css';
 
-function Card() {
+function Card(props) {
     return (
         <div className="card-container">
             <div className="dashboard-card">
                 <div className="card-header">
-                    Tickets Sold
+                    {props.title}
                 </div>
                 <div className="card-body">
                     <div className="card-body-main-content">
-                        <span>0</span>
-                        <span className="card-body-main-content-sub">/0</span>
+                        <span>{props.mainContent}</span>
+                        <span className="card-body-main-content-sub">{props.subMainContent}</span>
                     </div>
                     <div className="card-body-sub-content">
-                        <span>0 paid • 0 free</span>
+                        <span>{props.subContent}</span>
                     </div>
                 </div>
                 <div className="card-footer">
-                    <p></p>
+                    <p>{props.footer}</p>
                 </div>
             </div>
         </div>

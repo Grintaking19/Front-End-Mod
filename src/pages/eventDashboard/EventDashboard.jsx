@@ -24,6 +24,22 @@ function EventDashboard() {
         tableRows: ordersData
     }
 
+    let ticketsSummaryCardProps = {
+        title: "Tickets Sold",
+        mainContent: "0",
+        subMainContent: "/0",
+        subContent: "0 paid • 0 free",
+        footer: ""
+    }
+
+    let pageViewsCardProps = {
+        title: "Page Views",
+        mainContent: "0",
+        subMainContent: "",
+        subContent: "0 from Eventbrite",
+        footer: ["Open ", <a href="#">page views report</a>]
+    }
+
     return (
         <div className="event-dashboard">
             <div className="navbar-k">
@@ -37,8 +53,8 @@ function EventDashboard() {
                             <h1 className='title'>Dashboard</h1>
                         </div>
                         <div className="cards-container">
-                            <Card />
-                            <Card />
+                            <Card {...ticketsSummaryCardProps} />
+                            <Card {...pageViewsCardProps} />
                         </div>
                         <TodoList />
                         <Share />
