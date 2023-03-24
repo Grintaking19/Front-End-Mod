@@ -52,7 +52,7 @@
 }
 
 .header {
-    background-color: pink;
+    background-color: rgb(255, 255, 255);
     width: 100%;
     min-height: 100px;
     display: flex;
@@ -60,6 +60,12 @@
 }
 
 .cards-container {
+    background-color: rgb(255, 255, 255);
+    min-height: 200px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow: scroll;
     flex-basis: 75%;
 }
 

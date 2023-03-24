@@ -1,7 +1,7 @@
 import "./eventDashboard.css";
 import CreatorSidenav from "../../layouts/creatorSidenav/CreatorSidenav";
 import EventSidenav from "../../layouts/eventSidenav/EventSidenav";
-import CardsContainer from "./cardsContainer/CardsContainer";
+import Card from "./card/Card";
 import Share from "./share/Share";
 import TodoList from "./todoList/TodoList";
 
@@ -19,7 +19,10 @@ function EventDashboard() {
                         <div className="header">
                             <h1 className='title'>Dashboard</h1>
                         </div>
-                        <CardsContainer />
+                        <div className="cards-container">
+                            <Card />
+                            <Card />
+                        </div>
                         <TodoList />
                         <Share />
                         <div className="recommended-list">
