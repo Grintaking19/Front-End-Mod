@@ -16,7 +16,7 @@ function EventDashboard() {
         tableRows: ticketTypeData
     }
 
-    let ordersData = [["1", "John Doe", "2", "$20.00", "2021-01-01"], ["2", "Jane Doe", "1", "$10.00", "2021-01-01"]];
+    let ordersData = [[]]
     let ordersTableProps = {
         reportType: "orders",
         title: "Recent orders",
@@ -75,7 +75,6 @@ function EventDashboard() {
         <div className="event-dashboard">
             <div className="navbar-k">
             </div>
-            <CreatorSidenav />
             <EventSidenav />
             <div className="body-container">
                 <div className="content-container">
