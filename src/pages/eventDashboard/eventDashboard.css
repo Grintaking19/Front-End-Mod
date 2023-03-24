@@ -71,8 +71,9 @@
 .header {
     background-color: rgb(255, 255, 255);
     width: 100%;
-    grid-area: h;
     min-height: 100px;
+    padding-left: 12px;
+    grid-area: h;
     display: flex;
     align-items: center;
 }
