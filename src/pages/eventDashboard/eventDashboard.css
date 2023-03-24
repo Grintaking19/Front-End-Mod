@@ -23,6 +23,7 @@
     grid-area: b;
     display: flex;
     justify-content: center;
+    overflow: scroll;
 }
 
 .content-container {
@@ -53,12 +54,12 @@
 .stats-container {
     background-color: rgb(255, 255, 255);
     width: 100%;
-    height: 50%;
+    height: 10%;
     margin: 24px 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
-    overflow: scroll;
+    overflow: visible;
     grid-template-areas: 
     "sc sc oac"
     "oc oc oac"
