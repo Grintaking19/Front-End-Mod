@@ -2,6 +2,7 @@
     background-color: rgb(255, 255, 255);
     flex-basis: 320px;
     height: 172px;
+    min-width: 240px;
 }
 
 .dashboard-card {

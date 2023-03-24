@@ -87,7 +87,9 @@ function EventDashboard() {
                             <Card {...ticketsSummaryCardProps} />
                             <Card {...pageViewsCardProps} />
                         </div>
-                        <ActionList {...todoListProps} />
+                        <div className="todo-list-container">
+                            <ActionList {...todoListProps} />
+                        </div>
                         <Share />
                     </div>
                     <div className="divider">
