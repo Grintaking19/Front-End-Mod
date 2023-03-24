@@ -43,6 +43,7 @@
 .copy-icon {
     margin-right: 8px;
     margin-left: 20px;
+    cursor: pointer;
 }
 
 .event-url-title,
