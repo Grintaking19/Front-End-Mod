@@ -7,7 +7,7 @@ import ReportTable from "./reportTable/ReportTable";
 
 import { useState, useEffect } from "react";
 
-import { getTicketTypes, getBookings } from "./services";
+import { getTicketTypes, getBookings, getTicketsSummary } from "./services";
 
 function EventDashboard() {
     // TODO: Get event ID from URL
@@ -15,6 +15,7 @@ function EventDashboard() {
 
     const [ticketTypeData, setTicketTypeData] = useState([[]]);
     const [ordersData, setOrdersData] = useState([[]]);
+    const [ticketsSummaryCardData, setTicketsSummaryCardData] = useState({});
 
     useEffect(() => {
         async function fetchData() {
@@ -22,6 +23,8 @@ function EventDashboard() {
             setTicketTypeData(ticketTypesData);
             const bookingsData = await getBookings(eventId);
             setOrdersData(bookingsData);
+            const ticketsSummaryData = await getTicketsSummary(eventId);
+            setTicketsSummaryCardData(ticketsSummaryData);
         }
 
         fetchData();
@@ -45,9 +48,9 @@ function EventDashboard() {
 
     let ticketsSummaryCardProps = {
         title: "Tickets Sold",
-        mainContent: "0",
-        subMainContent: "/0",
-        subContent: "0 paid • 0 free",
+        mainContent: ticketsSummaryCardData.totalSoldTickets,
+        subMainContent: "/" + ticketsSummaryCardData.totalTickets,
+        subContent: ticketsSummaryCardData.totalSoldPaidTickets + " paid • " + ticketsSummaryCardData.totalSoldFreeTickets  + " free",
         footer: ""
     }
 

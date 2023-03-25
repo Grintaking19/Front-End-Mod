@@ -25,3 +25,30 @@ export async function getBookings(eventId) {
     })
     return bookings;
 }
+
+export async function getTicketsSummary(eventId) {
+    // TODO: Validate eventId
+    let data = await fetchData(`/events/${eventId}/tickets/`);
+    if (!data || data.status === "fail") {
+        return {};
+    }
+    let totalSoldTickets = 0;
+    let totalTickets = 0;
+    let totalSoldFreeTickets = 0;
+    let totalSoldPaidTickets = 0;
+    data.data.tickets.forEach((ticket) => {
+        totalSoldTickets += ticket.currentReservations;
+        totalTickets += ticket.capacity;
+        if (ticket.price === 0) {
+            totalSoldFreeTickets += ticket.currentReservations;
+        } else {
+            totalSoldPaidTickets += ticket.currentReservations;
+        }
+    })
+    return {
+        totalSoldTickets,
+        totalTickets,
+        totalSoldFreeTickets,
+        totalSoldPaidTickets
+    };
+}
