@@ -1,9 +1,9 @@
-import "./eventDashboard.css";
-import EventSidenav from "../../layouts/eventSidenav/EventSidenav";
+import "./event-dashboard.css";
+import EventSidenav from "../../layouts/event-sidenav/EventSidenav";
 import Card from "./card/Card";
 import Share from "./share/Share";
-import ActionList from "./actionList/ActionList";
-import ReportTable from "./reportTable/ReportTable";
+import ActionList from "./action-list/ActionList";
+import ReportTable from "./report-table/ReportTable";
 
 import { useState, useEffect } from "react";
 

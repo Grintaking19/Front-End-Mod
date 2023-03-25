@@ -1,4 +1,4 @@
-import "./reportTable.css";
+import "./report-table.css";
 
 function ReportTable(props) {
 

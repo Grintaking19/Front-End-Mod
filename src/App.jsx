@@ -1,5 +1,5 @@
 import LandingPage from "./components/LandingPage/LandingPage"
-import EventDashboard from "./pages/eventDashboard/EventDashboard"
+import EventDashboard from "./pages/event-dashboard/EventDashboard"
 
 // function App() {
 //   return (

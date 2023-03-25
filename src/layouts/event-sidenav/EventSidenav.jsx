@@ -1,4 +1,4 @@
-import './eventSidenav.css';
+import './event-sidenav.css';
 
 function EventSidenav() {
     let eventPublishSteps = [
