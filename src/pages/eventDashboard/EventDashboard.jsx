@@ -5,9 +5,27 @@ import Share from "./share/Share";
 import ActionList from "./actionList/ActionList";
 import ReportTable from "./reportTable/ReportTable";
 
+import { useState, useEffect } from "react";
+
+import { getTicketTypes } from "./services";
 
 function EventDashboard() {
-    let ticketTypeData = [["General Admission", "$10.00", "0/20"], ["VIP", "$20.00", "0/20"], ["VVIP", "$30.00", "0/20"]];
+    // TODO: Get event ID from URL
+    let eventId = 1;
+
+    const [ticketTypeData, setTicketTypeData] = useState([[]]);
+
+    useEffect(() => {
+        async function fetchData() {
+            const ticketTypesData = await getTicketTypes(eventId);
+            setTicketTypeData(ticketTypesData);
+        }
+
+        fetchData();
+    }, []);
+
+    
+
     let salesTableProps = {
         reportType: "tickets",
         title: "Sales by ticket type",
