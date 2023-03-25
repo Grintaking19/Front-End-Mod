@@ -7,18 +7,21 @@ import ReportTable from "./reportTable/ReportTable";
 
 import { useState, useEffect } from "react";
 
-import { getTicketTypes } from "./services";
+import { getTicketTypes, getBookings } from "./services";
 
 function EventDashboard() {
     // TODO: Get event ID from URL
     let eventId = 1;
 
     const [ticketTypeData, setTicketTypeData] = useState([[]]);
+    const [ordersData, setOrdersData] = useState([[]]);
 
     useEffect(() => {
         async function fetchData() {
             const ticketTypesData = await getTicketTypes(eventId);
             setTicketTypeData(ticketTypesData);
+            const bookingsData = await getBookings(eventId);
+            setOrdersData(bookingsData);
         }
 
         fetchData();
@@ -33,7 +36,6 @@ function EventDashboard() {
         tableRows: ticketTypeData
     }
 
-    let ordersData = [[]]
     let ordersTableProps = {
         reportType: "orders",
         title: "Recent orders",
