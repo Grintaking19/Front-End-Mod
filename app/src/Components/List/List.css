@@ -1,0 +1,8 @@
+.__List{
+    display: flex;
+    flex-direction: column;
+    padding: 35px;
+    background-color: white;
+    overflow-y:auto;
+    height: 50vw;
+}

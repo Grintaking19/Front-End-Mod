@@ -1,0 +1,76 @@
+.filtersCheckBox{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+}
+
+.filtersCheckBox--title{
+    margin-left: 25px;
+    font-size: 11px;
+    
+}
+
+input[type=checkbox] {
+  position: relative;
+	border: 2px solid #000;
+	border-radius: 2px;
+	background: none;
+	cursor: pointer;
+	line-height: 0;
+	margin: 2px 10em 0 8px;
+	outline: 0;
+	padding: 0 !important;
+	vertical-align: text-top;
+	height: 20px;
+	width: 20px;
+	-webkit-appearance: none;
+  opacity: .5;
+}
+
+input[type=checkbox]:hover {
+  opacity: 1;
+}
+
+input[type=checkbox]:checked {
+  background-color: #000;
+  opacity: 1;
+}
+
+input[type=checkbox]:before {
+  content: '';
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  width: 4px;
+  height: 10px;
+  border: solid #FFF;
+  border-width: 0 2px 2px 0;
+  margin: -1px -1px 0 -1px;
+  transform: rotate(45deg) translate(-50%, -50%);
+  z-index: 2;
+}
+
+.filterCheckBox--title{
+  height: 60px;
+  background-color: #F8F7FA;
+  width: 290px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 15px;
+  padding-left: 15px;
+  border-style: solid;
+  border-color: #F8F7FA;
+  color:#39364f;
+  font-size:0.95rem;
+  line-height: 3.25rem;
+  letter-spacing: 0.25px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+}
+
+
+.filterCheckBox--title:hover{
+  background-color: #F2F0F6;
+  cursor: pointer;
+}
