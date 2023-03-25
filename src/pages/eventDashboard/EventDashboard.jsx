@@ -7,7 +7,40 @@ import ReportTable from "./reportTable/ReportTable";
 
 import { useState, useEffect } from "react";
 
-import { getTicketTypes, getBookings, getTicketsSummary } from "./services";
+import { getTicketTypes, getBookings, getTicketsSummary, getEventPublishStatus } from "./services";
+
+async function updateTodoListProps(ticketsSummaryCardData, eventId) {
+    let taskItems = [
+        {
+            icon: [
+                <i>
+                    <svg viewBox="0 0 24 24">
+                        <path d="M10 13v-2h4v2zm6 5V6h-.4C15 7.4 13.8 8.4 12 8.4S9 7.4 8.4 6H8v12h.4c.6-1.4 1.8-2.4 3.6-2.4s3 1 3.6 2.4zM14 4h4v16h-4s0-2.4-2-2.4-2 2.4-2 2.4H6V4h4s0 2.4 2 2.4S14 4 14 4z">
+                        </path>
+                    </svg>
+                </i>
+            ],
+            content: "Your Event doesn't have any tickets",
+            action: [<a href="#">Create tickets</a>]
+        }, {
+            icon: [
+                <i class="eds-vector-image eds-icon--xsmall eds-vector-image--grey-700" data-spec="icon" data-testid="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><g fill-rule="evenodd"><path d="M19 4H5a2 2 0 00-2 2v12a2 2 0 002 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6a2 2 0 00-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"></path></g></svg></i>
+            ],
+            content: "Publish your event",
+            action: [<a href="#">Review your publish settings</a>]
+        }
+    ]
+
+    if (ticketsSummaryCardData.totalTickets === 0) {
+        return taskItems[0];
+    } 
+    let isPublished = await getEventPublishStatus(eventId);
+    if (isPublished === false) {
+        return taskItems[1];
+    }
+    return [];
+}
+
 
 function EventDashboard() {
     // TODO: Get event ID from URL
@@ -16,7 +49,8 @@ function EventDashboard() {
     const [ticketTypeData, setTicketTypeData] = useState([[]]);
     const [ordersData, setOrdersData] = useState([[]]);
     const [ticketsSummaryCardData, setTicketsSummaryCardData] = useState({});
-
+    const [taskItems, setTodoListTaskItems] = useState([]);
+    
     useEffect(() => {
         async function fetchData() {
             const ticketTypesData = await getTicketTypes(eventId);
@@ -25,6 +59,9 @@ function EventDashboard() {
             setOrdersData(bookingsData);
             const ticketsSummaryData = await getTicketsSummary(eventId);
             setTicketsSummaryCardData(ticketsSummaryData);
+            
+            const taskItem = await updateTodoListProps(ticketsSummaryData, eventId);
+            setTodoListTaskItems([taskItem]);
         }
 
         fetchData();
@@ -64,20 +101,7 @@ function EventDashboard() {
 
     let todoListProps = {
         title: "Your to-do list",
-        taskItems: [
-            {
-                icon: [
-                    <i>
-                        <svg viewBox="0 0 24 24">
-                            <path d="M10 13v-2h4v2zm6 5V6h-.4C15 7.4 13.8 8.4 12 8.4S9 7.4 8.4 6H8v12h.4c.6-1.4 1.8-2.4 3.6-2.4s3 1 3.6 2.4zM14 4h4v16h-4s0-2.4-2-2.4-2 2.4-2 2.4H6V4h4s0 2.4 2 2.4S14 4 14 4z">
-                            </path>
-                        </svg>
-                    </i>
-                ],
-                content: "Your Event doesn't have any tickets",
-                action: [<a href="#">Create tickets</a>]
-            }
-        ]
+        taskItems
     }
 
     let otherActionsProps = {

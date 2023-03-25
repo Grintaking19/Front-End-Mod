@@ -52,3 +52,13 @@ export async function getTicketsSummary(eventId) {
         totalSoldPaidTickets
     };
 }
+
+export async function getEventPublishStatus(eventId) {
+    // TODO: Validate eventId
+    let data = await fetchData(`/creators/events/${eventId}`);
+    if (!data || data.status === "fail") {
+        return null;
+    }
+    console.log(data.data.event.draft);
+    return !data.data.event.draft;
+}
