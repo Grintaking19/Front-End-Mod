@@ -1,4 +1,5 @@
 import LandingPage from "./components/LandingPage/LandingPage"
+import EventDashboard from "./pages/event-dashboard/EventDashboard"
 
 // function App() {
 //   return (
@@ -25,7 +26,7 @@ export default function App() {
   return(
 
     <div>
-      <LandingPage/>
+      <EventDashboard />
     </div>
 
   )
