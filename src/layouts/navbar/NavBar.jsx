@@ -1,15 +1,11 @@
 import React from "react";
-import "./styles/NavBar.css"
-import {CgHeart} from "react-icons/cg"
+import "./navbar.css"
 import { CgMathPlus } from "react-icons/cg";
-import {TfiTicket} from "react-icons/tfi"
 import {AiOutlineUser} from "react-icons/ai"
-import cover from "../../cover.png"
+import cover from "../../pages/landing-page/cover.png"
 
 
 export default function NavBar(){
-
-    
 
     return(
 

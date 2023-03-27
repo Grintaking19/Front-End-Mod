@@ -1,33 +1,16 @@
-import LandingPage from "./components/LandingPage/LandingPage"
+
+import LandingPage from "./pages/landing-page/LandingPage"
 import EventDashboard from "./pages/event-dashboard/EventDashboard"
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
 
 export default function App() {
+  
+  
   return(
+    
+    <EventDashboard /> 
 
-    <div>
-      <EventDashboard />
-    </div>
+      // <LandingPage/>
 
   )
 

@@ -1,0 +1,19 @@
+.event-card--name{
+    color: #39364F;
+    font-weight: 600;
+}
+
+.event-card--date{
+    color: #F05537;
+    font-weight: 600;
+}
+
+.event-card{
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.08);
+    transition: all ease 0.5s;
+}
+
+
+.event-card:hover{
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.3);
+}

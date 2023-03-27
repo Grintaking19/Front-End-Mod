@@ -1,0 +1,63 @@
+.category--name{
+    margin-left: 20px;
+    font-size: 17px;
+}
+
+.category--icon{
+    font-size: 22px;
+    color: #F05537;
+}
+
+.popular-in{
+    font-weight: 600;
+    color: #39364F;
+    font-family: Montserrat, sans-serif;
+    /* margin-left: 110px; */
+    /* margin-top: 20px; */
+    margin-bottom: 20px;
+}
+
+.location{
+    display: flex;
+    margin-top: 40px;
+}
+
+
+
+.location--text{
+    font-weight: 600;
+    color: #39364F;
+    font-family: Montserrat, sans-serif;
+    margin-left: 10px;
+    
+}
+
+.categories-tabs{
+    font-family: Montserrat, sans-serif;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+
+.nav-item a {
+    color: #75788C;
+    font-weight: 600;
+  }
+
+  .trending-categories h4{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-weight: 600;
+    color: #39364F;
+    font-family: Montserrat, sans-serif;
+}
+  .events-in h4{
+    margin-top: 30px;
+    font-weight: 600;
+    color: #39364F;
+    font-family: Montserrat, sans-serif;
+}
+
+  
