@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles/Categories.css"
+import "./categories.css"
 import {FiMusic, FiHeart} from "react-icons/fi"
 import {FaTheaterMasks} from "react-icons/fa"
 import {MdOutlinePhotoLibrary, MdOutlineBusinessCenter} from "react-icons/md"

@@ -1,6 +1,6 @@
 import React from "react";
-import "./styles/Events.css"
-import mockUpEvents from "./mockup-events.json"
+import "./events.css"
+import mockEvents from "./mock-events.json"
 
 
 
@@ -8,7 +8,7 @@ import mockUpEvents from "./mockup-events.json"
 export default function Events()
 {
 
-const testEvents=mockUpEvents.map((event)=>{
+const testEvents=mockEvents.map((event)=>{
   return (
     <div class="col">
           <div class="card event-card">
