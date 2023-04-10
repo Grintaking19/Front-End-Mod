@@ -1,49 +1,52 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import "./events.css"
-import mockEvents from "./mock-events.json"
+import "./events-mock-api"
 
+export default function Events(props) {
+  const [events, setEvents] = useState([]);
+  useEffect(() => {
+    fetch(`/api/v1/events/?category=all&location=31.2584644,30.0594885`)
+      .then((response) => response.json())
+      .then((json) => setEvents(json));
+  }, []);
 
+  useEffect(() => {
+    fetch(`/api/v1/events/?category=${props.activeTab}&location=31.2584644,30.0594885`)
+      .then((response) => response.json())
+      .then((json) => setEvents(json));
+  }, [props.activeTab]);
 
-
-export default function Events()
-{
-
-const testEvents=mockEvents.map((event)=>{
   return (
-    <div class="col">
-          <div class="card event-card">
-            {/* <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#F8F7FA"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text></svg> */}
-            <img src={event.img_url} class="bd-placeholder-img card-img-top" width="100%" height="225" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false" />
-            <div class="card-body">
-                <h4 class="event-card--name">{event.eventName}</h4>
-                 <h6 class="event-card--date" >{event.startTime.substring(0, event.startTime.indexOf(' '))}</h6>
-                <h6 >{event.locationName}</h6>
-                <h6 >Starts at $10</h6>
-                 
-            </div>
+    <div>
+      <div class="album py-5">
+        <div class="container">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+            {events.map((event) => (
+              <div class="col">
+                <div class="card event-card">
+                  <img
+                    src={event.img_url}
+                    class="bd-placeholder-img card-img-top"
+                    width="100%"
+                    height="225"
+                    aria-label="Placeholder: Thumbnail"
+                    preserveAspectRatio="xMidYMid slice"
+                    focusable="false"
+                  />
+                  <div class="card-body">
+                    <h4 class="event-card--name">{event.eventName}</h4>
+                    <h6 class="event-card--date">
+                      {event.startTime.substring(0, event.startTime.indexOf(" "))}
+                    </h6>
+                    <h6>{event.locationName}</h6>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-  )
-})
-
-
-return (
-    
-    <div>
-    
-
-    <div class="album py-5">
-    <div class="container">
-
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
-       {testEvents}
       </div>
     </div>
-  </div>
-
-
-
-  </div>
-)
+  )
 
 }
