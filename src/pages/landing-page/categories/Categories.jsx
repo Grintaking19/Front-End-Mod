@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useState, useEffect} from "react";
 import "./categories.css"
 import { FiMusic, FiHeart } from "react-icons/fi"
 import { FaTheaterMasks } from "react-icons/fa"
@@ -7,16 +7,39 @@ import { TbDeviceGamepad2, TbShirtSport } from "react-icons/tb"
 import { BiDrink } from "react-icons/bi"
 
 
+// const OPENCAGE_API_KEY = "ca1e044266af4d9b92d96cd6a63f857f";
+const OPENCAGE_API_KEY = "";
+
 export default function Categories(props) {
-  function handleClick(tab) {
-    props.onTabClick(tab);
-  }
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        // const loadingCity=''
+        const { latitude, longitude } = await(position.coords); // destructure latitude and longitude from the position object
+        // props.setLocation({ latitude, longitude, loadingCity }); // update the state with the latitude, longitude, and city
+        const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${OPENCAGE_API_KEY}`; // construct the OpenCage API URL with the latitude, longitude, and API key
+        const response = await fetch(url); // make a fetch request to the OpenCage API
+        const data = await response.json(); // parse the response body as JSON
+        const city = data.results[0].components.city; // extract the city from the OpenCage API response
+        props.setLocation({ latitude, longitude, city }); // update the state with the latitude, longitude, and city
+      },
+      (error) => {
+        console.error(error); // log any errors that occur
+      }
+    );
+  }, []);
+
   return (
     <div>
       <div class="container">
         <div class="location">
           <h2 class="popular-in">Popular in</h2>
-          <h2 class="location--text" style={{ color: '#3659E3' }}>Cairo</h2>
+          {props.location ? (
+            <h2 class="location--text" style={{ color: '#3659E3' }}>{props.location.city}</h2>
+          ) : (
+            <h2 class="location--text" style={{ color: '#3659E3' }}>Loading Location ...</h2>
+          )}
         </div>
 
         <div class="categories-tabs">
@@ -25,7 +48,7 @@ export default function Categories(props) {
             <a
                 className={`nav-link ${props.activeTab === 'online' ? 'active' : ''}`}
                 aria-current="page"
-                onClick={() => handleClick('online')}
+                onClick={() => props.setActiveTab('online')}
               >
               Online
               </a>
@@ -33,15 +56,15 @@ export default function Categories(props) {
             <li class="nav-item">
             <a
                 className={`nav-link ${props.activeTab === 'today' ? 'active' : ''}`}
-                onClick={() => handleClick('today')}
+                onClick={() => props.setActiveTab('today')}
               >
                 Today
               </a>
             </li>
             <li class="nav-item">
             <a
-                className={`nav-link ${props.activeTab === 'weekend' ? 'active' : ''}`}
-                onClick={() => handleClick('weekend')}
+                className={`nav-link ${props.activeTab === 'thisweekend' ? 'active' : ''}`}
+                onClick={() => props.setActiveTab('thisweekend')}
               >
                 This weekend
               </a>
@@ -49,7 +72,7 @@ export default function Categories(props) {
             <li class="nav-item">
             <a
                 className={`nav-link ${props.activeTab === 'free' ? 'active' : ''}`}
-                onClick={() => handleClick('free')}
+                onClick={() => props.setActiveTab('free')}
               >
                 Free
               </a>
@@ -57,7 +80,7 @@ export default function Categories(props) {
             <li class="nav-item">
             <a
                 className={`nav-link ${props.activeTab === 'charity' ? 'active' : ''}`}
-                onClick={() => handleClick('charity')}
+                onClick={() => props.setActiveTab('charity')}
               >
                 Charity&Causes
               </a>
@@ -138,7 +161,7 @@ export default function Categories(props) {
         </div>
 
         <div class="events-in">
-          <h4 id="trending-categories--text">Events in Cairo</h4>
+          <h4 id="trending-categories--text">Events in {props.location.city}</h4>
         </div>
       </div>
     </div>

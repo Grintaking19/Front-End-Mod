@@ -44,6 +44,7 @@ export default function NavBar(){
                 <ul class="dropdown-menu dropdown-menu-end">
             <li><a class="dropdown-item text-center"  href="#">Manage my events</a></li>
             {/* <li><a class="dropdown-item" href="#">Tickets</a></li> */}
+            <li><a class="dropdown-item text-center"href="#">Update Password</a></li>
             <li><a class="dropdown-item text-center"href="#">Logout</a></li>
           </ul>
 

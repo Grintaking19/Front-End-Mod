@@ -4,16 +4,30 @@ import "./events-mock-api"
 
 export default function Events(props) {
   const [events, setEvents] = useState([]);
-  useEffect(() => {
-    fetch(`/api/v1/events/?category=all&location=31.2584644,30.0594885`)
-      .then((response) => response.json())
-      .then((json) => setEvents(json));
-  }, []);
 
   useEffect(() => {
-    fetch(`/api/v1/events/?category=${props.activeTab}&location=31.2584644,30.0594885`)
+    if (props.location.latitude && props.location.longitude) {
+      fetch(`/api/v1/events/?category=all&location=${props.location.latitude},${props.location.longitude}`)
+        .then((response) => response.json())
+        .then((data) => setEvents(data));
+    }
+  }, [props.location]);
+
+
+  useEffect(() => {
+    if (props.activeTab === 'today' || props.activeTab === 'thisweekend') {
+      let startDate=''; let endDate='';
+      if (props.activeTab === 'today') {startDate=''; endDate=''}
+      if (props.activeTab === 'today') {startDate=''; endDate=''}
+      fetch(`/api/v1/events/?startDate=${startDate}&endDate=${endDate}&location=${props.location.latitude},${props.location.longitude}`)
+        .then((response) => response.json())
+        .then((json) => setEvents(json));
+    }
+    else {
+      fetch(`/api/v1/events/?category=${props.activeTab}&location=${props.location.latitude},${props.location.longitude}`)
       .then((response) => response.json())
       .then((json) => setEvents(json));
+    }
   }, [props.activeTab]);
 
   return (

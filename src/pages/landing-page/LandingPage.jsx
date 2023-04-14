@@ -5,14 +5,12 @@ import Categories from "./categories/Categories"
 
 export default function LandingPage() {
     const [activeTab, setActiveTab] = useState('all');
-    function handleTabClick(tab) {
-        setActiveTab(tab);
-    }
+    const [location, setLocation] = useState('');
     return (
         <div>
             <NavBar />
-            <Categories activeTab={activeTab} onTabClick={handleTabClick} />
-            <Events activeTab={activeTab} />
+            <Categories activeTab={activeTab} setActiveTab={setActiveTab} location={location} setLocation={setLocation}/>
+            <Events activeTab={activeTab} location={location} />
         </div>
     )
 }
