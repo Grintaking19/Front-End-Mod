@@ -3,6 +3,7 @@ import { createServer } from "miragejs"
 createServer({
   routes() {
     this.passthrough('https://api.opencagedata.com/**');
+    this.passthrough('https://hebtus.me/api/v1/**');
 
       this.get("/api/v1/events/", (schema, request) => {
         const queryParams = request.queryParams;

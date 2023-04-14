@@ -7,12 +7,13 @@ import { TbDeviceGamepad2, TbShirtSport } from "react-icons/tb"
 import { BiDrink } from "react-icons/bi"
 
 
-// const OPENCAGE_API_KEY = "ca1e044266af4d9b92d96cd6a63f857f";
-const OPENCAGE_API_KEY = "";
+const OPENCAGE_API_KEY = "ca1e044266af4d9b92d96cd6a63f857f";
+// const OPENCAGE_API_KEY = "";
 
 export default function Categories(props) {
 
   useEffect(() => {
+    props.setLocation({loading:true})
     navigator.geolocation.getCurrentPosition(
       async (position) => {
         // const loadingCity=''
@@ -22,7 +23,7 @@ export default function Categories(props) {
         const response = await fetch(url); // make a fetch request to the OpenCage API
         const data = await response.json(); // parse the response body as JSON
         const city = data.results[0].components.city; // extract the city from the OpenCage API response
-        props.setLocation({ latitude, longitude, city }); // update the state with the latitude, longitude, and city
+        props.setLocation({ latitude, longitude, city, loading:false}); // update the state with the latitude, longitude, and city
       },
       (error) => {
         console.error(error); // log any errors that occur
@@ -35,7 +36,7 @@ export default function Categories(props) {
       <div class="container">
         <div class="location">
           <h2 class="popular-in">Popular in</h2>
-          {props.location ? (
+          { !(props.location.loading) ? (
             <h2 class="location--text" style={{ color: '#3659E3' }}>{props.location.city}</h2>
           ) : (
             <h2 class="location--text" style={{ color: '#3659E3' }}>Loading Location ...</h2>
@@ -161,7 +162,7 @@ export default function Categories(props) {
         </div>
 
         <div class="events-in">
-          <h4 id="trending-categories--text">Events in {props.location.city}</h4>
+          <h4 id="trending-categories--text">Events in {props.location.city }</h4>
         </div>
       </div>
     </div>
