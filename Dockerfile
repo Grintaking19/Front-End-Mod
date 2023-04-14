@@ -13,7 +13,6 @@ COPY . .
 
 # Build the project and copy the files
 RUN npm run build
-EXPOSE 3001 80
 
 # #Stage 2 for nginx configuration
 # FROM nginx:alpine
