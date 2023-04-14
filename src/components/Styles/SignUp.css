@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;800&display=swap');
+
+* {
+
+  font-family: 'Heebo', sans-serif;
+  box-sizing: 0;
+  padding:none;
+  margin:none;
+}
+
+.signup-page {
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 700px;
+}
+
+.signup-page-image .signup-image {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  padding-bottom: 70px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 40pt;
+
+}
+
+.form.signup {
+  background-color: white;
+  max-width: 360px;
+  width: 100%;
+  border-radius: 6px;
+}
+
+header {
+  font-size: 45px;
+  font-weight: 800;
+  text-align: left;
+}
+
+.hebtus-logo {
+  text-align: left;
+  color: rgb(209, 65, 12);
+  font-size: 30px;
+}
+
+form {
+  margin-top: 30px;
+
+}
+
+.form .field {
+  height: 45px;
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 3px;
+}
+
+.field input,
+.field button {
+  height: 100%;
+  width: 100%;
+  border: none;
+  font-size: 16px;
+  font-weight: 400;
+  border-radius: 6px;
+}
+
+.field button:hover {
+  cursor: pointer;
+  opacity: 0.9;
+  transition: opacity 0.3s;
+}
+
+.field button:active {
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.field .eye-holder {
+  display: inline-block;
+}
+
+.field button {
+  background-color: rgb(209, 65, 12);
+  color: white;
+}
+
+
+.field input {
+  border: 1px solid#cacaca;
+  text-indent: 10px;
+}
+
+.form--name-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  height: 45px;
+  margin-top: 20px;
+  column-gap: 20px;
+
+}
+
+.form--name-container input {
+  height: 45px;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 400;
+  border-radius: 6px;
+  border: 1px solid#cacaca;
+  text-indent: 10px;
+
+}
+
+.form--password {
+  position: relative;
+}
+
+
+.eye-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 5px;
+  color: #8b8b8b;
+}
+
+
+.form-link {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.form-link span,
+.form-link a {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.form a {
+  text-decoration: none;
+  color: #0171d3;
+}
+
+.form-link a:hover {
+  text-decoration: underline;
+}
+
+.line {
+  position: relative;
+  height: 1px;
+  width: 100%;
+  background-color: rgb(174, 171, 171);
+  margin-bottom: 36px;
+  margin-top: 24px;
+
+}
+
+.line::before {
+  content: 'Or';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 0 15px;
+
+}
+
+.form--media-options a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+a.facebook {
+  background-color: #4267b2;
+  color: white;
+
+}
+
+a.facebook .facebook-icon {
+  padding: 5px;
+}
+
+img.google-img {
+  height: 20px;
+  width: 20px;
+  object-fit: cover;
+  margin-right: 5px;
+}
+
+a.google {
+  border: 1px solid #cacaca
+}
+
+a.google span {
+  font-weight: 500;
+  opacity: 0.6;
+  color: #232836;
+
+}
