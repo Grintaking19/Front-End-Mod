@@ -1,14 +1,14 @@
-import "./report-table.css";
+import styles from "./ReportTable.module.css"
 
 function ReportTable(props) {
 
     return (
-        <div className="report-table-container">
-            <div className="report-table-header">
+        <div className={styles['report-table-container']}>
+            <div className={styles['report-table-header']}>
                 <h3>{props.title}</h3>
             </div>
-            <div className="report-table-body">  
-                <table class="table table-hover table-borderless">
+            <div className={styles['report-table-body']}>  
+                <table className="table table-hover table-borderless">
                     <thead>
                         <tr>
                             {props.tableHeaders.map((header, index) => {
@@ -38,8 +38,8 @@ function ReportTable(props) {
                     </tbody>
                 </table>
                 {props.tableRows[0].length === 0 ? (
-                    <div className="empty-data-container">
-                        <div className="empty-data-icon">
+                    <div className={styles['empty-data-container']}>
+                        <div className={styles['empty-data-icon']}>
                             <div class="eds-empty-state__graphic eds-align--center">
                                 <span class="eds-graphic--halo eds-graphic-halo--xsmall">
                                     <i class="eds-vector-image eds-graphic--small eds-vector-image-size--reset eds-align--center eds-vector-image-halo-size-override" data-spec="icon" data-testid="icon" aria-hidden="true">
@@ -72,7 +72,7 @@ function ReportTable(props) {
                     </div>
                 ):null}
             </div>
-            <div className="report-table-footer">
+            <div className={styles['report-table-footer']}>
                 <a href="#">Go to all {props.reportType}</a>
             </div>
         </div>

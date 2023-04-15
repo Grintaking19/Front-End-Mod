@@ -1,5 +1,5 @@
 import {React, useState, useEffect} from "react";
-import "./categories.css"
+import styles from "./Categories.module.css"
 import { FiMusic, FiHeart } from "react-icons/fi"
 import { FaTheaterMasks } from "react-icons/fa"
 import { MdOutlinePhotoLibrary, MdOutlineBusinessCenter } from "react-icons/md"
@@ -33,19 +33,19 @@ export default function Categories(props) {
 
   return (
     <div>
-      <div class="container">
-        <div class="location">
-          <h2 class="popular-in">Popular in</h2>
+      <div className="container">
+        <div className={styles['location']}>
+          <h2 className={styles['popular-in']}>Popular in</h2>
           { !(props.location.loading) ? (
-            <h2 class="location--text" style={{ color: '#3659E3' }}>{props.location.city}</h2>
+            <h2 className={styles['location--text']} style={{ color: '#3659E3' }}>{props.location.city}</h2>
           ) : (
-            <h2 class="location--text" style={{ color: '#3659E3' }}>Loading Location ...</h2>
+            <h2 className={styles['location--text']} style={{ color: '#3659E3' }}>Loading Location ...</h2>
           )}
         </div>
 
-        <div class="categories-tabs">
-          <ul class="nav nav-tabs">
-            <li class="nav-item">
+        <div className={styles['categories-tabs']}>
+          <ul className="nav nav-tabs">
+            <li className={`nav-item ${styles['_nav-item']}`}>
             <a
                 className={`nav-link ${props.activeTab === 'online' ? 'active' : ''}`}
                 aria-current="page"
@@ -54,7 +54,7 @@ export default function Categories(props) {
               Online
               </a>
             </li>
-            <li class="nav-item">
+            <li className={`nav-item ${styles['_nav-item']}`}>
             <a
                 className={`nav-link ${props.activeTab === 'today' ? 'active' : ''}`}
                 onClick={() => props.setActiveTab('today')}
@@ -62,7 +62,7 @@ export default function Categories(props) {
                 Today
               </a>
             </li>
-            <li class="nav-item">
+            <li className={`nav-item ${styles['_nav-item']}`}>
             <a
                 className={`nav-link ${props.activeTab === 'thisweekend' ? 'active' : ''}`}
                 onClick={() => props.setActiveTab('thisweekend')}
@@ -70,7 +70,7 @@ export default function Categories(props) {
                 This weekend
               </a>
             </li>
-            <li class="nav-item">
+            <li className={`nav-item ${styles['_nav-item']}`}>
             <a
                 className={`nav-link ${props.activeTab === 'free' ? 'active' : ''}`}
                 onClick={() => props.setActiveTab('free')}
@@ -78,7 +78,7 @@ export default function Categories(props) {
                 Free
               </a>
             </li>
-            <li class="nav-item">
+            <li className={`nav-item ${styles['_nav-item']}`}>
             <a
                 className={`nav-link ${props.activeTab === 'charity' ? 'active' : ''}`}
                 onClick={() => props.setActiveTab('charity')}
@@ -88,80 +88,80 @@ export default function Categories(props) {
             </li>
           </ul>
         </div>
-        <div class="trending-categories">
+        <div className={styles['trending-categories']}>
           <h4 id="trending-categories--text">Check out trending categories</h4>
         </div>
 
-        <div class="album py">
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
-            <div class="col">
-              <div class="card shadow-sm" style={{ width: '18rem' }}>
-                <div class="card-body">
-                  <FiMusic class="category--icon" />
-                  <h5 class="event-card--name d-inline-block align-text-top category--name">Music</h5>
+        <div className="album py">
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+            <div className="col">
+              <div className="card shadow-sm" style={{ width: '18rem' }}>
+                <div className="card-body">
+                  <FiMusic className={styles['category--icon']} />
+                  <h5 className={`d-inline-block align-text-top ${styles['category--name event-card--name']}`}>Music</h5>
                 </div>
               </div>
             </div>
-            <div class="col">
-              <div class="card shadow-sm" style={{ width: '18rem' }}>
-                <div class="card-body">
-                  <FaTheaterMasks class="category--icon" />
-                  <h5 class="event-card--name d-inline-block align-text-top category--name">Performing & Visual Arts</h5>
+            <div className="col">
+              <div className="card shadow-sm" style={{ width: '18rem' }}>
+                <div className="card-body">
+                  <FaTheaterMasks className={styles['category--icon']} />
+                  <h5 className={`d-inline-block align-text-top ${styles['category--name event-card--name']}`}>Performing & Visual Arts</h5>
                 </div>
               </div>
             </div>
-            <div class="col">
-              <div class="card shadow-sm" style={{ width: '18rem' }}>
-                <div class="card-body">
-                  <MdOutlinePhotoLibrary class="category--icon" />
-                  <h5 class="event-card--name d-inline-block align-text-top category--name">Holiday</h5>
+            <div className="col">
+              <div className="card shadow-sm" style={{ width: '18rem' }}>
+                <div className="card-body">
+                  <MdOutlinePhotoLibrary className={styles['category--icon']} />
+                  <h5 className={`d-inline-block align-text-top ${styles['category--name event-card--name']}`}>Holiday</h5>
                 </div>
               </div>
             </div>
-            <div class="col">
-              <div class="card shadow-sm" style={{ width: '18rem' }}>
-                <div class="card-body">
-                  <FiHeart class="category--icon" />
-                  <h5 class="event-card--name d-inline-block align-text-top category--name">Health & Fitness</h5>
+            <div className="col">
+              <div className="card shadow-sm" style={{ width: '18rem' }}>
+                <div className="card-body">
+                  <FiHeart className={styles['category--icon']} />
+                  <h5 className={`d-inline-block align-text-top ${styles['category--name event-card--name']}`}>Health & Fitness</h5>
                 </div>
               </div>
             </div>
-            <div class="col">
-              <div class="card shadow-sm" style={{ width: '18rem' }}>
-                <div class="card-body">
-                  <TbDeviceGamepad2 class="category--icon" />
-                  <h5 class="event-card--name d-inline-block align-text-top category--name">Hobbies</h5>
+            <div className="col">
+              <div className="card shadow-sm" style={{ width: '18rem' }}>
+                <div className="card-body">
+                  <TbDeviceGamepad2 className={styles['category--icon']} />
+                  <h5 className={`d-inline-block align-text-top ${styles['category--name event-card--name']}`}>Hobbies</h5>
                 </div>
               </div>
             </div>
-            <div class="col">
-              <div class="card shadow-sm" style={{ width: '18rem' }}>
-                <div class="card-body">
-                  <MdOutlineBusinessCenter class="category--icon" />
-                  <h5 class="event-card--name d-inline-block align-text-top category--name">Business</h5>
+            <div className="col">
+              <div className="card shadow-sm" style={{ width: '18rem' }}>
+                <div className="card-body">
+                  <MdOutlineBusinessCenter className={styles['category--icon']} />
+                  <h5 className={`d-inline-block align-text-top ${styles['category--name event-card--name']}`}>Business</h5>
                 </div>
               </div>
             </div>
-            <div class="col">
-              <div class="card shadow-sm" style={{ width: '18rem' }}>
-                <div class="card-body">
-                  <BiDrink class="category--icon" />
-                  <h5 class="event-card--name d-inline-block align-text-top category--name">Food & Drink</h5>
+            <div className="col">
+              <div className="card shadow-sm" style={{ width: '18rem' }}>
+                <div className="card-body">
+                  <BiDrink className={styles['category--icon']} />
+                  <h5 className={`d-inline-block align-text-top ${styles['category--name event-card--name']}`}>Food & Drink</h5>
                 </div>
               </div>
             </div>
-            <div class="col">
-              <div class="card shadow-sm" style={{ width: '18rem' }}>
-                <div class="card-body">
-                  <TbShirtSport class="category--icon" />
-                  <h5 class="event-card--name d-inline-block align-text-top category--name">Sports & Fitness</h5>
+            <div className="col">
+              <div className="card shadow-sm" style={{ width: '18rem' }}>
+                <div className="card-body">
+                  <TbShirtSport className={styles['category--icon']} />
+                  <h5 className={`d-inline-block align-text-top ${styles['category--name event-card--name']}`}>Sports & Fitness</h5>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="events-in">
+        <div className={styles['events-in']}>
           <h4 id="trending-categories--text">Events in {props.location.city }</h4>
         </div>
       </div>

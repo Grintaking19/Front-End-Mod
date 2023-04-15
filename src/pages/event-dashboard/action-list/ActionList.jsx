@@ -1,4 +1,4 @@
-import './ActionList.module.css';
+import styles from './ActionList.module.css';
 
 function ActionList(props) {
     return (

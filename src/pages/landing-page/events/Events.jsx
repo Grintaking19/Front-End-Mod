@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import "./events.css"
+import styles from "./Events.module.css"
 // import "./events-mock-api"
 import useFetch from "../useFetch";
 import axios from "axios";
@@ -78,7 +78,7 @@ export default function Events(props) {
   }, [url()]);
 
   // const { data, eventsLoading, error } = useFetch(url());
-  const initialLoadingMsg = <p className="events-loading-status">Loading...</p> 
+  const initialLoadingMsg = <p className={styles['events-loading-status']}>Loading...</p> 
   const [eventsLoadingMsg, setEventsLoadingMsg] = useState(initialLoadingMsg);
   // useEffect(() => {
   //   if (data) {
@@ -91,7 +91,7 @@ export default function Events(props) {
       setEventsLoadingMsg(initialLoadingMsg);
     }
     else if (!eventsLoading && !props.location.loading && events.length === 0){
-      setEventsLoadingMsg(<p className="events-loading-status">
+      setEventsLoadingMsg(<p className={styles['events-loading-status']}>
       No Events in {props.location.city}
     </p>)}
     else if (!eventsLoading && !props.location.loading &&events.length>0){
@@ -108,24 +108,24 @@ export default function Events(props) {
   return (
     <div> 
       { (!eventsLoading && events.length > 0) ? 
-        <div class="album py-5">
-          <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+        <div className="album py-5">
+          <div className="container">
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
               { events.map((event) => (
-                <div class="col" key={event._id}>
-                  <div class="card event-card" onClick={() => handleEventCardClick(event)}>
+                <div className="col" key={event._id}>
+                  <div className={`card ${styles['event-card']}`} onClick={() => handleEventCardClick(event)}>
                     <img
                       src={event.img_url}
-                      class="bd-placeholder-img card-img-top"
+                      className="bd-placeholder-img card-img-top"
                       width="100%"
                       height="225"
                       aria-label="Placeholder: Thumbnail"
                       preserveAspectRatio="xMidYMid slice"
                       focusable="false"
                     />
-                    <div class="card-body">
-                      <h4 class="event-card--name">{event.name}</h4>
-                      <h6 class="event-card--date">
+                    <div className="card-body">
+                      <h4 className={styles['event-card--name']}>{event.name}</h4>
+                      <h6 className={styles['event-card--date']}>
                         {new Date(event.startDate).toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
                       </h6>
                       <h6>{event.locationName}</h6>
