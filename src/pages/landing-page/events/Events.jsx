@@ -35,11 +35,11 @@ export default function Events(props) {
           const diff = dayOfWeek === 5 ? 0 : dayOfWeek === 6 ? 0 : 5 - dayOfWeek;
           const firstDayOfWeekend = new Date(now.getFullYear(), now.getMonth(), now.getDate() + diff);
           const lastDayOfWeekend = new Date(now.getFullYear(), now.getMonth(), now.getDate() + diff + 1);
-          startDate = firstDayOfWeekend.toISOString().slice(0, 10);
+          startDate = firstDayOfWeekend.toISOString()
           if (dayOfWeek === 6) {
             endDate = startDate;
           } else {
-            endDate = lastDayOfWeekend.toISOString().slice(0, 10);
+            endDate = lastDayOfWeekend.toISOString()
           }
         }
         // return `${NAMESPACE}?startDate=${startDate}&endDate=${endDate}&location=${props.location.latitude},${props.location.longitude}`;
@@ -125,8 +125,11 @@ return (
                     />
                     <div className="card-body" id={`event-${event._id}-card`}>
                       <h4 id={`event-${event._id}-name`} className={styles['event-card--name']}>{event.name}</h4>
-                      <h6 id={`event-${event._id}-date`} className={styles['event-card--date']}>
+                      <h6 id={`event-${event._id}-startdate`} className={styles['event-card--date']}> Starts {' '}
                         {new Date(event.startDate).toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+                      </h6>
+                      <h6 id={`event-${event._id}-enddate`} className={styles['event-card--date']}> Ends {' '}
+                        {new Date(event.endDate).toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
                       </h6>
                       <h6 id={`event-${event._id}-location`}>{event.locationName}</h6>
                     </div>
