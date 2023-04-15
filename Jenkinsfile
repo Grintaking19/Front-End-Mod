@@ -20,7 +20,7 @@ pipeline {
                 sh "docker rm -f ${CONTAINER_NAME} || true"
                 sh "rm -rf /var/www/hebtus.com/html/*"
                 sh "docker run -d --name ${CONTAINER_NAME} -v /var/www/hebtus.com/html:/app/build ${IMAGE_NAME}"
-                sh "docker cp ${CONTAINER_NAME}:/app/build /var/www/hebtus.com/html"
+                //sh "docker cp ${CONTAINER_NAME}:/app/build /var/www/hebtus.com/html"
             }
         }
     }
