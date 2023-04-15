@@ -119,7 +119,7 @@ export default function Events(props) {
                     <div class="card-body">
                       <h4 class="event-card--name">{event.name}</h4>
                       <h6 class="event-card--date">
-                        {event.startDate.substring(0, event.startDate.indexOf(" "))}
+                        {new Date(event.startDate).toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
                       </h6>
                       <h6>{event.locationName}</h6>
                     </div>
