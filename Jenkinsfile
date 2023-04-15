@@ -10,7 +10,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh "docker system prune -af"
-                sh "docker build -t ${IMAGE_NAME} "
+                sh "docker build -t ${IMAGE_NAME} ."
             }
         }
 
