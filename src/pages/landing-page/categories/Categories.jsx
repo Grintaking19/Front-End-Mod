@@ -7,8 +7,8 @@ import { TbDeviceGamepad2, TbShirtSport } from "react-icons/tb"
 import { BiDrink } from "react-icons/bi"
 
 
-// const OPENCAGE_API_KEY = "ca1e044266af4d9b92d96cd6a63f857f";
-const OPENCAGE_API_KEY = "";
+const OPENCAGE_API_KEY = "ca1e044266af4d9b92d96cd6a63f857f";
+// const OPENCAGE_API_KEY = "";
 
 export default function Categories(props) {
 
