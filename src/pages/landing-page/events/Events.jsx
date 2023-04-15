@@ -3,12 +3,13 @@ import "./events.css"
 // import "./events-mock-api"
 import useFetch from "../useFetch";
 import axios from "axios";
-
+import { useNavigate } from 'react-router-dom';
 const NAMESPACE = "https://hebtus.me/api/v1/events/";
 // const NAMESPACE = "/api/v1/events/";
 
 export default function Events(props) {
   const [events, setEvents] = useState([]);
+  // const [selectedEvent, setSelectedEvent] = useState(null);
   
   const url = () => {
     if (props.location.latitude && props.location.longitude) {
@@ -60,6 +61,7 @@ export default function Events(props) {
   const [eventsLoading, setEventsLoading] = useState(true);
   useEffect(() => {
     setEventsLoading(true);
+    // setSelectedEvent(null);
     console.log(url())
     axios
       .get(url())
@@ -98,6 +100,11 @@ export default function Events(props) {
     
   }, [eventsLoading, props.location.loading]);
 
+  const navigate = useNavigate();
+  const handleEventCardClick = (event) => {
+    // setSelectedEvent(event);
+    navigate(`/event/${event._id}`);
+  }
   return (
     <div> 
       { (!eventsLoading && events.length > 0) ? 
@@ -105,8 +112,8 @@ export default function Events(props) {
           <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
               { events.map((event) => (
-                <div class="col">
-                  <div class="card event-card">
+                <div class="col" key={event._id}>
+                  <div class="card event-card" onClick={() => handleEventCardClick(event)}>
                     <img
                       src={event.img_url}
                       class="bd-placeholder-img card-img-top"

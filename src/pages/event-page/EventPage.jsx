@@ -2,12 +2,13 @@ import "./event-page.css";
 // import Navbar from "../../layouts/navbar/Navbar";
 
 import { useState, useEffect } from "react";
-
+import { useParams } from 'react-router-dom';
 import { getEvent } from "./services";
 
 function Event() {
     // TODO: Get event ID from URL
-    let eventId = "642fda172c9619b9850f7102";
+    // let eventId = "642fda172c9619b9850f7102";
+    const { eventId } = useParams();
 
     const [event, setEvent] = useState({});
 
