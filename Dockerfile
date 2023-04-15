@@ -1,5 +1,5 @@
 # stage1 as builder
-FROM node:10-alpine as builder
+FROM node:14.17.0-alpine as builder
 
 WORKDIR /app
 
@@ -12,7 +12,7 @@ RUN npm install
 COPY . .
 
 # Build the project and copy the files
-RUN npm run build
+ENTRYPOINT ["npm", "run", "build"]
 
 # #Stage 2 for nginx configuration
 # FROM nginx:alpine
