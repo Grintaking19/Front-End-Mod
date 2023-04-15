@@ -10,7 +10,7 @@ const NAMESPACE = "https://hebtus.me/api/v1/events/";
 export default function Events(props) {
   const [events, setEvents] = useState([]);
   // const [selectedEvent, setSelectedEvent] = useState(null);
-  
+
   const url = () => {
     if (props.location.latitude && props.location.longitude) {
       if (props.activeTab === 'today' || props.activeTab === 'thisweekend') {
@@ -45,11 +45,10 @@ export default function Events(props) {
         // return `${NAMESPACE}?startDate=${startDate}&endDate=${endDate}&location=${props.location.latitude},${props.location.longitude}`;
         return `${NAMESPACE}?startDate=${startDate}endDate=${endDate}location=31.2584644,30.0594885`;
       } else {
-        if (props.activeTab==='')
-            {return `${NAMESPACE}?location=31.2584644,30.0594885`;}
+        if (props.activeTab === '') { return `${NAMESPACE}?location=31.2584644,30.0594885`; }
         else
         // return `${NAMESPACE}?category=${props.activeTab}&location=${props.location.latitude},${props.location.longitude}`;
-          {return `${NAMESPACE}?category=${props.activeTab}location=31.2584644,30.0594885`;}
+        { return `${NAMESPACE}?category=${props.activeTab}location=31.2584644,30.0594885`; }
       }
     }
   };
@@ -78,7 +77,7 @@ export default function Events(props) {
   }, [url()]);
 
   // const { data, eventsLoading, error } = useFetch(url());
-  const initialLoadingMsg = <p className={styles['events-loading-status']}>Loading...</p> 
+  const initialLoadingMsg = <p className={styles['events-loading-status']}>Loading...</p>
   const [eventsLoadingMsg, setEventsLoadingMsg] = useState(initialLoadingMsg);
   // useEffect(() => {
   //   if (data) {
@@ -90,14 +89,15 @@ export default function Events(props) {
     if (eventsLoading || props.location.loading) {
       setEventsLoadingMsg(initialLoadingMsg);
     }
-    else if (!eventsLoading && !props.location.loading && events.length === 0){
+    else if (!eventsLoading && !props.location.loading && events.length === 0) {
       setEventsLoadingMsg(<p className={styles['events-loading-status']}>
-      No Events in {props.location.city}
-    </p>)}
-    else if (!eventsLoading && !props.location.loading &&events.length>0){
+        No Events in {props.location.city}
+      </p>)
+    }
+    else if (!eventsLoading && !props.location.loading && events.length > 0) {
       setEventsLoadingMsg('')
-    }      
-    
+    }
+
   }, [eventsLoading, props.location.loading]);
 
   const navigate = useNavigate();
@@ -105,16 +105,16 @@ export default function Events(props) {
     // setSelectedEvent(event);
     navigate(`/events/${event._id}`);
   }
-  return (
-    <div> 
+return (
+    <div id="events-album-container"> 
       { (!eventsLoading && events.length > 0) ? 
-        <div className="album py-5">
+        <div className="album py-5" id="events-album">
           <div className="container">
-            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4" id="events-row">
               { events.map((event) => (
                 <div className="col" key={event._id}>
-                  <div className={`card ${styles['event-card']}`} onClick={() => handleEventCardClick(event)}>
-                    <img
+                  <div className={`card ${styles['event-card']}`} onClick={() => handleEventCardClick(event)} id={`event-${event._id}`}>
+                    <img id={`event-${event._id}-img`}
                       src={event.img_url}
                       className="bd-placeholder-img card-img-top"
                       width="100%"
@@ -123,12 +123,12 @@ export default function Events(props) {
                       preserveAspectRatio="xMidYMid slice"
                       focusable="false"
                     />
-                    <div className="card-body">
-                      <h4 className={styles['event-card--name']}>{event.name}</h4>
-                      <h6 className={styles['event-card--date']}>
+                    <div className="card-body" id={`event-${event._id}-card`}>
+                      <h4 id={`event-${event._id}-name`} className={styles['event-card--name']}>{event.name}</h4>
+                      <h6 id={`event-${event._id}-date`} className={styles['event-card--date']}>
                         {new Date(event.startDate).toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
                       </h6>
-                      <h6>{event.locationName}</h6>
+                      <h6 id={`event-${event._id}-location`}>{event.locationName}</h6>
                     </div>
                   </div>
                 </div>
