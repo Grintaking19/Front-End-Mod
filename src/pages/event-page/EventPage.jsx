@@ -8,7 +8,6 @@ import { getEvent } from "./services";
 function Event() {
     // TODO: Get event ID from URL
     let eventId = "642fda172c9619b9850f7102";
-    let eventAddress = "New Cairo, New Cairo 1111";
 
     const [event, setEvent] = useState({});
 
@@ -42,7 +41,7 @@ function Event() {
                             <time datetime={event.startTime}>{event.startMonthInWords} {event.startDay}</time>
                         </div>
                         <div className="ep-event-title">
-                            <h1>{event.eventName}</h1>
+                            <h1>{event.name}</h1>
                         </div>
                         <div className="ep-event-details">
                             <h3>When and where</h3>
@@ -67,7 +66,7 @@ function Event() {
                                     </div>
                                     <div className="ep-event-location">
                                         <h4>Location</h4>
-                                        <p><strong>{event.locationName}</strong> {eventAddress}</p>
+                                        <p><strong>{event.locationName}</strong></p>
                                     </div>
                                 </div>
                             </div>
