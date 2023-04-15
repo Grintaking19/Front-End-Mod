@@ -41,21 +41,28 @@ export default function Events(props) {
           }
         }
         // return `${NAMESPACE}?startDate=${startDate}&endDate=${endDate}&location=${props.location.latitude},${props.location.longitude}`;
-        return `${NAMESPACE}?startDate=${startDate}&endDate=${endDate}&location=31.2584644,30.0594885`;
+        return `${NAMESPACE}?startDate=${startDate}endDate=${endDate}location=31.2584644,30.0594885`;
       } else {
+        if (props.activeTab==='')
+            return `${NAMESPACE}?location=31.2584644,30.0594885`;
+        else
         // return `${NAMESPACE}?category=${props.activeTab}&location=${props.location.latitude},${props.location.longitude}`;
-        return `${NAMESPACE}?category=${props.activeTab}&location=31.2584644,30.0594885`;
+          return `${NAMESPACE}?category=${props.activeTab}location=31.2584644,30.0594885`;
       }
     }
     return '';
   };
 
+
+  // useEffect(() => {
+    
+  // }, [props.location.loading]);
   const { data, eventsLoading, error } = useFetch(url());
   const initialLoadingMsg = <p className="events-loading-status">Loading...</p> 
   const [eventsLoadingMsg, setEventsLoadingMsg] = useState(initialLoadingMsg);
   useEffect(() => {
     if (data) {
-      setEvents(data);
+      setEvents(data.events);
     }
   }, [data]);
 
@@ -66,19 +73,20 @@ export default function Events(props) {
     else if (!eventsLoading && !props.location.loading && events.length === 0){
       setEventsLoadingMsg(<p className="events-loading-status">
       No Events in {props.location.city}
-    </p>)
+    </p>)}
+    else if (!eventsLoading && !props.location.loading &&events.length>0){
+      setEventsLoadingMsg('')
     }      
     
   }, [eventsLoading, props.location.loading]);
 
   return (
-    <div>
-      { props.location.loading? eventsLoadingMsg : (  
-      (!eventsLoading && events.length > 0) && (
+    <div> 
+      { (!eventsLoading && events.length > 0) ? 
         <div class="album py-5">
           <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
-              {events.map((event) => (
+              { events.map((event) => (
                 <div class="col">
                   <div class="card event-card">
                     <img
@@ -91,19 +99,19 @@ export default function Events(props) {
                       focusable="false"
                     />
                     <div class="card-body">
-                      <h4 class="event-card--name">{event.eventName}</h4>
+                      <h4 class="event-card--name">{event.name}</h4>
                       <h6 class="event-card--date">
-                        {event.startTime.substring(0, event.startTime.indexOf(" "))}
+                        {event.startDate.substring(0, event.startDate.indexOf(" "))}
                       </h6>
                       <h6>{event.locationName}</h6>
                     </div>
                   </div>
                 </div>
-              ))}
+              ))} 
             </div>
           </div>
-        </div>
-      ))}
+        </div> : eventsLoadingMsg 
+    }
     </div>
   );
 

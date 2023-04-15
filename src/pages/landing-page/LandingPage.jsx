@@ -4,7 +4,7 @@ import NavBar from "../../layouts/navbar/NavBar"
 import Categories from "./categories/Categories"
 
 export default function LandingPage() {
-    const [activeTab, setActiveTab] = useState('all');
+    const [activeTab, setActiveTab] = useState('');
     const [location, setLocation] = useState('');
     return (
         <div>
