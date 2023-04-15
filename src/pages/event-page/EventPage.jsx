@@ -3,9 +3,24 @@ import "./event-page.css";
 
 import { useState, useEffect } from "react";
 
+import { getEvent } from "./services";
+
 function Event() {
     // TODO: Get event ID from URL
-    let eventId = 1;
+    let eventId = "642fda172c9619b9850f7102";
+    let eventAddress = "New Cairo, New Cairo 1111";
+
+    const [event, setEvent] = useState({});
+
+    useEffect(() => {
+        async function fetchData() {
+            const eventData = await getEvent(eventId);
+            setEvent(eventData);
+        }
+
+        fetchData();
+    }, []);
+
 
     return (
         <div className="event-page">
@@ -18,16 +33,16 @@ function Event() {
                         {/* <div className="ep-event-hero-background">
                         </div> */}
                         {/* <div className="ep-event-hero-image"> */}
-                            <img className="ep-event-hero-image" src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F356067299%2F310722029665%2F1%2Foriginal.20220916-215230?w=940&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C14%2C1200%2C600&s=b8c73e4bcfff9b01d09cdfa2b86f0a38" alt="event-hero-image" />
+                        <img className="ep-event-hero-image" src={event.img_url} alt="event-hero-image" />
                         {/* </div> */}
                     </div>
 
                     <div className="ep-event-info-container">
                         <div className="ep-event-start-date">
-                            <time datetime="2023-04-19">Apr 19</time>
+                            <time datetime={event.startTime}>{event.startMonthInWords} {event.startDay}</time>
                         </div>
                         <div className="ep-event-title">
-                            <h1>Event Title</h1>
+                            <h1>{event.eventName}</h1>
                         </div>
                         <div className="ep-event-details">
                             <h3>When and where</h3>
@@ -41,7 +56,7 @@ function Event() {
                                     </div>
                                     <div className="ep-event-time">
                                         <h4>Date and time</h4>
-                                        <p>April 19, 2023 12:00 PM</p>
+                                        <p>{event.startMonthInWords} {event.startDay}, {event.year} {event.startHour}</p>
                                     </div>
                                 </div>
                                 <div className="ep-event-location-container">
@@ -52,7 +67,7 @@ function Event() {
                                     </div>
                                     <div className="ep-event-location">
                                         <h4>Location</h4>
-                                        <p><strong>Tolip Hotel and Spa</strong> Tolip Hotel and Spa New Cairo, New Cairo 1111</p>
+                                        <p><strong>{event.locationName}</strong> {eventAddress}</p>
                                     </div>
                                 </div>
                             </div>
@@ -60,21 +75,17 @@ function Event() {
                         <div className="ep-event-description">
                             <h3>About this event</h3>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                                euismod, nisl vitae ultricies tincidunt, nunc nisl aliquam
-                                libero, eget lacinia nunc lorem eget nisl. Sed euismod, nisl
-                                vitae ultricies tincidunt, nunc nisl aliquam libero, eget
-                                lacinia nunc lorem eget nisl.
+                                {event.description}
                             </p>
                         </div>
                     </div>
                     <div className="ep-event-tickets-container">
                         <div className="ep-event-tickets-frame">
                             <p className="ep-event-tickets-price">
-                                $5
+                                {event.ticketPriceRange}
                             </p>
                             <div className="ep-event-tickets-action-button">
-                                    Buy Ticket
+                                    Get Tickets
                             </div>
                         </div>
                     </div>
