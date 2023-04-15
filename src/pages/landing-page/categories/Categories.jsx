@@ -31,140 +31,144 @@ export default function Categories(props) {
     );
   }, []);
 
-  return (
-    <div>
-      <div className="container">
-        <div className={styles['location']}>
-          <h2 className={styles['popular-in']}>Popular in</h2>
-          { !(props.location.loading) ? (
-            <h2 className={styles['location--text']} style={{ color: '#3659E3' }}>{props.location.city}</h2>
-          ) : (
-            <h2 className={styles['location--text']} style={{ color: '#3659E3' }}>Loading Location ...</h2>
-          )}
-        </div>
-
-        <div className={styles['categories-tabs']}>
-          <ul className="nav nav-tabs">
-            <li className={`nav-item ${styles['_nav-item']}`}>
+return (
+    <div id="main-container">
+    <div id= "popular-in-container" className="container">
+    <div className={styles['location']} id="location-container">
+    <h2 className={styles['popular-in']} id="popular-in-heading">Popular in</h2>
+    { !(props.location.loading) ? (
+    <h2 className={styles['location--text']} style={{ color: '#3659E3' }} id="location-text">{props.location.city}</h2>
+    ) : (
+    <h2 className={styles['location--text']} style={{ color: '#3659E3' }} id="location-loading">Loading Location ...</h2>
+    )}
+    </div>
+    
+        <div className={styles['categories-tabs']} id="categories-container">
+          <ul className="nav nav-tabs" id="categories-tabs">
+            <li className={`nav-item ${styles['_nav-item']}`} id="online-tab">
             <a
                 className={`nav-link ${props.activeTab === 'online' ? 'active' : ''}`}
                 aria-current="page"
                 onClick={() => props.setActiveTab('online')}
+                id="online-link"
               >
               Online
               </a>
             </li>
-            <li className={`nav-item ${styles['_nav-item']}`}>
+            <li className={`nav-item ${styles['_nav-item']}`} id="today-tab">
             <a
                 className={`nav-link ${props.activeTab === 'today' ? 'active' : ''}`}
                 onClick={() => props.setActiveTab('today')}
+                id="today-link"
               >
                 Today
               </a>
             </li>
-            <li className={`nav-item ${styles['_nav-item']}`}>
+            <li className={`nav-item ${styles['_nav-item']}`} id="this-weekend-tab">
             <a
                 className={`nav-link ${props.activeTab === 'thisweekend' ? 'active' : ''}`}
                 onClick={() => props.setActiveTab('thisweekend')}
+                id="this-weekend-link"
               >
                 This weekend
               </a>
             </li>
-            <li className={`nav-item ${styles['_nav-item']}`}>
+            <li className={`nav-item ${styles['_nav-item']}`} id="free-tab">
             <a
                 className={`nav-link ${props.activeTab === 'free' ? 'active' : ''}`}
                 onClick={() => props.setActiveTab('free')}
+                id="free-link"
               >
                 Free
               </a>
             </li>
-            <li className={`nav-item ${styles['_nav-item']}`}>
+            <li className={`nav-item ${styles['_nav-item']}`} id="charity-tab">
             <a
                 className={`nav-link ${props.activeTab === 'charity' ? 'active' : ''}`}
                 onClick={() => props.setActiveTab('charity')}
+                id="charity-link"
               >
                 Charity&Causes
               </a>
             </li>
           </ul>
         </div>
-        <div className={styles['trending-categories']}>
-          <h4 id="trending-categories--text">Check out trending categories</h4>
+        <div className={styles['trending-categories']} id="trending-categories-container">
+          <h4 id="trending-categories-heading">Check out trending categories</h4>
         </div>
-
-        <div className="album py">
-          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
-            <div className="col">
+    
+        <div className="album py" id="category-cards-container">
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3" id="category-cards-row">
+            <div className="col" id="music-card">
               <div className="card shadow-sm" style={{ width: '18rem' }}>
-                <div className="card-body">
+                <div className="card-body" >
                   <FiMusic className={styles['category--icon']} />
-                  <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`}>Music</h5>
+                  <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`} id="music-card-name">Music</h5>
                 </div>
               </div>
             </div>
-            <div className="col">
+            <div className="col" id="arts-card">
               <div className="card shadow-sm" style={{ width: '18rem' }}>
                 <div className="card-body">
                   <FaTheaterMasks className={styles['category--icon']} />
-                  <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`}>Performing & Visual Arts</h5>
+                  <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`} id="arts-card-name">Performing & Visual Arts</h5>
                 </div>
               </div>
             </div>
-            <div className="col">
+            <div className="col" id="holiday-card">
               <div className="card shadow-sm" style={{ width: '18rem' }}>
                 <div className="card-body">
                   <MdOutlinePhotoLibrary className={styles['category--icon']} />
-                  <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`}>Holiday</h5>
+                  <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`} id="holiday-card-name">Holiday</h5>
                 </div>
               </div>
             </div>
-            <div className="col">
+            <div className="col" id="health-card">
               <div className="card shadow-sm" style={{ width: '18rem' }}>
                 <div className="card-body">
                   <FiHeart className={styles['category--icon']} />
-                  <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`}>Health & Fitness</h5>
+                  <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`} id="health-card-name">Health & Fitness</h5>
                 </div>
               </div>
             </div>
-            <div className="col">
+            <div className="col" id="hobbies-card">
               <div className="card shadow-sm" style={{ width: '18rem' }}>
                 <div className="card-body">
                   <TbDeviceGamepad2 className={styles['category--icon']} />
-                  <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`}>Hobbies</h5>
+                  <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`} id="hobbies-card-name">Hobbies</h5>
                 </div>
               </div>
             </div>
-            <div className="col">
+            <div className="col" id="business-card">
               <div className="card shadow-sm" style={{ width: '18rem' }}>
                 <div className="card-body">
                   <MdOutlineBusinessCenter className={styles['category--icon']} />
-                  <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`}>Business</h5>
+                  <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`} id="business-card-name">Business</h5>
                 </div>
               </div>
             </div>
-            <div className="col">
+            <div className="col" id="food-card">
               <div className="card shadow-sm" style={{ width: '18rem' }}>
                 <div className="card-body">
                   <BiDrink className={styles['category--icon']} />
-                  <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`}>Food & Drink</h5>
+                  <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`} id="food-card-name">Food & Drink</h5>
                 </div>
               </div>
             </div>
-            <div className="col">
+            <div className="col" id="sports-card">
               <div className="card shadow-sm" style={{ width: '18rem' }}>
                 <div className="card-body">
                   <TbShirtSport className={styles['category--icon']} />
-                  <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`}>Sports & Fitness</h5>
+                  <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`} id="sports-card-name">Sports & Fitness</h5>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-        <div className={styles['events-in']}>
-          <h4 id="trending-categories--text">Events in {props.location.city }</h4>
-        </div>
-      </div>
+    <div className={styles['events-in']} id="events-in">
+      <h4 id="trending-categories--text">Events in {props.location.city }</h4>
     </div>
-  )
-}
+  </div>
+</div>
+)
+    }
