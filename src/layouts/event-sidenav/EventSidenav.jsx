@@ -1,5 +1,4 @@
-import './event-sidenav.css';
-
+import styles from "./EventSideNav.module.css"
 function EventSidenav() {
     let eventPublishSteps = [
         {
@@ -58,9 +57,9 @@ function EventSidenav() {
 
 
     return (
-        <div className="es">
-            <div className="es-header">
-                <div className="es-go-back-container">
+        <div className={styles['es']}>
+            <div className={styles['es-header']}>
+                <div className={styles['es-go-back-container']}>
                     <a href="#">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
                             <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
@@ -69,8 +68,8 @@ function EventSidenav() {
                     </a>
                 </div>
                 {isDraft ?
-                <div className="event-status-button">
-                    <div class="dropdown">
+                <div className={styles['event-status-button']}>
+                    <div className="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Draft
                         </button>
@@ -88,14 +87,14 @@ function EventSidenav() {
                         </ul>
                     </div>
                 </div>: null}
-                <div className="es-event-description">
-                    <div className="es-event-description-title">
+                <div className={styles['es-event-description']}>
+                    <div className={styles['es-event-description-title']}>
                         <a href="#"><h4>Event Title</h4></a>
                     </div>
-                    <div className="es-event-description-date">
+                    <div className={styles['es-event-description-date']}>
                         <p>Wed, Apr 19, 2023 7:00 PM</p>
                     </div>
-                    <div className="es-event-description-preview">
+                    <div className={styles['es-event-description-preview']}>
                         <a href="#">
                             Preview your event
                             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
@@ -106,13 +105,13 @@ function EventSidenav() {
                     </div>
                 </div>
             </div>
-            <div className="es-list">
-                <ul className="es-list-ul">
+            <div className={styles['es-list']}>
+                <ul className={styles['es-list-ul']}>
                     {eventPublishSteps.map((step) => {
                         let icon = step.status === 'completed' ? icons[step.status] : icons[step.id];
                         let className = step.selected ? 'es-list-li es-list-li-active' : 'es-list-li';
                         return (
-                            <li className={className}>
+                            <li className={styles[className]}>
                                 <a href={step.link}>
                                     <div>
                                         {step.status? icon: null}
