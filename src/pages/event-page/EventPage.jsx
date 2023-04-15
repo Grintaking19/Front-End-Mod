@@ -1,5 +1,5 @@
 import "./event-page.css";
-// import Navbar from "../../layouts/navbar/Navbar";
+import Navbar from "../../layouts/navbar/NavBar";
 
 import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
@@ -25,7 +25,7 @@ function Event() {
     return (
         <div className="event-page">
             <div className="ep-navbar-container">
-                {/* <Navbar /> */}
+                <Navbar />
             </div>
             <div className="ep-body-container">
                 <div className="ep-content-container">

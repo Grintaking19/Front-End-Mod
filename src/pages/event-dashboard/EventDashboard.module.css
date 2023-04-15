@@ -1,16 +1,16 @@
 .event-dashboard {
     height: 100vh;
-    background-color: aqua;
+    /* background-color: aqua; */
     display: grid;
     grid-template-columns: 288px repeat(13, 1fr);
-    grid-template-rows: 60px auto;
+    grid-template-rows: 90px auto;
     grid-template-areas:
     "n n n n n n n n n n n n n n"
     "es b b b b b b b b b b b b b";
 }
 
-.navbar-k {
-    background-color: #ffffff;
+.navbar-container {
+    /* background-color: #ffffff; */
     grid-area: n;
 }
 

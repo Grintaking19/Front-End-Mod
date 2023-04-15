@@ -3,14 +3,14 @@
     height: 100vh;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 60px auto;
+    grid-template-rows: 90px auto;
     grid-template-areas:
     "n n n n n n n n n n n n"
     "b b b b b b b b b b b b";
 }
 
 .ep-navbar-container {
-    background-color: blue;
+    /* background-color: blue; */
     grid-area: n;
 }
 

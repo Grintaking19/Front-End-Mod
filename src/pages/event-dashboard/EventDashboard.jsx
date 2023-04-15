@@ -1,9 +1,10 @@
-import "./event-dashboard.css";
+import styles from "./EventDashboard.module.css";
 import EventSidenav from "../../layouts/event-sidenav/EventSidenav";
 import Card from "./card/Card";
 import Share from "./share/Share";
 import ActionList from "./action-list/ActionList";
 import ReportTable from "./report-table/ReportTable";
+import NavBar from "../../layouts/navbar/NavBar";
 
 import { useState, useEffect } from "react";
 
@@ -118,36 +119,37 @@ function EventDashboard() {
     }
 
     return (
-        <div className="event-dashboard">
-            <div className="navbar-k">
+        <div className={styles['event-dashboard']}>
+            <div className={styles['navbar-container']}>
+            <NavBar/>
             </div>
             <EventSidenav />
-            <div className="body-container">
-                <div className="content-container">
-                    <div className="insights-container">
-                        <div className="header">
-                            <h1 className='title'>Dashboard</h1>
+            <div className={styles['body-container']}>
+                <div className={styles['content-container']}>
+                    <div className={styles['insights-container']}>
+                        <div className={styles['header']}>
+                            <h1 className={styles['title']}>Dashboard</h1>
                         </div>
-                        <div className="cards-container">
+                        <div className={styles['cards-container']}>
                             <Card {...ticketsSummaryCardProps} />
                             <Card {...pageViewsCardProps} />
                         </div>
-                        <div className="todo-list-container">
+                        <div className={styles['todo-list-container']}>
                             <ActionList {...todoListProps} />
                         </div>
                         <Share />
                     </div>
-                    <div className="divider">
+                    <div className={styles['divider']}>
                         <hr />
                     </div>
-                    <div className="stats-container">
-                        <div className="ds-sales-container">
+                    <div className={styles['stats-container']}>
+                        <div className={styles['ds-sales-container']}>
                             <ReportTable {...salesTableProps} />
                         </div>                            
-                        <div className="ds-orders-container">
+                        <div className={styles['ds-orders-container']}>
                             <ReportTable {...ordersTableProps} />
                         </div>
-                        <div className="ds-other-actions-container">
+                        <div className={styles['ds-other-actions-container']}>
                             <ActionList {...otherActionsProps} />
                         </div>
                     </div>

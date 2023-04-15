@@ -103,7 +103,7 @@ export default function Events(props) {
   const navigate = useNavigate();
   const handleEventCardClick = (event) => {
     // setSelectedEvent(event);
-    navigate(`/event/${event._id}`);
+    navigate(`/events/${event._id}`);
   }
   return (
     <div> 
