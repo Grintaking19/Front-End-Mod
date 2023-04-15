@@ -98,7 +98,7 @@ export default function Categories(props) {
               <div className="card shadow-sm" style={{ width: '18rem' }}>
                 <div className="card-body">
                   <FiMusic className={styles['category--icon']} />
-                  <h5 className={`d-inline-block align-text-top ${styles['category--name event-card--name']}`}>Music</h5>
+                  <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`}>Music</h5>
                 </div>
               </div>
             </div>
@@ -106,7 +106,7 @@ export default function Categories(props) {
               <div className="card shadow-sm" style={{ width: '18rem' }}>
                 <div className="card-body">
                   <FaTheaterMasks className={styles['category--icon']} />
-                  <h5 className={`d-inline-block align-text-top ${styles['category--name event-card--name']}`}>Performing & Visual Arts</h5>
+                  <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`}>Performing & Visual Arts</h5>
                 </div>
               </div>
             </div>
@@ -114,7 +114,7 @@ export default function Categories(props) {
               <div className="card shadow-sm" style={{ width: '18rem' }}>
                 <div className="card-body">
                   <MdOutlinePhotoLibrary className={styles['category--icon']} />
-                  <h5 className={`d-inline-block align-text-top ${styles['category--name event-card--name']}`}>Holiday</h5>
+                  <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`}>Holiday</h5>
                 </div>
               </div>
             </div>
@@ -122,7 +122,7 @@ export default function Categories(props) {
               <div className="card shadow-sm" style={{ width: '18rem' }}>
                 <div className="card-body">
                   <FiHeart className={styles['category--icon']} />
-                  <h5 className={`d-inline-block align-text-top ${styles['category--name event-card--name']}`}>Health & Fitness</h5>
+                  <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`}>Health & Fitness</h5>
                 </div>
               </div>
             </div>
@@ -130,7 +130,7 @@ export default function Categories(props) {
               <div className="card shadow-sm" style={{ width: '18rem' }}>
                 <div className="card-body">
                   <TbDeviceGamepad2 className={styles['category--icon']} />
-                  <h5 className={`d-inline-block align-text-top ${styles['category--name event-card--name']}`}>Hobbies</h5>
+                  <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`}>Hobbies</h5>
                 </div>
               </div>
             </div>
@@ -138,7 +138,7 @@ export default function Categories(props) {
               <div className="card shadow-sm" style={{ width: '18rem' }}>
                 <div className="card-body">
                   <MdOutlineBusinessCenter className={styles['category--icon']} />
-                  <h5 className={`d-inline-block align-text-top ${styles['category--name event-card--name']}`}>Business</h5>
+                  <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`}>Business</h5>
                 </div>
               </div>
             </div>
@@ -146,7 +146,7 @@ export default function Categories(props) {
               <div className="card shadow-sm" style={{ width: '18rem' }}>
                 <div className="card-body">
                   <BiDrink className={styles['category--icon']} />
-                  <h5 className={`d-inline-block align-text-top ${styles['category--name event-card--name']}`}>Food & Drink</h5>
+                  <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`}>Food & Drink</h5>
                 </div>
               </div>
             </div>
@@ -154,7 +154,7 @@ export default function Categories(props) {
               <div className="card shadow-sm" style={{ width: '18rem' }}>
                 <div className="card-body">
                   <TbShirtSport className={styles['category--icon']} />
-                  <h5 className={`d-inline-block align-text-top ${styles['category--name event-card--name']}`}>Sports & Fitness</h5>
+                  <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`}>Sports & Fitness</h5>
                 </div>
               </div>
             </div>
