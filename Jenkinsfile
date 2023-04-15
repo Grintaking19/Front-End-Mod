@@ -19,8 +19,7 @@ pipeline {
                 sh "docker stop ${CONTAINER_NAME} || true"
                 sh "docker rm -f ${CONTAINER_NAME} || true"
                 sh "rm -rf /var/www/hebtus.com/html/*"
-                //sh "docker run -d --name ${CONTAINER_NAME} -v /var/www/hebtus.com/html:/app/build ${IMAGE_NAME}"
-                sh "docker run -d --name ${CONTAINER_NAME} -p 8080:80 -v /var/www/hebtus.com/html:/app/build ${IMAGE_NAME}"
+                sh "docker run -d --name ${CONTAINER_NAME} -v /var/www/hebtus.com/html:/app/build ${IMAGE_NAME}"
             }
         }
     }
