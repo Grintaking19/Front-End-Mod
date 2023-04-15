@@ -1,7 +1,8 @@
 import { React, useState, useEffect } from "react";
 import "./events.css"
-import "./events-mock-api"
+// import "./events-mock-api"
 import useFetch from "../useFetch";
+import axios from "axios";
 
 const NAMESPACE = "https://hebtus.me/api/v1/events/";
 // const NAMESPACE = "/api/v1/events/";
@@ -44,27 +45,44 @@ export default function Events(props) {
         return `${NAMESPACE}?startDate=${startDate}endDate=${endDate}location=31.2584644,30.0594885`;
       } else {
         if (props.activeTab==='')
-            return `${NAMESPACE}?location=31.2584644,30.0594885`;
+            {return `${NAMESPACE}?location=31.2584644,30.0594885`;}
         else
         // return `${NAMESPACE}?category=${props.activeTab}&location=${props.location.latitude},${props.location.longitude}`;
-          return `${NAMESPACE}?category=${props.activeTab}location=31.2584644,30.0594885`;
+          {return `${NAMESPACE}?category=${props.activeTab}location=31.2584644,30.0594885`;}
       }
     }
-    return '';
   };
 
-
   // useEffect(() => {
-    
   // }, [props.location.loading]);
-  const { data, eventsLoading, error } = useFetch(url());
+  // const [data, setData] = useState(null);
+  console.log(url())
+  const [eventsLoading, setEventsLoading] = useState(true);
+  useEffect(() => {
+    setEventsLoading(true);
+    console.log(url())
+    axios
+      .get(url())
+      .then((response) => {
+        setEvents(response.data.data.events);
+        console.log(events)
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+      .finally(() => {
+        setEventsLoading(false);
+      });
+  }, [url()]);
+
+  // const { data, eventsLoading, error } = useFetch(url());
   const initialLoadingMsg = <p className="events-loading-status">Loading...</p> 
   const [eventsLoadingMsg, setEventsLoadingMsg] = useState(initialLoadingMsg);
-  useEffect(() => {
-    if (data) {
-      setEvents(data.events);
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   if (data) {
+  //     setEvents(data.events);
+  //   }
+  // }, [data]);
 
   useEffect(() => {
     if (eventsLoading || props.location.loading) {
