@@ -67,7 +67,7 @@ function Event() {
                                     </div>
                                     <div className={styles['ep-event-location']}>
                                         <h4>Location</h4>
-                                        <p><strong>{event.locationName}</strong></p>
+                                        <p>{event.locationName}</p>
                                     </div>
                                 </div>
                             </div>
