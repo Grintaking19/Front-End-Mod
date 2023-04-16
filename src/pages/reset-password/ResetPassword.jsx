@@ -1,6 +1,5 @@
-
 import axios from "axios";
-import "./reset-password.css"
+import styles from "./ResetPassword.module.css"
 import 'boxicons'
 import { useForm } from "react-hook-form"
 import * as yup from "yup"
@@ -68,26 +67,26 @@ export default function ResetPassword() {
 
         <form action="#" onSubmit={handleSubmit(onSubmit)}>
 
-          <div className="field form--password">
-            <input type={passwordType} id="password" className="password" placeholder="Password"{...register("password")}
+          <div className={`${styles.field} ${styles["form--password"]}`}>
+            <input type={passwordType} id="password" className={styles.password} placeholder="Password" {...register("password")}
             />
-            <div className="eye-holder" id="eyeHolderPassword" onClick={togglePassword}>
+            <div className={styles["eye-holder"]} id="eyeHolderPassword" onClick={togglePassword}>
               {passwordType === "password" ?
-                <i class='bx bxs-hide eye-icon'></i>
+                <i className='bx bxs-hide eye-icon'></i>
                 :
-                <i class='bx bxs-show eye-icon'></i>
+                <i className='bx bxs-show eye-icon'></i>
               }
             </div>
           </div>
-          <div className="form--error-message" id="form--error-message">
-            <p className="error-message" id="errorMessagePassword"> {errors.password?.message}</p>
+          <div className={`${styles["form--error-message"]} ${styles["form--error-message"]}`} id="form--error-message">
+            <p className={styles["error-message"]} id="errorMessagePassword">{errors.password?.message}</p>
           </div>
 
 
-          <div className="field form--password">
-            <input type={confirmPasswordType} id="confirmPassword" className="password" placeholder="Confirm Password"{...register("confirmPassword")}
+          <div className={`${styles.field} ${styles["form--password"]}`}>
+            <input type={confirmPasswordType} id="confirmPassword" className={styles.password} placeholder="Confirm Password" {...register("confirmPassword")}
             />
-            <div className="eye-holder" id="eyeHolderConfirmPassword" onClick={toggleConfirmPassword}>
+            <div className={styles["eye-holder"]} id="eyeHolderConfirmPassword" onClick={toggleConfirmPassword}>
               {confirmPasswordType === "password" ?
                 <i class='bx bxs-hide eye-icon'></i>
                 :
@@ -95,12 +94,12 @@ export default function ResetPassword() {
               }
             </div>
           </div>
-          <div className="form--error-message" id="form--error-message">
-            <p className="error-message" id="errorMessageConfirmPassword"> {errors.confirmPassword?.message}</p>
+          <div className={styles['form--error-message']} id="form--error-message">
+            <p className={styles['error-message']} id="errorMessageConfirmPassword">{errors.confirmPassword?.message}</p>
           </div>
 
 
-          <div className="field form--button" id="update-password">
+          <div className={styles["field"] + " " + styles["form--button"]} id="update-password">
             <button type="submit">Update Password</button>
           </div>
 

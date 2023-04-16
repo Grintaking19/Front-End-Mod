@@ -1,4 +1,4 @@
-import "./forgot-password.css"
+import styles from "./ForgotPassword.module.css"
 import 'boxicons'
 import axios from "axios"
 import { useForm } from "react-hook-form"
@@ -36,22 +36,22 @@ export default function ForgotPassword({ setSuccess, setEmail }) {
 
   return (
 
-    <div className="login-page">
-      <section className="container">
-        <div className="form login">
+    <div className={styles["signup-page"]}>
+      <section className={styles.container}>
+        <div className={`${styles.form} ${styles.login}`}>
 
-          <h3 className="hebtus-logo">Hebtus</h3>
+          <h3 className={styles["hebtus-logo"]}>Hebtus</h3>
           <header>Forgot Password?</header>
 
           <form action="#" onSubmit={handleSubmit(onSubmit)}>
-            <div className="field form--email">
-              <input id="email" type="email" placeholder="Email"{...register("email")} className="email" />
+            <div className={`${styles.field} ${styles["form--email"]}`}>
+              <input id="email" type="email" placeholder="Email" {...register("email")} className={styles.email} />
             </div>
-            <div className="form--error-message" id="form--error-message">
-              <p className="error-message" id="errorMessageEmail"> {errors.email?.message}</p>
+            <div className={`${styles["form--error-message"]} ${styles["form--error-message"]}`} id="form--error-message">
+              <p className={styles["error-message"]} id="errorMessageEmail">{errors.email?.message}</p>
             </div>
 
-            <div className="field form--button" id="CreateAccount">
+            <div className={`${styles.field} ${styles['form--button']}`} id="Continue">
               <button type="submit">Continue</button>
             </div>
 

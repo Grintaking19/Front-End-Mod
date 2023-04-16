@@ -1,5 +1,4 @@
-import react from "react"
-import "./sign-in.css"
+import styles from "./SignIn.module.css"
 import 'boxicons'
 import googleLogo from "./assets/google-logo.png"
 import logInImg from "./assets/Log-in-img-part2.jpg"
@@ -64,64 +63,65 @@ export default function SignIn() {
   }
 
 
-  
   return (
-    <div className="login-page">
-      <section className="container">
-        <div className="form login">
+    <div className={styles["login-page"]}>
+      <section className={styles["container"]}>
+        <div className={`${styles["form"]} ${styles["login"]}`}>
 
-          <h3 className="hebtus-logo">Hebtus</h3>
-          <header>Log in</header>
+          <h3 className={styles["hebtus-logo"]}>Hebtus</h3>
+          <header >Log in</header>
 
-          <form action="#" onSubmit={handleSubmit(onSubmit)}>
-            <div className="field form--email">
-              <input id="email" type="email" placeholder="Email"{...register("email")} className="email" />
+          <form action="#" onSubmit={handleSubmit(onSubmit)} className="login-form">
+            <div className={`${styles.field} ${styles["form--email"]}`}>
+              <input id="email" type="email" placeholder="Email" {...register("email")} className={styles.email} />
             </div>
-            <div className="form--error-message" id="form--error-message">
-              <p className="error-message" id="errorMessageEmail"> {errors.email?.message}</p>
+            <div className={`${styles["form--error-message"]} ${styles["form--error-message"]}`} id="form--error-message">
+              <p className={styles["error-message"]} id="errorMessageEmail">{errors.email?.message}</p>
             </div>
 
-            <div className="field form--password">
-              <input type={passwordType} id="password" className="password" placeholder="Password"{...register("password")} />
-              <div className="eye-holder" id="eyeHolderPassword" onClick={togglePassword}>
+
+            <div className={`${styles.field} ${styles["form--password"]}`}>
+              <input type={passwordType} id="password" className={styles.password} placeholder="Password" {...register("password")}
+              />
+              <div className={styles["eye-holder"]} id="eyeHolderPassword" onClick={togglePassword}>
                 {passwordType === "password" ?
-                  <i class='bx bxs-hide eye-icon'></i>
+                  <i className='bx bxs-hide eye-icon'></i>
                   :
-                  <i class='bx bxs-show eye-icon'></i>
+                  <i className='bx bxs-show eye-icon'></i>
                 }
               </div>
             </div>
-            <div className="form--error-message" id="form--error-message">
-              <p className="error-message" id="errorMessagePassword"> {errors.password?.message}</p>
+            <div className={`${styles["form--error-message"]} ${styles["form--error-message"]}`} id="form--error-message">
+              <p className={styles["error-message"]} id="errorMessagePassword">{errors.password?.message}</p>
             </div>
 
-            <div className="form-link form--forgot-password">
-              <span>Can't remember the password? <a href="#" className="fogot-password" id="fogot-password" onClick={() => {
+            <div className={styles["form-link"] + " " + styles["form--forgot-password"]}>
+              <span className={styles["cant't-remember the password"]}>Can't remember the password? <a href="#" className={styles["forgot-password"]} id="fogot-password" onClick={() => {
                 navigate("/forgot-password")
               }}>Forgot Passowrd</a></span>
             </div>
 
-            <div className="field form--button" id="CreateAccount">
-              <button type="submit">Log in</button>
+            <div className={styles["field"] + " " + styles["form--button"]} id="LogIn">
+              <button type="submit" className={styles["form--button-login"]}>Log in</button>
             </div>
 
-            <div className="form-link form--signup">
-              <span>Don't have an account? <a href="#" className="sign-up" id="form-link from--signup" onClick={()=>{navigate("/signup")}}>Sign up</a></span>
+            <div className={styles["form-link"] + " " + styles["form--signup"]}>
+              <span className={styles["don't-have-an-account"]}>Don't have an account? <a href="#" className={styles["sign-up"]} id={styles["form-link"] + " " + styles["from--signup"]} onClick={() => { navigate("/signup") }}>Sign up</a></span>
             </div>
 
-            <div className="line"></div>
+            <div className={styles["line"]}></div>
 
-            <div className="form--media-options">
-              <a href="#" id="signInFacebook" className="field facebook" >
+            <div className={styles["form--media-options"]}>
+              <a href="#" id="signInFacebook" className={styles["field"] + " " + styles["facebook"]}>
                 <i class='bx bxl-facebook facebook-icon'></i>
-                <span>Sign In with Facebook</span>
+                <span className={styles["sign-in-with-facebook"]}>Sign In with Facebook</span>
               </a>
             </div>
 
-            <div className="form--media-options">
-              <a href="#" id="signInGoogle" className="field google">
-                <img src={googleLogo} alt="" className="google-img" />
-                <span>Sign In with Google</span>
+            <div className={styles["form--media-options"]}>
+              <a href="#" id="signInGoogle" className={styles["field"] + " " + styles["google"]}>
+                <img src={googleLogo} alt="" className={styles["google-img"]} />
+                <span className="sign-in-with-google">Sign In with Google</span>
               </a>
             </div>
 
@@ -129,11 +129,10 @@ export default function SignIn() {
 
         </div>
 
-
       </section>
 
-      <div className="login-page-image">
-        <img src={logInImg} alt="event-image" className="login-image" />
+      <div className={styles["signup-page-image"]}>
+        <img src={logInImg} alt="event-image" className={styles["login-image"]} />
       </div>
 
     </div>
