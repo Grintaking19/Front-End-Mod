@@ -9,6 +9,7 @@ import CategorizedEvents from "./pages/landing-page/events/CategorizedEvents";
 // import SignUpPage from "./pages/sign-up/SignUpPage"
 // import ForgotPasswordPage from "./pages/forgot-password/ForgotPasswordPage"
 // import ResetPassordPage from "./pages/reset-password/ResetPassword"
+import EventListContainer from "./pages/event-list/EventListContainer"
 
 export default function App() {
 
@@ -29,6 +30,7 @@ export default function App() {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/reset-password" element={<ResetPassordPage />} /> */}
+        <Route path="/events" element={<EventListContainer />} />
       </Routes>
     </BrowserRouter>
 
