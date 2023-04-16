@@ -1,0 +1,31 @@
+.event-list-table{
+    border: 2px solid #000;
+    width: 100%;
+    text-align: left;
+    border: 0px;
+    border-collapse: collapse;
+
+}
+
+.table-header{
+    background-color: #f8f7fa;
+    height: 3rem;
+    color:#5c596d;
+    font-size: 0.95rem;
+
+}
+.table-event-data{
+    display: flex;
+}
+
+td{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+tr:hover {
+    cursor: pointer;
+    background-color: #f8f7fa;
+      box-shadow: 0 0 5px rgba(33,33,33,.2); 
+      transition: all .1s ease-in-out;
+}
