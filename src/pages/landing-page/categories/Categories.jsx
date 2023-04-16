@@ -107,7 +107,7 @@ return (
         <div className="album py" id="category-cards-container">
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3" id="category-cards-row">
             <div className="col" id="music-card">
-              <div className="card shadow-sm" style={{ width: '18rem' }} onClick={() => categoryCardClick('music')}>
+              <div className="card shadow-sm" style={{ width: '18rem' }} onClick={() => categoryCardClick('Music')}>
                 <div className="card-body" >
                   <FiMusic className={styles['category--icon']} />
                   <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`} id="music-card-name">Music</h5>
@@ -123,7 +123,7 @@ return (
               </div>
             </div>
             <div className="col" id="holiday-card">
-              <div className="card shadow-sm" style={{ width: '18rem' }} onClick={() => categoryCardClick('music')}>
+              <div className="card shadow-sm" style={{ width: '18rem' }} onClick={() => categoryCardClick('Holiday')}>
                 <div className="card-body">
                   <MdOutlinePhotoLibrary className={styles['category--icon']} />
                   <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`} id="holiday-card-name">Holiday</h5>
@@ -147,7 +147,7 @@ return (
               </div>
             </div>
             <div className="col" id="business-card">
-              <div className="card shadow-sm" style={{ width: '18rem' }} onClick={() => categoryCardClick('business')}>
+              <div className="card shadow-sm" style={{ width: '18rem' }} onClick={() => categoryCardClick('Business')}>
                 <div className="card-body">
                   <MdOutlineBusinessCenter className={styles['category--icon']} />
                   <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`} id="business-card-name">Business</h5>
@@ -155,7 +155,7 @@ return (
               </div>
             </div>
             <div className="col" id="food-card">
-              <div className="card shadow-sm" style={{ width: '18rem' }} onClick={() => categoryCardClick('music')}>
+              <div className="card shadow-sm" style={{ width: '18rem' }} onClick={() => categoryCardClick('Food %26 Drink')}>
                 <div className="card-body">
                   <BiDrink className={styles['category--icon']} />
                   <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`} id="food-card-name">Food & Drink</h5>
