@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
+import { useNavigate } from 'react-router-dom';
 
 /////////////////////////////////////////////////////////
 function authHeader() {
@@ -28,6 +29,7 @@ const config = {
 export default function SignIn() {
 
   const [passwordType, setPasswordType] = useState("password");
+  let navigate = useNavigate();
 
   const togglePassword = () => {
     if (passwordType === "password") {
@@ -54,7 +56,7 @@ export default function SignIn() {
         localStorage.setItem('user', response.data.token);
       }
       console.log(localStorage.getItem('user'));
-
+      navigate("/");
     }
     catch (err) {
       console.log(err);
@@ -62,6 +64,7 @@ export default function SignIn() {
   }
 
 
+  
   return (
     <div className="login-page">
       <section className="container">
@@ -93,7 +96,9 @@ export default function SignIn() {
             </div>
 
             <div className="form-link form--forgot-password">
-              <span>Can't remember the password? <a href="#" className="fogot-password" id="fogot-password">Forgot Passowrd</a></span>
+              <span>Can't remember the password? <a href="#" className="fogot-password" id="fogot-password" onClick={() => {
+                navigate("/forgot-password")
+              }}>Forgot Passowrd</a></span>
             </div>
 
             <div className="field form--button" id="CreateAccount">
@@ -101,7 +106,7 @@ export default function SignIn() {
             </div>
 
             <div className="form-link form--signup">
-              <span>Don't have an account? <a href="#" className="sign-up" id="form-link from--signup">Sign up</a></span>
+              <span>Don't have an account? <a href="#" className="sign-up" id="form-link from--signup" onClick={()=>{navigate("/signup")}}>Sign up</a></span>
             </div>
 
             <div className="line"></div>

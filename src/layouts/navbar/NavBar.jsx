@@ -3,12 +3,13 @@ import styles from "./NavBar.module.css";
 import { CgMathPlus } from "react-icons/cg";
 import { AiOutlineUser } from "react-icons/ai";
 import cover from "../../pages/landing-page/cover.png";
-
+import { useNavigate } from "react-router-dom";
 export default function NavBar() {
+  let navigate = useNavigate();
   return (
     <div>
       <nav className={styles['signed-in-nav-bar']}>
-        <a href="#" className={styles['hebtus-logo-text']}>
+        <a href="#" className={styles['hebtus-logo-text']} onClick={() => { navigate("/") }}>
           <h3 className={styles['hebtus-logo-text']}>Hebtus</h3>
         </a>
 

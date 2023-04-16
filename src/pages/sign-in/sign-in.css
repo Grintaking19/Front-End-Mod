@@ -34,9 +34,9 @@ input:focus {
 
 }
 
-.form .form--error-message{
+.form .form--error-message {
   padding: 5px;
-} 
+}
 
 
 .form.login {
@@ -48,8 +48,8 @@ input:focus {
 
 .error-message {
   color: #c5162e;
-  font-size: .75rem;
-  line-height: 1rem;
+  font-size: .55rem;
+  line-height: .5rem;
 }
 
 header {
@@ -184,6 +184,9 @@ a.facebook {
   background-color: #4267b2;
   color: white;
 
+}
+a.facebook:hover {
+  color: white;
 }
 
 a.facebook .facebook-icon {
