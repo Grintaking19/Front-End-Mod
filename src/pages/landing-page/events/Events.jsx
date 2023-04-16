@@ -44,12 +44,12 @@ export default function Events(props) {
           }
         }
         // return `${NAMESPACE}?startDate=${startDate}&endDate=${endDate}&location=${props.location.latitude},${props.location.longitude}`;
-        return `${NAMESPACE}?startDate=${startDate}endDate=${endDate}location=31.2584644,30.0594885`;
+        return `${NAMESPACE}?startDate=${startDate}&endDate=${endDate}&location=31.2584644,30.0594885`;
       } else {
         if (props.activeTab === '') { return `${NAMESPACE}?location=31.2584644,30.0594885`; }
         else
         // return `${NAMESPACE}?category=${props.activeTab}&location=${props.location.latitude},${props.location.longitude}`;
-        { return `${NAMESPACE}?category=${props.activeTab}location=31.2584644,30.0594885`; }
+        { return `${NAMESPACE}?category=${props.activeTab}&location=31.2584644,30.0594885`; }
       }
     }
   };
