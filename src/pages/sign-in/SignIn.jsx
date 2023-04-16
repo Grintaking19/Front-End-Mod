@@ -66,7 +66,7 @@ export default function SignIn() {
   return (
     <div className={styles["login-page"]}>
       <section className={styles["container"]}>
-        <div className={`${styles["form"]} ${styles["login"]}`}>
+        <div className={`${styles.form} ${styles["login"]}`}>
 
           <h3 className={styles["hebtus-logo"]}>Hebtus</h3>
           <header >Log in</header>
@@ -75,7 +75,7 @@ export default function SignIn() {
             <div className={`${styles.field} ${styles["form--email"]}`}>
               <input id="email" type="email" placeholder="Email" {...register("email")} className={styles.email} />
             </div>
-            <div className={`${styles["form--error-message"]} ${styles["form--error-message"]}`} id="form--error-message">
+            <div className={`${styles["form--error-message"]} ${styles["form--error-message"]}`} id="form--error-message-email">
               <p className={styles["error-message"]} id="errorMessageEmail">{errors.email?.message}</p>
             </div>
 
@@ -91,37 +91,37 @@ export default function SignIn() {
                 }
               </div>
             </div>
-            <div className={`${styles["form--error-message"]} ${styles["form--error-message"]}`} id="form--error-message">
+            <div className={styles["form--error-message"]} id="form--error-message-password">
               <p className={styles["error-message"]} id="errorMessagePassword">{errors.password?.message}</p>
             </div>
 
-            <div className={styles["form-link"] + " " + styles["form--forgot-password"]}>
+            <div className={styles["form-link"]} id="form--forgot-password">
               <span className={styles["cant't-remember the password"]}>Can't remember the password? <a href="#" className={styles["forgot-password"]} id="fogot-password" onClick={() => {
-                navigate("/forgot-password")
+              navigate("/forgot-password")
               }}>Forgot Passowrd</a></span>
             </div>
 
-            <div className={styles["field"] + " " + styles["form--button"]} id="LogIn">
-              <button type="submit" className={styles["form--button-login"]}>Log in</button>
+            <div className={`${styles["field"]} ${styles["form--button"]}`} id="LogIn">
+              <button type="submit" id="form--button-login" className={styles["form--button-login"]}>Log in</button>
             </div>
 
-            <div className={styles["form-link"] + " " + styles["form--signup"]}>
-              <span className={styles["don't-have-an-account"]}>Don't have an account? <a href="#" className={styles["sign-up"]} id={styles["form-link"] + " " + styles["from--signup"]} onClick={() => { navigate("/signup") }}>Sign up</a></span>
+            <div className={`${styles["form-link"]} ${styles["form--signup"]}`}>
+              <span className={styles["don't-have-an-account"]}>Don't have an account? <a href="#" className={`${styles["form-link"]} ${styles["from--signup"]}`} onClick={() => { navigate("/signup") }} id="sign-up-link">Sign up</a></span>
             </div>
 
             <div className={styles["line"]}></div>
 
             <div className={styles["form--media-options"]}>
-              <a href="#" id="signInFacebook" className={styles["field"] + " " + styles["facebook"]}>
+              <a href="#" id="signInFacebook" className={`${styles["field"]} ${styles["facebook"]}`}>
                 <i class='bx bxl-facebook facebook-icon'></i>
-                <span className={styles["sign-in-with-facebook"]}>Sign In with Facebook</span>
+                <span className={styles["sign-in-with-facebook"]} id="sign-in-with-facebook">Sign In with Facebook</span>
               </a>
             </div>
 
             <div className={styles["form--media-options"]}>
-              <a href="#" id="signInGoogle" className={styles["field"] + " " + styles["google"]}>
+              <a href="#" id="signInGoogle" className={`${styles["field"]} ${styles["google"]}`}>
                 <img src={googleLogo} alt="" className={styles["google-img"]} />
-                <span className="sign-in-with-google">Sign In with Google</span>
+                <span className="sign-in-with-google" id="sign-in-with-facebook">Sign In with Google</span>
               </a>
             </div>
 
@@ -130,9 +130,9 @@ export default function SignIn() {
         </div>
 
       </section>
-
-      <div className={styles["signup-page-image"]}>
-        <img src={logInImg} alt="event-image" className={styles["login-image"]} />
+      
+      <div className={styles["login-page-image"]}>
+        <img src={logInImg} alt="sign-in-image" className={styles["login-image"]} />
       </div>
 
     </div>

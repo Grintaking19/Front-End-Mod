@@ -6,6 +6,7 @@ import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { style } from "@mui/system";
 
 
 
@@ -59,22 +60,22 @@ export default function ResetPassword() {
 
 
   return (
-    <section className="container">
-      <div className="form signup">
+    <section className={styles["container"]}>
+      <div className={`${styles["form"]} ${styles["signup"]}`}>
 
-        <h3 className="hebtus-logo">Hebtus</h3>
+        <h3 className={styles["hebtus-logo"]}>Hebtus</h3>
         <header>Reset Password</header>
 
         <form action="#" onSubmit={handleSubmit(onSubmit)}>
 
-          <div className={`${styles.field} ${styles["form--password"]}`}>
-            <input type={passwordType} id="password" className={styles.password} placeholder="Password" {...register("password")}
+          <div className={`${styles["field"]} ${styles["form--password"]}`}>
+            <input type={passwordType} id="password" className={styles["password"]} placeholder="Password" {...register("password")}
             />
             <div className={styles["eye-holder"]} id="eyeHolderPassword" onClick={togglePassword}>
               {passwordType === "password" ?
-                <i className='bx bxs-hide eye-icon'></i>
+                <i className={`bx bxs-hide ${styles['eye-icon']}`}></i>
                 :
-                <i className='bx bxs-show eye-icon'></i>
+                <i className={`bx bxs-show ${styles['eye-icon']}`}></i>
               }
             </div>
           </div>
@@ -83,14 +84,14 @@ export default function ResetPassword() {
           </div>
 
 
-          <div className={`${styles.field} ${styles["form--password"]}`}>
+          <div className={`${styles["field"]} ${styles["form--password"]}`}>
             <input type={confirmPasswordType} id="confirmPassword" className={styles.password} placeholder="Confirm Password" {...register("confirmPassword")}
             />
             <div className={styles["eye-holder"]} id="eyeHolderConfirmPassword" onClick={toggleConfirmPassword}>
               {confirmPasswordType === "password" ?
-                <i class='bx bxs-hide eye-icon'></i>
+                <i className={`bx bxs-hide ${styles['eye-icon']}`}></i>
                 :
-                <i class='bx bxs-show eye-icon'></i>
+                <i className={`bx bxs-show ${styles['eye-icon']}`}></i>
               }
             </div>
           </div>
@@ -99,8 +100,8 @@ export default function ResetPassword() {
           </div>
 
 
-          <div className={styles["field"] + " " + styles["form--button"]} id="update-password">
-            <button type="submit">Update Password</button>
+          <div className={styles["field"]} id="update-password">
+            <button className={styles["form--button"]} type="submit">Update Password</button>
           </div>
 
 

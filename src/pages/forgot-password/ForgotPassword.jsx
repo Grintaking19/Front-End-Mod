@@ -36,9 +36,9 @@ export default function ForgotPassword({ setSuccess, setEmail }) {
 
   return (
 
-    <div className={styles["signup-page"]}>
-      <section className={styles.container}>
-        <div className={`${styles.form} ${styles.login}`}>
+    <div className={styles["login-page"]}>
+      <section className={styles["container"]}>
+        <div className={`${styles["form"]} ${styles["login"]}`}>
 
           <h3 className={styles["hebtus-logo"]}>Hebtus</h3>
           <header>Forgot Password?</header>
@@ -51,8 +51,8 @@ export default function ForgotPassword({ setSuccess, setEmail }) {
               <p className={styles["error-message"]} id="errorMessageEmail">{errors.email?.message}</p>
             </div>
 
-            <div className={`${styles.field} ${styles['form--button']}`} id="Continue">
-              <button type="submit">Continue</button>
+            <div className={`${styles["field"]} ${styles["form--button"]}`} id="Continue">
+              <button className={styles["form--button"]} type="submit">Continue</button>
             </div>
 
           </form>

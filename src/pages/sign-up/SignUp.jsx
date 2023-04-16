@@ -39,10 +39,10 @@ export default function SignUp({ setSuccess, setEmail }) {
   }
 
   const schema = yup.object().shape({
-    // name: yup.object({
+    name: yup.object({
     firstName: yup.string().required("First name is requried"),
     lastName: yup.string().required("Last name is requried"),
-    //  }),
+     }),
     email: yup.string().email().required("Email is required"),
     confirmEmail: yup.string().oneOf([yup.ref("email"), null], "Emails don't match").required(),
     password: yup.string().min(8).max(40).required("Passowrd is required"),
@@ -146,7 +146,7 @@ export default function SignUp({ setSuccess, setEmail }) {
               <p className={styles['error-message']} id="errorMessageConfirmPassword">{errors.confirmPassword?.message}</p>
             </div>
 
-            <div className={`${styles.field} ${styles['form--button']}`} id="CreateAccount">
+            <div className={`${styles.field}`} id="CreateAccount">
               <button type="submit">Create account</button>
             </div>
 
