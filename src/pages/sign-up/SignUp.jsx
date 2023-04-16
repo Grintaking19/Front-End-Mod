@@ -7,7 +7,7 @@ import signUpImg from "./assets/Log-in-img-part2.jpg"
 import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
-
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 
@@ -19,7 +19,7 @@ const config = {
 };
 
 export default function SignUp({ setSuccess, setEmail }) {
-
+  let navigate = useNavigate();
   const [passwordType, setPasswordType] = useState("password");
   const togglePassword = () => {
     if (passwordType === "password") {
@@ -40,10 +40,9 @@ export default function SignUp({ setSuccess, setEmail }) {
   }
 
   const schema = yup.object().shape({
-    // name: yup.object({
     firstName: yup.string().required("First name is requried"),
     lastName: yup.string().required("Last name is requried"),
-    //  }),
+
     email: yup.string().email().required("Email is required"),
     confirmEmail: yup.string().oneOf([yup.ref("email"), null], "Emails don't match").required(),
     password: yup.string().min(8).max(40).required("Passowrd is required"),
@@ -153,7 +152,7 @@ export default function SignUp({ setSuccess, setEmail }) {
             </div>
 
             <div className="form-link form--signup">
-              <span>Aready have an account? <a href="#" id="SignIn" className="sign-up">Sign in</a></span>
+              <span>Aready have an account? <a href="#" id="SignIn" className="sign-up" onClick={() => { navigate("/login") }}>Sign in</a></span>
             </div>
 
             <div className="line"></div>

@@ -5,7 +5,7 @@ import 'boxicons'
 import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
-
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 
@@ -17,7 +17,7 @@ const config = {
 };
 
 export default function ResetPassword() {
-
+  let navigate = useNavigate();
   const [passwordType, setPasswordType] = useState("password");
   const togglePassword = () => {
     if (passwordType === "password") {
@@ -51,6 +51,7 @@ export default function ResetPassword() {
     try {
       const response = await axios.post("https://hebtus.me/api/v1/resetpassword", data, config)
       console.log(response);
+      navigate("/login");
     }
     catch (err) {
       console.log(err);
