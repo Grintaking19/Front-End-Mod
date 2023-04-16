@@ -24,3 +24,6 @@ yarn-error.log*
 
 # env files
 .env.staging
+
+# Fuse files (files created in linux environment after deleting any file)
+.fuse*
