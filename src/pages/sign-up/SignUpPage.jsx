@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import SignUp from "./SignUp.jsx";
 import SignUpMessage from "./SignUpMessage.jsx";
 

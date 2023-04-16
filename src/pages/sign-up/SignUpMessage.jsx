@@ -1,20 +1,20 @@
-import "./forgot-password-message.css"
+import styles from "./SignUpMessage.module.css"
 import { useNavigate } from "react-router-dom"
 export default function SignUpMessage({ email }) {
   let navigate = useNavigate();
   return (
-    <section className="Message-page" id="Message-page">
-      <div className="Message" id="Message">
+    <section className={styles['message-page']} id='message-page'>
+      <div className={styles['message']} id="message">
         <div>
-          <p className="Message--text" id="Message--text">
+          <p className={styles['message--text']} id='message--text'>
             We sent you a confirmation email on {email}, If it doesn't arrive, be sure to check your spam folder.
           </p>
         </div>
-        <div className="Message--login" id="Message--login">
-          <a href="#" className="Login" id="Login" onClick={() => {
+        <button className={styles['login-button']} id="message--button-login" onClick={() => {
             navigate("/login")
-          }}>Back to Log in</a>
-        </div>
+          }}>
+          Back to Login
+        </button>
       </div>
     </section>
   )
