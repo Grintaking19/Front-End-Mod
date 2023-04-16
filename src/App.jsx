@@ -5,10 +5,10 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import EventPage from "./pages/event-page/EventPage"
 
 import CategorizedEvents from "./pages/landing-page/events/CategorizedEvents";
-// import SignIn from "./pages/sign-in/SignIn"
-// import SignUpPage from "./pages/sign-up/SignUpPage"
-// import ForgotPasswordPage from "./pages/forgot-password/ForgotPasswordPage"
-// import ResetPassordPage from "./pages/reset-password/ResetPassword"
+import SignIn from "./pages/sign-in/SignIn"
+import SignUpPage from "./pages/sign-up/SignUpPage"
+import ForgotPasswordPage from "./pages/forgot-password/ForgotPasswordPage"
+import ResetPassordPage from "./pages/reset-password/ResetPassword"
 import EventListContainer from "./pages/event-list/EventListContainer"
 
 export default function App() {
@@ -16,9 +16,6 @@ export default function App() {
 
   return (
 
-    // <EventDashboard /> 
-
-    // <LandingPage/>
     <BrowserRouter>
 
       <Routes>
@@ -26,10 +23,10 @@ export default function App() {
         <Route path="/event-dashboard/" element={<EventDashboard />} />
         <Route path="/events/:eventId" element={<EventPage />} />
         <Route path="/categorized/:filter/:latitude/:longitude" element={<CategorizedEvents/>} />
-        {/* <Route path="/login" element={<SignIn />} />
+        <Route path="/login" element={<SignIn />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-        <Route path="/reset-password" element={<ResetPassordPage />} /> */}
+        <Route path="/reset-password" element={<ResetPassordPage />} />
         <Route path="/events-list/" element={<EventListContainer />} />
       </Routes>
     </BrowserRouter>

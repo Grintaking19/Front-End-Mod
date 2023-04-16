@@ -33,7 +33,7 @@ export default function NavBar() {
             <li id="manage-my-events-link"><a className="dropdown-item text-center" onClick={()=>{navigate("/events-list")}}>Manage my events</a></li>
             {/* <li><a className="dropdown-item" href="#">Tickets</a></li> */}
             <li id="update-password-link"><a className="dropdown-item text-center" href="#">Update Password</a></li>
-            <li id="logout-link"><a className="dropdown-item text-center" href="#">Logout</a></li>
+            <li id="logout-link"><a className="dropdown-item text-center" href="#" onClick={() => { navigate("/login") }}>Logout</a></li>
           </ul>
         </div>
       </nav>

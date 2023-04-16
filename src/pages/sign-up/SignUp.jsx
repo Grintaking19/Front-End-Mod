@@ -8,7 +8,7 @@ import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 
 import { useState } from "react";
-
+import { useNavigate } from 'react-router-dom';
 
 
 const config = {
@@ -18,7 +18,7 @@ const config = {
 };
 
 export default function SignUp({ setSuccess, setEmail }) {
-
+  let navigate = useNavigate();
   const [passwordType, setPasswordType] = useState("password");
   const togglePassword = () => {
     if (passwordType === "password") {
@@ -151,7 +151,7 @@ export default function SignUp({ setSuccess, setEmail }) {
             </div>
 
             <div className={styles['form-link form--signup']}>
-              <span>Already have an account? <a href="#" id="SignIn" className={styles['sign-up']}>Sign in</a></span>
+              <span>Already have an account? <a href="#" id="SignIn" className={styles['sign-up']} onClick={() => {navigate("/login")}}>Sign in</a></span>
             </div>
 
             <div className={styles.line}></div>
