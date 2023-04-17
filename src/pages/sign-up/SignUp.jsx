@@ -20,6 +20,8 @@ const config = {
 export default function SignUp({ setSuccess, setEmail }) {
   let navigate = useNavigate();
   const [passwordType, setPasswordType] = useState("password");
+  const [message, setMessage] = useState("");
+
   const togglePassword = () => {
     if (passwordType === "password") {
       setPasswordType("text")
@@ -63,6 +65,7 @@ export default function SignUp({ setSuccess, setEmail }) {
       setEmail(data.email);
     }
     catch (err) {
+      setMessage(err.response.data.message);
       console.log(err);
     }
   }
@@ -165,6 +168,10 @@ export default function SignUp({ setSuccess, setEmail }) {
             <div className={styles['form--error-message']} id="form--error-message">
               <p className={styles['error-message']} id="errorMessageConfirmPassword">{errors.confirmPassword?.message}</p>
             </div>
+            <div className={styles["form--error-message"]} id="form--error-message">
+              <p className={styles["error-message"]} id="errorMessage">{message}</p>
+            </div>
+
 
             <div className={`${styles.field}`} id="CreateAccount">
               <button type="submit">Create account</button>

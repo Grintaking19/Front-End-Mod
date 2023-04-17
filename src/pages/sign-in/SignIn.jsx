@@ -28,6 +28,7 @@ const config = {
 export default function SignIn() {
 
   const [passwordType, setPasswordType] = useState("password");
+  const [message, setMessage] = useState("");
   let navigate = useNavigate();
 
   const togglePassword = () => {
@@ -50,7 +51,6 @@ export default function SignIn() {
   async function onSubmit(data) {
     try {
       const response = await axios.post("https://hebtus.me/api/v1/login", data, config)
-      console.log(response);
       if (response.data.token) {
         localStorage.setItem('user', response.data.token);
       }
@@ -58,6 +58,7 @@ export default function SignIn() {
       navigate("/");
     }
     catch (err) {
+      setMessage(err.response.data.message);
       console.log(err);
     }
   }
@@ -103,6 +104,10 @@ export default function SignIn() {
             </div>
             <div className={styles["form--error-message"]} id="form--error-message-password">
               <p className={styles["error-message"]} id="errorMessagePassword">{errors.password?.message}</p>
+            </div>
+
+            <div className={styles["form--error-message"]} id="form--error-message">
+              <p className={styles["error-message"]} id="errorMessage">{message}</p>
             </div>
 
             <div className={styles["form-link"]} id="form--forgot-password">
