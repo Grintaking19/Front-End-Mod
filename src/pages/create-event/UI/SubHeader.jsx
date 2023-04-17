@@ -1,9 +1,9 @@
-import "./sub-header.css";
+import styles from "./SubHeader.module.css";
 const SubHeader = (props) => {
   return (
     <div>
-      <p className="subheader-title">{props.title}</p>
-      <p className="subheader-description">{props.description}</p>
+      <p className={styles["subheader-title"]}>{props.title}</p>
+      <p className={styles["subheader-description"]}>{props.description}</p>
     </div>
   );
 };

@@ -1,11 +1,12 @@
-import "./dropdown.css";
+import styles from "./Dropdown.module.css";
+
 import React from "react";
 
 const Dropdown = (props) => {
 
 
   return (
-      <select className="dropdown" style={{width:props.width}} onChange={props.onChange}>
+      <select className={styles["dropdown"]} style={{width:props.width}} onChange={props.onChange}>
         {props.options.map((option) => {
           return (
             <option key={option} value={option}>

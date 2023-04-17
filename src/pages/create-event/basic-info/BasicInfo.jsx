@@ -1,4 +1,5 @@
-import "./basic-info.css";
+import styles from "./BasicInfo.module.css";
+
 import Panel from "../UI/Panel";
 import { BasicinfoIcon } from "../UI/SvgImages";
 import Dropdown from "../fields/Dropdown";
@@ -168,7 +169,7 @@ props.onChange(eventinfo,choosenTag);
         <Button onClick={typedTagHandler}>Add</Button>
       </HorizontalFlex>
 
-      <div className="tags-div">
+      <div className={styles['tags-div']}>
         {choosenTag.map((tag) => {
           return (
             <Tag key={tag} id={tag} onCancel={cancelTagHandler}>

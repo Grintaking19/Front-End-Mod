@@ -1,14 +1,14 @@
-import "./panel.css"
+import styles from './Panel.module.css';
 
 const Panel = (props) => {
     return (
-        <div className="panel">
-        <div className="panel-image">
+        <div className={styles["panel"]}>
+        <div className={styles["panel-image"]}>
             {props.image()}
         </div>
-        <div className="panel-body">
-            <h1 className="panel-title">{props.title}</h1>
-            <p className="panel-description">{props.description}</p>
+        <div className={styles["panel-body"]}>
+            <h1 className={styles["panel-title"]}>{props.title}</h1>
+            <p className={styles["panel-description"]}>{props.description}</p>
             {props.children}
         </div>
         </div>

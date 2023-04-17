@@ -1,4 +1,4 @@
-import "./tags-list.css";
+import styles from "./TagsList.module.css";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -28,21 +28,21 @@ const TagsList = (props) => {
   const TagsStyleManiplator = () => {
     if (props.Tagslimit == true){
       inputStyle = {  border: "1px solid #c5162e !important", outline:"none !important"}
-      return "tag-field-frame tag-field-error";
+      return `${styles["tag-field-frame"]} ${styles["tag-field-error"]}`
     } 
 
     else if  (props.CharsValid == false) {
       inputStyle = {  border: "1px solid #c5162e !important", outline:"none !important"}
-      return "tag-field-frame tag-field-error"; 
+      return `${styles["tag-field-frame"]} ${styles["tag-field-error"]}`
     }
 
     else if (props.AlreadyChoosen == true){
       inputStyle = {  border: "1px solid #c5162e !important" , outline:"none !important"}
-      return "tag-field-frame tag-field-error";
+      return `${styles["tag-field-frame"]} ${styles["tag-field-error"]}`
     }
 
     else if (props.AlreadyChoosen == false && props.Tagslimit == false){}
-      return "tag-field-frame";
+      return `${styles["tag-field-frame"]}`
   };
 
   return (
@@ -69,13 +69,13 @@ const TagsList = (props) => {
                 sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
                 {...props}
               >
-                <div className="tags-container" id={option.name}>
-                  <div className="hash-icon"> {HashIcon()}</div>
-                  <div className="tags-text-container">
-                    <div className="tag-name" id={option.name}>
+                <div className={styles["tags-container"]} id={option.name}>
+                  <div className={styles["hash-icon"]}> {HashIcon()}</div>
+                  <div className={styles["tags-text-container"]}>
+                    <div className={styles["tag-name"]} id={option.name}>
                       {option.name}
                     </div>
-                    <div className="tag-count" id={option.name}>
+                    <div className={styles["tag-count"]} id={option.name}>
                       {option.count}
                     </div>
                   </div>
@@ -98,8 +98,8 @@ const TagsList = (props) => {
           />
         )}
       />
-      <p className="tag-field-title"> Press Enter to add a tag</p>
-      <div className="tag-field-warnings">
+      <p className={styles["tag-field-title"]}> Press Enter to add a tag</p>
+      <div className={styles["tag-field-warnings"]}>
         {TagsValidation()}
         <p> {props.textBoxValue.length} / 25 </p>
       </div>

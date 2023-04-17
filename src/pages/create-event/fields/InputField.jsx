@@ -1,4 +1,4 @@
-import "./input-field.css";
+import styles from "./InputField.module.css";
 import { useState, useRef, useEffect } from "react";
 
 const InputField = (props) => {
@@ -13,21 +13,21 @@ const InputField = (props) => {
     document.addEventListener(
       "click",
       (e) => {
-        if (e.target.className == "input-field") {
+        if (e.target.className == styles["input-field"]) {
           EventTitleClicked = 1;
         }
         if (
-          e.target.className != "input-field" &&
+          e.target.className != styles["input-field"] &&
           TitleInputRef.current.value.length == 0 &&
           EventTitleClicked == 1
         ) {
-          TitleInputRef.current.className = "input-field input-field-error";
+          TitleInputRef.current.className = `${styles["input-field"]} ${styles["input-field-error"]}`
         } else if (
-          e.target.className != "input-field" &&
+          e.target.className != styles["input-field"] &&
           TitleInputRef.current.value.length != 0 &&
           EventTitleClicked == 1
         ) {
-          TitleInputRef.current.className = "input-field";
+          TitleInputRef.current.className = styles["input-field"];
         }
       },
       true
@@ -40,18 +40,19 @@ const InputField = (props) => {
   };
 
   return (
-    <div className="input-field-frame">
-      <p className="input-field-title">
+    <div className={styles["input-field-frame"]}>
+      <p className={styles["input-field-title"]}>
         {props.title} {props.required && "*"}
       </p>
       <input
-        className="input-field"
+        className={styles["input-field"]}
+        id="input-field"
         maxLength={75}
         onChange={inputHandler}
         ref={TitleInputRef}
       ></input>
-      <span className="input-field-monitor">
-        <div className="input-field-warning" ref={TitleInputWarningRef}>
+      <span className={styles["input-field-monitor"]}>
+        <div className={styles["input-field-warning"]} ref={TitleInputWarningRef}>
           {" "}
         </div>
         <div>{inputCount}/75 </div>

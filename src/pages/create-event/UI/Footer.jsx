@@ -1,4 +1,4 @@
-import "./footer.css";
+import styles from "./Footer.module.css";
 import Button from "./Button";
 const Footer = (props) => {
   let SaveStyle = {
@@ -14,8 +14,8 @@ const Footer = (props) => {
     fontSize: "0.9rem",
   };
   return (
-    <div className="footer">
-      <div className="buttons">
+    <div className={styles["footer"]}>
+      <div className={styles["buttons"]}>
       <Button style={SaveStyle} onClick={props.onSave}> Save & Continue </Button>
         <Button>Discard</Button>
       </div>

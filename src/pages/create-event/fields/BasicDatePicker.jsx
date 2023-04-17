@@ -1,5 +1,6 @@
+import styles from "./BasicDatePicker.module.css";
+
 import { Fragment, useState } from "react";
-import "./basic-date-picker.css";
 import {CalendarIcon} from "../UI/SvgImages";
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import dayjs from 'dayjs';
@@ -30,8 +31,8 @@ const BasicDatePicker = (props) => {
     <DatePicker sx={{width:"310px", border: dateError()}} onChange={onDateChange} 
     defaultValue={dayjs(new Date())}
     />
-    <p className="date-picker-title"> {props.title}</p> 
-    {(props.error) && <p className="date-picker-warning">End date must be after start date. </p>}
+    <p className={styles["date-picker-title"]}> {props.title}</p> 
+    {(props.error) && <p className={styles["date-picker-warning"]}>End date must be after start date. </p>}
     </div>
     </LocalizationProvider>
 

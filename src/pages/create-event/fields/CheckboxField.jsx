@@ -1,11 +1,11 @@
-import "./checkbox-field.css"
+import styles from './CheckboxField.module.css';
 import Checkbox from '@mui/material/Checkbox';
 
 const CheckboxField = (props) => {
 
     return(
         
-        <div className="checkbox-conatiner">
+        <div className={styles["checkbox-conatiner"]}>
 
             <Checkbox
             size="medium"
@@ -16,9 +16,9 @@ const CheckboxField = (props) => {
             onChange={props.onChange}
             > </Checkbox>
 
-            <div className="checkbox-text-conatiner">
-                <p className="checkbox-title">{props.title}</p>
-                <p className="checkbox-description">{props.description}</p>
+            <div className={styles["checkbox-text-conatiner"]}>
+                <p className={styles["checkbox-title"]}>{props.title}</p>
+                <p className={styles["checkbox-description"]}>{props.description}</p>
             </div>
         </div>
         )

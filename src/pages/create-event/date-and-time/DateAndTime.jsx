@@ -1,4 +1,5 @@
-import "./date-and-time.css";
+import styles from "./DateAndTime.module.css";
+
 import Panel from "../UI/Panel";
 import { DateandTimeIcon } from "../UI/SvgImages";
 import HorizontalFlex from "../UI/HorizontalFlex";
@@ -110,7 +111,7 @@ const DateAndTime = (props) => {
       title="Date and Time"
       description="Tell event-goers when your event starts and ends so they can make plans to attend."
     >
-      <PanelChanger className=" panel-changer-clicked">
+      <PanelChanger className="panel-changer-clicked">
         Single Event
       </PanelChanger>
       <p>Single event happens once and can last multiple days.</p>

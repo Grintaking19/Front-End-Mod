@@ -1,7 +1,7 @@
-import "./horizontal-flex.css";
+import styles from "./HorizontalFlex.module.css";
 
 const HorizontalFlex = (props) => {
-  return <div className="horizontal-flex" style={{width:props.width}}>
+  return <div className={styles["horizontal-flex"]} style={{width:props.width}}>
 
     {props.children}
   </div>

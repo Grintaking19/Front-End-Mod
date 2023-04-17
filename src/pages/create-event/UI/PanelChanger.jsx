@@ -1,8 +1,8 @@
-import "./panel-changer.css";
+import styles from "./PanelChanger.module.css";
 
 const PanelChanger = (props) => {
   return(
-    <div className={"panel-changer " + props.className} onClick={props.onClick} >{props.children}</div>
+    <div  className={`${styles["panel-changer"]} ${styles[props.className]}`} onClick={props.onClick} >{props.children}</div>
   )
 
 }

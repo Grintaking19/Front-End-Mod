@@ -10,6 +10,7 @@ import SignUpPage from "./pages/sign-up/SignUpPage"
 import ForgotPasswordPage from "./pages/forgot-password/ForgotPasswordPage"
 import ResetPassordPage from "./pages/reset-password/ResetPassword"
 import EventListContainer from "./pages/event-list/EventListContainer"
+import CreateEvent from "./pages/create-event/CreateEvent"
 
 export default function App() {
 
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/reset-password" element={<ResetPassordPage />} />
         <Route path="/events-list/" element={<EventListContainer />} />
+        <Route path="/create-event" element={<CreateEvent />} />
       </Routes>
     </BrowserRouter>
 
