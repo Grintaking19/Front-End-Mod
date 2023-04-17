@@ -19,19 +19,22 @@ const OptionsBar = (props) => {
     props.onViewChange(event);
   };
   return (
-    <div className={styles["options-bar"]}>
-      <div className={styles["right-options"]}>
+    <div className={styles["options-bar"]} id="options-bar">
+      <div className={styles["right-options"]} id="right-options">
         <input
           className={styles["search-bar"]}
           placeholder="Search Events"
           onChange={onUserInputHandler}
+          id="search-bar"
         />
-        <svg className={styles['svg']} x="10" y="10" viewBox="0 0 24 24">
-          <path d="M10 14c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4zm3.5.9c-1 .7-2.2 1.1-3.5 1.1-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6c0 1.3-.4 2.5-1.1 3.4l5.1 5.1-1.5 1.5-5-5.1z"></path>
-        </svg>
+        {/* <div className={styles["search-icon"]}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+          </svg>
+        </div> */}
         <ChoicesMenu onChange={onViewChangeHandler}></ChoicesMenu>
       </div>
-      <Button style={Buttonstyles}> Create Event </Button>
+      <Button style={Buttonstyles} id="create-event-button"> Create Event </Button>
     </div>
   );
 };
