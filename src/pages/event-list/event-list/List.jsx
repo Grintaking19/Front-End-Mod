@@ -52,6 +52,7 @@ const List = (props) => {
 
 
         {serachFiltered.map((element) => {
+          element.id = element._id;
           let monthName = new Date(element.startDate).toLocaleString(
             "default",
             { month: "short" }
@@ -61,7 +62,7 @@ const List = (props) => {
             <tr key={element.id} id={`event-${element.id}`}>
               <td id="table-event-data">
                 <div className={styles["table-event-data"]} id={`event-${element.id}-data`}>
-                  <TableDate month={monthName} day={day} name={element.id}/>{" "}
+                  <TableDate month={monthName} day={day} id={element.id}/>{" "}
                   <TableInfo
                     img={element.img_url}
                     title={element.name}
@@ -76,7 +77,7 @@ const List = (props) => {
               </td>
               <td id={`event-${element.id}-growth`}>$0.00</td>
               <td>
-                <TableStatus name={element.id} />
+                <TableStatus id={element.id} />
               </td>
             </tr>
           );
