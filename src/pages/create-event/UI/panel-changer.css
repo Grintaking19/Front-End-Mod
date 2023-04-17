@@ -1,0 +1,16 @@
+.panel-changer {
+
+  height: 1.5rem;
+  width: fit-content;
+  padding: 0.7rem 1.5rem 0.5rem 1.5rem;
+  border: 1px solid #dfdee6 ;
+  border-radius: 0.25rem;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.panel-changer-clicked{
+background-color: rgba(54,89,227,.1);
+border: 1px solid #3659E3;
+color: #3659E3;
+}

@@ -1,0 +1,23 @@
+.tag {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  height: 17px;
+  border-radius: 18px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 11px 15px 9px 20px;
+  background-color: #f8f7fa;
+}
+
+.tag-label {
+  margin: 0px;
+}
+
+.cancel-icon {
+  width: 20px;
+  margin-left: 10px;
+  margin-top: -4px;
+  padding-top: 0;
+  cursor: pointer;
+}

@@ -1,0 +1,9 @@
+.tags-div{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2%;
+    width: 90%;
+    row-gap: 15px;
+    margin-top: 1rem;
+}
