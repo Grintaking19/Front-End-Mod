@@ -14,7 +14,7 @@ export default function NavBar() {
         </a>
 
         <div id="create-event-button" className={styles['nav-bar--button']}>
-          <a href="#" >
+          <a href="#" onClick={() => { navigate("/create-event") }}>
             <div>
               <CgMathPlus className={styles['nav-bar--button--icon']} />
             </div>
