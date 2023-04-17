@@ -1,4 +1,4 @@
-import styles from "./BasicDatePicker.module.css";
+import   "./BasicDatePicker.css";
 
 import { Fragment, useState } from "react";
 import {CalendarIcon} from "../UI/SvgImages";
@@ -26,13 +26,13 @@ const BasicDatePicker = (props) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
 
-    <div>
+    <div id={props.id}>
 
     <DatePicker sx={{width:"310px", border: dateError()}} onChange={onDateChange} 
     defaultValue={dayjs(new Date())}
     />
-    <p className={styles["date-picker-title"]}> {props.title}</p> 
-    {(props.error) && <p className={styles["date-picker-warning"]}>End date must be after start date. </p>}
+    <p className={"date-picker-title"}> {props.title}</p> 
+    {(props.error) && <p className={"date-picker-warning"}>End date must be after start date. </p>}
     </div>
     </LocalizationProvider>
 

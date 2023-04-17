@@ -5,7 +5,7 @@ const CheckboxField = (props) => {
 
     return(
         
-        <div className={styles["checkbox-conatiner"]}>
+        <div className={styles["checkbox-conatiner"]} id={props.id}>
 
             <Checkbox
             size="medium"

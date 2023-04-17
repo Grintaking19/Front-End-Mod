@@ -111,29 +111,31 @@ const DateAndTime = (props) => {
       title="Date and Time"
       description="Tell event-goers when your event starts and ends so they can make plans to attend."
     >
-      <PanelChanger className="panel-changer-clicked">
+      <PanelChanger className="panel-changer-clicked" id="single-event-panel">
         Single Event
       </PanelChanger>
       <p>Single event happens once and can last multiple days.</p>
 
-      <HorizontalFlex width="100%">
+      <HorizontalFlex width="100%" id="start-date-time-flex">
         <BasicDatePicker
           title="Start Date *"
           width="49%"
           required={1}
           onChange={onStartDateChangeHandler}
           error={dateError}
+          id="start-date"
         />
         <DatalistField
           options={TimeSlots}
           onChange={onStartTimeChangeHandler}
           title="Start Time"
           defaultValue="7:00 PM"
+          id="start-time"
         />
   
       </HorizontalFlex>
 
-      <HorizontalFlex>
+      <HorizontalFlex width="100%" id="end-date-time-flex">
         <BasicDatePicker
           title="End Date *"
           width="49%"
@@ -142,12 +144,14 @@ const DateAndTime = (props) => {
           error={dateError}
           minDate={startDate}
           value={startDate}
+          id="end-date"
         />
         <DatalistField
           options={TimeSlots}
           onChange={onEndTimeChangeHandler}
           title="End Time"
           defaultValue="10:00 PM"
+          id="end-time"
         />
       
       </HorizontalFlex>
@@ -155,18 +159,23 @@ const DateAndTime = (props) => {
         title="Display start time."
         description="The start time of your event will be displayed to attendees."
         onChange={onDisplayEndTimeHandler}
+        id="display-start-time"
       />
       <CheckboxField
         title="Display end time."
         description="The end time of your event will be displayed to attendees."
         onChange={onDisplayStartTimeHandler}
+        id="display-end-time"
       />
       <br />
-      <LabeledDropdown options={TimeZones} title="Time Zone" width="50%" />
+      <LabeledDropdown options={TimeZones} title="Time Zone" width="50%"
+       id="time-zone"
+       />
       <LabeledDropdown
         options={Languages}
         title="Event Page Language"
         width="50%"
+        id="event-page-lang"
       />
     </Panel>
   );

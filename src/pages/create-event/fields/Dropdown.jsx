@@ -6,10 +6,10 @@ const Dropdown = (props) => {
 
 
   return (
-      <select className={styles["dropdown"]} style={{width:props.width}} onChange={props.onChange}>
-        {props.options.map((option) => {
+      <select className={styles["dropdown"]} style={{width:props.width}} onChange={props.onChange} id={`select-${props.id}`}>
+        {props.options.map((option, index) => {
           return (
-            <option key={option} value={option}>
+            <option key={option} value={option} id={`option-${props.id}-${index}`}>
               {option}
             </option>
           );

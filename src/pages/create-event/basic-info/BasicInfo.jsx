@@ -140,12 +140,13 @@ props.onChange(eventinfo,choosenTag);
       />
 
       <HorizontalFlex>
-        <Dropdown options={Types} width="30%" onChange={Typehandler} />
-        <Dropdown options={Categories} width="30%" onChange={CategoryHandler} />
+        <Dropdown options={Types} width="30%" onChange={Typehandler} id="type" />
+        <Dropdown options={Categories} width="30%" onChange={CategoryHandler} id="category" />
         <Dropdown
           options={SubCategories}
           width="30%"
           onChange={SubCategoryHandler}
+          id="subcategory"
         />
       </HorizontalFlex>
 
@@ -166,7 +167,7 @@ props.onChange(eventinfo,choosenTag);
           AlreadyChoosen={AlreadyExists}
           CharsValid = {regexRule}
         />
-        <Button onClick={typedTagHandler}>Add</Button>
+        <Button onClick={typedTagHandler} id="add-tag-btn">Add</Button>
       </HorizontalFlex>
 
       <div className={styles['tags-div']}>

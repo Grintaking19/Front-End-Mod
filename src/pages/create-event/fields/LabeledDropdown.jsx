@@ -2,17 +2,17 @@ import styles from "./LabeledDropdown.module.css";
 
 const LabeledDropdown = (props) => {
   return (
-    <div className={styles["labeled-dropdown-frame"]}>
-      <select className={styles["labeled-dropdown"]} style={{ width: props.width }}>
-        {props.options.map((option) => {
+    <div className={styles["labeled-dropdown-frame"]} id={`labeled-dropdown-${props.id}`}>
+      <select className={styles["labeled-dropdown"]} style={{ width: props.width }} id={`select-${props.id}`}>
+        {props.options.map((option, index) => {
           return (
-            <option key={option} value={option}>
+            <option key={option} value={option} id={`option-${props.id}-${index}`}>
               {option}
             </option>
           );
         })}
       </select>
-      <p className={styles["labeled-dropdown-title"]} > {props.title}</p>
+      <p className={styles["labeled-dropdown-title"]} id={`labeled-dropdown-title-${props.id}`}> {props.title}</p>
     </div>
   );
 };

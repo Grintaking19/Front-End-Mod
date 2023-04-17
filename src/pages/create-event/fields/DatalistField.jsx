@@ -1,10 +1,10 @@
-import styles from "./DatalistField.module.css";
+import  "./DatalistField.css";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 
 const DatalistField = (props) => {
   return (
-    <div className={styles["datalist-field-frame"]}>
+    <div className={"datalist-field-frame"} id={props.id}>
       <Autocomplete
         sx={{ width: props.width }}
         popupIcon={""}
@@ -14,7 +14,7 @@ const DatalistField = (props) => {
         defaultValue={props.defaultValue}
         onChange={props.onChange}
       />
-        <p className={styles["datalist-field-title"]}> {props.title}</p>
+        <p className={"datalist-field-title"}> {props.title}</p>
     </div>
   );
 };

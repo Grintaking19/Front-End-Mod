@@ -5,6 +5,7 @@ import BasicInfo from "./basic-info/BasicInfo";
 import Location from "./location/Location";
 import Divider from "./UI/Divider";
 import Footer from "./UI/Footer";
+import Navbar from "../../layouts/navbar/NavBar";
 
 import axios from "axios";
 
@@ -78,6 +79,7 @@ const CreateEvent = (props) => {
 
   return (
     <div className={styles["container"]}>
+      {/* <Navbar /> */}
       <BasicInfo onChange={BasicInfoChangeHandler}></BasicInfo>
       <Divider />
       <Location onChange={LocationChangeHandler}></Location>
