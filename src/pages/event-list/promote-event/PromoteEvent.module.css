@@ -1,0 +1,59 @@
+.promote-event {
+  background-color: #eff2fd;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+  color:#3659e3;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 3.5rem;
+
+}
+
+.promote-image {
+  width: 7%;
+  padding-top: 1.7rem;
+  padding-bottom: 1.5rem;
+  padding-right: 2rem;
+  text-align: right;
+}
+
+.promote-text {
+  width: 50%;
+  text-align: left;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.promote-event-name{
+  margin: 0;
+}
+
+.promote-button {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 40%;
+  padding-top: 1.2rem;
+  padding-bottom: 1.5rem;
+  padding-right: 3rem;
+  text-align: center;
+}
+.promote-buuton-like {
+  width: 35%;
+  padding-top: 0.75rem;
+}
+
+.promote-buuton-like:hover {
+  width: 35%;
+  background-color: #f8f7fa;
+  padding-top: 0.75rem;
+  cursor: pointer;
+}
+
+h4 {
+  margin: 0;
+}
+h5 {
+  margin: 0;
+}

@@ -1,0 +1,38 @@
+.table-info-img{
+    width: 3.5rem;
+    height: 3.5rem;
+
+}
+
+.table-info{
+    display: flex;
+    flex-direction: row;
+    color: #6f7287;
+}
+
+.table-info-text{
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+
+}
+
+.table-info-title{
+    margin: 0;
+    font-size: 0.85rem;
+    padding-bottom: 0.5rem;
+    color: #1e0a3c;
+}
+
+.table-info-location{
+    margin: 0;
+    font-size: 0.70rem;
+    font-weight: 700;
+
+}
+
+.table-info-date{
+    margin: 0;
+    font-size: 0.70rem;
+    font-weight: 700;
+}

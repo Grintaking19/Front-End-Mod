@@ -31,3 +31,40 @@
     margin-bottom: 60px;
     font-size: 25px;
 }
+
+
+.page-btn {
+    background-color:#F05537;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 5px;
+    width: 15%;
+    margin-bottom: 50px;
+  }
+
+.page-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-family: Montserrat, sans-serif;
+}
+
+.page-btn:hover {
+    background-color: #d23e20;
+  }
+    
+  .page-btn:disabled {
+    background-color: #ddd;
+    color: #aaa;
+    cursor: default;
+  }

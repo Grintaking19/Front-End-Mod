@@ -5,12 +5,13 @@ import useFetch from "../useFetch";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 const NAMESPACE = "https://hebtus.me/api/v1/events/";
+const EVENTS_PER_PAGE = 12;
 // const NAMESPACE = "/api/v1/events/";
 
 export default function Events(props) {
   const [events, setEvents] = useState([]);
   // const [selectedEvent, setSelectedEvent] = useState(null);
-
+  const [currentPage, setCurrentPage] = useState(1);
   const url = () => {
     if (props.location.latitude && props.location.longitude) {
       if (props.activeTab === 'today' || props.activeTab === 'thisweekend') {
@@ -43,12 +44,12 @@ export default function Events(props) {
           }
         }
         // return `${NAMESPACE}?startDate=${startDate}&endDate=${endDate}&location=${props.location.latitude},${props.location.longitude}`;
-        return `${NAMESPACE}?startDate=${startDate}endDate=${endDate}location=31.2584644,30.0594885`;
+        return `${NAMESPACE}?startDate=${startDate}&endDate=${endDate}&location=31.2584644,30.0594885`;
       } else {
         if (props.activeTab === '') { return `${NAMESPACE}?location=31.2584644,30.0594885`; }
         else
         // return `${NAMESPACE}?category=${props.activeTab}&location=${props.location.latitude},${props.location.longitude}`;
-        { return `${NAMESPACE}?category=${props.activeTab}location=31.2584644,30.0594885`; }
+        { return `${NAMESPACE}?category=${props.activeTab}&location=31.2584644,30.0594885`; }
       }
     }
   };
@@ -105,13 +106,19 @@ export default function Events(props) {
     // setSelectedEvent(event);
     navigate(`/events/${event._id}`);
   }
+
+  const currentPageEvents = () => {
+    const startIndex = (currentPage - 1) * EVENTS_PER_PAGE;
+    const endIndex = startIndex + EVENTS_PER_PAGE;
+    return events.slice(startIndex, endIndex);
+  };
 return (
     <div id="events-album-container"> 
       { (!eventsLoading && events.length > 0) ? 
         <div className="album py-5" id="events-album">
           <div className="container">
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4" id="events-row">
-              { events.map((event) => (
+              { currentPageEvents().map((event) => (
                 <div className="col" key={event._id}>
                   <div className={`card ${styles['event-card']}`} onClick={() => handleEventCardClick(event)} id={`event-${event._id}`}>
                     <img id={`event-${event._id}-img`}
@@ -140,6 +147,23 @@ return (
           </div>
         </div> : eventsLoadingMsg 
     }
+
+    <div id="page-buttons" className={styles['page-buttons']}>
+      <button id="next-page-button"
+        className={styles['page-btn']}
+        onClick={() => setCurrentPage(currentPage - 1)}
+        disabled={currentPage === 1}
+      >
+        Previous Page
+      </button>
+      <button id="previous-page-button"
+        className={styles['page-btn']}
+        onClick={() => setCurrentPage(currentPage + 1)}
+        disabled={currentPageEvents().length < EVENTS_PER_PAGE}
+      >
+        Next Page
+      </button>
+    </div>
     </div>
   );
 
