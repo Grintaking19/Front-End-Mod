@@ -1,6 +1,9 @@
 import styles from "./OptionsBar.module.css";
 import Button from "../components/Button";
 import ChoicesMenu from "../components/ChoicesMenu";
+
+import { useNavigate } from "react-router-dom";
+
 let Buttonstyles = {
   backgroundColor: "#d1410c",
   borderColor: "#d1410c",
@@ -12,6 +15,7 @@ let Buttonstyles = {
 
 
 const OptionsBar = (props) => {
+  const navigate = useNavigate();
   const onUserInputHandler = (event) => {
     props.onUserInput(event);
   };
@@ -34,7 +38,7 @@ const OptionsBar = (props) => {
         </div> */}
         <ChoicesMenu onChange={onViewChangeHandler}></ChoicesMenu>
       </div>
-      <Button style={Buttonstyles} id="create-event-button"> Create Event </Button>
+      <Button style={Buttonstyles} id="create-event-button" onClick={() => navigate("/create-event")}> Create Event </Button>
     </div>
   );
 };
