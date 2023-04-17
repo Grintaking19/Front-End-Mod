@@ -39,43 +39,45 @@ const List = (props) => {
   const serachFiltered = eventList.filter(event => event.name.includes(props.searchInput))
 
   return (
-    <div className={styles["event-list"]}>
-      <table className={styles["event-list-table"]}>
-        <tr className={styles["table-header"]}>
-          <th style={{ paddingLeft: "1.25rem" }} width="50%">
+    <div className={styles["event-list"]} id="event-list">
+      <table className={styles["event-list-table"]} id="event-list-table">
+        <tr className={styles["table-header"]} id="table-header">
+          <th style={{ paddingLeft: "1.25rem" }} width="50%" id="table-header-event">
             Event
           </th>
-          <th width="20%">Sold</th>
-          <th width="15%">Growth</th>
-          <th width="15%">Status</th>
+          <th width="20%" id="table-header-sold">Sold</th>
+          <th width="15%" id="table-header-growth">Growth</th>
+          <th width="15%" id="table-header-status">Status</th>
         </tr>
 
 
         {serachFiltered.map((element) => {
+          element.id = element._id;
           let monthName = new Date(element.startDate).toLocaleString(
             "default",
             { month: "short" }
           );
           let day = new Date(element.startDate).getDate();
           return (
-            <tr key={element.id}>
-              <td>
-                <div className={styles["table-event-data"]}>
-                  <TableDate month={monthName} day={day} />{" "}
+            <tr key={element.id} id={`event-${element.id}`}>
+              <td id="table-event-data">
+                <div className={styles["table-event-data"]} id={`event-${element.id}-data`}>
+                  <TableDate month={monthName} day={day} id={element.id}/>{" "}
                   <TableInfo
                     img={element.img_url}
                     title={element.name}
                     location={element.locationName}
                     date={new Date(element.startDate).toString().slice(0, 34)}
+                    id={element.id}
                   />
                 </div>
               </td>
               <td>
-                <TableProgress />
+                <TableProgress id={element.id} />
               </td>
-              <td>$0.00</td>
+              <td id={`event-${element.id}-growth`}>$0.00</td>
               <td>
-                <TableStatus />
+                <TableStatus id={element.id} />
               </td>
             </tr>
           );

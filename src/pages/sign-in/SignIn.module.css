@@ -214,3 +214,13 @@ a.google span {
   color: #232836;
 
 }
+
+@media screen and (max-width: 1080px) {
+  .login-page {
+    grid-template-columns: 1fr;
+  }
+
+  .login-page-image {
+    display: none;
+  }
+}

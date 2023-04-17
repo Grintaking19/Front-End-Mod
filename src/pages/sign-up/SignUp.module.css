@@ -242,3 +242,13 @@ a.google span {
   color: #232836;
 
 }
+
+@media screen and (max-width: 1080px) {
+  .signup-page {
+    grid-template-columns: 1fr;
+  }
+
+  .signup-page-image {
+    display: none;
+  }
+}

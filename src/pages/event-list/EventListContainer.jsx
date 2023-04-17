@@ -17,8 +17,8 @@ const EventListConatiner = (props) => {
   }
   
   return(
-  <div className= {styles['event-list-container']}>
-    <h1 className={styles['header']}> Events</h1>
+  <div className= {styles['event-list-container']} id="event-list-container">
+    <h1 className={styles['header']} id="event-list-header"> Events</h1>
     <OptionsBar onViewChange={onViewChangeHandler} onUserInput={onUserInputHandler}/>
     <PromoteEvent />
     <List listView = {view} searchInput={userSearchinput}/>
