@@ -27,7 +27,7 @@ export default function App() {
         <Route path="/login" element={<SignIn />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-        <Route path="/reset-password" element={<ResetPassordPage />} />
+        <Route path="/reset-password/:token" element={<ResetPassordPage />} />
         <Route path="/events-list/" element={<EventListContainer />} />
         <Route path="/create-event" element={<CreateEvent />} />
       </Routes>

@@ -76,7 +76,7 @@ export default function SignUp({ setSuccess, setEmail }) {
       <section className={styles.container}>
         <div className={`${styles.form} ${styles.signup}`}>
 
-          <h3 className={styles["hebtus-logo"]}>Hebtus</h3>
+          <h3 className={styles["hebtus-logo"]} onClick={() => { navigate("/") }}>Hebtus</h3>
           <header>Create an account</header>
 
           <form action="#" onSubmit={handleSubmit(onSubmit)}>
