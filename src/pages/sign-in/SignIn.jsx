@@ -65,13 +65,7 @@ export default function SignIn() {
 
   async function toGoogle()
   {
-    try {
-      const response = await axios.get("https://hebtus.me/api/v1/oauth/login/google");
-      console.log(response);
-    }
-    catch (err) {
-      console.log(err);
-    }
+    window.open("https://hebtus.me/api/v1/oauth/login/google", "_self");
   }
 
   return (
