@@ -63,10 +63,14 @@ export default function SignIn() {
     }
   }
 
-  async function toGoogle()
-  {
+  function toGoogle() {
     window.open("https://hebtus.me/api/v1/oauth/login/google", "_self");
   }
+
+  function toFacebook() {
+    window.open("https://hebtus.me/api/v1/oauth/login/facebook", "_self");
+  }
+
 
   return (
     <div className={styles["login-page"]}>
@@ -131,7 +135,7 @@ export default function SignIn() {
             <div className={styles["line"]}></div>
 
             <div className={styles["form--media-options"]}>
-              <a href="#" id="signInFacebook" className={`${styles["field"]} ${styles["facebook"]}`}>
+              <a href="#" id="signInFacebook" className={`${styles["field"]} ${styles["facebook"]}`} onClick={() => { toFacebook() }}>
                 <i class='bx bxl-facebook facebook-icon'></i>
                 <span className={styles["sign-in-with-facebook"]} id="sign-in-with-facebook">Sign In with Facebook</span>
               </a>
