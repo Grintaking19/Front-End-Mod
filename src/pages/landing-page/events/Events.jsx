@@ -149,14 +149,14 @@ return (
     }
 
     <div id="page-buttons" className={styles['page-buttons']}>
-      <button id="next-page-button"
+      <button id="previous-page-button"
         className={styles['page-btn']}
         onClick={() => setCurrentPage(currentPage - 1)}
         disabled={currentPage === 1}
       >
         Previous Page
       </button>
-      <button id="previous-page-button"
+      <button id="next-page-button"
         className={styles['page-btn']}
         onClick={() => setCurrentPage(currentPage + 1)}
         disabled={currentPageEvents().length < EVENTS_PER_PAGE}
