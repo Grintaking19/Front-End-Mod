@@ -5,14 +5,16 @@ import { useNavigate, useParams } from 'react-router-dom';
 //REACT_APP_API_DOMAIN
 //https://hebtus.me/api/v1/oauth/login/googlefacebookverify/token
 
-export default function GoogleFacebookToken() { 
+export default function GoogleFacebookToken() {
   let { token } = useParams();
   let navigate = useNavigate();
-  
+
   useEffect(() => {
-    async function postToken(token) {
+    console.log("lol");
+    async function postToken(ptoken) {
       try {
-        const response = await axios.post(`${process.env.REACT_APP_API_DOMAIN}/oauth/login/googlefacebookverify/${token}`);
+        console.log(ptoken);
+        const response = await axios.post(`${process.env.REACT_APP_API_DOMAIN}/oauth/login/googlefacebookverify/${ptoken}`);
         if (response.data.token) {
           localStorage.setItem('user', response.data.token);
         }
@@ -24,11 +26,11 @@ export default function GoogleFacebookToken() {
       }
     }
     postToken(token);
-  },[]);
+  }, []);
 
   return (
     <div>
-      
+
     </div>
   )
 
