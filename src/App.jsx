@@ -11,7 +11,7 @@ import ForgotPasswordPage from "./pages/forgot-password/ForgotPasswordPage"
 import ResetPassordPage from "./pages/reset-password/ResetPassword"
 import EventListContainer from "./pages/event-list/EventListContainer"
 import CreateEvent from "./pages/create-event/CreateEvent"
-
+import GoogleFacebookToken from "./pages/google-facebook-token/GoogleFacebookToken";
 export default function App() {
 
 
@@ -30,6 +30,7 @@ export default function App() {
         <Route path="/reset-password/:token" element={<ResetPassordPage />} />
         <Route path="/events-list/" element={<EventListContainer />} />
         <Route path="/create-event" element={<CreateEvent />} />
+        <Route path="/google-facebook-token/:token" element={<GoogleFacebookToken/>}/>
       </Routes>
     </BrowserRouter>
 

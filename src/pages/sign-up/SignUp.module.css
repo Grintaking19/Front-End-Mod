@@ -23,7 +23,7 @@
   line-height: 1rem;
   padding: 0px;
   margin-top: 8px;
-  
+
 }
 
 .container {
@@ -64,7 +64,7 @@ form {
 .form .field {
   height: 45px;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 5px;
   border-radius: 3px;
 }
 
@@ -224,6 +224,17 @@ a.facebook {
 a.facebook .facebook-icon {
   padding: 5px;
 }
+
+a.facebook {
+  background-color: #4267b2;
+  color: white;
+
+}
+
+a.facebook:hover {
+  color: white;
+}
+
 
 img.google-img {
   height: 20px;
