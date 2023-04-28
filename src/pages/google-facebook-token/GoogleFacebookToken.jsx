@@ -12,7 +12,7 @@ export default function GoogleFacebookToken() {
   useEffect(() => {
     async function postToken(token) {
       try {
-        const response = await axios.post(`${process.env.REACT_APP_API_DOMAIN}/oauth/login/googlefacebookverify/token`);
+        const response = await axios.post(`${process.env.REACT_APP_API_DOMAIN}/oauth/login/googlefacebookverify/${token}`);
         if (response.data.token) {
           localStorage.setItem('user', response.data.token);
         }
@@ -28,7 +28,7 @@ export default function GoogleFacebookToken() {
 
   return (
     <div>
-
+      
     </div>
   )
 
