@@ -3,6 +3,7 @@ import Events from "./events/Events"
 import NavBar from "../../layouts/navbar/NavBar"
 import Categories from "./categories/Categories"
 import SignedOutNavBar from "../../layouts/navbar/SignedOutNavBar";
+import cover from "../../pages/landing-page/cover.png";
 
 export default function LandingPage() {
     const [activeTab, setActiveTab] = useState('');
@@ -12,6 +13,9 @@ export default function LandingPage() {
     return (
         <div>
             {accessToken? <NavBar setAccessToken={setAccessToken}/> : <SignedOutNavBar setAccessToken={setAccessToken}/> }
+            <div>
+        <img id="cover" src={cover} width="1519.2px" />
+      </div>
             <Categories activeTab={activeTab} setActiveTab={setActiveTab} location={location} setLocation={setLocation}/>
             <Events activeTab={activeTab} location={location} />
         </div>
