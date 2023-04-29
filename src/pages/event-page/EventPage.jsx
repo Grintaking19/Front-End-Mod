@@ -1,25 +1,25 @@
 import styles from "./EventPage.module.css";
 import Navbar from "../../layouts/navbar/NavBar";
 
-import { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
-import { getEvent } from "./services";
+//import { useState, useEffect } from "react";
+//import { useParams } from 'react-router-dom';
+//import { getEvent } from "./services";
 
-function Event() {
+function Event({event}) {
     // TODO: Get event ID from URL
     // let eventId = "642fda172c9619b9850f7102";
-    const { eventId } = useParams();
+    //const { eventId } = useParams();
 
-    const [event, setEvent] = useState({});
+    //const [event, setEvent] = useState({});
 
-    useEffect(() => {
-        async function fetchData() {
-            const eventData = await getEvent(eventId);
-            setEvent(eventData);
-        }
+    // useEffect(() => {
+    //     async function fetchData() {
+    //         const eventData = await getEvent(eventId);
+    //         setEvent(eventData);
+    //     }
 
-        fetchData();
-    }, []);
+    //     fetchData();
+    // }, []);
 
 
     return (

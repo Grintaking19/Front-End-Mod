@@ -7,6 +7,11 @@ export async function getEvent(eventId) {
         return null;
     }
     let event = res.data;
+    event = setEventFormate(event, eventId);
+    return event;
+}
+
+export async function setEventFormate(event, eventId) {
     console.log(event);
     event.startHour = new Date(event.startDate).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
     event.startDay = new Date(event.startDate).toLocaleString('en-US', { day: 'numeric' });
@@ -15,7 +20,6 @@ export async function getEvent(eventId) {
     event.endDate = new Date(event.endDate).toLocaleDateString('en-US');
     event.startMonthInWords = new Date(event.startDate).toLocaleString('en-US', { month: 'long' });
     event.year = new Date(event.startDate).getFullYear();
-
     event.ticketPriceRange = await getTicketPriceRange(eventId);
     return event;
 }

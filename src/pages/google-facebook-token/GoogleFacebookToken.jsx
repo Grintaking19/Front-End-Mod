@@ -10,7 +10,6 @@ export default function GoogleFacebookToken() {
   let navigate = useNavigate();
 
   useEffect(() => {
-    console.log("lol");
     async function postToken(ptoken) {
       try {
         console.log(ptoken);
