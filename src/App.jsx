@@ -27,7 +27,7 @@ export default function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/event-dashboard/" element={<EventDashboard />} />
         <Route path="/events/:eventId" element={<PrivateOrPublicEvent />} />
-        <Route path="/categorized/:filter/:latitude/:longitude" element={<CategorizedEvents/>} />
+        <Route path="/categorized/:filter/:longitude/:latitude" element={<CategorizedEvents/>} />
         <Route path="/login" element={<SignIn />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />

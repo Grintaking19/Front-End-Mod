@@ -1,16 +1,13 @@
 import { React, useState, useEffect } from "react";
 import styles from "./Events.module.css"
-// import "./events-mock-api"
 import useFetch from "../useFetch";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 const NAMESPACE = "https://hebtus.me/api/v1/events/";
 const EVENTS_PER_PAGE = 12;
-// const NAMESPACE = "/api/v1/events/";
 
 export default function Events(props) {
   const [events, setEvents] = useState([]);
-  // const [selectedEvent, setSelectedEvent] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const url = () => {
     if (props.location.latitude && props.location.longitude) {
@@ -44,24 +41,26 @@ export default function Events(props) {
           }
         }
         // return `${NAMESPACE}?startDate=${startDate}&endDate=${endDate}&location=${props.location.latitude},${props.location.longitude}`;
-        return `${NAMESPACE}?startDate=${startDate}&endDate=${endDate}&location=31.2584644,30.0594885`;
-      } else {
-        if (props.activeTab === '') { return `${NAMESPACE}?location=31.2584644,30.0594885`; }
+        return `${NAMESPACE}?startDate=${startDate}&endDate=${endDate}&location=31.2584644,30.0594885&page=${currentPage}&limit=${EVENTS_PER_PAGE}`;
+      } 
+      else {
+        if (props.activeTab === '') { return `${NAMESPACE}?location=${props.location.longitude},${props.location.latitude}&page=${currentPage}&limit=${EVENTS_PER_PAGE}`; }
+        if (props.activeTab === 'online') { return `${NAMESPACE}?location=${props.location.longitude},${props.location.latitude}&page=${currentPage}&limit=${EVENTS_PER_PAGE}&online=1`; }
+        if (props.activeTab === 'free') { return `${NAMESPACE}?location=${props.location.longitude},${props.location.latitude}&page=${currentPage}&limit=${EVENTS_PER_PAGE}&free=1`; }
+        if (props.activeTab === 'charity') { return `${NAMESPACE}?category=Charity %26 Causes&location=${props.location.longitude},${props.location.latitude}&page=${currentPage}&limit=${EVENTS_PER_PAGE}`; }
+
         else
         // return `${NAMESPACE}?category=${props.activeTab}&location=${props.location.latitude},${props.location.longitude}`;
-        { return `${NAMESPACE}?category=${props.activeTab}&location=31.2584644,30.0594885`; }
+        { return `${NAMESPACE}?category=${props.activeTab}&location=${props.location.longitude},${props.location.latitude}&page=${currentPage}&limit=${EVENTS_PER_PAGE}`; }
       }
     }
   };
 
-  // useEffect(() => {
-  // }, [props.location.loading]);
-  // const [data, setData] = useState(null);
   console.log(url())
   const [eventsLoading, setEventsLoading] = useState(true);
   useEffect(() => {
     setEventsLoading(true);
-    // setSelectedEvent(null);
+   
     console.log(url())
     axios
       .get(url())
@@ -77,14 +76,8 @@ export default function Events(props) {
       });
   }, [url()]);
 
-  // const { data, eventsLoading, error } = useFetch(url());
   const initialLoadingMsg = <p className={styles['events-loading-status']}>Loading...</p>
   const [eventsLoadingMsg, setEventsLoadingMsg] = useState(initialLoadingMsg);
-  // useEffect(() => {
-  //   if (data) {
-  //     setEvents(data.events);
-  //   }
-  // }, [data]);
 
   useEffect(() => {
     if (eventsLoading || props.location.loading) {
@@ -103,22 +96,16 @@ export default function Events(props) {
 
   const navigate = useNavigate();
   const handleEventCardClick = (event) => {
-    // setSelectedEvent(event);
     navigate(`/events/${event._id}`);
   }
 
-  const currentPageEvents = () => {
-    const startIndex = (currentPage - 1) * EVENTS_PER_PAGE;
-    const endIndex = startIndex + EVENTS_PER_PAGE;
-    return events.slice(startIndex, endIndex);
-  };
 return (
     <div id="events-album-container"> 
       { (!eventsLoading && events.length > 0) ? 
         <div className="album py-5" id="events-album">
           <div className="container">
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4" id="events-row">
-              { currentPageEvents().map((event) => (
+              { events.map((event) => (
                 <div className="col" key={event._id}>
                   <div className={`card ${styles['event-card']}`} onClick={() => handleEventCardClick(event)} id={`event-${event._id}`}>
                     <img id={`event-${event._id}-img`}
@@ -159,7 +146,7 @@ return (
       <button id="next-page-button"
         className={styles['page-btn']}
         onClick={() => setCurrentPage(currentPage + 1)}
-        disabled={currentPageEvents().length < EVENTS_PER_PAGE}
+        disabled={events.length < EVENTS_PER_PAGE}
       >
         Next Page
       </button>
