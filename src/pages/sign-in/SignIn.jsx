@@ -53,6 +53,9 @@ export default function SignIn() {
       const response = await axios.post("https://hebtus.me/api/v1/login", rdata, config)
       if (response.data.token) {
         localStorage.setItem('user', response.data.token);
+        localStorage.setItem('userEmail', response.data.data.user.email);
+        console.log(response.data);
+        console.log(response.data.data.user.email);
       }
       console.log(localStorage.getItem('user'));
       navigate("/");

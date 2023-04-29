@@ -4,7 +4,7 @@ import { CgMathPlus } from "react-icons/cg";
 import { AiOutlineUser } from "react-icons/ai";
 import cover from "../../pages/landing-page/cover.png";
 import { useNavigate } from "react-router-dom";
-export default function NavBar(props) {
+export default function SignedOutNavBar(props) {
   let navigate = useNavigate();
   return (
     <div id="signed-in-navbar-container">
@@ -25,15 +25,12 @@ export default function NavBar(props) {
         <div id="navbar-dropdown-container" className={styles['nav-bar--user']}>
           <a id="navbar-dropdown" className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <AiOutlineUser className={styles['nav-bar--button--icon']} />
-            {/* <div className={styles['nav-bar--username d-inline-block align-text-top']}>OmarAlSharif@gmail.com</div> */}
-            <div className={`d-inline-block align-text-top ${styles['nav-bar--username']}`}>{localStorage.getItem('userEmail')? localStorage.getItem('userEmail'): ''}</div>
+            <div className={`d-inline-block align-text-top ${styles['nav-bar--username']}`}>Log In / Sign Up</div>
 
           </a>
           <ul id="navbar-dropdown--list" className={`dropdown-menu dropdown-menu-end ${styles['drop-down-menu']}`}>
-            <li id="manage-my-events-link"><a className="dropdown-item text-center" onClick={()=>{navigate("/events-list")}}>Manage my events</a></li>
-            {/* <li><a className="dropdown-item" href="#">Tickets</a></li> */}
-            <li id="update-password-link"><a className="dropdown-item text-center" href="#">Update Password</a></li>
-            <li id="logout-link"><a className="dropdown-item text-center" href="#" onClick={() => { localStorage.setItem('user',''); props.setAccessToken(null) }}>Logout</a></li>
+            <li id="login-link"><a className="dropdown-item text-center" href="#" onClick={() => { navigate("/login") }}>Log In</a></li>
+            <li id="signup-link"><a className="dropdown-item text-center" href="#" onClick={() => { navigate("/signup") }}>Sign Up</a></li>
           </ul>
         </div>
       </nav>

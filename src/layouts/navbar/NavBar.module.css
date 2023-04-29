@@ -8,7 +8,7 @@ nav {
     padding: 0px 20px;
     display: flex;
     /* background-color: blue; */
-    height: 90px;
+    height: 70px;
     align-items: center;
 }
 
@@ -56,7 +56,7 @@ nav {
 }
 
 .nav-bar--user{
-    height: 90px;
+    height: 70px;
     width:300px;
     /* background-color: blanchedalmond; */
     display: flex;
