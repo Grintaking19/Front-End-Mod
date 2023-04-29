@@ -8,14 +8,13 @@ import cover from "../../pages/landing-page/cover.png";
 export default function LandingPage() {
     const [activeTab, setActiveTab] = useState('');
     const [location, setLocation] = useState('');
-    const [accessToken, setAccessToken]=useState(localStorage.getItem('user'))
+   
 
     return (
         <div>
-            {accessToken? <NavBar setAccessToken={setAccessToken}/> : <SignedOutNavBar setAccessToken={setAccessToken}/> }
-            <div>
+            <NavBar/>
         <img id="cover" src={cover} width="1519.2px" />
-      </div>
+     
             <Categories activeTab={activeTab} setActiveTab={setActiveTab} location={location} setLocation={setLocation}/>
             <Events activeTab={activeTab} location={location} />
         </div>
