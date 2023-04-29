@@ -1,4 +1,4 @@
-import {React, useState, useEffect} from "react"
+import { React, useState, useEffect } from "react"
 import styles from "./Events.module.css"
 
 import { useParams, useNavigate } from 'react-router-dom';
@@ -6,25 +6,54 @@ import useFetch from "../useFetch";
 import NavBar from "../../../layouts/navbar/NavBar";
 
 const NAMESPACE = "https://hebtus.me/api/v1/events/";
-export default function CategorizedEvents()
-{
+export default function CategorizedEvents() {
     const [events, setEvents] = useState([])
-    const {filter, longitude, latitude} = useParams()
+    const { filter, longitude, latitude } = useParams()
+    let urlFilter = ''
+    let categoryTitle = ''
+
+    switch (filter) {
+        case 'Food&Drink':
+            urlFilter = 'Food %26 Drink'
+            categoryTitle = 'Food & Drink'
+            break
+        case 'Sports&Fitness':
+            urlFilter = 'Sports %26 Fitness'
+            categoryTitle = 'Sports & Fitness'
+            break
+        case 'Health&Fitness':
+            urlFilter = 'Health %26 Fitness'
+            categoryTitle = 'Health & Fitness'
+            break
+        case 'Performing&VisualArts':
+            urlFilter = 'Performing %26 Visual Arts'
+            categoryTitle = 'Performing & Visual Arts'
+            break
+        default:
+            urlFilter = filter
+            categoryTitle = filter
+    }
 
     // const {data, eventsLoading, error} = useFetch(`${NAMESPACE}?category=${category}&location=${latitude},${longitude}`)
-    const {data, eventsLoading, error} = useFetch(`${NAMESPACE}?category=${filter}&location=${longitude},${latitude}`)
+    const { data, eventsLoading, error } = useFetch(`${NAMESPACE}?category=${urlFilter}&location=${longitude},${latitude}`)
 
-    useEffect( ()=> {if (data) {setEvents(data.data.events);}} , [data] )
+    useEffect(() => { if (data) { setEvents(data.data.events); } }, [data])
     const navigate = useNavigate();
     const handleEventCardClick = (event) => {
         // setSelectedEvent(event);
         navigate(`/events/${event._id}`);
-      }
+    }
 
-    return(
+    return (
 
         <div>
             <NavBar />
+
+            <h2 id="events-filter-header"
+                className={styles['events-filter-header']}
+            >
+                {categoryTitle} events near your location
+            </h2>
             <div id="events-album-container">
                 {(!eventsLoading && events.length > 0) &&
                     <div className="album py-5" id="events-album">
@@ -58,10 +87,10 @@ export default function CategorizedEvents()
                             </div>
                         </div>
                     </div>
-    }
+                }
 
 
             </div>
-            </div>
-            )
+        </div>
+    )
 }
