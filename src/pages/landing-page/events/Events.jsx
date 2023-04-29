@@ -44,14 +44,14 @@ export default function Events(props) {
         return `${NAMESPACE}?startDate=${startDate}&endDate=${endDate}&location=31.2584644,30.0594885&page=${currentPage}&limit=${EVENTS_PER_PAGE}`;
       } 
       else {
-        if (props.activeTab === '') { return `${NAMESPACE}?location=31.2584644,30.0594885&page=${currentPage}&limit=${EVENTS_PER_PAGE}`; }
-        if (props.activeTab === 'online') { return `${NAMESPACE}?location=31.2584644,30.0594885&page=${currentPage}&limit=${EVENTS_PER_PAGE}&online=1`; }
-        if (props.activeTab === 'free') { return `${NAMESPACE}?location=31.2584644,30.0594885&page=${currentPage}&limit=${EVENTS_PER_PAGE}&free=1`; }
-        if (props.activeTab === 'charity') { return `${NAMESPACE}?category=Charity %26 Causes&location=31.2584644,30.0594885&page=${currentPage}&limit=${EVENTS_PER_PAGE}`; }
+        if (props.activeTab === '') { return `${NAMESPACE}?location=${props.location.longitude},${props.location.latitude}&page=${currentPage}&limit=${EVENTS_PER_PAGE}`; }
+        if (props.activeTab === 'online') { return `${NAMESPACE}?location=${props.location.longitude},${props.location.latitude}&page=${currentPage}&limit=${EVENTS_PER_PAGE}&online=1`; }
+        if (props.activeTab === 'free') { return `${NAMESPACE}?location=${props.location.longitude},${props.location.latitude}&page=${currentPage}&limit=${EVENTS_PER_PAGE}&free=1`; }
+        if (props.activeTab === 'charity') { return `${NAMESPACE}?category=Charity %26 Causes&location=${props.location.longitude},${props.location.latitude}&page=${currentPage}&limit=${EVENTS_PER_PAGE}`; }
 
         else
         // return `${NAMESPACE}?category=${props.activeTab}&location=${props.location.latitude},${props.location.longitude}`;
-        { return `${NAMESPACE}?category=${props.activeTab}&location=31.2584644,30.0594885&page=${currentPage}&limit=${EVENTS_PER_PAGE}`; }
+        { return `${NAMESPACE}?category=${props.activeTab}&location=${props.location.longitude},${props.location.latitude}&page=${currentPage}&limit=${EVENTS_PER_PAGE}`; }
       }
     }
   };

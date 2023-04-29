@@ -35,7 +35,7 @@ export default function Categories(props) {
   const navigate = useNavigate()
   const categoryCardClick = (selectedCategory) => {
     // setSelectedEvent(event);
-    navigate(`/categorized/${selectedCategory}/${props.location.latitude}/${props.location.longitude}`);
+    navigate(`/categorized/${selectedCategory}/${props.location.longitude}/${props.location.latitude}`);
   }
 
 return (

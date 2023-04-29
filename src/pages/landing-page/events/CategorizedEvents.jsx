@@ -9,10 +9,10 @@ const NAMESPACE = "https://hebtus.me/api/v1/events/";
 export default function CategorizedEvents()
 {
     const [events, setEvents] = useState([])
-    const {filter, latitude, longitude} = useParams()
+    const {filter, longitude, latitude} = useParams()
 
     // const {data, eventsLoading, error} = useFetch(`${NAMESPACE}?category=${category}&location=${latitude},${longitude}`)
-    const {data, eventsLoading, error} = useFetch(`${NAMESPACE}?category=${filter}&location=31.2584644,30.0594885`)
+    const {data, eventsLoading, error} = useFetch(`${NAMESPACE}?category=${filter}&location=${longitude},${latitude}`)
 
     useEffect( ()=> {if (data) {setEvents(data.data.events);}} , [data] )
     const navigate = useNavigate();
