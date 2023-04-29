@@ -4,10 +4,13 @@ import styles from "./Events.module.css"
 import { useParams, useNavigate } from 'react-router-dom';
 import useFetch from "../useFetch";
 import NavBar from "../../../layouts/navbar/NavBar";
+const EVENTS_PER_PAGE = 8;
+
 
 const NAMESPACE = "https://hebtus.me/api/v1/events/";
 export default function CategorizedEvents() {
     const [events, setEvents] = useState([])
+    const [currentPage, setCurrentPage] = useState(1);
     const { filter, longitude, latitude } = useParams()
     let urlFilter = ''
     let categoryTitle = ''
@@ -35,7 +38,7 @@ export default function CategorizedEvents() {
     }
 
     // const {data, eventsLoading, error} = useFetch(`${NAMESPACE}?category=${category}&location=${latitude},${longitude}`)
-    const { data, eventsLoading, error } = useFetch(`${NAMESPACE}?category=${urlFilter}&location=${longitude},${latitude}`)
+    const { data, eventsLoading, error } = useFetch(`${NAMESPACE}?category=${urlFilter}&location=${longitude},${latitude}&page=${currentPage}&limit=${EVENTS_PER_PAGE}`)
 
     useEffect(() => { if (data) { setEvents(data.data.events); } }, [data])
     const navigate = useNavigate();
@@ -90,6 +93,23 @@ export default function CategorizedEvents() {
                 }
 
 
+            </div>
+
+            <div id="page-buttons" className={styles['page-buttons']}>
+                <button id="previous-page-button"
+                    className={styles['page-btn']}
+                    onClick={() => setCurrentPage(currentPage - 1)}
+                    disabled={currentPage === 1}
+                >
+                    Previous Page
+                </button>
+                <button id="next-page-button"
+                    className={styles['page-btn']}
+                    onClick={() => setCurrentPage(currentPage + 1)}
+                    disabled={events.length < EVENTS_PER_PAGE}
+                >
+                    Next Page
+                </button>
             </div>
         </div>
     )
