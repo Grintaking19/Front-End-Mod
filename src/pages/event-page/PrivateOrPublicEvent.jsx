@@ -8,7 +8,7 @@ export function PrivateOrPublicEvent() {
   const [showEvent, setShowEvent] = useState(true);
   const [event, setEvent] = useState({});
   const { eventId } = useParams();
-
+  console.log(eventId);
   useEffect(() => {
     async function fetchData() {
 
@@ -16,6 +16,7 @@ export function PrivateOrPublicEvent() {
       console.log(eventData);
       if (eventData == null) {
         setShowEvent(false);
+        console.log("lol");
       }
       else {
         setEvent(eventData);

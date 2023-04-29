@@ -27,21 +27,24 @@ export async function setEventFormate(event, eventId) {
 async function getTicketPriceRange(eventId) {
     // TODO: Validate eventId
     let res = await fetchData(`/events/${eventId}/tickets/`, true);
+    console.log(res);
     if (!res || res.status === "fail") {
         return null;
     }
-    if (res.data.ticket.length === 0) {
+
+    if (res.data.tickets.length === 0) {
         return null;
     }
-    if (res.data.ticket.length === 1) {
-        let isFree = !res.data.ticket[0].price || res.data.ticket[0].price === 0;
+        
+    if (res.data.tickets.length === 1) {
+        let isFree = !res.data.tickets[0].price || res.data.tickets[0].price === 0;
         if (isFree) {
             return "Free";
         }
-        return "£" + res.data.ticket[0].price;
+        return "£" + res.data.tickets[0].price;
     }
-    let min = res.data.ticket[0].price;
-    let max = res.data.ticket[0].price;
+    let min = res.data.tickets[0].price;
+    let max = res.data.tickets[0].price;
     res.data.ticket.forEach((ticket) => {
         if (ticket.price < min) {
             min = ticket.price;

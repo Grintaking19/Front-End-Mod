@@ -1,5 +1,5 @@
 import axios from "axios";
-import {useState} from "react"
+import { useState } from "react"
 import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
@@ -24,7 +24,7 @@ const config = {
 /////////////////////////////////////////////////////////
 
 
-export default function PrivateEventRegistration({eventId, setShowEvent,setEvent}) {
+export default function PrivateEventRegistration({ eventId, setShowEvent, setEvent }) {
   const [passwordType, setPasswordType] = useState("password");
   const [message, setMessage] = useState("");
   //const [event, setEvent] = useState({});
@@ -47,9 +47,14 @@ export default function PrivateEventRegistration({eventId, setShowEvent,setEvent
 
   async function onSubmit(rdata) {
     try {
+      console.log("lol_2");
+      console.log(eventId);
       const response = await axios.post(`${process.env.REACT_APP_API_DOMAIN}/events/${eventId}`, rdata, config);
+      // console.log("lol_3");
+      // console.log(eventId);
       let eventData = setEventFormate(response.data, eventId);
       setEvent(eventData);
+      console.log(response.data);
       setShowEvent(true);
     }
     catch (err) {
