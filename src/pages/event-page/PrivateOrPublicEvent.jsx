@@ -6,7 +6,7 @@ import EventPage from "./EventPage"
 
 export function PrivateOrPublicEvent() {
   const [showEvent, setShowEvent] = useState(true);
-  const [event, setEvent] = useState({});
+  const [event, setEventM] = useState({});
   const { eventId } = useParams();
   console.log(eventId);
   useEffect(() => {
@@ -16,10 +16,9 @@ export function PrivateOrPublicEvent() {
       console.log(eventData);
       if (eventData == null) {
         setShowEvent(false);
-        console.log("lol");
       }
       else {
-        setEvent(eventData);
+        setEventM(eventData);
       }
     }
     fetchData();
@@ -30,7 +29,7 @@ export function PrivateOrPublicEvent() {
         showEvent ?
           (<EventPage event={event} />)
           :
-          (<PrivateEventRegistration eventId={eventId} setShowEvent={setShowEvent} setEvent={setEvent} />)
+          (<PrivateEventRegistration eventId={eventId} setShowEvent={setShowEvent} setEvent={setEventM} />)
       }
     </div>
 

@@ -47,14 +47,10 @@ export default function PrivateEventRegistration({ eventId, setShowEvent, setEve
 
   async function onSubmit(rdata) {
     try {
-      console.log("lol_2");
       console.log(eventId);
       const response = await axios.post(`${process.env.REACT_APP_API_DOMAIN}/events/${eventId}`, rdata, config);
-      // console.log("lol_3");
-      // console.log(eventId);
-      let eventData = setEventFormate(response.data, eventId);
+      const eventData = await setEventFormate(response.data.data, eventId);
       setEvent(eventData);
-      console.log(response.data);
       setShowEvent(true);
     }
     catch (err) {

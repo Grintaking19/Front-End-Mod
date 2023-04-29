@@ -12,7 +12,6 @@ export async function getEvent(eventId) {
 }
 
 export async function setEventFormate(event, eventId) {
-    console.log(event);
     event.startHour = new Date(event.startDate).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
     event.startDay = new Date(event.startDate).toLocaleString('en-US', { day: 'numeric' });
     event.endHour = new Date(event.endDate).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });

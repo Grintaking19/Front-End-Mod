@@ -6,22 +6,6 @@ import Navbar from "../../layouts/navbar/NavBar";
 //import { getEvent } from "./services";
 
 function Event({event}) {
-    // TODO: Get event ID from URL
-    // let eventId = "642fda172c9619b9850f7102";
-    //const { eventId } = useParams();
-
-    //const [event, setEvent] = useState({});
-
-    // useEffect(() => {
-    //     async function fetchData() {
-    //         const eventData = await getEvent(eventId);
-    //         setEvent(eventData);
-    //     }
-
-    //     fetchData();
-    // }, []);
-
-
     return (
         <div className={styles['event-page']} id="event-page">
             <div className={styles['ep-navbar-container']} id="ep-navbar-container">
