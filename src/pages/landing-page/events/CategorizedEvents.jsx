@@ -37,28 +37,27 @@ export default function CategorizedEvents() {
             urlFilter = filter
             categoryTitle = filter
     }
-    
+
     const [hadEvents, setHadEvents] = useState(false);
 
-  const [eventsLoading, setEventsLoading] = useState(true);
-  useEffect(() => {
-    setEventsLoading(true);
+    const [eventsLoading, setEventsLoading] = useState(true);
+    useEffect(() => {
+        setEventsLoading(true);
 
-    axios
-      .get(`${NAMESPACE}?category=${urlFilter}&location=${longitude},${latitude}&page=${currentPage}&limit=${EVENTS_PER_PAGE}`)
-      .then((response) => {
-        setEvents(response.data.data.events);
-        if(response.data.data.events.length > 0)
-            {setHadEvents(true)}
-        console.log(hadEvents)
-      })
-      .catch((err) => {
-        console.error(err)
-      })
-      .finally(() => {
-        setEventsLoading(false);
-      });
-  }, [currentPage]);
+        axios
+            .get(`${NAMESPACE}?category=${urlFilter}&location=${longitude},${latitude}&page=${currentPage}&limit=${EVENTS_PER_PAGE}`)
+            .then((response) => {
+                setEvents(response.data.data.events);
+                if (response.data.data.events.length > 0) { setHadEvents(true) }
+                console.log(hadEvents)
+            })
+            .catch((err) => {
+                console.error(err)
+            })
+            .finally(() => {
+                setEventsLoading(false);
+            });
+    }, [currentPage]);
 
     // const { data, eventsLoading, error } = useFetch(`${NAMESPACE}?category=${urlFilter}&location=${longitude},${latitude}&page=${currentPage}&limit=${EVENTS_PER_PAGE}`)
 
@@ -73,17 +72,17 @@ export default function CategorizedEvents() {
     const [eventsLoadingMsg, setEventsLoadingMsg] = useState(initialLoadingMsg);
     useEffect(() => {
         if (eventsLoading) {
-          setEventsLoadingMsg(initialLoadingMsg);
+            setEventsLoadingMsg(initialLoadingMsg);
         }
-        else if (!eventsLoading &&  events.length === 0 && hadEvents) {
-          setEventsLoadingMsg(<p className={styles['events-loading-status']}>
-            We couldn't find more {categoryTitle} events nearby
-          </p>)
+        else if (!eventsLoading && events.length === 0 && hadEvents) {
+            setEventsLoadingMsg(<p className={styles['events-loading-status']}>
+                We couldn't find more {categoryTitle} events nearby
+            </p>)
         }
-        else if (!eventsLoading &&  events.length === 0 && !hadEvents ) {
-          setEventsLoadingMsg(<p className={styles['events-loading-status']}>
-            No {categoryTitle} events nearby
-          </p>)
+        else if (!eventsLoading && events.length === 0 && !hadEvents) {
+            setEventsLoadingMsg(<p className={styles['events-loading-status']}>
+                No {categoryTitle} events nearby
+            </p>)
         }
         // else if (!eventsLoading &&  events.length === 0 && events.length < EVENTS_PER_PAGE) {
         //   setEventsLoadingMsg(<p className={styles['events-loading-status']}>
@@ -91,58 +90,62 @@ export default function CategorizedEvents() {
         //   </p>)
         // }
         else if (!eventsLoading && events.length > 0) {
-          setEventsLoadingMsg('')
+            setEventsLoadingMsg('')
         }
-    
-      }, [eventsLoading]);
+
+    }, [eventsLoading]);
 
     return (
 
         <div >
             <NavBar />
-            <div style={{background: "#faf8f7"}}>
+            <div style={{ background: "#faf8f7" }}>
                 <h2 id="events-filter-header"
                     className={styles['events-filter-header']}
                 >
                     {categoryTitle} events near your location
                 </h2>
-                { (!eventsLoading && events.length > 0) ?
-                <div id="events-album-container">
-                    {(!eventsLoading && events.length > 0) &&
-                        <div className="album py-5" id="events-album">
-                            <div className="container">
-                                <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4" id="events-row">
-                                    {events.map((event) => (
-                                        <div className="col" key={event._id}>
-                                            <div className={`card ${styles['event-card']}`} onClick={() => handleEventCardClick(event)} id={`event-${event._id}`}>
-                                                <img id={`event-${event._id}-img`}
-                                                    src={event.img_url}
-                                                    className="bd-placeholder-img card-img-top"
-                                                    width="100%"
-                                                    height="225"
-                                                    aria-label="Placeholder: Thumbnail"
-                                                    preserveAspectRatio="xMidYMid slice"
-                                                    focusable="false"
-                                                />
-                                                <div className="card-body" id={`event-${event._id}-card`}>
-                                                    <h4 id={`event-${event._id}-name`} className={styles['event-card--name']}>{event.name}</h4>
-                                                    <h6 id={`event-${event._id}-startdate`} className={styles['event-card--date']}> Starts {' '}
-                                                        {new Date(event.startDate).toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
-                                                    </h6>
-                                                    <h6 id={`event-${event._id}-enddate`} className={styles['event-card--date']}> Ends {' '}
-                                                        {new Date(event.endDate).toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
-                                                    </h6>
-                                                    <h6 id={`event-${event._id}-location`}>{event.locationName}</h6>
+                {(!eventsLoading && events.length > 0) ?
+                    <div id="events-album-container">
+                        {(!eventsLoading && events.length > 0) &&
+                            <div className="album py-5" id="events-album">
+                                <div className="container">
+                                    <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4" id="events-row">
+                                        {events.map((event) => (
+                                            <div className="col" key={event._id}>
+                                                <div className={`card ${styles['event-card']}`} onClick={() => handleEventCardClick(event)} id={`event-${event._id}`}>
+                                                    <img id={`event-${event._id}-img`}
+                                                        src={event.img_url}
+                                                        className="bd-placeholder-img card-img-top"
+                                                        width="100%"
+                                                        height="225"
+                                                        aria-label="Placeholder: Thumbnail"
+                                                        preserveAspectRatio="xMidYMid slice"
+                                                        focusable="false"
+                                                    />
+                                                    <div className="card-body" id={`event-${event._id}-card`}>
+                                                        <h4 id={`event-${event._id}-name`} className={styles['event-card--name']}>{event.name}</h4>
+                                                        <h6 id={`event-${event._id}-startdate`} className={styles['event-card--date']}> Starts {' '}
+                                                            {new Date(event.startDate).toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+                                                        </h6>
+                                                        <h6 id={`event-${event._id}-enddate`} className={styles['event-card--date']}> Ends {' '}
+                                                            {new Date(event.endDate).toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+                                                        </h6>
+                                                        <h6 id={`event-${event._id}-location`}>{event.locationName}</h6>
+                                                        <div className={styles['online-or-free-container']}>
+                                                            {event.online ? <h6 id='is-online' className={styles['event-card--is-online']}>Online</h6> : ''}
+                                                            {event.free ? <h6 id='is-free' className={styles['event-card--is-free']}>Free</h6> : ''}
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    ))}
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    }
-                </div> : eventsLoadingMsg 
-            }
+                        }
+                    </div> : eventsLoadingMsg
+                }
                 <div id="page-buttons" className={styles['page-buttons']}>
                     <button id="previous-page-button"
                         className={styles['page-btn']}

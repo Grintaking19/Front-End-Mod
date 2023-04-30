@@ -8,6 +8,21 @@
     font-weight: 600;
 }
 
+.online-or-free-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.event-card--is-online{
+    color: #F05537;
+    font-weight: 600;
+    margin-right: 5px;
+}
+.event-card--is-free{
+    color: #3659E3;
+    font-weight: 600;
+}
+
 .event-card{
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.08);
     transition: all ease 0.5s;
