@@ -134,7 +134,7 @@ export default function CategorizedEvents() {
                                                         <h6 id={`event-${event._id}-location`}>{event.locationName}</h6>
                                                         <div className={styles['online-or-free-container']}>
                                                             {event.online ? <h6 id='is-online' className={styles['event-card--is-online']}>Online</h6> : ''}
-                                                            {event.free ? <h6 id='is-free' className={styles['event-card--is-free']}>Free</h6> : ''}
+                                                            {/* {event.free ? <h6 id='is-free' className={styles['event-card--is-free']}>Free</h6> : ''} */}
                                                         </div>
                                                     </div>
                                                 </div>

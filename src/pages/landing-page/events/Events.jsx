@@ -46,7 +46,8 @@ export default function Events(props) {
       else {
         if (props.activeTab === '') { return `${NAMESPACE}?location=${props.location.longitude},${props.location.latitude}&page=${currentPage}&limit=${EVENTS_PER_PAGE}`; }
         if (props.activeTab === 'online') { return `${NAMESPACE}?location=${props.location.longitude},${props.location.latitude}&page=${currentPage}&limit=${EVENTS_PER_PAGE}&online=1`; }
-        if (props.activeTab === 'free') { return `${NAMESPACE}?location=${props.location.longitude},${props.location.latitude}&page=${currentPage}&limit=${EVENTS_PER_PAGE}&free=1`; }
+        // if (props.activeTab === 'free') { return `${NAMESPACE}?location=${props.location.longitude},${props.location.latitude}&page=${currentPage}&limit=${EVENTS_PER_PAGE}&free=1`; }
+        if (props.activeTab === 'free') { return `${NAMESPACE}?free=1`; }
         if (props.activeTab === 'charity') { return `${NAMESPACE}?category=Charity %26 Causes&location=${props.location.longitude},${props.location.latitude}&page=${currentPage}&limit=${EVENTS_PER_PAGE}`; }
 
         else
@@ -128,7 +129,7 @@ return (
                       <h6 id={`event-${event._id}-location`}>{event.locationName}</h6>
                       <div className={styles['online-or-free-container']}>
                       {event.online? <h6 id='is-online' className={styles['event-card--is-online']}>Online</h6> : ''}
-                      {event.free? <h6 id='is-free' className={styles['event-card--is-free']}>Free</h6> : ''}
+                      {props.activeTab === 'free'? <h6 id='is-free' className={styles['event-card--is-free']}>Free</h6> : ''}
                       </div>
                     </div>
                   </div>
