@@ -44,8 +44,8 @@ input:focus {
 
 .error-message {
   color: #c5162e;
-  font-size: .55rem;
-  line-height: .5rem;
+  font-size: .75rem;
+  line-height: 1rem;
   margin: 0px !important;
   padding: 0px !important;
 }

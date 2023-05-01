@@ -59,7 +59,7 @@ export default function UpdatePassword() {
   }
 
   const schema = yup.object().shape({
-    currentPassword: yup.string().min(8).max(40).required("Current password is needed"),
+    passwordCurrent: yup.string().min(8).max(40).required("Current password is needed"),
     password: yup.string().min(8).max(40).required("Passowrd is required"),
     confirmPassword: yup.string().oneOf([yup.ref("password"), null], "Passwords don't match").required()
   });
@@ -86,7 +86,7 @@ export default function UpdatePassword() {
     }
   }
 
-  
+
 
 
   return (
@@ -99,7 +99,7 @@ export default function UpdatePassword() {
 
           <form action="#" onSubmit={handleSubmit(onSubmit)} className="login-form">
             <div className={`${styles.field} ${styles["form--password"]}`}>
-              <input id="currentPassword" type={oldPasswordType} placeholder="Current Password" {...register("currentPassword")} className={styles.password} />
+              <input id="currentPassword" type={oldPasswordType} placeholder="Current Password" {...register("passwordCurrent")} className={styles.password} />
               <div className={styles["eye-holder"]} id="eyeHolderPassword" onClick={toggleOldPassword}>
                 {oldPasswordType === "password" ?
                   <i className={`bx bxs-hide ${styles["eye-icon"]}`}>
@@ -119,12 +119,12 @@ export default function UpdatePassword() {
               </div>
             </div>
             <div className={`${styles["form--error-message"]} ${styles["form--error-message"]}`} id="form--error-message-email">
-              <p className={styles["error-message"]} id="errorMessageCurrentPassword">{errors.currentPassword?.message}</p>
+              <p className={styles["error-message"]} id="errorMessageCurrentPassword">{errors.passwordCurrent?.message}</p>
             </div>
 
 
             <div className={`${styles.field} ${styles["form--password"]}`}>
-              <input type={passwordType} id="password" className={styles.password} placeholder="Password" {...register("password")}
+              <input type={passwordType} id="password" className={styles.password} placeholder="New Password" {...register("password")}
               />
               <div className={styles["eye-holder"]} id="eyeHolderPassword" onClick={togglePassword}>
                 {passwordType === "password" ?

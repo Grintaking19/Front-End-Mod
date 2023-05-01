@@ -32,7 +32,7 @@ export default function NavBar(props) {
             <li id="manage-my-events-link"><a className="dropdown-item text-center" onClick={()=>{navigate("/events-list")}}>Manage my events</a></li>
             {/* <li><a className="dropdown-item" href="#">Tickets</a></li> */}
             <li id="update-password-link"><a className="dropdown-item text-center" href="" onClick={() => { navigate("/update-password") }}>Update Password</a></li>
-            <li id="logout-link"><a className="dropdown-item text-center" href="" onClick={() => { localStorage.setItem('user',''); props.setAccessToken(null) }}>Logout</a></li>
+            <li id="logout-link"><a className="dropdown-item text-center" href="" onClick={() => { localStorage.setItem('user', ''); localStorage.setItem('userEmail', ''); props.setAccessToken(null) }}>Logout</a></li>
           </ul>
         </div>
       </nav>
