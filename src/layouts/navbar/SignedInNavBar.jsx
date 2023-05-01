@@ -31,7 +31,7 @@ export default function NavBar(props) {
           <ul id="navbar-dropdown--list" className={`dropdown-menu dropdown-menu-end ${styles['drop-down-menu']}`}>
             <li id="manage-my-events-link"><a className="dropdown-item text-center" onClick={()=>{navigate("/events-list")}}>Manage my events</a></li>
             {/* <li><a className="dropdown-item" href="#">Tickets</a></li> */}
-            <li id="update-password-link"><a className="dropdown-item text-center" href="">Update Password</a></li>
+            <li id="update-password-link"><a className="dropdown-item text-center" href="" onClick={() => { navigate("/update-password") }}>Update Password</a></li>
             <li id="logout-link"><a className="dropdown-item text-center" href="" onClick={() => { localStorage.setItem('user',''); props.setAccessToken(null) }}>Logout</a></li>
           </ul>
         </div>
