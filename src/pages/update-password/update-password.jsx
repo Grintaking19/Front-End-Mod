@@ -1,21 +1,32 @@
 import axios from "axios";
-import styles from "./ResetPassword.module.css"
-import 'boxicons'
+import styles from "./UpdatePassword.module.css"
 import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
+import { authHeader } from "../../utils/api";
 
 const config = {
-  headers: {
-    "ngrok-skip-browser-warning": 1
-  }
+  headers: authHeader()
 };
 
-export default function ResetPassword() {
+export function UpdatePassword() {
   let navigate = useNavigate();
   let { token } = useParams();
+  const [message, setMessage] = useState("");
+  const [success, setSuccess] = useState("");
+
+  const [oldPasswordType, setOldPasswordType] = useState("password");
+  const toggleOldPassword = () => {
+    if (oldPasswordType === "password") {
+      setOldPasswordType("text")
+      return;
+    }
+    setOldPasswordType("password")
+  }
+
+
   const [passwordType, setPasswordType] = useState("password");
   const togglePassword = () => {
     if (passwordType === "password") {
@@ -36,24 +47,31 @@ export default function ResetPassword() {
   }
 
   const schema = yup.object().shape({
-    oldPassword: yup.string().min(8).max(40).required("Old password is required"),
-    newPassword: yup.string().min(8).max(40).required("Passowrd is required"),
+    
+    passwordCurrent: yup.string().min(8).max(40).required("Enter your current password"),
+    Password: yup.string().min(8).max(40).required("Passowrd is required"),
     confirmPassword: yup.string().oneOf([yup.ref("password"), null], "Passwords don't match").required()
   });
+
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
 
-  async function onSubmit(data) {
-    console.log(data);
-    try {
-      const response = await axios.patch(`${process.env.REACT_APP_API_DOMAIN}/updatepassword`, data, config)
 
+  async function onSubmit(rdata) {
+    console.log(rdata);
+    try {
+      console.log("lol");
+      const response = await axios.patch(`${process.env.REACT_APP_API_DOMAIN}/updatepassword`, rdata, config)
+      setMessage(response.data.message);
       console.log(localStorage.getItem('user'));
+      setSuccess("success-message");
       navigate("/");
     }
     catch (err) {
+      setMessage(err.response.data.message);
+      setSuccess("error-message");
       console.log(err);
     }
   }
@@ -61,15 +79,40 @@ export default function ResetPassword() {
 
   return (
     <section className={styles["container"]}>
-      <div className={`${styles["form"]} ${styles["signup"]}`}>
+      <div className={`${styles["form"]} ${styles["login"]}`}>
 
-        <h3 className={styles["hebtus-logo"]}>Hebtus</h3>
-        <header>Reset Password</header>
+        <h3 className={styles["hebtus-logo"]} onClick={() => { navigate("/") }}>Hebtus</h3>
+        <header>Ohh, looks like you want to change your password 🧐</header>
 
-        <form action="#" onSubmit={handleSubmit(onSubmit)}>
+        <form action="#" onSubmit={handleSubmit(onSubmit)} className="login-form">
 
           <div className={`${styles["field"]} ${styles["form--password"]}`}>
-            <input type={passwordType} id="password" className={styles["password"]} placeholder="Password" {...register("password")}
+            <input type={oldPasswordType} id="current password" className={styles["password"]} placeholder="Current Password" {...register("passwordCurrent")}
+            />
+            <div className={styles["eye-holder"]} id="eyeHolderPassword" onClick={toggleOldPassword}>
+              {oldPasswordType === "password" ?
+                <i className={`bx bxs-hide ${styles["eye-icon"]}`}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                    <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                  </svg>
+                </i>
+                :
+                <i className={`bx bxs-show ${styles["eye-icon"]}`}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                    <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                  </svg>
+                </i>
+              }
+            </div>
+          </div>
+          <div className={`${styles["form--error-message"]} ${styles["form--error-message"]}`} id="form--error-message">
+            <p className={styles["error-message"]} id="errorMessagePassword">{errors.passwordCurrent?.message}</p>
+          </div>
+
+          <div className={`${styles["field"]} ${styles["form--password"]}`}>
+            <input type={passwordType} id="password" className={styles["password"]} placeholder="New Password" {...register("password")}
             />
             <div className={styles["eye-holder"]} id="eyeHolderPassword" onClick={togglePassword}>
               {passwordType === "password" ?
@@ -119,9 +162,12 @@ export default function ResetPassword() {
             <p className={styles['error-message']} id="errorMessageConfirmPassword">{errors.confirmPassword?.message}</p>
           </div>
 
+          <div className={styles["form--error-message"]} id="form--error-message">
+            <p className={styles[{ success }]} id="errorMessage">{message}</p>
+          </div>
 
           <div className={styles["field"]} id="update-password">
-            <button className={styles["form--button"]} type="submit">Update Password</button>
+            <button className={styles["form--button"]} type="submit" id="updatePasswordButton" >Update Your Password</button>
           </div>
 
 

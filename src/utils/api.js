@@ -16,3 +16,13 @@ export async function fetchData(endpoint, isProtected = false) {
         console.error(error);
     }
 }
+
+
+export function authHeader() {
+    const user = localStorage.getItem('user');
+    if (user) {
+        return { token: `${user}` };
+    } else {
+        return {};
+    }
+}

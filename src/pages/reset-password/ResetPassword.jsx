@@ -47,8 +47,7 @@ export default function ResetPassword() {
     resolver: yupResolver(schema),
   });
 
-  async function onSubmit(data) {
-    console.log(data);
+  const onSubmit = async (data) =>{
     try {
       data.resetToken = token;
       const response = await axios.patch("https://hebtus.me/api/v1/resetpassword", data, config)

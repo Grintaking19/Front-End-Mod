@@ -3,7 +3,7 @@ import SignedInNavBar from "./SignedInNavBar"
 import SignedOutNavBar from "./SignedOutNavBar";
 
 export default function NavBar() {
-
+  
   const [accessToken, setAccessToken]=useState(localStorage.getItem('user'))
   return (
     <div>

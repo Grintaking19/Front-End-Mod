@@ -1,9 +1,7 @@
 import styles from "./EventPage.module.css";
 import Navbar from "../../layouts/navbar/NavBar";
 
-//import { useState, useEffect } from "react";
-//import { useParams } from 'react-router-dom';
-//import { getEvent } from "./services";
+
 
 function Event({event}) {
     return (
