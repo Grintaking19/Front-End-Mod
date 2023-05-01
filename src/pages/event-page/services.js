@@ -1,9 +1,12 @@
+import { ContentCutOutlined } from "@mui/icons-material";
 import { fetchData } from "../../utils/api";
 
 export async function getEvent(eventId) {
     // TODO: Validate eventId
     let res = await fetchData(`/events/${eventId}`, true);
     if (!res || res.status === "fail") {
+        console.log("fetch failed for get events");
+        console.log(res);
         return null;
     }
     let event = res.data;
