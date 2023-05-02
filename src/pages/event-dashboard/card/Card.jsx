@@ -1,8 +1,9 @@
 import styles from './Card.module.css';
 
 function Card(props) {
+    
     return (
-        <div className={styles=['card-container']}>
+        <div className={styles['card-container']}>
             <div className={styles['dashboard-card']}>
                 <div className={styles['card-header']}>
                     {props.title}

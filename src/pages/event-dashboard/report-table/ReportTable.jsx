@@ -1,8 +1,6 @@
 import styles from "./ReportTable.module.css"
 
 function ReportTable(props) {
-    console.log(props);
-
     return (
         <div className={styles['report-table-container']}>
             <div className={styles['report-table-header']}>

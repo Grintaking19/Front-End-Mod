@@ -12,9 +12,9 @@ import CreateEvent from "./pages/create-event/CreateEvent"
 import GoogleFacebookToken from "./pages/google-facebook-token/GoogleFacebookToken"
 import { PrivateOrPublicEvent } from "./pages/event-page/PrivateOrPublicEvent"
 import UpdatePassword from "./pages/update-password/UpdatePassword"
-export default function App() {
-  
 
+
+export default function App() {
 
   return (
 
@@ -22,7 +22,7 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/event-dashboard/" element={<EventDashboard />} />
+        <Route path="/event-dashboard/:eventId" element={<EventDashboard />} />
         <Route path="/events/:eventId" element={<PrivateOrPublicEvent />} />
         <Route path="/categorized/:filter/:longitude/:latitude" element={<CategorizedEvents/>} />
         <Route path="/login" element={<SignIn />} />
