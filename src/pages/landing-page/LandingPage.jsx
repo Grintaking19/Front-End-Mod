@@ -12,6 +12,7 @@ export default function LandingPage() {
     return (
         <div>
             <NavBar/>
+        <img id="cover" src={cover} width="100%" />
      
             <Categories activeTab={activeTab} setActiveTab={setActiveTab} location={location} setLocation={setLocation}/>
             <Events activeTab={activeTab} location={location} />
