@@ -97,7 +97,10 @@ function EventDashboard() {
                 <NavBar />
             </div>
             <div className={styles['sidenav-container']}>
-                <EventSidenav />
+                <EventSidenav 
+                    eventId={eventId}
+                    activeTab="dashboard"
+                />
             </div>
             <div className={styles['body-container']}>
                 <div className={styles['content-container']}>

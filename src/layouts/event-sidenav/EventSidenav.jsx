@@ -1,5 +1,14 @@
 import styles from "./EventSideNav.module.css"
-function EventSidenav() {
+
+import { useEffect, useState } from "react"
+import { Link, Navigate } from "react-router-dom"
+
+import { getTicketTypes } from "../../pages/event-dashboard/services"
+import { getEvent } from "./services"
+
+function EventSidenav(props) {
+    const { eventId, activeStep } = props
+
     let eventPublishSteps = [
         {
             id: 1,
@@ -52,8 +61,25 @@ function EventSidenav() {
             </svg>]
         }
 
-    let isDraft = true
-    let canBePublished = true
+    const [isDraft, setIsDraft] = useState(true)
+    const [canBePublished, setCanBePublished] = useState(true)
+    const [eventDetails, setEventDetails] = useState({})
+
+    useEffect(() => {
+        async function fetchData() {
+            const eventDetailsData = await getEvent(eventId)
+            setEventDetails(eventDetailsData)
+            setIsDraft(eventDetailsData.draft)
+            const ticketTypes = await getTicketTypes(eventId)
+            if (ticketTypes.length === 0) {
+                setCanBePublished(false)
+            } else {
+                setCanBePublished(true)
+            }
+        }
+
+        fetchData()
+    }, [])
 
 
     return (
@@ -71,31 +97,35 @@ function EventSidenav() {
                 <div className={styles['event-status-button']}>
                     <div className="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Draft
+                            {isDraft ? 'Draft' : 'Published'}
                         </button>
-                        <ul class="dropdown-menu">
-                            {canBePublished ?
-                            <>
-                                <li><a class="dropdown-item" href="#">Publish Now</a></li>
-                                <li><a class="dropdown-item" href="#">Schedule Publish</a></li>
-                            </>:
-                            <>
-                                <li><a class="dropdown-item disabled">Publish Now</a></li>
-                                <li><a class="dropdown-item disabled">Schedule Publish</a></li>
-                            </>
-                            }
-                        </ul>
+                        {isDraft ?
+                        
+                            <ul class="dropdown-menu">
+                                {canBePublished ?
+                                <>
+                                    <li><a class="dropdown-item" href="#">Publish Now</a></li>
+                                    <li><a class="dropdown-item" href="#">Schedule Publish</a></li>
+                                </>:
+                                <>
+                                    <li><a class="dropdown-item disabled">Publish Now</a></li>
+                                    <li><a class="dropdown-item disabled">Schedule Publish</a></li>
+                                </>
+                                }
+                            </ul>
+                        : null}
                     </div>
                 </div>: null}
                 <div className={styles['es-event-description']}>
                     <div className={styles['es-event-description-title']}>
-                        <a href="#"><h4>Event Title</h4></a>
+                        <a href="#" id="event-name"><h4>{eventDetails.name}</h4></a>
                     </div>
                     <div className={styles['es-event-description-date']}>
-                        <p>Wed, Apr 19, 2023 7:00 PM</p>
+                        {/* <p>Wed, Apr 19, 2023 7:00 PM</p> */}
+                        <p id="event-date">{`${eventDetails.startMonthInWords} ${eventDetails.startDay}, ${eventDetails.year} ${eventDetails.startHour}`}</p>
                     </div>
                     <div className={styles['es-event-description-preview']}>
-                        <a href="#">
+                        <a href="#" id="preview-event">
                             Preview your event
                             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
@@ -107,12 +137,12 @@ function EventSidenav() {
             </div>
             <div className={styles['es-list']}>
                 <ul className={styles['es-list-ul']}>
-                    {eventPublishSteps.map((step) => {
+                    {eventPublishSteps.map((step, index) => {
                         let icon = step.status === 'completed' ? icons[step.status] : icons[step.id];
                         let className = step.selected ? 'es-list-li es-list-li-active' : 'es-list-li';
                         return (
-                            <li className={styles[className]}>
-                                <a href={step.link}>
+                            <li className={styles[className]} key={index} id={`es-list-li-${step.title}`}>
+                                <a href={step.link} id={`es-list-li-${step.title}-link`}>
                                     <div>
                                         {step.status? icon: null}
                                         <span>{step.title}</span>

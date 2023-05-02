@@ -5,7 +5,7 @@ import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 //import { useNavigate } from 'react-router-dom';
 import styles from "./PrivateEventRegistration.module.css"
-import { setEventFormate } from "./services";
+import { setDateFormat } from "./services";
 /////////////////////////////////////////////////////////
 function authHeader() {
   const user = localStorage.getItem('user');
@@ -49,7 +49,7 @@ export default function PrivateEventRegistration({ eventId, setShowEvent, setEve
     try {
       console.log(eventId);
       const response = await axios.post(`${process.env.REACT_APP_API_DOMAIN}/events/${eventId}`, rdata, config);
-      const eventData = await setEventFormate(response.data.data, eventId);
+      const eventData = await setDateFormat(response.data.data);
       setEvent(eventData);
       setShowEvent(true);
     }
