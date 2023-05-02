@@ -1,23 +1,21 @@
 import { fetchData } from "../../utils/api";
 
 export async function getTicketTypes(eventId) {
-    // TODO: Validate eventId
-    let data = await fetchData(`/events/${eventId}/tickets/`);
-    if (!data || data.status === "fail") {
-        return [[]];
+    let res = await fetchData(`/events/${eventId}/tickets/`, true);
+    if (!res || res.status === "fail") {
+        return [];
     }
     let ticketTypes = [];
-    data.data.tickets.forEach((ticket) => {
+    res.data.tickets.forEach((ticket) => {
         ticketTypes.push([ticket.type, ticket.price, `${ticket.currentReservations}/${ticket.capacity}`])
     })
     return ticketTypes;
 }
 
 export async function getBookings(eventId) {
-    // TODO: Validate eventId
-    let data = await fetchData(`/bookings/${eventId}`);
+    let data = await fetchData(`/bookings/${eventId}`, true);
     if (!data || data.status === "fail") {
-        return [[]];
+        return [];
     }
     let bookings = [];
     data.data.bookings.forEach((booking) => {
@@ -27,16 +25,15 @@ export async function getBookings(eventId) {
 }
 
 export async function getTicketsSummary(eventId) {
-    // TODO: Validate eventId
-    let data = await fetchData(`/events/${eventId}/tickets/`);
-    if (!data || data.status === "fail") {
+    let res = await fetchData(`/events/${eventId}/tickets/`, true);
+    if (!res || res.status === "fail") {
         return {};
     }
     let totalSoldTickets = 0;
     let totalTickets = 0;
     let totalSoldFreeTickets = 0;
     let totalSoldPaidTickets = 0;
-    data.data.tickets.forEach((ticket) => {
+    res.data.tickets.forEach((ticket) => {
         totalSoldTickets += ticket.currentReservations;
         totalTickets += ticket.capacity;
         if (ticket.price === 0) {
@@ -54,11 +51,10 @@ export async function getTicketsSummary(eventId) {
 }
 
 export async function getEventPublishStatus(eventId) {
-    // TODO: Validate eventId
-    let data = await fetchData(`/creators/events/${eventId}`);
-    if (!data || data.status === "fail") {
+    let res = await fetchData(`/creators/events/${eventId}`, true);
+    if (!res || res.status === "fail") {
         return null;
     }
-    console.log(data.data.event.draft);
-    return !data.data.event.draft;
+    console.log(res.data.event.draft);
+    return !res.data.event.draft;
 }

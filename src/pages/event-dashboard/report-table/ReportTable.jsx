@@ -1,6 +1,7 @@
 import styles from "./ReportTable.module.css"
 
 function ReportTable(props) {
+    console.log(props);
 
     return (
         <div className={styles['report-table-container']}>
@@ -19,7 +20,7 @@ function ReportTable(props) {
                         </tr>
                     </thead>
                     <tbody>
-                        {props.tableRows[0].length !== 0 ? (
+                        {props.tableRows.length !== 0 ? (
                             props.tableRows.map((row, index) => {
                                 return (
                                     <tr key={index}>
@@ -37,7 +38,7 @@ function ReportTable(props) {
                         ):null}
                     </tbody>
                 </table>
-                {props.tableRows[0].length === 0 ? (
+                {props.tableRows.length === 0 ? (
                     <div className={styles['empty-data-container']}>
                         <div className={styles['empty-data-icon']}>
                             <div class="eds-empty-state__graphic eds-align--center">
