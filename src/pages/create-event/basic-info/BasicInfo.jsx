@@ -10,7 +10,7 @@ import SubHeader from "../UI/SubHeader";
 import InputField from "../fields/InputField";
 import { Types, Categories, SubCategories, Tags } from "../Data";
 import TagsList from "../fields/TagsList";
-import { useState } from "react";
+import { useState , useEffect} from "react";
 
 const BasicInfo = (props) => {
   let [choosenTag, setChoosenTag] = useState([]);
@@ -27,7 +27,10 @@ const [AlreadyExists , setAlreadyExists] = useState(false);
 const [tagsLimitReached , setTagsLimitReached] = useState(0);
 const [regexRule, setRegexRule] = useState(true);
 
-props.onChange(eventinfo,choosenTag);
+useEffect(() => {
+  props.onChange(eventinfo,choosenTag);
+
+}, []);
 
   //Event Name Handler
   const EventTitleInputHandler = (e) => {

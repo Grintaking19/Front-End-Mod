@@ -1,6 +1,6 @@
 import styles from "./CreateEvent.module.css";
 import { useState } from "react";
-import DateAndTime from "./date-and-time/DateAndTime";
+import DateTime from "./date-and-time/DateTime";
 import BasicInfo from "./basic-info/BasicInfo";
 import Location from "./location/Location";
 import Divider from "./UI/Divider";
@@ -16,7 +16,7 @@ const postRequest = async (bodyFormData) => {
     headers: {
       Authorization:
         "Bearer " +
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ0NWU4YWJiZTliNmY4MTcyZjQyMyIsImlhdCI6MTY4MTUwNjA2NywiZXhwIjoxNjg5MjgyMDY3fQ.7D9Hpv9xfXb2baxmi55y5ZQl9AoXZTPSXLSDHH_Gw6k",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzliZGE0Yzg0NTU0MjU1ZTc3OWYwNCIsImlhdCI6MTY4MzA2NDM5OCwiZXhwIjoxNjkwODQwMzk4fQ.A8vFXxroxM7BWNCudQzXMUO7RjMYDPYfz2ZMRTSiShE",
       "ngrok-skip-browser-warning": "1",
       mode: "no-cors",
     },
@@ -55,9 +55,10 @@ const CreateEvent = (props) => {
   };
 
   const onSaveHandler = () => {
+    console.log(basicInfo.Title + "  ,,," + errorFlag + ",,," + basicInfo.Category);
     if (basicInfo.Title != "" && errorFlag == false && basicInfo.Category != "") {
       let bodyFormData = new FormData();
-      console.log(startDate);
+
       bodyFormData.append("privacy", "false");
       bodyFormData.append("name", basicInfo.Title);
       bodyFormData.append("image", "");
@@ -68,7 +69,7 @@ const CreateEvent = (props) => {
       bodyFormData.append("tags", choosenTag.toString());
       bodyFormData.append(
         "token",
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ0NWU4YWJiZTliNmY4MTcyZjQyMyIsImlhdCI6MTY4MTUyNDg4NCwiZXhwIjoxNjg5MzAwODg0fQ.d6mWcY4iubrso4YAx69_hhio72sTAux7gxasuKdpCh0"
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzliZGE0Yzg0NTU0MjU1ZTc3OWYwNCIsImlhdCI6MTY4MzA2NDM5OCwiZXhwIjoxNjkwODQwMzk4fQ.A8vFXxroxM7BWNCudQzXMUO7RjMYDPYfz2ZMRTSiShE"
       );
 
       postRequest(bodyFormData);
@@ -84,8 +85,9 @@ const CreateEvent = (props) => {
       <Divider />
       <Location onChange={LocationChangeHandler}></Location>
       <Divider />
-      <DateAndTime onChange={DateAndTimeChangeHandler}></DateAndTime>
       <Footer onSave={onSaveHandler} onDiscard={onDiscardHandler} />
+      <DateTime onChange={DateAndTimeChangeHandler}></DateTime>
+
     </div>
   );
 };

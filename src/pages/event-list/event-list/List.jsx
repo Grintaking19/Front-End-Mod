@@ -15,7 +15,7 @@ async function getUserData(parmas) {
     headers: {
       Authorization:
         "Bearer " +
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ0NWU4YWJiZTliNmY4MTcyZjQyMyIsImlhdCI6MTY4MTUyNDg4NCwiZXhwIjoxNjg5MzAwODg0fQ.d6mWcY4iubrso4YAx69_hhio72sTAux7gxasuKdpCh0",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzliZGE0Yzg0NTU0MjU1ZTc3OWYwNCIsImlhdCI6MTY4MzA2NDM5OCwiZXhwIjoxNjkwODQwMzk4fQ.A8vFXxroxM7BWNCudQzXMUO7RjMYDPYfz2ZMRTSiShE",
     },
   };
   try {
@@ -27,6 +27,8 @@ async function getUserData(parmas) {
 
 const List = (props) => {
   const [eventList, setEventList] = useState([]);
+  const serachFiltered = eventList.filter(event => event.name.includes(props.searchInput))
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,8 +37,9 @@ const List = (props) => {
     };
     fetchData();
   },[props.listView]);
-  
-  const serachFiltered = eventList.filter(event => event.name.includes(props.searchInput))
+
+
+
 
   return (
     <div className={styles["event-list"]} id="event-list">
