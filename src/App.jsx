@@ -14,7 +14,6 @@ import { PrivateOrPublicEvent } from "./pages/event-page/PrivateOrPublicEvent"
 import UpdatePassword from "./pages/update-password/UpdatePassword"
 
 
-//Iam Marwan. Kindly can I commit like my friends?
 
 export default function App() {
 
