@@ -4,30 +4,30 @@ function ReportTable(props) {
     return (
         <div className={styles['report-table-container']}>
             <div className={styles['report-table-header']}>
-                <h3>{props.title}</h3>
+                <h3 id={`report-table-header-${props.title}`}>{props.title}</h3>
             </div>
             <div className={styles['report-table-body']}>  
                 <table className="table table-hover table-borderless">
-                    <thead>
+                    <thead id={`report-table-header-${props.title}`}>
                         <tr>
                             {props.tableHeaders.map((header, index) => {
                                 return (
-                                    <th scope="col" key={index}>{header}</th>
+                                    <th scope="col" key={index} id={`report-table-header-${props.title}-${index}`}>{header}</th>
                                 );
                             })}
                         </tr>
                     </thead>
                     <tbody>
                         {props.tableRows.length !== 0 ? (
-                            props.tableRows.map((row, index) => {
+                            props.tableRows.map((row, rowIndex) => {
                                 return (
-                                    <tr key={index}>
-                                        {row.map((cell, index) => {
-                                            if (props.reportType === "tickets" && index === 2) {
-                                                cell = <a href="#">{cell}</a>
+                                    <tr key={rowIndex} id={`report-table-row-${props.title}-${rowIndex}`}>
+                                        {row.map((cell, cellIndex) => {
+                                            if (props.reportType === "tickets" && cellIndex === 2) {
+                                                cell = <a id={`report-table-row-${props.title}-${rowIndex}-cell-${cellIndex}`} href="#">{cell}</a>
                                             }
                                             return (
-                                                <td key={index}>{cell}</td>
+                                                <td key={cellIndex} id={`report-table-row-${props.title}-${rowIndex}-cell-${cellIndex}`}>{cell}</td>
                                             );
                                         })}
                                     </tr>
@@ -67,12 +67,12 @@ function ReportTable(props) {
                                     </span>
                             </div>
                         </div>
-                        <p>No {props.reportType} for this event yet</p>
+                        <p id={`report-table-empty-${props.reportType}`}>No {props.reportType} for this event yet</p>
                     </div>
                 ):null}
             </div>
             <div className={styles['report-table-footer']}>
-                <a href="#">Go to all {props.reportType}</a>
+                <a href="#" id={`report-table-footer-${props.reportType}`}>Go to all {props.reportType}</a>
             </div>
         </div>
     );
