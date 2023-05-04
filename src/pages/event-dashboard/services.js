@@ -1,4 +1,6 @@
 import { fetchData } from "../../utils/api";
+import { dateToReadableFormat } from "../../utils/date";
+
 
 export async function getTicketTypes(eventId) {
     let res = await fetchData(`/creators/events/${eventId}/tickets/`, true);
@@ -13,13 +15,13 @@ export async function getTicketTypes(eventId) {
 }
 
 export async function getBookings(eventId) {
-    let res = await fetchData(`/bookings/${eventId}`, true);
+    let res = await fetchData(`/events/${eventId}/bookings`, true);
     if (!res || res.status === "fail") {
         return [];
     }
     let bookings = [];
     res.data.bookings.forEach((booking) => {
-        bookings.push([booking.bookingID, booking.name.firstName + " " + booking.name.lastName, 1, booking.price, "2020-01-01"])
+        bookings.push([booking._id, booking.name.firstName + " " + booking.name.lastName, booking.quantity, booking.price, dateToReadableFormat(booking.purchasedOn)])
     })
     return bookings;
 }

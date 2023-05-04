@@ -122,7 +122,7 @@ function EventSidenav(props) {
                     </div>
                     <div className={styles['es-event-description-date']}>
                         {/* <p>Wed, Apr 19, 2023 7:00 PM</p> */}
-                        <p id="event-date">{`${eventDetails.startMonthInWords} ${eventDetails.startDay}, ${eventDetails.year} ${eventDetails.startHour}`}</p>
+                        <p id="event-date">{`${eventDetails.startDate}`}</p>
                     </div>
                     <div className={styles['es-event-description-preview']}>
                         <a href="#" id="preview-event">
