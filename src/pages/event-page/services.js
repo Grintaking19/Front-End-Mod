@@ -45,7 +45,7 @@ async function getTicketPriceRange(eventId) {
     }
     let min = res.data.tickets[0].price;
     let max = res.data.tickets[0].price;
-    res.data.ticket.forEach((ticket) => {
+    res.data.tickets.forEach((ticket) => {
         if (ticket.price < min) {
             min = ticket.price;
         }
