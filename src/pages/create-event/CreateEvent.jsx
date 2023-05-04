@@ -16,8 +16,8 @@ const postRequest = async (bodyFormData) => {
     headers: {
       Authorization:
         "Bearer " +
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzliZGE0Yzg0NTU0MjU1ZTc3OWYwNCIsImlhdCI6MTY4MzA2NDM5OCwiZXhwIjoxNjkwODQwMzk4fQ.A8vFXxroxM7BWNCudQzXMUO7RjMYDPYfz2ZMRTSiShE",
-      "ngrok-skip-browser-warning": "1",
+        localStorage.getItem("user"),
+        "ngrok-skip-browser-warning": "1",
       mode: "no-cors",
     },
   };
