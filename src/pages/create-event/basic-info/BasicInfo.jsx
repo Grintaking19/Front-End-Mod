@@ -1,12 +1,12 @@
 import styles from "./BasicInfo.module.css";
 
-import Panel from "../UI/Panel";
-import { BasicinfoIcon } from "../UI/SvgImages";
+import Panel from "../../../layouts/UI/Panel";
+import { BasicinfoIcon } from "../../../layouts/UI/SvgImages";
 import Dropdown from "../fields/Dropdown";
-import HorizontalFlex from "../UI/HorizontalFlex";
-import Button from "../UI/Button";
-import Tag from "../UI/Tag";
-import SubHeader from "../UI/SubHeader";
+import HorizontalFlex from "../../../layouts/UI/HorizontalFlex";
+import Button from "../../../layouts/UI/Button";
+import Tag from "../../../layouts/UI/Tag";
+import SubHeader from "../../../layouts/UI/SubHeader";
 import InputField from "../fields/InputField";
 import { Types, Categories, SubCategories, Tags } from "../Data";
 import TagsList from "../fields/TagsList";

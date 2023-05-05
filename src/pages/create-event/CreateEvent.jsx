@@ -3,8 +3,8 @@ import { useState } from "react";
 import DateTime from "./date-and-time/DateTime";
 import BasicInfo from "./basic-info/BasicInfo";
 import Location from "./location/Location";
-import Divider from "./UI/Divider";
-import Footer from "./UI/Footer";
+import Divider from "../../layouts/UI/Divider";
+import Footer from "../../layouts/UI/Footer";
 import Navbar from "../../layouts/navbar/NavBar";
 
 import axios from "axios";

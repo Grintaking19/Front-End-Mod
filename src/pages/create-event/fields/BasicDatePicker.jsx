@@ -1,7 +1,7 @@
  import   "./BasicDatePicker.css";
 
  import { Fragment, useState } from "react";
- import {CalendarIcon} from "../UI/SvgImages";
+ import {CalendarIcon} from "../../../layouts/UI/SvgImages";
  import { DatePicker } from '@mui/x-date-pickers/DatePicker';
  import dayjs from 'dayjs';
  import { LocalizationProvider } from "@mui/x-date-pickers";

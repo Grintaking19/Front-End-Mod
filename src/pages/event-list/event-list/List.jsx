@@ -5,7 +5,7 @@ import TableStatus from "../components/TableStatus";
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
-import Button from "../../create-event/UI/Button";
+import Button from "../../../layouts/UI/Button";
 
 //write get events
 async function getUserData(parmas) {

@@ -1,8 +1,8 @@
 import styles from "./Location.module.css";
-import Panel from "../UI/Panel";
-import { LocationIcon } from "../UI/SvgImages";
-import HorizontalFlex from "../UI/HorizontalFlex";
-import PanelChanger from "../UI/PanelChanger";
+import Panel from "../../../layouts/UI/Panel";
+import { LocationIcon } from "../../../layouts/UI/SvgImages";
+import HorizontalFlex from "../../../layouts/UI/HorizontalFlex";
+import PanelChanger from "../../../layouts/UI/PanelChanger";
 import { useState } from "react";
 
 const Location = () => {

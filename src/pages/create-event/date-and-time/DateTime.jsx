@@ -1,8 +1,8 @@
 import styles from "./DateTime.module.css";
-import Panel from "../UI/Panel";
-import { DateandTimeIcon } from "../UI/SvgImages";
-import HorizontalFlex from "../UI/HorizontalFlex";
-import PanelChanger from "../UI/PanelChanger";
+import Panel from "../../../layouts/UI/Panel";
+import { DateandTimeIcon } from "../../../layouts/UI/SvgImages";
+import HorizontalFlex from "../../../layouts/UI/HorizontalFlex";
+import PanelChanger from "../../../layouts/UI/PanelChanger";
 import CheckboxField from "../fields/CheckboxField";
 import DatalistField from "../fields/DatalistField";
 import LabeledDropdown from "../fields/LabeledDropdown";

@@ -1,0 +1,38 @@
+.panel {
+display: flex;
+flex-direction: row;
+width:46%;
+margin: auto 0;
+}
+
+.panel-image{
+padding-top: 29px;
+padding-right: 25px;
+
+}
+.panel-body{
+width:100%;
+}
+
+.panel-title{
+    font-size:1.875rem;
+    line-height:2.5rem;
+    letter-spacing:.5px;
+    margin-right:-.5px;
+    text-rendering: optimizeLegibility;
+    margin-bottom: 0;
+}
+
+.panel-description{
+padding-top: 0;
+margin-top: 0;
+width: 80%;
+font-size: .875rem;
+line-height: 1.25rem;
+font-weight: 400;
+color: #39364f;
+}
+
+.panel-body{
+
+}

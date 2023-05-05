@@ -2,7 +2,7 @@ import styles from "./TagsList.module.css";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import { HashIcon } from "../UI/SvgImages";
+import { HashIcon } from "../../../layouts/UI/SvgImages";
 
 const TagsList = (props) => {
   let style;
