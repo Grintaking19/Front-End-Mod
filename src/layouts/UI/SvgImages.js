@@ -8,8 +8,11 @@ const CalendarIcon = () => {
 
 const TagIcon = (id_) => {
   return (
-    <svg className="svg" height="20" width="20" id= {id_}>
-      <path id= {id_} d="M13.4 12l3.5-3.5-1.4-1.4-3.5 3.5-3.5-3.5-1.4 1.4 3.5 3.5-3.5 3.5 1.4 1.4 3.5-3.5 3.5 3.5 1.4-1.4z"></path>
+    <svg className="svg" height="20" width="20" id={id_}>
+      <path
+        id={id_}
+        d="M13.4 12l3.5-3.5-1.4-1.4-3.5 3.5-3.5-3.5-1.4 1.4 3.5 3.5-3.5 3.5 1.4 1.4 3.5-3.5 3.5 3.5 1.4-1.4z"
+      ></path>
     </svg>
   );
 };
@@ -89,6 +92,31 @@ const HashIcon = () => {
     </svg>
   );
 };
+
+const EventMedia = () => {
+  return (
+    <svg viewBox="0 0 24 24"
+      height={50}
+    >
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M2 20h20V4H2v16zm1-1h18V5H3v14z"
+      ></path>
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M16.5 7C15.1 7 14 8.1 14 9.5s1.1 2.5 2.5 2.5S19 10.9 19 9.5 17.9 7 16.5 7zm0 4c-.8 0-1.5-.7-1.5-1.5S15.7 8 16.5 8s1.5.7 1.5 1.5-.7 1.5-1.5 1.5z"
+      ></path>
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M15.5 13l-.7.8-3.5-3.8-6.4 7H19.1l-3.6-4zm-8.3 3l4.1-4.4 2.7 3 .7.8.7-.8 1.4 1.5H7.2z"
+      ></path>
+    </svg>
+  );
+};
+
 export {
   CalendarIcon,
   TagIcon,
@@ -96,4 +124,5 @@ export {
   LocationIcon,
   DateandTimeIcon,
   HashIcon,
+  EventMedia,
 };

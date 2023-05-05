@@ -1,5 +1,5 @@
 import styles from "./OptionsBar.module.css";
-import Button from "../components/Button";
+import Button from "../../../layouts/UI/Button";
 import ChoicesMenu from "../components/ChoicesMenu";
 
 import { useNavigate } from "react-router-dom";

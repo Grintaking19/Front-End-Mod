@@ -13,7 +13,7 @@ import GoogleFacebookToken from "./pages/google-facebook-token/GoogleFacebookTok
 import { PrivateOrPublicEvent } from "./pages/event-page/PrivateOrPublicEvent"
 import UpdatePassword from "./pages/update-password/UpdatePassword"
 import PublishEvent from "./pages/publish-event/PublishEvent"
-
+import EventDetails from "./pages/event-details/EventDetails";
 
 export default function App() {
 
@@ -35,6 +35,7 @@ export default function App() {
         <Route path="/create-event" element={<CreateEvent />} />
         <Route path="/google-facebook-token/:token" element={<GoogleFacebookToken />} />
         <Route path="/update-password" element={<UpdatePassword/>} />
+        <Route path="/event-details" element={<EventDetails/>} />
         <Route path="/publish-event" element={<PublishEvent/>} />
 
       </Routes>
