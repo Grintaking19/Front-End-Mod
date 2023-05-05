@@ -10,6 +10,7 @@ nav {
     /* background-color: blue; */
     height: 70px;
     align-items: center;
+    border-bottom: 1px solid #ece9f1;
 }
 
 .hebtus-logo-text {

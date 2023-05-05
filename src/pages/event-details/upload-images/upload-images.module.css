@@ -1,3 +1,4 @@
+
 .upload-image-div{
     display: flex;
     flex-direction: column;
@@ -22,5 +23,5 @@
 }
 
 .image{
-   height: 90% ;
+   height: 95% ;
 }

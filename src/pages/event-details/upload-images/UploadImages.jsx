@@ -1,5 +1,6 @@
 import styles from "./upload-images.module.css";
 import Button from "../../../layouts/UI/Button";
+import Panel from "../../../layouts/UI/Panel";
 import { EventMedia } from "../../../layouts/UI/SvgImages";
 import { useRef, useState } from "react";
 
@@ -25,7 +26,8 @@ const UploadImages = () => {
   };
 
   return (
-    <div>
+    <div className="upload-image-wrapper">
+    <Panel image={EventMedia} title="Event media" description="Upload images">
       {eventImagePreview == 0 ? (
         <div>
           <div className={styles["upload-image-div"]}>
@@ -41,21 +43,26 @@ const UploadImages = () => {
             />
           </div>
           <div className={styles["image-recommended"]}>
-            <span> Recommended image size: 2160 x 1080px </span>
-            <span> Maximum file size: 10MB </span>
+            <span> Recommended   size: 2160 x 1080px </span>
+            <span> Maximum size: 10MB </span>
             <span> Supported image files: JPEG or PNG </span>
           </div>
         </div>
-      ) : 
-      <div>
-      <div  className={styles["upload-image-div"]}>
-        <img className={styles["image"]} src={URL.createObjectURL(eventImage)} alt="event-image" />
+      ) : (
+        <div>
+          <div className={styles["upload-image-div"]}>
+            <img
+              className={styles["image"]}
+              src={URL.createObjectURL(eventImage)}
+              alt="event-image"
+            />
+          </div>
+          <Button style={ButtonStyle} onClick={RemoveImageHandler}>
+            Remove
+          </Button>
         </div>
-        <Button style={ButtonStyle} onClick={RemoveImageHandler}>
-              Remove Image
-            </Button>
-        </div>
-      }
+      )}
+    </Panel>
     </div>
   );
 };

@@ -95,9 +95,7 @@ const HashIcon = () => {
 
 const EventMedia = () => {
   return (
-    <svg viewBox="0 0 24 24"
-      height={50}
-    >
+    <svg viewBox="0 0 24 24" height={50}>
       <path
         fill-rule="evenodd"
         clip-rule="evenodd"
@@ -117,6 +115,24 @@ const EventMedia = () => {
   );
 };
 
+const EventDescription = () => {
+  return (
+    <svg  viewBox="0 0 24 24" height={50} >
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M2 2v3h1V3h5v10H6v1h5v-1H9V3h5v2h1V2H2z"
+      ></path>
+      <g
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+      >
+        <path d="M15 9h7v1h-7zM15 13h7v1h-7zM6 17h16v1H6zM6 21h16v1H6z"></path>
+      </g>
+    </svg>
+  );
+};
+
 export {
   CalendarIcon,
   TagIcon,
@@ -125,4 +141,5 @@ export {
   DateandTimeIcon,
   HashIcon,
   EventMedia,
+  EventDescription
 };
