@@ -16,6 +16,7 @@ export default function GoogleFacebookToken() {
         const response = await axios.post(`${process.env.REACT_APP_API_DOMAIN}/oauth/login/googlefacebookverify/${ptoken}`);
         if (response.data.token) {
           localStorage.setItem('user', response.data.token);
+          localStorage.setItem('userEmail', response.data.data.user.email);
         }
         console.log(localStorage.getItem('user'));
         navigate("/");
