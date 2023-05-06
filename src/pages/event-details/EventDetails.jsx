@@ -59,7 +59,7 @@ const EventDetails = () => {
       <NavBar />
 
       <div className={styles["conatiner"]}>
-        <EventSidenav eventName={eventDetails.Title}  startDate={eventDetails.startDate}/>
+        <EventSidenav eventName={eventDetails.Title}  startDate={eventDetails.startDate} eventCurrentInfo={eventDetails}/>
         <div className={styles["event-details"]}>
           <UploadImages onChange={saveUploadedImage} />
           <Divder />

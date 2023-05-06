@@ -20,7 +20,7 @@ export const eventPublishSteps = [
     {
         id: 1,
         title: 'Basic Info',
-        link: '/event/basic-info',
+        link: '/create-event',
         status: 'completed'
     }, {
         id: 2,

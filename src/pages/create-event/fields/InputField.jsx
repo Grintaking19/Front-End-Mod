@@ -50,6 +50,8 @@ const InputField = (props) => {
         maxLength={75}
         onChange={inputHandler}
         ref={TitleInputRef}
+        value={props.value}
+        disabled={props.disable}
       ></input>
       <span className={styles["input-field-monitor"]}>
         <div className={styles["input-field-warning"]} ref={TitleInputWarningRef}>

@@ -13,6 +13,7 @@ const DatalistField = (props) => {
         disableClearable={true}
         defaultValue={props.defaultValue}
         onChange={props.onChange}
+        disabled={props.disabled}
       />
         <p className={"datalist-field-title"}> {props.title}</p>
     </div>

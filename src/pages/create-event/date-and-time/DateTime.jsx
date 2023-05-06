@@ -9,6 +9,8 @@ import LabeledDropdown from "../fields/LabeledDropdown";
 import BasicDatePicker from "../fields/BasicDatePicker";
 import { useState, useEffect } from "react";
 import { TimeSlots, Languages, TimeZones } from  "../Data";
+import dayjs from 'dayjs';
+
 
 export const PM_24hoursConvert = (time) => {
   let hours = time.slice(0, 2);
@@ -67,6 +69,7 @@ const DateTime = (props) => {
     endDate.setUTCMinutes(endMinute);
     endDate.setSeconds(0);
     setEndDate(endDate);
+    console.log(endDate-startDate);
     if (endDate - startDate < 0){
       props.onChange(startDate.toUTCString(),endDate.toUTCString(),true);
       setDateError(true);
@@ -133,7 +136,7 @@ const DateTime = (props) => {
       image={DateandTimeIcon}
       title="Date and Time"
       description="Tell event-goers when your event starts and ends so they can make plans to attend."
-      style={{ width: "46%" }}
+      style={{ width: props.width }}
 
     >
       <PanelChanger className="panel-changer-clicked" id="single-event-panel">
@@ -149,6 +152,7 @@ const DateTime = (props) => {
           onChange={onStartDateChangeHandler}
           error={dateError}
           id="start-date"
+          value={dayjs(new Date())}
         />
         <DatalistField
           options={TimeSlots}

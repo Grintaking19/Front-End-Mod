@@ -8,6 +8,7 @@ const Button = (props) => {
       type="button"
       onClick={props.onClick}
       id={props.id}
+      disabled={props.disable}
     >
 
       {props.children}

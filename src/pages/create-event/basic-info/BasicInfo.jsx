@@ -10,7 +10,7 @@ import SubHeader from "../../../layouts/UI/SubHeader";
 import InputField from "../fields/InputField";
 import { Types, Categories, SubCategories, Tags } from "../Data";
 import TagsList from "../fields/TagsList";
-import { useState , useEffect} from "react";
+import { useState, useEffect } from "react";
 
 const BasicInfo = (props) => {
   let [choosenTag, setChoosenTag] = useState([]);
@@ -21,29 +21,29 @@ const BasicInfo = (props) => {
     Type: "",
     Category: "",
     SubCategory: "",
-
   });
-const [AlreadyExists , setAlreadyExists] = useState(false);
-const [tagsLimitReached , setTagsLimitReached] = useState(0);
-const [regexRule, setRegexRule] = useState(true);
+  const [AlreadyExists, setAlreadyExists] = useState(false);
+  const [tagsLimitReached, setTagsLimitReached] = useState(0);
+  const [regexRule, setRegexRule] = useState(true);
+
+  console.log(props.value.choosenTag);
 
 
   //Event Name Handler
   const EventTitleInputHandler = (e) => {
-    props.onChange({ ...eventinfo, Title: e.target.value },choosenTag);
+    props.onChange({ ...eventinfo, Title: e.target.value }, choosenTag);
     setEventInfo({ ...eventinfo, Title: e.target.value });
   };
   const Typehandler = (e) => {
-    props.onChange({ ...eventinfo, Type: e.target.value },choosenTag);
+    props.onChange({ ...eventinfo, Type: e.target.value }, choosenTag);
     setEventInfo({ ...eventinfo, Type: e.target.value });
   };
   const CategoryHandler = (e) => {
-    props.onChange({ ...eventinfo, Category: e.target.value },choosenTag);
+    props.onChange({ ...eventinfo, Category: e.target.value }, choosenTag);
     setEventInfo({ ...eventinfo, Category: e.target.value });
-
   };
   const SubCategoryHandler = (e) => {
-    props.onChange({ ...eventinfo, SubCategory: e.target.value },choosenTag);
+    props.onChange({ ...eventinfo, SubCategory: e.target.value }, choosenTag);
     setEventInfo({ ...eventinfo, SubCategory: e.target.value });
   };
 
@@ -53,26 +53,23 @@ const [regexRule, setRegexRule] = useState(true);
     if (choosenTag.length < 10) {
       //TBH I don't know why this is needed, but it is
       let x = e.currentTarget.firstChild.id;
-
+      props.onChange(eventinfo, [...choosenTag, x]);
       setChoosenTag((state) => [...state, x]);
       tagList = tagList.filter((a) => a.name !== e.currentTarget.firstChild.id);
       setTagList((state) => [...tagList]);
       setTextBoxValue("");
       setAlreadyExists(false);
-
-    }
-    else{
+    } else {
       setTagsLimitReached(true);
     }
     setTextBoxValue("");
-
   };
 
   const cancelTagHandler = (e) => {
     choosenTag = choosenTag.filter((a) => a !== e.currentTarget.firstChild.id);
+    props.onChange(eventinfo, [...choosenTag]);
     setChoosenTag((state) => [...choosenTag]);
     setTagsLimitReached(false);
-
 
     if (
       Tags.find((element) => element.name == e.currentTarget.firstChild.id) !=
@@ -90,33 +87,28 @@ const [regexRule, setRegexRule] = useState(true);
   };
 
   const typedTagHandler = (e) => {
-    let regex =/[\W\s\[\]\(\)\{\}-]/;
+    let regex = /[\W\s\[\]\(\)\{\}-]/;
 
-      if (
+    if (
       textBoxValue != "" &&
       choosenTag.includes(textBoxValue) == false &&
       choosenTag.length < 10 &&
-      textBoxValue.match(regex) ==null
+      textBoxValue.match(regex) == null
     ) {
+      props.onChange(eventinfo, [...choosenTag, textBoxValue]);
+
       setChoosenTag((state) => [...state, textBoxValue]);
       setTextBoxValue("");
       tagList = tagList.filter((a) => a.name !== textBoxValue);
       setTagList((state) => [...tagList]);
       setAlreadyExists(false);
       setRegexRule(true);
-
-    }
-    else{
-       if (choosenTag.length >= 10){
+    } else {
+      if (choosenTag.length >= 10) {
         setTagsLimitReached(true);
-       }
-      else if (choosenTag.includes(textBoxValue))
-      setAlreadyExists(true);
-
-      else if (textBoxValue.match(regex) !=null)
-      setRegexRule(false); 
+      } else if (choosenTag.includes(textBoxValue)) setAlreadyExists(true);
+      else if (textBoxValue.match(regex) != null) setRegexRule(false);
     }
-
   };
 
   return (
@@ -124,24 +116,41 @@ const [regexRule, setRegexRule] = useState(true);
       image={BasicinfoIcon}
       title="Basic Info"
       description="Name your event and tell event-goers why they should come. Add details that highlight what makes it unique."
-      style={{ width: "46%" }}
+      style={{ width: props.width }}
     >
       <InputField
         title="Event Title"
         required={1}
         onChange={EventTitleInputHandler}
-
+        value={props.value.Title}
+        disable={props.disable}
 
       />
 
       <HorizontalFlex>
-        <Dropdown options={Types} width="30%" onChange={Typehandler} id="type" />
-        <Dropdown options={Categories} width="30%" onChange={CategoryHandler} id="category" />
+        <Dropdown
+          options={Types}
+          width="30%"
+          onChange={Typehandler}
+          id="type"
+          disable={props.disable}
+
+        />
+        <Dropdown
+          options={Categories}
+          width="30%"
+          onChange={CategoryHandler}
+          id="category"
+          value={props.value.Category}
+          disable={props.disable}
+        />
         <Dropdown
           options={SubCategories}
           width="30%"
           onChange={SubCategoryHandler}
           id="subcategory"
+          disable={props.disable}
+
         />
       </HorizontalFlex>
 
@@ -158,21 +167,32 @@ const [regexRule, setRegexRule] = useState(true);
           onTextChange={tagTextChangeHandler}
           textBoxValue={textBoxValue}
           TagsCount={choosenTag.length}
-          Tagslimit = {tagsLimitReached}
+          Tagslimit={tagsLimitReached}
           AlreadyChoosen={AlreadyExists}
-          CharsValid = {regexRule}
+          CharsValid={regexRule}
+  
         />
-        <Button onClick={typedTagHandler} id="add-tag-btn">Add</Button>
+        <Button onClick={typedTagHandler} id="add-tag-btn"  disable={props.disable}>
+          Add
+        </Button>
       </HorizontalFlex>
 
-      <div className={styles['tags-div']}>
-        {choosenTag.map((tag) => {
-          return (
-            <Tag key={tag} id={tag} onCancel={cancelTagHandler}>
-              {tag}
-            </Tag>
-          );
-        })}
+      <div className={styles["tags-div"]}>
+        {props.value.choosenTag == undefined
+          ? choosenTag.map((tag) => {
+              return (
+                <Tag key={tag} id={tag} onCancel={cancelTagHandler}>
+                  {tag}
+                </Tag>
+              );
+            })
+          : props.value.choosenTag.map((tag) => {
+              return (
+                <Tag key={tag} id={tag} onCancel={cancelTagHandler}>
+                  {tag}
+                </Tag>
+              );
+            })}
       </div>
     </Panel>
   );

@@ -3,11 +3,16 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 65px;
+    margin-top: 65px;  
+    margin-left: 100px; 
+    padding-top: 775px;
+    height: 700px;
+    padding-right: 50px;
+    
+    overflow-y: scroll;
 }
-.navbar-div{
-    height: 900px;
-}
+
+
 .back-to-eventlist{
 color: #3659e3;
 text-decoration: underline;
