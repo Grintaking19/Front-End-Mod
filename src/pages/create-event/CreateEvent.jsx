@@ -32,6 +32,7 @@ const CreateEvent = (props) => {
     description: "",
     privacy: "",
     gopublicDate: "",
+    editOrCreate: "0", //0 Create, 1 Edit
   });
 
   const BasicInfoChangeHandler = (basicInfoRecived, choosenTagRecived) => {
@@ -104,8 +105,7 @@ const CreateEvent = (props) => {
           </span>
 
           <div style={{ display: "flex", flexDirection: "row" }}>
-            <EventSidenav />
-            <div className={styles["hider"]}> </div>
+          <EventSidenav eventName={state.Title}  startDate={state.startDate} eventCurrentInfo={state}  />
 
             <div className={styles["container"]}>
               <BasicInfo

@@ -6,6 +6,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import Button from "../../../layouts/UI/Button";
+import { useNavigate } from "react-router-dom";
 
 //write get events
 async function getUserData(parmas) {
@@ -44,9 +45,46 @@ async function deleteEvent(parmas) {
   } catch (error) {}
 }
 
+async function getEventData(parmas) {
+  let response;
+  let config = {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("user"),
+    },
+  };
+  try {
+    response = await axios.get(
+      "https://www.hebtus.me/api/v1/events/" + parmas,
+      config
+    );
+
+    console.log(response);
+    return response;
+  } catch (error) {}
+}
+
+
 const List = (props) => {
+  const navigate = useNavigate();
   const [eventList, setEventList] = useState([]);
   const [eventToDelete, setEventToDelete] = useState("");
+  let eventDataToSend = {
+    id: "",
+    Title: "",
+    Type: "",
+    Category: "Music",
+    SubCategory: "",
+    choosenTag: [],
+    location: "",
+    startDate: "",
+    endDate: "",
+    image: "",
+    description: "",
+    privacy: "",
+    gopublicDate: "",
+    editOrCreate: "0", //0 Create, 1 Edit
+  };
+
   const serachFiltered = eventList.filter((event) =>
     event.name.includes(props.searchInput)
   );
@@ -70,6 +108,23 @@ const List = (props) => {
   const deleteEventHandler = (e) => {
     setEventToDelete(e.target.id);
   };
+
+  const editEventHandler = async (e) => {
+    let x = await getEventData(e.target.id);
+    eventDataToSend.id= x.data.data._id;
+    eventDataToSend.Title= x.data.data.name;
+    eventDataToSend.Category= x.data.data.category;
+    eventDataToSend.choosenTag= [...x.data.data.tags];
+    eventDataToSend.location= "12,14";
+    eventDataToSend.startDate= x.data.data.startDate;
+    eventDataToSend.endDate= x.data.data.endDate;
+    eventDataToSend.image= x.data.data.img_url;
+    eventDataToSend.description= x.data.data.description;
+    eventDataToSend.privacy= x.data.data.privacy;
+    eventDataToSend.gopublicDate= x.data.data.gopublicDate;
+    eventDataToSend.editOrCreate= "1";
+    navigate("/event-details", { state: {...eventDataToSend} }) }
+  
 
   return (
     <div className={styles["event-list"]} id="event-list">
@@ -123,7 +178,7 @@ const List = (props) => {
                 <TableStatus id={element.id} />
               </td>
               <td>
-                <Button id={element.id} style={style}>
+                <Button id={element.id} style={style} onClick={editEventHandler}>
                   Edit
                 </Button>
                 <Button

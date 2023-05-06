@@ -25,6 +25,20 @@ const postRequest = async (JSONbody) => {
   return (response.data.data.event._id);
 };
 
+const patchRequest = async (JSONbody, eventID) => {
+  let url = "https://www.hebtus.me/api/v1/events/" + eventID;
+  let data = JSONbody;
+  let config = {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("user"),
+      "ngrok-skip-browser-warning": "1",
+      mode: "no-cors",
+    },
+  };
+  let response = await axios.patch(url, data, config);
+  console.log(response);
+};
+
 const EventDetails = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
@@ -39,6 +53,15 @@ const EventDetails = () => {
   const saveUploadedDescription = (descriptionReceived) => {
     setEventDetails({ ...eventDetails, description: descriptionReceived });
   };
+
+  const onEditHandler = async () => {
+    console.log(eventDetails.id);
+
+      const jsonData={
+        "description": eventDetails.description
+      }
+      await patchRequest(jsonData, eventDetails.id);
+  }
 
   const onSaveHandler = async () => {
     const formData = new FormData();
@@ -61,12 +84,20 @@ const EventDetails = () => {
       <div className={styles["conatiner"]}>
         <EventSidenav eventName={eventDetails.Title}  startDate={eventDetails.startDate} eventCurrentInfo={eventDetails}/>
         <div className={styles["event-details"]}>
-          <UploadImages onChange={saveUploadedImage} />
+
+          {
+            (state.id=="")&& <UploadImages onChange={saveUploadedImage} />}
           <Divder />
           <UploadDescription onChange={saveUploadedDescription} />
         </div>
       </div>
-      <Footer onSave={onSaveHandler} />
+
+      {
+        state.id=="" ? (
+        <Footer onSave={onSaveHandler} />):(
+
+        <Footer onSave={onEditHandler} />
+        )}
     </div>
   );
 };
