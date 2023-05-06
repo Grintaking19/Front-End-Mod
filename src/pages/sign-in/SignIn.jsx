@@ -80,7 +80,7 @@ export default function SignIn() {
       <section className={styles["container"]}>
         <div className={`${styles.form} ${styles["login"]}`}>
 
-          <h3 className={styles["hebtus-logo"]}>Hebtus</h3>
+          <h3 className={styles["hebtus-logo"]} onClick={()=>{navigate("/")}}>Hebtus</h3>
           <header >Log in</header>
 
           <form action="#" onSubmit={handleSubmit(onSubmit)} className="login-form">

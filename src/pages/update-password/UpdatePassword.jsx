@@ -94,7 +94,7 @@ export default function UpdatePassword() {
       <section className={styles["container"]}>
         <div className={`${styles.form} ${styles["login"]}`}>
 
-          <h3 className={styles["hebtus-logo"]}>Hebtus</h3>
+          <h3 className={styles["hebtus-logo"]} onClick={() => { navigate("/") }}>Hebtus</h3>
           <header >Ohh, looks like you want to change your password 🧐</header>
 
           <form action="#" onSubmit={handleSubmit(onSubmit)} className="login-form">
@@ -176,7 +176,7 @@ export default function UpdatePassword() {
 
 
             <div className={styles["form--error-message"]} id="form--error-message">
-              <p className={styles["error-message"]} id="errorMessage">{message}</p>
+              <p className={styles[success]} id="errorMessage">{message}</p>
             </div>
 
 

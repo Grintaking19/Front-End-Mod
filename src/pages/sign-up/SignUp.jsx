@@ -17,6 +17,9 @@ const config = {
   }
 };
 
+
+
+
 export default function SignUp({ setSuccess, setEmail }) {
   let navigate = useNavigate();
   const [passwordType, setPasswordType] = useState("password");
@@ -70,6 +73,13 @@ export default function SignUp({ setSuccess, setEmail }) {
     }
   }
 
+  function toGoogle() {
+    window.open("https://hebtus.me/api/v1/oauth/login/google", "_self");
+  }
+
+  function toFacebook() {
+    window.open("https://hebtus.me/api/v1/oauth/login/facebook", "_self");
+  }
 
   return (
     <div className={styles["signup-page"]}>
@@ -184,14 +194,14 @@ export default function SignUp({ setSuccess, setEmail }) {
             <div className={styles.line}></div>
 
             <div className={styles['form--media-options']}>
-              <a href="#" id="signUpFacebook" className={`${styles.field} ${styles.facebook}`}>
+              <a href="#" id="signUpFacebook" className={`${styles.field} ${styles.facebook}`} onClick={() => { toFacebook(); console.log("lol facebook") }}>
                 <i className='bx bxl-facebook facebook-icon'></i>
                 <span className = {styles["sign-up-with-facebook"]}>Sign up with Facebook</span>
               </a>
             </div>
 
             <div className={styles['form--media-options']}>
-              <a href="#" id="signUpGoogle" className={`${styles.field} ${styles.google}`}>
+              <a href="#" id="signUpGoogle" className={`${styles.field} ${styles.google}`} onClick={() => { toGoogle(); console.log("lol google") }}>
                 <img src={googleLogo} alt="" className={styles['google-img']} />
                 <span>Sign up with Google</span>
               </a>
