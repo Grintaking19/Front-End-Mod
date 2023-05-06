@@ -40,12 +40,8 @@
     "build": "env-cmd -f .env.staging react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject",
-    "docs": "jsdoc -c jsdoc.conf.json"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run docs"
-    }
+    "docs": "jsdoc -c jsdoc.conf.json",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
