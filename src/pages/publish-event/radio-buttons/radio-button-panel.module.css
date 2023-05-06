@@ -1,0 +1,14 @@
+.event-privacy-radiobutton{
+    height: 20px;
+    width: 20px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.radio-button-title{
+    font-size: 15px;
+}
+
+.radio-button-description{
+    font-size: 12px;
+}

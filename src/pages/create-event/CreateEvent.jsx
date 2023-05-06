@@ -22,6 +22,8 @@ const CreateEvent = (props) => {
     location: "",
     startDate: "",
     endDate: "",
+    image:"",
+    description:""
   });
 
   const BasicInfoChangeHandler = (basicInfoRecived, choosenTagRecived) => {

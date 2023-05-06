@@ -4,7 +4,7 @@ import Panel from "../../../layouts/UI/Panel";
 import { EventMedia } from "../../../layouts/UI/SvgImages";
 import { useRef, useState } from "react";
 
-const UploadImages = () => {
+const UploadImages = (props) => {
   let ButtonStyle = { marginTop: "10px", width: "30%", alignSelf: "center" };
   const uplaodImageRef = useRef();
   const [eventImage, setEventImage] = useState("");
@@ -18,6 +18,7 @@ const UploadImages = () => {
   const SaveImageHandler = () => {
     setEventImage(uplaodImageRef.current.files[0]);
     setEventImagePreview(1);
+    props.onChange(uplaodImageRef.current.files[0]);
   };
 
   const RemoveImageHandler = () => {
