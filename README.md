@@ -40,6 +40,10 @@ To run the tests, run the following command:
 npm test
 ```
 
+## Documentation
+
+To open the generated documentation, go to the [docs](docs) directory and open the [index.html](docs/index.html) file in your browser.
+
 ## Contributers
 
 - [Khaled Mamdouh](https://github.com/Khalidmamdou7)
