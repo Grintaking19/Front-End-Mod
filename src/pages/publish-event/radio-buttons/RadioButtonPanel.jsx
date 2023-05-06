@@ -5,7 +5,7 @@ const RadioButtonPanel = (props) => {
     <div>
       {props.inputArray.map((input) => {
         return (
-        <div style={{ display: "flex", flexDirection: "row" }}>
+        <div className={styles["wrapper"]}>
           <input
             className={styles["event-privacy-radiobutton"]}
             type="radio"

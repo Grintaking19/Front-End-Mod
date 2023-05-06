@@ -1,7 +1,7 @@
 import styles from "./event-privacy.module.css";
 import RadioButtonPanel from "../radio-buttons/RadioButtonPanel";
 
-let inputArray = [
+let privacyChoices = [
   {
     title: "Public",
     description: "Shared on Eventbrite and search engines",
@@ -19,7 +19,7 @@ const EventPrivacy = (props) => {
     <div className={styles["event-privacy"]}>
       <p className={styles["event-privacy-title"]}>Who can see your event?</p>
 
-      <RadioButtonPanel inputArray={inputArray} />
+      <RadioButtonPanel inputArray={privacyChoices} />
     </div>
   );
 };
