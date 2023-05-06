@@ -15,7 +15,7 @@ You need to have [Node.js](https://nodejs.org/en/) installed on your machine, as
 Clone the repository:
 
 ```bash
-git clone
+git clone [repo-url]
 ```
 
 Install the dependencies:
