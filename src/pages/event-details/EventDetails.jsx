@@ -7,7 +7,10 @@ import NavBar from "../../layouts/navbar/SignedInNavBar";
 import Footer from "../../layouts/UI/Footer";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 const EventDetails = () => {
+  const navigate = useNavigate();
   const { state } = useLocation();  
   const [eventDetails, setEventDetails] = useState(state);
 
@@ -20,13 +23,12 @@ const EventDetails = () => {
   }
 
   const onSaveHandler = () => {
-    
+    navigate("/publish-event", { state: eventDetails });
   }
 
   return (
     <div>
       <NavBar />
-      <Footer onSave={onSaveHandler} />
 
       <div className={styles["conatiner"]}>
         <EventSidenav />
@@ -37,6 +39,8 @@ const EventDetails = () => {
 
         </div>
       </div>
+      <Footer onSave={onSaveHandler} />
+
     </div>
   );
 };

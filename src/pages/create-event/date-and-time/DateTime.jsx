@@ -10,7 +10,7 @@ import BasicDatePicker from "../fields/BasicDatePicker";
 import { useState, useEffect } from "react";
 import { TimeSlots, Languages, TimeZones } from  "../Data";
 
-const PM_24hoursConvert = (time) => {
+export const PM_24hoursConvert = (time) => {
   let hours = time.slice(0, 2);
   if (hours[1] == ":") hours = hours[0];
   let PM_AM = time.slice(-2, time.length);
