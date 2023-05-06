@@ -18,7 +18,7 @@ function EventSidenav(props) {
         }, {
             id: 2,
             title: 'Details',
-            link: '/event/details',
+            link: '/event-details',
             status: 'not-completed'
         }, {
             id: 3,
@@ -28,7 +28,7 @@ function EventSidenav(props) {
         }, {
             id: 4,
             title: 'Publish',
-            link: '/event/publish',
+            link: '/publish-event',
             status: 'not-completed'
         }, {
             title: 'Dashboard',
