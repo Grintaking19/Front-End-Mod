@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo 'Running post-commit hook 🚀 🚀 🚀'
+
+# Generate the JSDoc documentation and add it to the Git staging area
+npm run docs
+git add docs/
+
+# Amend the previous commit with the updated JSDoc documentation
+git commit --amend --no-edit --no-verify
+

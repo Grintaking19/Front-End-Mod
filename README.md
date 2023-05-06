@@ -44,6 +44,14 @@ npm test
 
 To open the generated documentation, go to the [docs](docs) directory and open the [index.html](docs/index.html) file in your browser.
 
+To generate the documentation, run the following command:
+
+```bash
+npm run docs
+```
+
+The repo is configured to automatically generate the documentation on every commit.
+
 ## Contributers
 
 - [Khaled Mamdouh](https://github.com/Khalidmamdou7)

@@ -1,5 +1,18 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-echo "Running pre-commit hook 🚀 🚀 🚀 (husky)"
-npm run docs
+echo "Running pre-commit hook 🚀 🚀 🚀"
+
+# # Check if the previous commit message already contains the string "docs: update docs"
+# if git log -1 --pretty=%B | grep -q 'docs: update docs'; then
+#   echo "Previous commit message already contains 'docs: update docs'. Skipping commit."
+#   exit 0
+# fi
+
+# # Generate the JSDoc documentation and add it to the Git staging area
+# npm run docs
+# git add docs/
+
+# # Create a new commit with the message "docs: update docs"
+# git commit -m "docs: update docs"
+git log
