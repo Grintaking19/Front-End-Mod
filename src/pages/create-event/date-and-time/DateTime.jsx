@@ -48,10 +48,17 @@ const DateTime = (props) => {
     startDate.setSeconds(0);
     setStartDate(startDate);
 
-    if (endDate - startDate < 0) setDateError(true);
-    else setDateError(false);
+    if (endDate - startDate < 0) {
+      props.onChange(startDate.toUTCString(),endDate.toUTCString(),true);
 
-    props.onChange(startDate.toUTCString(),endDate.toUTCString(),dateError);
+      setDateError(true);
+    }
+    else{
+      props.onChange(startDate.toUTCString(),endDate.toUTCString(),false);
+
+      setDateError(false);
+    } 
+
   };
 
   const onEndDateChangeHandler = (date) => {
@@ -60,10 +67,14 @@ const DateTime = (props) => {
     endDate.setUTCMinutes(endMinute);
     endDate.setSeconds(0);
     setEndDate(endDate);
-    if (endDate - startDate < 0) setDateError(true);
-    else setDateError(false);
-    props.onChange(startDate.toUTCString(),endDate.toUTCString(),dateError);
-
+    if (endDate - startDate < 0){
+      props.onChange(startDate.toUTCString(),endDate.toUTCString(),true);
+      setDateError(true);
+    } 
+    else {
+      props.onChange(startDate.toUTCString(),endDate.toUTCString(),false);
+      setDateError(false)    
+    }
   };
 
   const onStartTimeChangeHandler = (e) => {
@@ -74,9 +85,14 @@ const DateTime = (props) => {
     startDate.setUTCMinutes(time[1]);
     startDate.setSeconds(0);
     setStartDate(startDate);
-    if (endDate - startDate < 0) setDateError(true);
-    else setDateError(false);
-    props.onChange(startDate.toUTCString(),endDate.toUTCString(),dateError);
+    if (endDate - startDate < 0){
+      props.onChange(startDate.toUTCString(),endDate.toUTCString(),true);
+      setDateError(true);
+    } 
+    else {
+      props.onChange(startDate.toUTCString(),endDate.toUTCString(),false);
+      setDateError(false)    
+    }
 
   };
 
@@ -88,9 +104,14 @@ const DateTime = (props) => {
     endDate.setUTCMinutes(time[1]);
     endDate.setSeconds(0);
     setEndDate(endDate);
-    if (endDate - startDate < 0) setDateError(true);
-    else setDateError(false);
-    props.onChange(startDate.toUTCString(),endDate.toUTCString(),dateError);
+    if (endDate - startDate < 0){
+      props.onChange(startDate.toUTCString(),endDate.toUTCString(),true);
+      setDateError(true);
+    } 
+    else {
+      props.onChange(startDate.toUTCString(),endDate.toUTCString(),false);
+      setDateError(false)    
+    }
 
   };
 

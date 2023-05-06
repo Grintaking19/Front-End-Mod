@@ -9,8 +9,9 @@ import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
-const postRequest = async (bodyFormData) => {
-  let url = "https://www.hebtus.me/api/v1/events";
+
+const postRequest = async (bodyFormData, eventID) => {
+  let url = "https://www.hebtus.me/api/v1/events/" + eventID;
   let data = bodyFormData;
   let config = {
     headers: {
@@ -21,46 +22,39 @@ const postRequest = async (bodyFormData) => {
       mode: "no-cors",
     },
   };
-  let response = await axios.post(url, data, config);
+  let response = await axios.patch(url, data, config);
   console.log(response);
+  return (response);
 };
 
 const PublishEvent = () => {
   const { state } = useLocation();
-  const [eventPublishDetails, setEventPublishDetails] = useState(state);
-  console.log(eventPublishDetails);
-
+  const [eventPublishDetails, setEventPublishDetails] = useState({...state});
+  console.log(eventPublishDetails.id);
   const privacyChangeHandler = (privacyRecieved) => {
+    console.log(privacyRecieved);
     setEventPublishDetails({...eventPublishDetails, privacy: privacyRecieved})
   }
 
   const publicDateHandler = (dateRecieved) => {
-    console.log(dateRecieved);
-
     setEventPublishDetails({...eventPublishDetails, gopublicDate: dateRecieved})
   }
 
   const onSaveHandler = () => {
-    console.log(eventPublishDetails);
-    console.log(localStorage.getItem("user"));
-    const formData = new FormData();
-    formData.append("name", eventPublishDetails.Title.toString());
-    formData.append("startDate", eventPublishDetails.startDate);
-    formData.append("endDate", eventPublishDetails.endDate);
-    formData.append("location", "31.2107164, 30.0246686");
-    formData.append("category", eventPublishDetails.Category);
-    formData.append("tags", eventPublishDetails.choosenTag.toString());
-    formData.append("privacy", eventPublishDetails.privacy);
-    formData.append("image", eventPublishDetails.image);
+    const JSONbody ={
+      "privacy": eventPublishDetails.privacy,
+      "goPublicDate": eventPublishDetails.gopublicDate.toISOString()
+    }
+    console.log(eventPublishDetails.id);
+    postRequest(JSONbody, eventPublishDetails.id);
 
-
-    postRequest(formData);
   }
+
   return (
     <div>
       <NavBar />
       <div className={styles["container"]}>
-        <EventSidenav />
+        <EventSidenav eventName={eventPublishDetails.Title}  startDate={eventPublishDetails.startDate}  />
         <div className={styles["components"]}>
           <h1 className={styles["heading"]}>Publish Your Event</h1>
           <EventPublishCard

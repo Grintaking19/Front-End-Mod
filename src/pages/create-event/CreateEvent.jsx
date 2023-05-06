@@ -7,13 +7,13 @@ import Divider from "../../layouts/UI/Divider";
 import Footer from "../../layouts/UI/Footer";
 import Navbar from "../../layouts/navbar/NavBar";
 import { useNavigate } from "react-router-dom";
-
-
+import axios from "axios";
 
 const CreateEvent = (props) => {
   const navigate = useNavigate();
   const [errorFlag, setErrorFlag] = useState(false);
   const [basicInfo, setBasicInfo] = useState({
+    id:"",
     Title: "",
     Type: "",
     Category: "Music",
@@ -56,14 +56,16 @@ const CreateEvent = (props) => {
     setErrorFlag(errorFlag);
   };
 
-  const onSaveHandler = () => {
+  const onSaveHandler = async () => {
+
     if (
       basicInfo.Title != "" &&
       errorFlag == false &&
       basicInfo.Category != ""
     ) {
+      
 
-      navigate("/event-details", { state: basicInfo });
+      navigate("/event-details", { state: {...basicInfo} });
     }
     
   };

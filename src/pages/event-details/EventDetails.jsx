@@ -8,39 +8,65 @@ import Footer from "../../layouts/UI/Footer";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+const postRequest = async (JSONbody) => {
+  let url = "https://www.hebtus.me/api/v1/events";
+  let data = JSONbody;
+  let config = {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("user"),
+      "ngrok-skip-browser-warning": "1",
+      mode: "no-cors",
+    },
+  };
+  let response = await axios.post(url, data, config);
+
+  return (response.data.data.event._id);
+};
 
 const EventDetails = () => {
   const navigate = useNavigate();
-  const { state } = useLocation();  
-  const [eventDetails, setEventDetails] = useState(state);
+  const { state } = useLocation();
+
+  console.log(state);
+  const [eventDetails, setEventDetails] = useState({ ...state });
 
   const saveUploadedImage = (imageReceived) => {
-    setEventDetails({...eventDetails, image: imageReceived})
-  }
+    setEventDetails({ ...eventDetails, image: imageReceived });
+  };
 
   const saveUploadedDescription = (descriptionReceived) => {
-    setEventDetails({...eventDetails, description: descriptionReceived})
-  }
+    setEventDetails({ ...eventDetails, description: descriptionReceived });
+  };
 
-  const onSaveHandler = () => {
-    navigate("/publish-event", { state: eventDetails });
-  }
+  const onSaveHandler = async () => {
+    const formData = new FormData();
+    formData.append("name", eventDetails.Title);
+    formData.append("startDate", eventDetails.startDate);
+    formData.append("endDate", eventDetails.endDate);
+    formData.append("location", "11,22");
+    formData.append("category", eventDetails.Category);
+    formData.append("tags", eventDetails.choosenTag.toString());
+    formData.append("image", eventDetails.image);
+    let eventId = await postRequest(formData);
+
+    navigate("/publish-event", { state: {...eventDetails, id:eventId } });
+  };
 
   return (
     <div>
       <NavBar />
 
       <div className={styles["conatiner"]}>
-        <EventSidenav />
+        <EventSidenav eventName={eventDetails.Title}  startDate={eventDetails.startDate}/>
         <div className={styles["event-details"]}>
-          <UploadImages onChange={saveUploadedImage}/>
+          <UploadImages onChange={saveUploadedImage} />
           <Divder />
           <UploadDescription onChange={saveUploadedDescription} />
-
         </div>
       </div>
       <Footer onSave={onSaveHandler} />
-
     </div>
   );
 };
