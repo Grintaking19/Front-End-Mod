@@ -17,7 +17,7 @@ const Footer = (props) => {
     <div className={styles["footer"]}>
       <div className={styles["buttons"]}>
       <Button style={SaveStyle} onClick={props.onSave} id="save-button"> Save & Continue </Button>
-        <Button id="discard-button">Discard</Button>
+  
       </div>
     </div>
   );

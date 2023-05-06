@@ -27,31 +27,24 @@ const [AlreadyExists , setAlreadyExists] = useState(false);
 const [tagsLimitReached , setTagsLimitReached] = useState(0);
 const [regexRule, setRegexRule] = useState(true);
 
-useEffect(() => {
-  props.onChange(eventinfo,choosenTag);
-
-}, []);
 
   //Event Name Handler
   const EventTitleInputHandler = (e) => {
+    props.onChange({ ...eventinfo, Title: e.target.value },choosenTag);
     setEventInfo({ ...eventinfo, Title: e.target.value });
-    props.onChange(eventinfo,choosenTag);
-
   };
   const Typehandler = (e) => {
+    props.onChange({ ...eventinfo, Type: e.target.value },choosenTag);
     setEventInfo({ ...eventinfo, Type: e.target.value });
-    props.onChange(eventinfo,choosenTag);
-
   };
   const CategoryHandler = (e) => {
+    props.onChange({ ...eventinfo, Category: e.target.value },choosenTag);
     setEventInfo({ ...eventinfo, Category: e.target.value });
-    props.onChange(eventinfo,choosenTag);
 
   };
   const SubCategoryHandler = (e) => {
+    props.onChange({ ...eventinfo, SubCategory: e.target.value },choosenTag);
     setEventInfo({ ...eventinfo, SubCategory: e.target.value });
-    props.onChange(eventinfo,choosenTag);
-
   };
 
   //Tags Handlers
@@ -121,9 +114,7 @@ useEffect(() => {
       setAlreadyExists(true);
 
       else if (textBoxValue.match(regex) !=null)
-      setRegexRule(false);
-      
-       
+      setRegexRule(false); 
     }
 
   };

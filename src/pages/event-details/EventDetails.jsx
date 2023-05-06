@@ -4,8 +4,10 @@ import EventSidenav from "../../layouts/event-sidenav/EventSidenav";
 import UploadDescription from "./upload-description/UploadDescription";
 import Divder from "../../layouts/UI/Divider";
 import NavBar from "../../layouts/navbar/SignedInNavBar";
-
+import { useLocation } from "react-router-dom";
 const EventDetails = () => {
+  const { state } = useLocation();
+  console.log(state);
   return (
     <div>
       <NavBar />

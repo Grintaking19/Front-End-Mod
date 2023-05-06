@@ -8,81 +8,61 @@ import Footer from "../../layouts/UI/Footer";
 import Navbar from "../../layouts/navbar/NavBar";
 import { useNavigate } from "react-router-dom";
 
-import axios from "axios";
 
-const postRequest = async (bodyFormData) => {
-  let url = "https://www.hebtus.me/api/v1/events";
-  let data = bodyFormData;
-  let config = {
-    headers: {
-      Authorization: "Bearer " + localStorage.getItem("user"),
-      "ngrok-skip-browser-warning": "1",
-      mode: "no-cors",
-    },
-  };
-
-  let response = await axios.post(url, data, config);
-  console.log(response);
-};
 
 const CreateEvent = (props) => {
   const navigate = useNavigate();
+  const [errorFlag, setErrorFlag] = useState(false);
   const [basicInfo, setBasicInfo] = useState({
     Title: "",
     Type: "",
     Category: "Music",
     SubCategory: "",
+    choosenTag: [],
+    location: "",
+    startDate: "",
+    endDate: "",
   });
-  const [choosenTag, setChoosenTag] = useState([]);
-  const [location, setLocation] = useState({});
-  const [startDate, setStartDate] = useState();
-  const [endDate, setEndDate] = useState();
-  const [errorFlag, setErrorFlag] = useState(false);
 
-  const BasicInfoChangeHandler = (basicInfo, choosenTag) => {
-    setBasicInfo(basicInfo);
-    setLocation(choosenTag);
+  const BasicInfoChangeHandler = (basicInfoRecived, choosenTagRecived) => {
+    setBasicInfo({
+      ...basicInfo,
+      Title: basicInfoRecived.Title,
+      Type: basicInfoRecived.Type,
+      Category: basicInfoRecived.Category,
+      SubCategory: basicInfoRecived.SubCategory,
+      choosenTag: [...choosenTagRecived],
+    });
   };
 
   const LocationChangeHandler = (location) => {
-    setLocation(location);
+    setBasicInfo({ ...basicInfo, location: location });
   };
 
-  const DateAndTimeChangeHandler = (startDate, endDate, errorFlag) => {
-    setStartDate(startDate);
-    setEndDate(endDate);
+  const DateAndTimeChangeHandler = (
+    startDateRecived,
+    endDateRecived,
+    errorFlag
+  ) => {
+    setBasicInfo({
+      ...basicInfo,
+      startDate: startDateRecived,
+      endDate: endDateRecived,
+    });
     setErrorFlag(errorFlag);
   };
 
   const onSaveHandler = () => {
-    console.log(
-      basicInfo.Title + "  ,,," + errorFlag + ",,," + basicInfo.Category
-    );
     if (
       basicInfo.Title != "" &&
       errorFlag == false &&
       basicInfo.Category != ""
     ) {
-      let bodyFormData = new FormData();
 
-      bodyFormData.append("privacy", "false");
-      bodyFormData.append("name", basicInfo.Title);
-      bodyFormData.append("image", "");
-      bodyFormData.append("startDate", startDate);
-      bodyFormData.append("endDate", endDate);
-      bodyFormData.append("location", "31.2107164, 30.0246686");
-      bodyFormData.append("category", basicInfo.Category);
-      bodyFormData.append("tags", choosenTag.toString());
-      bodyFormData.append(
-        "token",
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzliZGE0Yzg0NTU0MjU1ZTc3OWYwNCIsImlhdCI6MTY4MzA2NDM5OCwiZXhwIjoxNjkwODQwMzk4fQ.A8vFXxroxM7BWNCudQzXMUO7RjMYDPYfz2ZMRTSiShE"
-      );
-
-      postRequest(bodyFormData);
+      navigate("/event-details", { state: basicInfo });
     }
+    
   };
-
-  const onDiscardHandler = () => {};
 
   return (
     <div className={styles["navbar-div"]}>
@@ -91,7 +71,8 @@ const CreateEvent = (props) => {
         className={styles["back-to-eventlist"]}
         onClick={() => navigate("/events-list")}
       >
-        &lt; Events </span>
+        &lt; Events{" "}
+      </span>
 
       <div className={styles["container"]}>
         <BasicInfo onChange={BasicInfoChangeHandler}></BasicInfo>
@@ -99,8 +80,7 @@ const CreateEvent = (props) => {
         <Location onChange={LocationChangeHandler}></Location>
         <Divider />
         <DateTime onChange={DateAndTimeChangeHandler}></DateTime>
-        <Footer onSave={onSaveHandler} onDiscard={onDiscardHandler} />
-
+        <Footer onSave={onSaveHandler} />
       </div>
     </div>
   );
