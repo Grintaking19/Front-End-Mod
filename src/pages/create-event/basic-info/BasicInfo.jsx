@@ -1,16 +1,16 @@
 import styles from "./BasicInfo.module.css";
 
-import Panel from "../UI/Panel";
-import { BasicinfoIcon } from "../UI/SvgImages";
+import Panel from "../../../layouts/UI/Panel";
+import { BasicinfoIcon } from "../../../layouts/UI/SvgImages";
 import Dropdown from "../fields/Dropdown";
-import HorizontalFlex from "../UI/HorizontalFlex";
-import Button from "../UI/Button";
-import Tag from "../UI/Tag";
-import SubHeader from "../UI/SubHeader";
+import HorizontalFlex from "../../../layouts/UI/HorizontalFlex";
+import Button from "../../../layouts/UI/Button";
+import Tag from "../../../layouts/UI/Tag";
+import SubHeader from "../../../layouts/UI/SubHeader";
 import InputField from "../fields/InputField";
 import { Types, Categories, SubCategories, Tags } from "../Data";
 import TagsList from "../fields/TagsList";
-import { useState } from "react";
+import { useState , useEffect} from "react";
 
 const BasicInfo = (props) => {
   let [choosenTag, setChoosenTag] = useState([]);
@@ -27,28 +27,24 @@ const [AlreadyExists , setAlreadyExists] = useState(false);
 const [tagsLimitReached , setTagsLimitReached] = useState(0);
 const [regexRule, setRegexRule] = useState(true);
 
-props.onChange(eventinfo,choosenTag);
 
   //Event Name Handler
   const EventTitleInputHandler = (e) => {
+    props.onChange({ ...eventinfo, Title: e.target.value },choosenTag);
     setEventInfo({ ...eventinfo, Title: e.target.value });
-    props.onChange(eventinfo,choosenTag);
-
   };
   const Typehandler = (e) => {
+    props.onChange({ ...eventinfo, Type: e.target.value },choosenTag);
     setEventInfo({ ...eventinfo, Type: e.target.value });
-    props.onChange(eventinfo,choosenTag);
-
   };
   const CategoryHandler = (e) => {
+    props.onChange({ ...eventinfo, Category: e.target.value },choosenTag);
     setEventInfo({ ...eventinfo, Category: e.target.value });
-    props.onChange(eventinfo,choosenTag);
 
   };
   const SubCategoryHandler = (e) => {
+    props.onChange({ ...eventinfo, SubCategory: e.target.value },choosenTag);
     setEventInfo({ ...eventinfo, SubCategory: e.target.value });
-    props.onChange(eventinfo,choosenTag);
-
   };
 
   //Tags Handlers
@@ -118,9 +114,7 @@ props.onChange(eventinfo,choosenTag);
       setAlreadyExists(true);
 
       else if (textBoxValue.match(regex) !=null)
-      setRegexRule(false);
-      
-       
+      setRegexRule(false); 
     }
 
   };
@@ -130,6 +124,7 @@ props.onChange(eventinfo,choosenTag);
       image={BasicinfoIcon}
       title="Basic Info"
       description="Name your event and tell event-goers why they should come. Add details that highlight what makes it unique."
+      style={{ width: "46%" }}
     >
       <InputField
         title="Event Title"

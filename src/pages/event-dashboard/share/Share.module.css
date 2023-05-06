@@ -28,6 +28,7 @@
 .event-url-value {
     grid-area: v;
     overflow: hidden;
+    font-size: 14px;
 }
 
 .event-url-icons {
@@ -46,8 +47,15 @@
     cursor: pointer;
 }
 
-.event-url-title,
-.event-url-value {
+.copy-icon:hover {
+    color: #98a9eb;
+}
+
+.copy-icon:active {
+    transform: translateY(1px);
+}
+
+.event-url-title {
     font-size: 16px;
     font-weight: 400;
     font-family: sans-serif;

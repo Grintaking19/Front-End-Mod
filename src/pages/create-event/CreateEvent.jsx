@@ -1,91 +1,91 @@
 import styles from "./CreateEvent.module.css";
 import { useState } from "react";
-import DateAndTime from "./date-and-time/DateAndTime";
+import DateTime from "./date-and-time/DateTime";
 import BasicInfo from "./basic-info/BasicInfo";
 import Location from "./location/Location";
-import Divider from "./UI/Divider";
-import Footer from "./UI/Footer";
+import Divider from "../../layouts/UI/Divider";
+import Footer from "../../layouts/UI/Footer";
 import Navbar from "../../layouts/navbar/NavBar";
+import { useNavigate } from "react-router-dom";
 
-import axios from "axios";
 
-const postRequest = async (bodyFormData) => {
-  let url = "https://www.hebtus.me/api/v1/events";
-  let data = bodyFormData;
-  let config = {
-    headers: {
-      Authorization:
-        "Bearer " +
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ0NWU4YWJiZTliNmY4MTcyZjQyMyIsImlhdCI6MTY4MTUwNjA2NywiZXhwIjoxNjg5MjgyMDY3fQ.7D9Hpv9xfXb2baxmi55y5ZQl9AoXZTPSXLSDHH_Gw6k",
-      "ngrok-skip-browser-warning": "1",
-      mode: "no-cors",
-    },
-  };
-
-  let response = await axios.post(url, data, config);
-  console.log(response);
-};
 
 const CreateEvent = (props) => {
+  const navigate = useNavigate();
+  const [errorFlag, setErrorFlag] = useState(false);
   const [basicInfo, setBasicInfo] = useState({
     Title: "",
     Type: "",
     Category: "Music",
     SubCategory: "",
+    choosenTag: [],
+    location: "",
+    startDate: "",
+    endDate: "",
+    image:"",
+    description:"",
+    privacy:"",
+    gopublicDate:""
   });
-  const [choosenTag, setChoosenTag] = useState([]);
-  const [location, setLocation] = useState({});
-  const [startDate, setStartDate] = useState();
-  const [endDate, setEndDate] = useState();
-  const [errorFlag, setErrorFlag] = useState(false);
 
-  const BasicInfoChangeHandler = (basicInfo, choosenTag) => {
-    setBasicInfo(basicInfo);
-    setLocation(choosenTag);
+  const BasicInfoChangeHandler = (basicInfoRecived, choosenTagRecived) => {
+    setBasicInfo({
+      ...basicInfo,
+      Title: basicInfoRecived.Title,
+      Type: basicInfoRecived.Type,
+      Category: basicInfoRecived.Category,
+      SubCategory: basicInfoRecived.SubCategory,
+      choosenTag: [...choosenTagRecived],
+    });
   };
 
   const LocationChangeHandler = (location) => {
-    setLocation(location);
+    setBasicInfo({ ...basicInfo, location: location });
   };
 
-  const DateAndTimeChangeHandler = (startDate, endDate, errorFlag) => {
-    setStartDate(startDate);
-    setEndDate(endDate);
+  const DateAndTimeChangeHandler = (
+    startDateRecived,
+    endDateRecived,
+    errorFlag
+  ) => {
+    setBasicInfo({
+      ...basicInfo,
+      startDate: startDateRecived,
+      endDate: endDateRecived,
+    });
     setErrorFlag(errorFlag);
   };
 
   const onSaveHandler = () => {
-    if (basicInfo.Title != "" && errorFlag == false && basicInfo.Category != "") {
-      let bodyFormData = new FormData();
-      console.log(startDate);
-      bodyFormData.append("privacy", "false");
-      bodyFormData.append("name", basicInfo.Title);
-      bodyFormData.append("image", "");
-      bodyFormData.append("startDate", startDate);
-      bodyFormData.append("endDate", endDate);
-      bodyFormData.append("location", "31.2107164, 30.0246686");
-      bodyFormData.append("category", basicInfo.Category);
-      bodyFormData.append("tags", choosenTag.toString());
-      bodyFormData.append(
-        "token",
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ0NWU4YWJiZTliNmY4MTcyZjQyMyIsImlhdCI6MTY4MTUyNDg4NCwiZXhwIjoxNjg5MzAwODg0fQ.d6mWcY4iubrso4YAx69_hhio72sTAux7gxasuKdpCh0"
-      );
+    if (
+      basicInfo.Title != "" &&
+      errorFlag == false &&
+      basicInfo.Category != ""
+    ) {
 
-      postRequest(bodyFormData);
+      navigate("/event-details", { state: basicInfo });
     }
+    
   };
 
-  const onDiscardHandler = () => {};
-
   return (
-    <div className={styles["container"]}>
-      {/* <Navbar /> */}
-      <BasicInfo onChange={BasicInfoChangeHandler}></BasicInfo>
-      <Divider />
-      <Location onChange={LocationChangeHandler}></Location>
-      <Divider />
-      <DateAndTime onChange={DateAndTimeChangeHandler}></DateAndTime>
-      <Footer onSave={onSaveHandler} onDiscard={onDiscardHandler} />
+    <div className={styles["navbar-div"]}>
+      <Navbar />
+      <span
+        className={styles["back-to-eventlist"]}
+        onClick={() => navigate("/events-list")}
+      >
+        &lt; Events{" "}
+      </span>
+
+      <div className={styles["container"]}>
+        <BasicInfo onChange={BasicInfoChangeHandler}></BasicInfo>
+        <Divider />
+        <Location onChange={LocationChangeHandler}></Location>
+        <Divider />
+        <DateTime onChange={DateAndTimeChangeHandler}></DateTime>
+        <Footer onSave={onSaveHandler} />
+      </div>
     </div>
   );
 };

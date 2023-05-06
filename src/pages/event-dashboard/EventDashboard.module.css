@@ -1,6 +1,5 @@
-.event-dashboard {
+.main-container {
     height: 100vh;
-    /* background-color: aqua; */
     display: grid;
     grid-template-columns: 288px repeat(13, 1fr);
     grid-template-rows: 90px auto;
@@ -14,7 +13,7 @@
     grid-area: n;
 }
 
-.es {
+.sidenav-container {
     grid-area: es;
 }
 
@@ -29,16 +28,13 @@
 .content-container {
     background-color: white;
     width: 960px;
-    height: 100%;
 }
 
 .insights-container {
     width: 100%;
-    height: 50%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
-    overflow: scroll;
     grid-template-areas: 
     "h h h"
     "c c t"
@@ -54,15 +50,13 @@
 .stats-container {
     background-color: rgb(255, 255, 255);
     width: 100%;
-    height: 10%;
     margin: 24px 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
-    overflow: visible;
     grid-template-areas: 
     "sc sc oac"
-    "oc oc oac"
+    "oc oc oac";
 }
 
 .header {
@@ -90,7 +84,7 @@
     grid-area: t;
 }
 
-.share {
+.share-container {
     grid-area: s;
 }
 
@@ -115,19 +109,19 @@
 
 
 @media screen and (max-width: 960px) {
-    .event-dashboard {
+    .main-container {
         grid-template-areas:
         "n n n n n n n n n n n n n n"
         "b b b b b b b b b b b b b b";
     }
 
-    .es {
+    .sidenav-container {
         display: none;
     }
 }
 
 @media screen and (max-width: 790px) {
-    .event-dashboard {
+    .main-container {
         grid-template-areas:
         "n n n n n n n n n n n n n n"
         "b b b b b b b b b b b b b b";

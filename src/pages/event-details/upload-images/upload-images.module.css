@@ -1,0 +1,27 @@
+
+.upload-image-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #f8f7fa;
+    width: 100%;
+    height: 300px;
+}
+
+.upload-image-div:hover{
+    background-color: #f8f7fa;
+    box-shadow: 0 0 5px rgba(33,33,33,.2); 
+    transition: all .1s ease-in-out;
+}
+
+.image-recommended{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.image{
+   height: 95% ;
+}

@@ -1,0 +1,10 @@
+.event-privacy{
+    display: flex;
+    flex-direction: column;
+    
+}
+.event-privacy-title{
+    font-size: 20px;
+    font-weight: 700;
+    color: black;
+}

@@ -1,0 +1,19 @@
+.footer{
+    display: flex;
+    flex-direction: row-reverse;
+    position: fixed;
+    bottom : 0;
+    width: 100%;
+    border-top: 1px solid #e0e0e0;
+    background-color: white;
+  
+}
+.buttons{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    flex-basis: 30%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-right: 10%;
+}
