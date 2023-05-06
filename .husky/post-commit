@@ -3,10 +3,20 @@
 
 echo 'Running post-commit hook 🚀 🚀 🚀'
 
+# Check if the commit was triggered by Husky hooks
+if git log -1 --pretty=%B | grep -q "JSDocs updated"; then
+#   echo "Commit was to update JSDoc documentation"
+  exit 0
+else
+  echo "Commit was not to update JSDoc documentation"
+fi
+
 # Generate the JSDoc documentation and add it to the Git staging area
 npm run docs
 git add docs/
 
-# Amend the previous commit with the updated JSDoc documentation
-git commit --amend --no-edit --no-verify
+# Amend the previous commit with the updated JSDoc documentation but use the previous commit message and add a new line to the last line of the commit message saying that the JSDoc documentation was updated
+git commit --amend --no-edit -m "$(git log -1 --pretty=%B) 
+
+JSDocs updated"
 
