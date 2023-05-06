@@ -6,6 +6,7 @@ import Location from "./location/Location";
 import Divider from "../../layouts/UI/Divider";
 import Footer from "../../layouts/UI/Footer";
 import Navbar from "../../layouts/navbar/NavBar";
+import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
@@ -14,10 +15,8 @@ const postRequest = async (bodyFormData) => {
   let data = bodyFormData;
   let config = {
     headers: {
-      Authorization:
-        "Bearer " +
-        localStorage.getItem("user"),
-        "ngrok-skip-browser-warning": "1",
+      Authorization: "Bearer " + localStorage.getItem("user"),
+      "ngrok-skip-browser-warning": "1",
       mode: "no-cors",
     },
   };
@@ -27,6 +26,7 @@ const postRequest = async (bodyFormData) => {
 };
 
 const CreateEvent = (props) => {
+  const navigate = useNavigate();
   const [basicInfo, setBasicInfo] = useState({
     Title: "",
     Type: "",
@@ -55,8 +55,14 @@ const CreateEvent = (props) => {
   };
 
   const onSaveHandler = () => {
-    console.log(basicInfo.Title + "  ,,," + errorFlag + ",,," + basicInfo.Category);
-    if (basicInfo.Title != "" && errorFlag == false && basicInfo.Category != "") {
+    console.log(
+      basicInfo.Title + "  ,,," + errorFlag + ",,," + basicInfo.Category
+    );
+    if (
+      basicInfo.Title != "" &&
+      errorFlag == false &&
+      basicInfo.Category != ""
+    ) {
       let bodyFormData = new FormData();
 
       bodyFormData.append("privacy", "false");
@@ -79,15 +85,23 @@ const CreateEvent = (props) => {
   const onDiscardHandler = () => {};
 
   return (
-    <div className={styles["container"]}>
-      {/* <Navbar /> */}
-      <BasicInfo onChange={BasicInfoChangeHandler}></BasicInfo>
-      <Divider />
-      <Location onChange={LocationChangeHandler}></Location>
-      <Divider />
-      <Footer onSave={onSaveHandler} onDiscard={onDiscardHandler} />
-      <DateTime onChange={DateAndTimeChangeHandler}></DateTime>
+    <div className={styles["navbar-div"]}>
+      <Navbar />
+      <span
+        className={styles["back-to-eventlist"]}
+        onClick={() => navigate("/events-list")}
+      >
+        &lt; Events </span>
 
+      <div className={styles["container"]}>
+        <BasicInfo onChange={BasicInfoChangeHandler}></BasicInfo>
+        <Divider />
+        <Location onChange={LocationChangeHandler}></Location>
+        <Divider />
+        <DateTime onChange={DateAndTimeChangeHandler}></DateTime>
+        <Footer onSave={onSaveHandler} onDiscard={onDiscardHandler} />
+
+      </div>
     </div>
   );
 };

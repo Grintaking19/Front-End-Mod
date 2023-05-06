@@ -7,18 +7,17 @@ import NavBar from "../../layouts/navbar/SignedInNavBar";
 
 const EventDetails = () => {
   return (
-    <div> 
-            <NavBar/>
+    <div>
+      <NavBar />
 
-
-    <div className={styles["conatiner"]}>
-      <EventSidenav />
-      <div className={styles["event-details"]}>
-        <UploadImages />
-        <Divder />
-        <UploadDescription />
+      <div className={styles["conatiner"]}>
+        <EventSidenav />
+        <div className={styles["event-details"]}>
+          <UploadImages />
+          <Divder />
+          <UploadDescription />
+        </div>
       </div>
-    </div>
     </div>
   );
 };

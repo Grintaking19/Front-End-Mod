@@ -3,4 +3,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 65px;
+}
+.navbar-div{
+    height: 900px;
+}
+.back-to-eventlist{
+color: #3659e3;
+text-decoration: underline;
+width: fit-content;
+cursor: pointer;
+position: relative;
+top: 20px;
+left:22%;
 }

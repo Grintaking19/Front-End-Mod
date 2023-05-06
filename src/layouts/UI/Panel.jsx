@@ -2,7 +2,7 @@ import styles from './Panel.module.css';
 
 const Panel = (props) => {
     return (
-        <div className={styles["panel"]}>
+        <div className={styles["panel"]} style={props.style}>
         <div className={styles["panel-image"]}>
             {props.image()}
         </div>

@@ -133,6 +133,7 @@ useEffect(() => {
       image={BasicinfoIcon}
       title="Basic Info"
       description="Name your event and tell event-goers why they should come. Add details that highlight what makes it unique."
+      style={{ width: "46%" }}
     >
       <InputField
         title="Event Title"

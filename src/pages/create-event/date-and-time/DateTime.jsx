@@ -112,6 +112,8 @@ const DateTime = (props) => {
       image={DateandTimeIcon}
       title="Date and Time"
       description="Tell event-goers when your event starts and ends so they can make plans to attend."
+      style={{ width: "46%" }}
+
     >
       <PanelChanger className="panel-changer-clicked" id="single-event-panel">
         Single Event
@@ -179,6 +181,7 @@ const DateTime = (props) => {
         width="50%"
         id="event-page-lang"
       />
+        <br />  <br />  <br />
     </Panel>
   );
 };

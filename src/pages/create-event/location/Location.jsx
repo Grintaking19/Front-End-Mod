@@ -17,6 +17,8 @@ const Location = () => {
       image={LocationIcon}
       title="Location"
       description="Help people in the area discover your event and let attendees know where to show up."
+      style={{ width: "46%" }}
+
     >
       <HorizontalFlex width="68%" id="location-panel-changers">
         <PanelChanger onClick={()=>panelChangeHandler(1)} className={(choosenPanel==1) && "panel-changer-clicked"} id="venue-panel-changer">Venue</PanelChanger>
