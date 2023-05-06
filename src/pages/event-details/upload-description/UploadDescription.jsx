@@ -1,14 +1,12 @@
 import styles from "./upload-description.css";
 import Panel from "../../../layouts/UI/Panel";
 import { EventDescription } from "../../../layouts/UI/SvgImages";
-import { useState } from "react";
 
-const UploadDescription = () => {
-  const [eventDescription, setEventDescription] = useState("");
+const UploadDescription = (props) => {
   const descriptionInputHandler = (event) => {
-    setEventDescription(event.target.value);
-    console.log(event.target.value);
+    props.onChange(event.target.value);
   };
+
   return (
     <div className={styles["upload-description"]}>
       <Panel

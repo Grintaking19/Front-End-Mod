@@ -23,7 +23,9 @@ const CreateEvent = (props) => {
     startDate: "",
     endDate: "",
     image:"",
-    description:""
+    description:"",
+    privacy:"",
+    gopublicDate:""
   });
 
   const BasicInfoChangeHandler = (basicInfoRecived, choosenTagRecived) => {

@@ -7,9 +7,11 @@ const RadioButtonPanel = (props) => {
         return (
         <div className={styles["wrapper"]}>
           <input
+            id = {input.title}
             className={styles["event-privacy-radiobutton"]}
             type="radio"
             name={input.name}
+            onChange={props.onChange}
           />
           <div style={{ display: "flex", flexDirection: "column" }}>
             <span className={styles["radio-button-title"]}>{input.title}</span>
