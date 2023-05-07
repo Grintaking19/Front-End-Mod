@@ -8,6 +8,7 @@ import Footer from "../../layouts/UI/Footer";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const patchRequest = async (bodyFormData, eventID) => {
   let url = "https://www.hebtus.me/api/v1/events/" + eventID;
@@ -25,9 +26,11 @@ const patchRequest = async (bodyFormData, eventID) => {
 };
 
 const PublishEvent = () => {
+  const navigate = useNavigate();
   const { state } = useLocation();
   const [eventPublishDetails, setEventPublishDetails] = useState({ ...state });
-  console.log(state);
+
+
 
   const privacyChangeHandler = (privacyRecieved) => {
     console.log(privacyRecieved);

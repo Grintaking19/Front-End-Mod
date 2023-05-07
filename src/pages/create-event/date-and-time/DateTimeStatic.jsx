@@ -85,16 +85,7 @@ const DateTimeStatic = (props) => {
         />
       
       </HorizontalFlex>
-      <CheckboxField
-        title="Display start time."
-        description="The start time of your event will be displayed to attendees."
-        id="display-start-time"
-      />
-      <CheckboxField
-        title="Display end time."
-        description="The end time of your event will be displayed to attendees."
-        id="display-end-time"
-      />
+
       <br />
       <LabeledDropdown options={TimeZones} title="Time Zone" width="50%"
        id="time-zone"

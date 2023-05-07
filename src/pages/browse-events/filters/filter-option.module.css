@@ -1,0 +1,20 @@
+.filtersOption{
+    height: 55px;
+    background-color: #F8F7FA;
+    width: 280px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    margin-left: 25px;
+    color:#39364f;
+    font-size:0.875rem;
+    line-height: 3.5rem;
+    letter-spacing: 0.25px;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: left;
+    font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
+}
+
+.filtersOption:hover{
+    background-color: #F2F0F6;
+}

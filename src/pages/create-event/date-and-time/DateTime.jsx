@@ -184,18 +184,7 @@ const DateTime = (props) => {
         />
       
       </HorizontalFlex>
-      <CheckboxField
-        title="Display start time."
-        description="The start time of your event will be displayed to attendees."
-        onChange={onDisplayEndTimeHandler}
-        id="display-start-time"
-      />
-      <CheckboxField
-        title="Display end time."
-        description="The end time of your event will be displayed to attendees."
-        onChange={onDisplayStartTimeHandler}
-        id="display-end-time"
-      />
+
       <br />
       <LabeledDropdown options={TimeZones} title="Time Zone" width="50%"
        id="time-zone"

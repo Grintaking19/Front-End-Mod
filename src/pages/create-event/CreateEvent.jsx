@@ -7,14 +7,24 @@ import Divider from "../../layouts/UI/Divider";
 import Footer from "../../layouts/UI/Footer";
 import Navbar from "../../layouts/navbar/NavBar";
 import EventSidenav from "../../layouts/event-sidenav/EventSidenav";
+import SignIn from "../sign-in/SignIn";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import DateTimeStatic from "./date-and-time/DateTimeStatic";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Link, Navigate } from "react-router-dom"
+
+
 import axios from "axios";
 
 const CreateEvent = (props) => {
   const navigate = useNavigate();
   const { state } = useLocation();
+
+
+  if(localStorage.getItem("user") == ""){
+    navigate("/login");
+  }
 
   console.log(state);
   const [errorFlag, setErrorFlag] = useState(false);

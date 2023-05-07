@@ -1,0 +1,26 @@
+.filterHeading{
+    height: 60px;
+    background-color: #F8F7FA;
+    width: 290px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 15px;
+    padding-left: 15px;
+    border-style: solid;
+    border-color: #F8F7FA;
+    color:#39364f;
+    font-size:1.125rem;
+    line-height: 1.25rem;
+    letter-spacing: 0.25px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left;
+}
+
+.filterHeading:hover{
+    background-color: #F2F0F6;
+}
+
+.filterCheckBox--label:hover{
+    cursor: pointer;
+}

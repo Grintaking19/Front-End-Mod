@@ -1,0 +1,11 @@
+.Searchbar{
+    height: 40px;
+    width: 100%;
+    border-width: 0px;
+    font-size: 25px;
+    padding-left: 20px;
+}
+
+input:focus {
+    outline:none;
+}
