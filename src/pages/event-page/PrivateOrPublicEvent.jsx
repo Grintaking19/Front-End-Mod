@@ -12,14 +12,14 @@ export function PrivateOrPublicEvent() {
   useEffect(() => {
     async function fetchData() {
 
-      const eventData = await getEvent(eventId);
-      console.log(eventData);
-      // console.log(eventData.ticketPriceRange);
-      if (eventData == null) {
+      let res = await getEvent(eventId);
+      res.eventData.ticketPriceRange = res.ticketPriceRange;
+      console.log(res.eventData);
+      if (res == null) {
         setShowEvent(false);
       }
       else {
-        setEventM(eventData);
+        setEventM(res.eventData);
       }
     }
     fetchData();
