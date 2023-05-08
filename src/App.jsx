@@ -15,8 +15,8 @@ import UpdatePassword from "./pages/update-password/UpdatePassword"
 import PublishEvent from "./pages/publish-event/PublishEvent"
 import EventDetails from "./pages/event-details/EventDetails";
 import BrowseEvents from "./pages/browse-events/BrowseEvents";
-import Booking from "./pages/booking/Booking";
-import TicketsContainer from "./pages/booking/TicketsContainer";
+import TicketsContainer from "./pages/bookings/TicketsContainer";
+import Booking from "./pages/bookings/Booking";
 export default function App() {
 
   let capacity = 20;
