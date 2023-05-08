@@ -1,0 +1,4 @@
+.cards-container {
+    min-height: 200px;
+    flex-wrap: wrap;
+}

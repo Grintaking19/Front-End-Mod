@@ -4,6 +4,7 @@ import EventSidenav from "../../layouts/event-sidenav/EventSidenav";
 import NavBar from "../../layouts/navbar/NavBar";
 
 import AddTicketCard from "./components/add-ticket-card/AddTicketCard";
+import TicketCard from "./components/ticket-card/TicketCard";
 
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -37,8 +38,12 @@ function ManageTickets() {
                     <div className={EventDashboardModule['header']}>
                         <h1 className={EventDashboardModule['title']}>Tickets</h1>
                     </div>
-                    <div className={EventDashboardModule['cards-container']}>
+                    <div className={`${EventDashboardModule['cards-container']} ${ManageTicketsModule['cards-container']}`}>
                         <AddTicketCard />
+                        <TicketCard />
+                        <TicketCard />
+                        <TicketCard />
+                        <TicketCard />
                     </div>
                 </div>
             </div>
