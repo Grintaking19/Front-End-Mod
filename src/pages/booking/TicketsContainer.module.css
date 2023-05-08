@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Heebo', sans-serif;
+}
+
+.component {
+  display: flex;
+  width: 100%;
+  
+
+}
+
+.container {
+  width: 100%;
+  margin-top: 16px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(238, 237, 242);
+  padding: 16px 0;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.container--reservation {
+  padding: 0 16px 16px 16px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reservation--ticket-name h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(57, 54, 79);
+}
+
+.reservation--ticket-quantity {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.ticket-quantity--value {
+  margin: 0 16px;
+  color: rgb(30, 10, 60);
+  font-size: 18px;
+}
+
+.ticket-quantity--button {
+  width: 32px;
+  border-radius: 8px;
+  height: 32px;
+  border: none;
+  background-color: rgb(61, 100, 255);
+  color: white;
+}
+
+
+.reservation--price {
+  display: flex;
+  padding: 16px 16px 0px 16px;
+}
+
+.reservation--price h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(57, 54, 79);
+}
+
+.reservation--end-date {
+  display: flex;
+  padding: 0px 16px 0px 16px;
+}
+
+.reservation--end-date h3 {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgb(57, 54, 79);
+}
+
+.reservation--ticket-type {
+  display: flex;
+  padding: 16px 16px 0px 16px;
+}
+
+.reservation--ticket-type h3 {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgb(111,114,135);
+}

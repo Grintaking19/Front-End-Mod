@@ -1,9 +1,12 @@
 import styles from "./EventPage.module.css";
 import Navbar from "../../layouts/navbar/NavBar";
-
+import { useState } from "react";
 
 
 function Event({event}) {
+    // console.log("lol");
+    console.log(event);
+    
     return (
         <div className={styles['event-page']} id="event-page">
             <div className={styles['ep-navbar-container']} id="ep-navbar-container">

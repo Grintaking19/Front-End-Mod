@@ -7,9 +7,13 @@ export async function getEvent(eventId) {
         console.log("fetch failed for get events");
         return null;
     }
-    let event = res.data;
+    let event = JSON.parse(JSON.stringify(res.data));;
     event = setDateFormat(event);
-    event.ticketPriceRange = await getTicketPriceRange(eventId);
+    let ticketPriceRange = await getTicketPriceRange(eventId);
+    event.ticketPriceRange = ticketPriceRange;
+    console.log("This is the event:")
+    console.log(event)
+    // console.log("lol first ticket price range: " + event.ticketPriceRange);
     return event;
 }
 
@@ -26,12 +30,12 @@ export async function setDateFormat(event) {
 
 async function getTicketPriceRange(eventId) {
     // TODO: Validate eventId
-    let res = await fetchData(`/events/${eventId}/tickets/`, true);
+    let res = await fetchData(`/events/${eventId}/tickets/?page=0&limit=20`, true);
     console.log(res);
     if (!res || res.status === "fail") {
         return null;
     }
-
+    console.log(`tickets:${res.data.tickets.length}`)
     if (res.data.tickets.length === 0) {
         return null;
     }
@@ -39,6 +43,7 @@ async function getTicketPriceRange(eventId) {
     if (res.data.tickets.length === 1) {
         let isFree = !res.data.tickets[0].price || res.data.tickets[0].price === 0;
         if (isFree) {
+            console.log("free");
             return "Free";
         }
         return "£" + res.data.tickets[0].price;
