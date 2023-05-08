@@ -7,10 +7,10 @@ export async function getEvent(eventId) {
         console.log("fetch failed for get events");
         return null;
     }
-    let event = res.data;
-    event = setDateFormat(event);
-    event.ticketPriceRange = await getTicketPriceRange(eventId);
-    return event;
+    let eventData = res.data;
+    eventData = setDateFormat(eventData);
+    const ticketPriceRange = await getTicketPriceRange(eventId);
+    return { eventData, ticketPriceRange };
 }
 
 export async function setDateFormat(event) {
@@ -53,5 +53,8 @@ async function getTicketPriceRange(eventId) {
             max = ticket.price;
         }
     })
+    if (min === max) {
+        return "£" + min;
+    }
     return "£" + min + " - £" + max;
 }

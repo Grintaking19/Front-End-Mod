@@ -49,9 +49,9 @@ function EventSidenav(props) {
     useEffect(() => {
         async function fetchData() {
             if (!eventId) return
-            const eventDetailsData = await getEvent(eventId)
-            setEventDetails(eventDetailsData)
-            setIsDraft(eventDetailsData.draft)
+            const {eventData} = await getEvent(eventId)
+            setEventDetails(eventData)
+            setIsDraft(eventData.draft)
             const ticketTypes = await getTicketTypes(eventId)
             if (ticketTypes.length === 0) {
                 setCanBePublished(false)
