@@ -29,7 +29,8 @@
      <div id={props.id}>
 
      <DatePicker sx={{width:"310px", border: dateError()}} onChange={onDateChange} 
-     defaultValue={dayjs(new Date())}
+     defaultValue={dayjs(new Date(props.value))}
+     disabled={props.disabled}
      />
      <p className={"date-picker-title"}> {props.title}</p> 
      {(props.error) && <p className={"date-picker-warning"}>End date must be after start date. </p>}

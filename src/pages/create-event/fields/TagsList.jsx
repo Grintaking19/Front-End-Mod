@@ -48,6 +48,7 @@ const TagsList = (props) => {
   return (
     <div className={TagsStyleManiplator()}>
       <Autocomplete
+      disabled={props.disable}
         key={props.options.name}
         sx={{
           width: props.width,
@@ -64,6 +65,7 @@ const TagsList = (props) => {
           return (
             <div key={option.name}>
               <Box
+
                 key={option.name}
                 component="li"
                 sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
@@ -92,6 +94,7 @@ const TagsList = (props) => {
               ...params.inputProps, // must include otherwise it breaks
               value: props.textBoxValue,
               maxLength: 25,
+              
             }}
 
             sx={inputStyle}

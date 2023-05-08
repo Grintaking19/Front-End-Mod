@@ -9,6 +9,8 @@ import LabeledDropdown from "../fields/LabeledDropdown";
 import BasicDatePicker from "../fields/BasicDatePicker";
 import { useState, useEffect } from "react";
 import { TimeSlots, Languages, TimeZones } from  "../Data";
+import dayjs from 'dayjs';
+
 
 export const PM_24hoursConvert = (time) => {
   let hours = time.slice(0, 2);
@@ -48,10 +50,17 @@ const DateTime = (props) => {
     startDate.setSeconds(0);
     setStartDate(startDate);
 
-    if (endDate - startDate < 0) setDateError(true);
-    else setDateError(false);
+    if (endDate - startDate < 0) {
+      props.onChange(startDate.toUTCString(),endDate.toUTCString(),true);
 
-    props.onChange(startDate.toUTCString(),endDate.toUTCString(),dateError);
+      setDateError(true);
+    }
+    else{
+      props.onChange(startDate.toUTCString(),endDate.toUTCString(),false);
+
+      setDateError(false);
+    } 
+
   };
 
   const onEndDateChangeHandler = (date) => {
@@ -60,10 +69,15 @@ const DateTime = (props) => {
     endDate.setUTCMinutes(endMinute);
     endDate.setSeconds(0);
     setEndDate(endDate);
-    if (endDate - startDate < 0) setDateError(true);
-    else setDateError(false);
-    props.onChange(startDate.toUTCString(),endDate.toUTCString(),dateError);
-
+    console.log(endDate-startDate);
+    if (endDate - startDate < 0){
+      props.onChange(startDate.toUTCString(),endDate.toUTCString(),true);
+      setDateError(true);
+    } 
+    else {
+      props.onChange(startDate.toUTCString(),endDate.toUTCString(),false);
+      setDateError(false)    
+    }
   };
 
   const onStartTimeChangeHandler = (e) => {
@@ -74,9 +88,14 @@ const DateTime = (props) => {
     startDate.setUTCMinutes(time[1]);
     startDate.setSeconds(0);
     setStartDate(startDate);
-    if (endDate - startDate < 0) setDateError(true);
-    else setDateError(false);
-    props.onChange(startDate.toUTCString(),endDate.toUTCString(),dateError);
+    if (endDate - startDate < 0){
+      props.onChange(startDate.toUTCString(),endDate.toUTCString(),true);
+      setDateError(true);
+    } 
+    else {
+      props.onChange(startDate.toUTCString(),endDate.toUTCString(),false);
+      setDateError(false)    
+    }
 
   };
 
@@ -88,9 +107,14 @@ const DateTime = (props) => {
     endDate.setUTCMinutes(time[1]);
     endDate.setSeconds(0);
     setEndDate(endDate);
-    if (endDate - startDate < 0) setDateError(true);
-    else setDateError(false);
-    props.onChange(startDate.toUTCString(),endDate.toUTCString(),dateError);
+    if (endDate - startDate < 0){
+      props.onChange(startDate.toUTCString(),endDate.toUTCString(),true);
+      setDateError(true);
+    } 
+    else {
+      props.onChange(startDate.toUTCString(),endDate.toUTCString(),false);
+      setDateError(false)    
+    }
 
   };
 
@@ -112,7 +136,7 @@ const DateTime = (props) => {
       image={DateandTimeIcon}
       title="Date and Time"
       description="Tell event-goers when your event starts and ends so they can make plans to attend."
-      style={{ width: "46%" }}
+      style={{ width: props.width }}
 
     >
       <PanelChanger className="panel-changer-clicked" id="single-event-panel">
@@ -128,6 +152,7 @@ const DateTime = (props) => {
           onChange={onStartDateChangeHandler}
           error={dateError}
           id="start-date"
+          value={dayjs(new Date())}
         />
         <DatalistField
           options={TimeSlots}
@@ -159,18 +184,7 @@ const DateTime = (props) => {
         />
       
       </HorizontalFlex>
-      <CheckboxField
-        title="Display start time."
-        description="The start time of your event will be displayed to attendees."
-        onChange={onDisplayEndTimeHandler}
-        id="display-start-time"
-      />
-      <CheckboxField
-        title="Display end time."
-        description="The end time of your event will be displayed to attendees."
-        onChange={onDisplayStartTimeHandler}
-        id="display-end-time"
-      />
+
       <br />
       <LabeledDropdown options={TimeZones} title="Time Zone" width="50%"
        id="time-zone"

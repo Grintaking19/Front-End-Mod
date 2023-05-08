@@ -1,7 +1,7 @@
 import styles from "./EventSideNav.module.css"
 
 import { useEffect, useState } from "react"
-import { Link, Navigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 import { getTicketTypes } from "../../pages/event-dashboard/services"
 import { getEvent } from "./services"
@@ -32,8 +32,10 @@ import { icons, eventPublishSteps } from "./data"
  * )
  */
 function EventSidenav(props) {
+    const navigate = useNavigate();
     // TODO: Remove the eventName and startDate props and use the eventId to fetch the event details if the backend have implemented edit event details
     const { eventId, activeTab, eventName, startDate } = props
+    let eventCurrentInfo= props.eventCurrentInfo;
     
     // TODO: Use the activeTab prop to set the active tab
 
@@ -126,7 +128,8 @@ function EventSidenav(props) {
                         let className = step.selected ? styles['es-list-li'] + " " + styles['es-list-li-active'] : styles['es-list-li'];
                         return (
                             <li className={className} key={index} id={`es-list-li-${step.title}`}>
-                                <a href={step.link} id={`es-list-li-${step.title}-link`}>
+                                <a id={`es-list-li-${step.title}-link`}   onClick={() => { navigate(step.link, { state: {...eventCurrentInfo} }) }}>
+
                                     <div>
                                         {step.status ? icon : null}
                                         <span>{step.title}</span>

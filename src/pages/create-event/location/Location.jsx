@@ -5,7 +5,7 @@ import HorizontalFlex from "../../../layouts/UI/HorizontalFlex";
 import PanelChanger from "../../../layouts/UI/PanelChanger";
 import { useState } from "react";
 
-const Location = () => {
+const Location = (props) => {
 
   const [choosenPanel, setChoosenPanel] = useState(1);
   const panelChangeHandler = (index) => {
@@ -17,7 +17,7 @@ const Location = () => {
       image={LocationIcon}
       title="Location"
       description="Help people in the area discover your event and let attendees know where to show up."
-      style={{ width: "46%" }}
+      style={{ width: props.width }}
 
     >
       <HorizontalFlex width="68%" id="location-panel-changers">

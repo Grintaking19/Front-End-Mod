@@ -6,11 +6,14 @@
 .checkbox-conatiner{
     display: flex;
     flex-direction: row;
+    position: relative;
+
 }
 
 .checkbox-text-conatiner{
     display: flex;
     flex-direction: column;
+
 }
 
 .checkbox-title{

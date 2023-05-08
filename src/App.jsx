@@ -14,6 +14,7 @@ import { PrivateOrPublicEvent } from "./pages/event-page/PrivateOrPublicEvent"
 import UpdatePassword from "./pages/update-password/UpdatePassword"
 import PublishEvent from "./pages/publish-event/PublishEvent"
 import EventDetails from "./pages/event-details/EventDetails";
+import BrowseEvents from "./pages/browse-events/BrowseEvents";
 import Booking from "./pages/booking/Booking";
 import TicketsContainer from "./pages/booking/TicketsContainer";
 export default function App() {
@@ -47,6 +48,8 @@ export default function App() {
         <Route path="/publish-event" element={<PublishEvent />} />
         <Route path="/booking" element={<Booking />} />
         <Route path="/tickets" element={<TicketsContainer name={name} type={type} price={price} capacity={capacity} reserved={reserved} endDate={endDate} />} />
+        <Route path="/browse-event" element={<BrowseEvents/>} />
+
       </Routes>
     </BrowserRouter>
 
