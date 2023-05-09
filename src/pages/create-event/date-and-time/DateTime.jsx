@@ -11,6 +11,25 @@ import { useState, useEffect } from "react";
 import { TimeSlots, Languages, TimeZones } from  "../Data";
 import dayjs from 'dayjs';
 
+/**
+ * Component for the Date and Time of the event creation pages
+ * 
+ * @component
+ * @param {Object} props
+ * @param {string} props.width  - Determine the width of the 
+ * @param {string} props.onCLick - Triggerd when the user click on the button (save and continue)
+ * @name DateTime
+
+ * @example
+ * if (endDate - startDate < 0){
+ * props.onChange(startDate.toUTCString(),endDate.toUTCString(),true);
+ * setDateError(true);
+ * } 
+ * else {
+ * props.onChange(startDate.toUTCString(),endDate.toUTCString(),false);
+ * setDateError(false)    
+ * }
+ */
 
 export const PM_24hoursConvert = (time) => {
   let hours = time.slice(0, 2);

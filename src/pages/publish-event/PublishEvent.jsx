@@ -10,6 +10,25 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+/**
+ * Component for the publish event page
+ * @component
+ * @param {Fuction} onEditHandler - Triggerd when the user make any edit to the event (patch request)
+ * @param {Function} onSaveHandler  - Triggerd when the user saves the event
+ * @param {Function} publicDateHandler - Triggerd when the user edits public date
+ * @param {Function} privacyChangeHandler - Triggerd when the user changes privacy
+ * @name PublishEvent
+
+ * @example
+ * <EventPublicDate onChange={publicDateHandler} />
+ * @example
+ * <EventPrivacy onPrivacyChange={privacyChangeHandler} />
+ * @example
+ * <Footer onSave={onSaveHandler} />
+
+*/
+
+
 const patchRequest = async (bodyFormData, eventID) => {
   let url = "https://www.hebtus.me/api/v1/events/" + eventID;
   let data = bodyFormData;

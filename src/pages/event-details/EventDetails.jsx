@@ -10,6 +10,27 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+/**
+ * Component for the Event Details oage
+ * 
+ * @component
+ * @param {Fuction} saveUploadedImage - Triggerd when the user chooses iamge
+ * @param {Function} saveUploadedDescription  - Triggerd when the user edits the event, to save the description
+ * @param {Function} onEditHandler - Triggerd when the user edits the event
+ * @param {Function} onSaveHandler - Triggerd when the user click on the button (save and continue)
+
+ * @example
+ * <UploadDescription onChange={saveUploadedDescription} />
+ * @example
+ *  <div className={styles["event-details"]}>
+ * {
+ * (state.id=="")&& <UploadImages onChange={saveUploadedImage} />}
+ * <Divder />
+ * <UploadDescription onChange={saveUploadedDescription} />
+ * </div>
+ * }
+ */
+
 const postRequest = async (JSONbody) => {
   let url = "https://www.hebtus.me/api/v1/events";
   let data = JSONbody;

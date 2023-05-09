@@ -12,6 +12,28 @@ import { Types, Categories, SubCategories, Tags } from "../Data";
 import TagsList from "../fields/TagsList";
 import { useState, useEffect } from "react";
 
+/**
+ * Component for the BasicInfo of the event creation pages
+ * 
+ * @component
+ * @param {Object} props
+ * @param {string} props.value  - The data of the event (Mandatory if the event has been created in the backend)
+ * @param {string} props.disabled - Determine whether the input fields is disabled or not
+ * @param {string} props.onClick - Triggerd when the user click on the button (save and continue)
+ * @name BasicInfo
+ * @example
+ *  let x = e.currentTarget.firstChild.id;
+ *  props.onChange(eventinfo, [...choosenTag, x]);
+ *  setChoosenTag((state) => [...state, x]);
+ * @example
+ *<InputField
+ * title="Event Title"
+ * required={1}
+ * onChange={EventTitleInputHandler}
+ * value={props.value.Title}
+ * disable={props.disable}/>
+ **/
+
 const BasicInfo = (props) => {
   let [choosenTag, setChoosenTag] = useState([]);
   let [tagList, setTagList] = useState(Tags);
@@ -27,7 +49,6 @@ const BasicInfo = (props) => {
   const [regexRule, setRegexRule] = useState(true);
 
   console.log(props.value.choosenTag);
-
 
   //Event Name Handler
   const EventTitleInputHandler = (e) => {
@@ -124,7 +145,6 @@ const BasicInfo = (props) => {
         onChange={EventTitleInputHandler}
         value={props.value.Title}
         disable={props.disable}
-
       />
 
       <HorizontalFlex>
@@ -134,7 +154,6 @@ const BasicInfo = (props) => {
           onChange={Typehandler}
           id="type"
           disable={props.disable}
-
         />
         <Dropdown
           options={Categories}
@@ -150,7 +169,6 @@ const BasicInfo = (props) => {
           onChange={SubCategoryHandler}
           id="subcategory"
           disable={props.disable}
-
         />
       </HorizontalFlex>
 
@@ -170,9 +188,12 @@ const BasicInfo = (props) => {
           Tagslimit={tagsLimitReached}
           AlreadyChoosen={AlreadyExists}
           CharsValid={regexRule}
-  
         />
-        <Button onClick={typedTagHandler} id="add-tag-btn"  disable={props.disable}>
+        <Button
+          onClick={typedTagHandler}
+          id="add-tag-btn"
+          disable={props.disable}
+        >
           Add
         </Button>
       </HorizontalFlex>
