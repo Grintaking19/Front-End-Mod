@@ -104,10 +104,11 @@
 
       .events-filter-header {
         font-size: 23px;
+        text-align: center;
         }
 
         .event-card{
-            width: 80%;
+            width: 90%;
             margin-left: 45px;
         }
 
