@@ -124,7 +124,7 @@ const BasicInfo = (props) => {
         onChange={EventTitleInputHandler}
         value={props.value.Title}
         disable={props.disable}
-
+        maxLength={75}
       />
 
       <HorizontalFlex>

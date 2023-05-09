@@ -5,6 +5,7 @@ import NavBar from "../../layouts/navbar/NavBar";
 
 import AddTicketCard from "./components/add-ticket-card/AddTicketCard";
 import TicketCard from "./components/ticket-card/TicketCard";
+import NewTicketSidebar from "./components/new-ticket-sidebar/NewTicketSidebar";
 
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -46,6 +47,7 @@ function ManageTickets() {
                         <TicketCard />
                     </div>
                 </div>
+                <NewTicketSidebar />
             </div>
         </div>
     );
