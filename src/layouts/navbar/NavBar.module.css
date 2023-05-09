@@ -118,11 +118,14 @@ a:active { text-decoration: none; }
     /* On small screens, make the button and user divs full width */
     .nav-bar--button {
       margin-left: 30px;
+      font-size: 70%;
+      /* padding: 5 5 5 5; */
       width: 50%;
     }
   
     .nav-bar--user {
       width: 70%;
+      font-size: 70%;
     }
   
     /* On small screens, hide the username */
