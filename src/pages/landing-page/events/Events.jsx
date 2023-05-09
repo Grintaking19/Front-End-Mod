@@ -6,6 +6,28 @@ import { useNavigate } from 'react-router-dom';
 const NAMESPACE = "https://hebtus.me/api/v1/events/";
 const EVENTS_PER_PAGE = 12;
 
+/**
+
+    Events Component to fetch and display events data
+    @component Events
+    @name Events
+    @requires react
+    @requires react-router-dom
+    @requires axios
+    @requires useFetch
+    @param {object} props - Component props
+    @param {object} props.location - Object containing latitude, longitude and city values of user's location
+    @param {string} props.activeTab - Active tab value
+    @returns {JSX.Element} - The rendered events cards
+    @example
+    const [activeTab, setActiveTab] = useState('');
+    const [location, setLocation] = useState('');
+    return(
+    <Events activeTab={activeTab} location={location} />
+    )
+    */
+
+
 export default function Events(props) {
   const [events, setEvents] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);

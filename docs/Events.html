@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: SignedInNavBar</title>
+    <title>JSDoc: Class: Events</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: SignedInNavBar</h1>
+    <h1 class="page-title">Class: Events</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>SignedInNavBar<span class="signature">(props)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>Events<span class="signature">(props)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h2>
         
     
 </header>
@@ -41,7 +41,7 @@
     
 
     
-    <h4 class="name" id="SignedInNavBar"><span class="type-signature"></span>new SignedInNavBar<span class="signature">(props)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+    <h4 class="name" id="Events"><span class="type-signature"></span>new Events<span class="signature">(props)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
     
 
     
@@ -49,7 +49,7 @@
 
 
 <div class="description">
-    <p>A component that renders the navigation bar for the user who is logged in</p>
+    <p>Events Component to fetch and display events data</p>
 </div>
 
 
@@ -101,7 +101,7 @@
 
             
 
-            <td class="description last"><p>React props object</p>
+            <td class="description last"><p>Component props</p>
                 <h6>Properties</h6>
                 
 
@@ -127,13 +127,13 @@
 
         <tr>
             
-                <td class="name"><code>setAccessToken</code></td>
+                <td class="name"><code>location</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">function</span>
+<span class="param-type">object</span>
 
 
             
@@ -143,7 +143,30 @@
 
             
 
-            <td class="description last"><p>Sets the Access Token</p></td>
+            <td class="description last"><p>Object containing latitude, longitude and city values of user's location</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>activeTab</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Active tab value</p></td>
         </tr>
 
     
@@ -191,7 +214,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="layouts_navbar_SignedInNavBar.jsx.html">layouts/navbar/SignedInNavBar.jsx</a>, <a href="layouts_navbar_SignedInNavBar.jsx.html#line7">line 7</a>
+        <a href="pages_landing-page_events_Events.jsx.html">pages/landing-page/events/Events.jsx</a>, <a href="pages_landing-page_events_Events.jsx.html#line9">line 9</a>
     </li></ul></dd>
     
 
@@ -203,6 +226,17 @@
 </dl>
 
 
+
+<h5>Requires:</h5>
+<ul>
+    <li>module:react</li>
+
+    <li>module:react-router-dom</li>
+
+    <li>module:axios</li>
+
+    <li>module:useFetch</li>
+</ul>
 
 
 
@@ -221,7 +255,7 @@
         
 <div class="param-desc">
     <ul>
-<li>Rendered component</li>
+<li>The rendered events cards</li>
 </ul>
 </div>
 
@@ -246,7 +280,11 @@
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const [accessToken, setAccessToken]=useState(localStorage.getItem('user'))return (&lt;NavBar setAccessToken={setAccessToken} />)</code></pre>
+    <pre class="prettyprint"><code>const [activeTab, setActiveTab] = useState('');
+    const [location, setLocation] = useState('');
+    return(
+    &lt;Events activeTab={activeTab} location={location} />
+    )</code></pre>
 
 
 
@@ -255,6 +293,18 @@
 
     
 
+    
+        <h3 class="subsection-title">Requires</h3>
+
+        <ul>
+            <li>module:react</li>
+        
+            <li>module:react-router-dom</li>
+        
+            <li>module:axios</li>
+        
+            <li>module:useFetch</li>
+        </ul>
     
 
     
