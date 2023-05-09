@@ -56,7 +56,7 @@ return (
     </div>
     
         <div className={styles['categories-tabs']} id="categories-container">
-          <ul className="nav nav-tabs" id="categories-tabs">
+          <ul className={`nav nav-tabs nav-pills flex-wrap ${styles['_nav-tabs']}`} id="categories-tabs">
             <li className={`nav-item ${styles['_nav-item']}`} id="online-tab">
             <a
                 className={`nav-link ${props.activeTab === 'online' ? 'active' : ''}`}

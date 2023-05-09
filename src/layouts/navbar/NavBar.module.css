@@ -103,3 +103,28 @@ a:active { text-decoration: none; }
 .nav-bar--user:hover .drop-down-menu {
     display: block;
   }
+
+
+
+  @media only screen and (max-width: 768px) {
+    /* On small screens, adjust the padding and font size of the logo */
+    .hebtus-logo-text {
+      font-size: 20px;
+      margin-left: 1px;
+      margin-right: 0;
+    }
+  
+    /* On small screens, make the button and user divs full width */
+    .nav-bar--button {
+      width: 100%;
+    }
+  
+    .nav-bar--user {
+      width: 100%;
+    }
+  
+    /* On small screens, hide the username */
+    .nav-bar--username {
+      display: none;
+    }
+  }
