@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: layouts/navbar/NavBar.jsx</title>
+    <title>JSDoc: Source: pages/landing-page/LandingPage.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: layouts/navbar/NavBar.jsx</h1>
+    <h1 class="page-title">Source: pages/landing-page/LandingPage.jsx</h1>
 
     
 
@@ -27,31 +27,36 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import {React,useState} from "react";
-import SignedInNavBar from "./SignedInNavBar"
-import SignedOutNavBar from "./SignedOutNavBar";
+import Events from "./events/Events"
+import NavBar from "../../layouts/navbar/NavBar"
+import Categories from "./categories/Categories"
+import cover from "../../pages/landing-page/cover.png";
 
 /**
-
-    A component that chooses to render one of two navbars (SignedInNavBar or SignedOutNavBar) based on whether the user is logged in or not.
-    @component
-    @returns {JSX.Element} - The rendered component.
-    @name NavBar
+    Renders the landing page component that encapsulates the navbar, a cover image, categories, and events cards.
+    The landing page component is the entry point of the website 
+    @component LandingPage
+    @name LandingPage
+    @returns {JSX.Element} The Landing Page
     @example
-    return (
-    &lt;NavBar />
-    );
+    return (&lt;LandingPage/>)
     */
 
-export default function NavBar() {
-  
-  const [accessToken, setAccessToken]=useState(localStorage.getItem('user'))
-  return (
-    &lt;div>
-    {accessToken? &lt;SignedInNavBar setAccessToken={setAccessToken}/> : &lt;SignedOutNavBar setAccessToken={setAccessToken}/> }
-    &lt;/div>
-  );
-}
-</code></pre>
+
+export default function LandingPage() {
+    const [activeTab, setActiveTab] = useState('');
+    const [location, setLocation] = useState('');
+   
+    return (
+        &lt;div>
+            &lt;NavBar/>
+        &lt;img id="cover" src={cover} width="100%" />
+     
+            &lt;Categories activeTab={activeTab} setActiveTab={setActiveTab} location={location} setLocation={setLocation}/>
+            &lt;Events activeTab={activeTab} location={location} />
+        &lt;/div>
+    )
+}</code></pre>
         </article>
     </section>
 
