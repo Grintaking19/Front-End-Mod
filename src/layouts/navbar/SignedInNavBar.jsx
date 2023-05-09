@@ -8,9 +8,9 @@ import { useNavigate } from "react-router-dom";
  * A component that renders the navigation bar for the user who is logged in
  * @component
  * @param {object} props - React props object
- *  @param {function} props.setAccessToken  - Sets the Access Token
+ * @param {function} props.setAccessToken  - Sets the Access Token
  * @returns {JSX.Element} - Rendered component
- * @name NavBar
+ * @name SignedInNavBar
  * @example
  * const [accessToken, setAccessToken]=useState(localStorage.getItem('user'))
  * return (

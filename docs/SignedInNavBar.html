@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: PublishEvent</title>
+    <title>JSDoc: Class: SignedInNavBar</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: PublishEvent</h1>
+    <h1 class="page-title">Class: SignedInNavBar</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>PublishEvent<span class="signature">(onEditHandler, onSaveHandler, publicDateHandler, privacyChangeHandler)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>SignedInNavBar<span class="signature">(props)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h2>
         
     
 </header>
@@ -41,7 +41,7 @@
     
 
     
-    <h4 class="name" id="PublishEvent"><span class="type-signature"></span>new PublishEvent<span class="signature">(onEditHandler, onSaveHandler, publicDateHandler, privacyChangeHandler)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="SignedInNavBar"><span class="type-signature"></span>new SignedInNavBar<span class="signature">(props)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
     
 
     
@@ -49,7 +49,7 @@
 
 
 <div class="description">
-    <p>Component for the publish event page</p>
+    <p>A component that renders the navigation bar for the user who is logged in</p>
 </div>
 
 
@@ -85,13 +85,13 @@
 
         <tr>
             
-                <td class="name"><code>onEditHandler</code></td>
+                <td class="name"><code>props</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Fuction</span>
+<span class="param-type">object</span>
 
 
             
@@ -101,14 +101,33 @@
 
             
 
-            <td class="description last"><p>Triggerd when the user make any edit to the event (patch request)</p></td>
-        </tr>
+            <td class="description last"><p>React props object</p>
+                <h6>Properties</h6>
+                
 
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
     
 
         <tr>
             
-                <td class="name"><code>onSaveHandler</code></td>
+                <td class="name"><code>setAccessToken</code></td>
             
 
             <td class="type">
@@ -124,53 +143,14 @@
 
             
 
-            <td class="description last"><p>Triggerd when the user saves the event</p></td>
+            <td class="description last"><p>Sets the Access Token</p></td>
         </tr>
 
     
+    </tbody>
+</table>
 
-        <tr>
-            
-                <td class="name"><code>publicDateHandler</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
             </td>
-
-            
-
-            
-
-            <td class="description last"><p>Triggerd when the user edits public date</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>privacyChangeHandler</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Triggerd when the user changes privacy</p></td>
         </tr>
 
     
@@ -211,7 +191,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_publish-event_PublishEvent.jsx.html">pages/publish-event/PublishEvent.jsx</a>, <a href="pages_publish-event_PublishEvent.jsx.html#line13">line 13</a>
+        <a href="layouts_navbar_SignedInNavBar.jsx.html">layouts/navbar/SignedInNavBar.jsx</a>, <a href="layouts_navbar_SignedInNavBar.jsx.html#line7">line 7</a>
     </li></ul></dd>
     
 
@@ -236,17 +216,37 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>Rendered component</li>
+</ul>
+</div>
 
 
 
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
 
-    <h5>Examples</h5>
+
+    </dd>
+</dl>
+
     
-    <pre class="prettyprint"><code>&lt;EventPublicDate onChange={publicDateHandler} /></code></pre>
 
-    <pre class="prettyprint"><code>&lt;EventPrivacy onPrivacyChange={privacyChangeHandler} /></code></pre>
 
-    <pre class="prettyprint"><code>&lt;Footer onSave={onSaveHandler} /></code></pre>
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>const [accessToken, setAccessToken]=useState(localStorage.getItem('user'))return (&lt;NavBar setAccessToken={setAccessToken} />)</code></pre>
 
 
 

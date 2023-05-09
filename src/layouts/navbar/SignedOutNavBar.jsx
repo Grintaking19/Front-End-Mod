@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
  * @param {object} props - The props object.
  * @param {function} props.setAccessToken - A function that sets the access token. Accepts a string parameter.
  * @returns {JSX.Element} - The rendered component.
+ * @name SignedOutNavBar
  * @example
  * const [accessToken, setAccessToken] = useState(localStorage.getItem('user'));
  * return (
