@@ -14,6 +14,7 @@ export function PrivateOrPublicEvent() {
 
       let res = await getEvent(eventId);
       res.eventData.ticketPriceRange = res.ticketPriceRange;
+      console.log ("res.eventData");
       console.log(res.eventData);
       if (res == null) {
         setShowEvent(false);

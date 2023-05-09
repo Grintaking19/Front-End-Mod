@@ -7,6 +7,7 @@ export async function getEvent(eventId) {
         console.log("fetch failed for get events");
         return null;
     }
+    console.log(res);
     let eventData = res.data;
     eventData = setDateFormat(eventData);
     const ticketPriceRange = await getTicketPriceRange(eventId);

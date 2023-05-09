@@ -3,14 +3,27 @@ import styles from "./TicketsContainer.module.css"
 import { Divider } from "@mui/material";
 
 
-export default function TicketsContainer({ name, type, price, capacity, reserved, endDate }) {
+export default function TicketsContainer({ name, type, price, capacity, reserved, endDate, ticketId ,ticketType,setTicketType }) {
   const [ticketQuantity, setTicketQuantity] = useState(0);
   const [maxAllowed, setMaxAllowed] = useState({ count: capacity - reserved, backgroundColor: "#3D64FF", color: "white" });
   const [minColor, setMinColor] = useState({ backgroundColor: "#EEEDF2", color: "#A9A8B3" });
-
+  
   useEffect(() => {
     console.log(ticketQuantity);
     console.log(maxAllowed);
+    // Create a copy of the state array
+    const newArray = [...ticketType];
+
+    // Find the object with the specified id
+    const ticketToUpdate = newArray.find((ticket) => ticket._id === ticketId);
+
+    // Update the properties of the object
+    if (ticketToUpdate) {
+      ticketToUpdate.sales = ticketQuantity;
+    }
+    // Set the modified array as the new state
+    setTicketType(newArray);
+    console.log(newArray)
   }, [ticketQuantity,maxAllowed]);
 
   function increaseTicketQuantity() {

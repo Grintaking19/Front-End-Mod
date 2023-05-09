@@ -15,22 +15,15 @@ import UpdatePassword from "./pages/update-password/UpdatePassword"
 import PublishEvent from "./pages/publish-event/PublishEvent"
 import EventDetails from "./pages/event-details/EventDetails";
 import BrowseEvents from "./pages/browse-events/BrowseEvents";
-import TicketsContainer from "./pages/bookings/TicketsContainer";
-import Booking from "./pages/bookings/Booking";
+import TicketsContainer from "./pages/booking/TicketsContainer";
+import Booking from "./pages/booking/Booking";
 export default function App() {
 
-  let capacity = 20;
-  let reserved = 16;
-  let name = "Event Gamed ";
-  let type = "VIP";
-  let price = 100;
-  let endDate = "2021-09-30T00:00:00.000Z";
-
+  let eventId = "642fda172c9619b9850f7102";
   return (
-
+     
 
     <BrowserRouter>
-
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/event-dashboard/:eventId" element={<EventDashboard />} />
@@ -46,8 +39,7 @@ export default function App() {
         <Route path="/update-password" element={<UpdatePassword />} />
         <Route path="/event-details" element={<EventDetails />} />
         <Route path="/publish-event" element={<PublishEvent />} />
-        <Route path="/booking" element={<Booking />} />
-        <Route path="/tickets" element={<TicketsContainer name={name} type={type} price={price} capacity={capacity} reserved={reserved} endDate={endDate} />} />
+        <Route path="/booking" element={<Booking eventId={eventId}/>} />
         <Route path="/browse-event" element={<BrowseEvents/>} />
 
       </Routes>
