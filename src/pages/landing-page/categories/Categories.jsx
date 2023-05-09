@@ -13,6 +13,7 @@ const OPENCAGE_API_KEY = "ca1e044266af4d9b92d96cd6a63f857f";
 
 /**
  * This component is responsible for rendering categories (category tabs & category cards) as well as getting user's location
+ * @component
  * @name Categories
  * @param {object} props - The props object.
  * @param {function} props.setLocation - The setLocation function.
