@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: layouts/navbar/SignedOutNavBar.jsx</title>
+    <title>JSDoc: Source: layouts/navbar/SignedInNavBar.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: layouts/navbar/SignedOutNavBar.jsx</h1>
+    <h1 class="page-title">Source: layouts/navbar/SignedInNavBar.jsx</h1>
 
     
 
@@ -30,25 +30,24 @@
 import styles from "./NavBar.module.css";
 import { CgMathPlus } from "react-icons/cg";
 import { AiOutlineUser } from "react-icons/ai";
-
 import { useNavigate } from "react-router-dom";
 
 /**
- * A component that renders the navigation bar for the user who is not logged in.
- *
+ * A component that renders the navigation bar for the user who is logged in
  * @component
- * @param {object} props - The props object.
- * @param {function} props.setAccessToken - A function that sets the access token. Accepts a string parameter.
- * @returns {JSX.Element} - The rendered component.
+ * @param {object} props - React props object
+ *  @param {function} props.setAccessToken  - Sets the Access Token
+ * @returns {JSX.Element} - Rendered component
+ * @name NavBar
  * @example
- * const [accessToken, setAccessToken] = useState(localStorage.getItem('user'));
+ * const [accessToken, setAccessToken]=useState(localStorage.getItem('user'))
  * return (
- *   &lt;SignedOutNavBar setAccessToken={setAccessToken} />
- * );
+ * &lt;NavBar setAccessToken={setAccessToken} />
+ * )
  */
 
 
-export default function SignedOutNavBar(props) {
+export default function NavBar(props) {
   let navigate = useNavigate();
   return (
     &lt;div id="signed-in-navbar-container">
@@ -58,7 +57,7 @@ export default function SignedOutNavBar(props) {
         &lt;/a>
 
         &lt;div id="create-event-button" className={styles['nav-bar--button']}>
-          &lt;a href="" onClick={() => { navigate("/login") }}>
+          &lt;a href="" onClick={() => { navigate("/create-event") }}>
             &lt;div>
               &lt;CgMathPlus className={styles['nav-bar--button--icon']} />
             &lt;/div>
@@ -69,17 +68,20 @@ export default function SignedOutNavBar(props) {
         &lt;div id="navbar-dropdown-container" className={styles['nav-bar--user']}>
           &lt;a id="navbar-dropdown" className="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             &lt;AiOutlineUser className={styles['nav-bar--button--icon']} />
-            &lt;div className={`d-inline-block align-text-top ${styles['nav-bar--username']}`}>Log In / Sign Up&lt;/div>
+            {/* &lt;div className={styles['nav-bar--username d-inline-block align-text-top']}>OmarAlSharif@gmail.com&lt;/div> */}
+            &lt;div className={`d-inline-block align-text-top ${styles['nav-bar--username']}`}>{localStorage.getItem('userEmail')? localStorage.getItem('userEmail'): ''}&lt;/div>
 
           &lt;/a>
           &lt;ul id="navbar-dropdown--list" className={`dropdown-menu dropdown-menu-end ${styles['drop-down-menu']}`}>
-            &lt;li id="login-link">&lt;a className="dropdown-item text-center" href="" onClick={() => { navigate("/login") }}>Log In&lt;/a>&lt;/li>
-            &lt;li id="signup-link">&lt;a className="dropdown-item text-center" href="" onClick={() => { navigate("/signup") }}>Sign Up&lt;/a>&lt;/li>
+            &lt;li id="manage-my-events-link">&lt;a className="dropdown-item text-center" onClick={()=>{navigate("/events-list")}}>Manage my events&lt;/a>&lt;/li>
+            {/* &lt;li>&lt;a className="dropdown-item" href="#">Tickets&lt;/a>&lt;/li> */}
+            &lt;li id="update-password-link">&lt;a className="dropdown-item text-center" href="" onClick={() => { navigate("/update-password") }}>Update Password&lt;/a>&lt;/li>
+            &lt;li id="logout-link">&lt;a className="dropdown-item text-center" href="" onClick={() => { localStorage.setItem('user', ''); localStorage.setItem('userEmail', ''); props.setAccessToken(null) }}>Logout&lt;/a>&lt;/li>
           &lt;/ul>
         &lt;/div>
       &lt;/nav>
 
-      
+     
     &lt;/div>
   );
 }
