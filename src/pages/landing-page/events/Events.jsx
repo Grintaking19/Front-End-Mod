@@ -126,7 +126,7 @@ return (
     <div id="events-album-container"> 
       { (!eventsLoading && events.length > 0) ? 
         <div className="album py-5" id="events-album">
-          <div className="container">
+          <div className={`container ${styles['_container']}`}>
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4" id="events-row">
               { events.map((event) => (
                 <div className="col" key={event._id}>
