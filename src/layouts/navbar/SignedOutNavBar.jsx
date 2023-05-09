@@ -4,6 +4,20 @@ import { CgMathPlus } from "react-icons/cg";
 import { AiOutlineUser } from "react-icons/ai";
 
 import { useNavigate } from "react-router-dom";
+
+/**
+
+    A component that renders the navigation bar for the user who is not logged in
+    @component
+    @param {object} props - React props object
+    @returns {JSX.Element} - Rendered component
+    @example
+    return (
+    <SignedOutNavBar />
+    )
+    
+    */
+
 export default function SignedOutNavBar(props) {
   let navigate = useNavigate();
   return (

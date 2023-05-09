@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: DateTime</title>
+    <title>JSDoc: Class: exports</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: DateTime</h1>
+    <h1 class="page-title">Class: exports</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>DateTime<span class="signature">(props)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>exports<span class="signature">(props)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h2>
         
     
 </header>
@@ -41,7 +41,7 @@
     
 
     
-    <h4 class="name" id="DateTime"><span class="type-signature"></span>new DateTime<span class="signature">(props)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="exports"><span class="type-signature"></span>new exports<span class="signature">(props)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
     
 
     
@@ -49,7 +49,7 @@
 
 
 <div class="description">
-    <p>Component for the Date and Time of the event creation pages</p>
+    <p>A component that renders the navigation bar for the user who is not logged in</p>
 </div>
 
 
@@ -91,7 +91,7 @@
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">object</span>
 
 
             
@@ -101,79 +101,7 @@
 
             
 
-            <td class="description last">
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>width</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Determine the width of the</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>onCLick</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Triggerd when the user click on the button (save and continue)</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-            </td>
+            <td class="description last"><p>React props object</p></td>
         </tr>
 
     
@@ -214,7 +142,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="pages_create-event_date-and-time_DateTime.jsx.html">pages/create-event/date-and-time/DateTime.jsx</a>, <a href="pages_create-event_date-and-time_DateTime.jsx.html#line14">line 14</a>
+        <a href="layouts_navbar_SignedOutNavBar.jsx.html">layouts/navbar/SignedOutNavBar.jsx</a>, <a href="layouts_navbar_SignedOutNavBar.jsx.html#line21">line 21</a>
     </li></ul></dd>
     
 
@@ -239,13 +167,39 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>Rendered component</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>if (endDate - startDate &lt; 0){props.onChange(startDate.toUTCString(),endDate.toUTCString(),true);setDateError(true);} else {props.onChange(startDate.toUTCString(),endDate.toUTCString(),false);setDateError(false)    }</code></pre>
+    <pre class="prettyprint"><code>return (
+    &lt;SignedOutNavBar />
+    )</code></pre>
 
 
 
