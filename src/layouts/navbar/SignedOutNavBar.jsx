@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./NavBar.module.css";
 import { CgMathPlus } from "react-icons/cg";
 import { AiOutlineUser } from "react-icons/ai";
-
 import { useNavigate } from "react-router-dom";
 
 /**

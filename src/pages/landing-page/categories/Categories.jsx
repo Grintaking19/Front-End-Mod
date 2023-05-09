@@ -11,6 +11,29 @@ import { useNavigate } from "react-router-dom";
 const OPENCAGE_API_KEY = "ca1e044266af4d9b92d96cd6a63f857f";
 // const OPENCAGE_API_KEY = "";
 
+/**
+ * This component is responsible for rendering categories (category tabs & category cards) as well as getting user's location
+ * @name Categories
+ * @param {object} props - The props object.
+ * @param {function} props.setLocation - The setLocation function.
+ * @param {object} props.location - The location object.
+ * @param {boolean} props.location.loading - A boolean indicating whether the location is being loaded.
+ * @param {string} props.location.latitude - The latitude of the user's location.
+ * @param {string} props.location.longitude - The longitude of the user's location.
+ * @param {string} props.location.city - The city of the user's location.
+ * @param {string} props.activeTab - The active tab.
+ * @param {function} props.setActiveTab - The setActiveTab function.
+ * @returns {JSX.Element} The Categories component.
+ * 
+ * @example
+ * const [activeTab, setActiveTab] = useState('');
+ * const [location, setLocation] = useState('');
+ * return (
+ * <Categories activeTab={activeTab} setActiveTab={setActiveTab} location={location} setLocation={setLocation}/>
+ * )
+ */
+
+
 export default function Categories(props) {
 
   useEffect(() => {
