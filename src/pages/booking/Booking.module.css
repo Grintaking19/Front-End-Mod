@@ -69,30 +69,30 @@ body.active-modal {
 .booking--side {
   display: flex;
   flex-direction: column;
-  flex: 1.4;
-  background: blue;
+  flex: 140px;
   width: 100%;
   height: 100%;
 }
 
 .side--event-image-container {
-  flex: 1.4;
+  height: 265px;
+  overflow: hidden;
 }
 .event-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  overflow: hidden;
 }
 
 .side--order-summary {
-  flex: 3;
-  background: yellow;
+  overflow:auto;
+  height: 100%;
+  width: 100%;
 }
 
 .booking--content {
   display: flex;
   flex-direction: column;
-
   width: 100%;
   height: 100%;
 }
@@ -201,7 +201,7 @@ body.active-modal {
 .content--footer {
   display: flex;
   align-items: center;
-  justify-content: right;
+  justify-content: space-between;
   overflow: hidden;
   padding: 16px 55px;
   height: 80px;
@@ -212,6 +212,17 @@ body.active-modal {
   border-bottom-width: 0px;
   border-style: solid;
   border-color: rgb(238, 237, 242);
+}
+
+.footer--error-container {
+  display: flex;
+}
+ 
+.error-empty {
+  color: rgb(197, 22, 46);
+  font-size: 14px;
+  font-weight: 400;
+
 }
 
 .chekout-btn-container {

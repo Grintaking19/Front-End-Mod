@@ -5,7 +5,7 @@ export async function getTicketsType(eventId) {
 
     let res = await fetchData(`/events/${eventId}/tickets/?page=0&limit=50`, true);
     console.log(res);
-    return { ...(res.data.tickets) };
+    return res.data.tickets 
 
   } catch (err) {
 

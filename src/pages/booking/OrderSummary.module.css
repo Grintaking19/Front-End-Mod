@@ -1,0 +1,47 @@
+.summary-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(248, 247, 250);
+}
+
+.empty-summary-report {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(248, 247, 250);
+  color: rgb(167, 163, 199);
+}
+
+.full-summary-report {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 40px;
+  margin: 24px 0px 40px 30px;
+  width: 300px;
+}
+
+.summary-report--container {
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-between;
+  width: 100%;
+  margin: 16px 0px ;
+}
+
+.summary-report--ticket-container
+{
+  display: flex;
+  flex-direction: row;
+  
+}
+.summary-report--total-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
