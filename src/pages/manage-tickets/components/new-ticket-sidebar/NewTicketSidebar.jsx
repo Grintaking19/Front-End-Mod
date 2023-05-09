@@ -4,9 +4,9 @@ import Panel from "../../../../layouts/UI/Panel";
 import HorizontalFlex from "../../../../layouts/UI/HorizontalFlex";
 import PanelChanger from "../../../../layouts/UI/PanelChanger";
 import InputField from "../../../create-event/fields/InputField";
-import Dropdown from "../../../create-event/fields/Dropdown";
 import BasicDatePicker from "../../../create-event/fields/BasicDatePicker";
 import DatalistField from "../../../create-event/fields/DatalistField";
+import Dropdown from "../dropdown/Dropdown";
 
 function NewTicketSidebar() {
     return (
