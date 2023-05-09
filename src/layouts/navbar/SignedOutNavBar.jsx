@@ -6,17 +6,19 @@ import { AiOutlineUser } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 
 /**
+ * A component that renders the navigation bar for the user who is not logged in.
+ *
+ * @component
+ * @param {object} props - The props object.
+ * @param {function} props.setAccessToken - A function that sets the access token. Accepts a string parameter.
+ * @returns {JSX.Element} - The rendered component.
+ * @example
+ * const [accessToken, setAccessToken] = useState(localStorage.getItem('user'));
+ * return (
+ *   <SignedOutNavBar setAccessToken={setAccessToken} />
+ * );
+ */
 
-    A component that renders the navigation bar for the user who is not logged in
-    @component
-    @param {object} props - React props object
-    @returns {JSX.Element} - Rendered component
-    @example
-    return (
-    <SignedOutNavBar />
-    )
-    
-    */
 
 export default function SignedOutNavBar(props) {
   let navigate = useNavigate();
