@@ -101,7 +101,7 @@ export default function Booking({ eventId }) {
                 <div className={styles["content--footer"]}>
                   <div className={styles["footer--error-container"]}>
                   {!checkout &&
-                    <div className={styles["error-empty"]}><ErrorIcon className={styles["error-empty--icon"]} />{errorEmpty}</div>
+                    <div className={styles["error-empty"]}><ErrorIcon className={styles["error-empty--icon"]} /> {errorEmpty}</div>
                     }
                   </div>
                   <div className={styles["chekout-btn-container"]}>

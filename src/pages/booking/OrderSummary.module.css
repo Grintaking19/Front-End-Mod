@@ -28,20 +28,43 @@
 
 .summary-report--container {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  margin: 16px 0px ;
+  margin: 16px 0px;
 }
 
-.summary-report--ticket-container
-{
-  display: flex;
-  flex-direction: row;
-  
+.summary-report--title {
+  color: rgb(30, 10, 60);
+  font-weight: 600;
+  font-size: 14px;
 }
-.summary-report--total-container{
+
+.summary-report--ticket-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  color: rgb(57, 54, 79);
+  font-weight: 400;
+  font-size: 14px;
+
+}
+
+.summary-report--ticket-container p{
+  color: rgb(57, 54, 79);
+  font-weight: 400;
+  font-size: 14px;
+  
+}
+
+.summary-report--total-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.summary-report--total-container p{
+  color: rgb(57, 54, 79);
+  font-weight: 600;
+  font-size: 18px;
 }
