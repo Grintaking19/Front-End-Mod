@@ -138,6 +138,7 @@ const BasicInfo = (props) => {
       title="Basic Info"
       description="Name your event and tell event-goers why they should come. Add details that highlight what makes it unique."
       style={{ width: props.width }}
+      id="basic-info-panel"
     >
       <InputField
         title="Event Title"
@@ -145,6 +146,7 @@ const BasicInfo = (props) => {
         onChange={EventTitleInputHandler}
         value={props.value.Title}
         disable={props.disable}
+        id= "event-title-input"
       />
 
       <HorizontalFlex>
@@ -175,6 +177,7 @@ const BasicInfo = (props) => {
       <SubHeader
         title="Tags"
         description="Improve discoverability of your event by adding tags relevant to the subject matter."
+        id="tags-subheader"
       />
 
       <HorizontalFlex>

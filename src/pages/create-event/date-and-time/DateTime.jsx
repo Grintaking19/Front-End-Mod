@@ -156,6 +156,7 @@ const DateTime = (props) => {
       title="Date and Time"
       description="Tell event-goers when your event starts and ends so they can make plans to attend."
       style={{ width: props.width }}
+      id="date-time-panel"
 
     >
       <PanelChanger className="panel-changer-clicked" id="single-event-panel">

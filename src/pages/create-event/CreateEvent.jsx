@@ -86,7 +86,7 @@ const CreateEvent = (props) => {
   return (
     <div>
       {state == null ? (
-        <div className={styles["navbar-div"]}>
+        <div id= "navbar-div" className={styles["navbar-div"]}>
           <Navbar />
           <span
             className={styles["back-to-eventlist"]}
@@ -95,7 +95,7 @@ const CreateEvent = (props) => {
             &lt; Events{" "}
           </span>
 
-          <div className={styles["container"]}>
+          <div id="container" className={styles["container"]}>
             <BasicInfo onChange={BasicInfoChangeHandler} value={{}} width="46%"></BasicInfo>
             <Divider />
             <Location onChange={LocationChangeHandler} width="46%"></Location>
@@ -105,7 +105,7 @@ const CreateEvent = (props) => {
           </div>
         </div>
       ) : (
-        <div className={styles["navbar-div"]}>
+        <div id = "navbar-div--static" className={styles["navbar-div"]}>
           <Navbar />
           <span
             className={styles["back-to-eventlist"]}
@@ -117,7 +117,7 @@ const CreateEvent = (props) => {
           <div style={{ display: "flex", flexDirection: "row" }}>
           <EventSidenav eventName={state.Title}  startDate={state.startDate} eventCurrentInfo={state}  />
 
-            <div className={styles["container"]}>
+            <div id="container---static" className={styles["container"]}>
               <BasicInfo
                 value={state}
                 onChange={BasicInfoChangeHandler}
