@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: EventSidenav</title>
+    <title>JSDoc: Class: Location</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: EventSidenav</h1>
+    <h1 class="page-title">Class: Location</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>EventSidenav<span class="signature">(props)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>Location<span class="signature">(props)</span><span class="type-signature"></span></h2>
         
     
 </header>
@@ -41,7 +41,7 @@
     
 
     
-    <h4 class="name" id="EventSidenav"><span class="type-signature"></span>new EventSidenav<span class="signature">(props)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Location"><span class="type-signature"></span>new Location<span class="signature">(props)</span><span class="type-signature"></span></h4>
     
 
     
@@ -49,7 +49,7 @@
 
 
 <div class="description">
-    <p>Component for the sidenav of the event creation pages</p>
+    <p>Component for the Location of the event creation pages</p>
 </div>
 
 
@@ -127,7 +127,7 @@
 
         <tr>
             
-                <td class="name"><code>eventId</code></td>
+                <td class="name"><code>width</code></td>
             
 
             <td class="type">
@@ -143,14 +143,14 @@
 
             
 
-            <td class="description last"><p>The id of the event (Mandatory if the event has been created in the backend)</p></td>
+            <td class="description last"><p>Determine the width of the</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>activeTab</code></td>
+                <td class="name"><code>onCLick</code></td>
             
 
             <td class="type">
@@ -166,53 +166,7 @@
 
             
 
-            <td class="description last"><p>The active tab of the sidenav</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>eventName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The name of the event (Mandatory if the event has not been created in the backend yet and no eventId is provided)</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>startDate</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The start date of the event (Optional, will be displayed as TBD if not provided)</p></td>
+            <td class="description last"><p>Triggerd when the user click on the button (save and continue)</p></td>
         </tr>
 
     
@@ -260,7 +214,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="layouts_event-sidenav_EventSidenav.jsx.html">layouts/event-sidenav/EventSidenav.jsx</a>, <a href="layouts_event-sidenav_EventSidenav.jsx.html#line10">line 10</a>
+        <a href="pages_create-event_location_Location.jsx.html">pages/create-event/location/Location.jsx</a>, <a href="pages_create-event_location_Location.jsx.html#line8">line 8</a>
     </li></ul></dd>
     
 
@@ -289,11 +243,9 @@
 
 
 
-    <h5>Examples</h5>
+    <h5>Example</h5>
     
-    <pre class="prettyprint"><code>const activeTab = 'details'const eventName = 'Event Name'return ( &lt;EventSidenav activeTab={activeTab} eventName={eventName} />)</code></pre>
-
-    <pre class="prettyprint"><code>const eventId = '123'const activeTab = 'details'return (&lt;EventSidenav eventId={eventId} activeTab={activeTab} />)</code></pre>
+    <pre class="prettyprint"><code>&lt;Panelimage={LocationIcon}title="Location"description="Help people in the area discover your event and let attendees know where to show up."style={{ width: props.width }}></code></pre>
 
 
 

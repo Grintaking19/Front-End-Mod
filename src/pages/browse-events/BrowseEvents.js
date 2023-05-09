@@ -5,6 +5,19 @@ import FiltersControlPanel from "./filters/FiltersControlPanel";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+/**
+ * Component for the Browse Events page
+ @component
+ * @param {Object} props
+ * @param {Function} getAllEvents - API call to get all events from the database
+ * @param {Function} editEventsData - Function to save the events data in the state
+ * @name BrowseEvents
+ * 
+* @example
+ * editEventsData();
+ * setEvents(response.data.data.events);
+ */
+
 const getAllEvents = async () => {
   let url = "https://www.hebtus.me/api/v1/events";
   let config = {

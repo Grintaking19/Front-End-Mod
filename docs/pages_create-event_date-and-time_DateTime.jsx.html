@@ -1,4 +1,32 @@
-import styles from "./DateTime.module.css";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/create-event/date-and-time/DateTime.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/create-event/date-and-time/DateTime.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import styles from "./DateTime.module.css";
 import Panel from "../../../layouts/UI/Panel";
 import { DateandTimeIcon } from "../../../layouts/UI/SvgImages";
 import HorizontalFlex from "../../../layouts/UI/HorizontalFlex";
@@ -21,7 +49,7 @@ import dayjs from 'dayjs';
  * @name DateTime
 
  * @example
- * if (endDate - startDate < 0){
+ * if (endDate - startDate &lt; 0){
  * props.onChange(startDate.toUTCString(),endDate.toUTCString(),true);
  * setDateError(true);
  * } 
@@ -35,9 +63,9 @@ export const PM_24hoursConvert = (time) => {
   let hours = time.slice(0, 2);
   if (hours[1] == ":") hours = hours[0];
   let PM_AM = time.slice(-2, time.length);
-  if (PM_AM == "PM" && hours != 12) {
+  if (PM_AM == "PM" &amp;&amp; hours != 12) {
     hours = parseInt(hours) + 12;
-  } else if (PM_AM == "AM" && hours == 12) {
+  } else if (PM_AM == "AM" &amp;&amp; hours == 12) {
     hours = "00";
   } else if (PM_AM == "AM") {
     if (hours.length == 1) hours = "0" + hours;
@@ -69,7 +97,7 @@ const DateTime = (props) => {
     startDate.setSeconds(0);
     setStartDate(startDate);
 
-    if (endDate - startDate < 0) {
+    if (endDate - startDate &lt; 0) {
       props.onChange(startDate.toUTCString(),endDate.toUTCString(),true);
 
       setDateError(true);
@@ -89,7 +117,7 @@ const DateTime = (props) => {
     endDate.setSeconds(0);
     setEndDate(endDate);
     console.log(endDate-startDate);
-    if (endDate - startDate < 0){
+    if (endDate - startDate &lt; 0){
       props.onChange(startDate.toUTCString(),endDate.toUTCString(),true);
       setDateError(true);
     } 
@@ -107,7 +135,7 @@ const DateTime = (props) => {
     startDate.setUTCMinutes(time[1]);
     startDate.setSeconds(0);
     setStartDate(startDate);
-    if (endDate - startDate < 0){
+    if (endDate - startDate &lt; 0){
       props.onChange(startDate.toUTCString(),endDate.toUTCString(),true);
       setDateError(true);
     } 
@@ -126,7 +154,7 @@ const DateTime = (props) => {
     endDate.setUTCMinutes(time[1]);
     endDate.setSeconds(0);
     setEndDate(endDate);
-    if (endDate - startDate < 0){
+    if (endDate - startDate &lt; 0){
       props.onChange(startDate.toUTCString(),endDate.toUTCString(),true);
       setDateError(true);
     } 
@@ -151,7 +179,7 @@ const DateTime = (props) => {
 
 
   return (
-    <Panel
+    &lt;Panel
       image={DateandTimeIcon}
       title="Date and Time"
       description="Tell event-goers when your event starts and ends so they can make plans to attend."
@@ -159,13 +187,13 @@ const DateTime = (props) => {
       id="date-time-panel"
 
     >
-      <PanelChanger className="panel-changer-clicked" id="single-event-panel">
+      &lt;PanelChanger className="panel-changer-clicked" id="single-event-panel">
         Single Event
-      </PanelChanger>
-      <p>Single event happens once and can last multiple days.</p>
+      &lt;/PanelChanger>
+      &lt;p>Single event happens once and can last multiple days.&lt;/p>
 
-      <HorizontalFlex width="100%" id="start-date-time-flex">
-        <BasicDatePicker
+      &lt;HorizontalFlex width="100%" id="start-date-time-flex">
+        &lt;BasicDatePicker
           title="Start Date *"
           width="49%"
           required={1}
@@ -174,7 +202,7 @@ const DateTime = (props) => {
           id="start-date"
           value={dayjs(new Date())}
         />
-        <DatalistField
+        &lt;DatalistField
           options={TimeSlots}
           onChange={onStartTimeChangeHandler}
           title="Start Time"
@@ -182,10 +210,10 @@ const DateTime = (props) => {
           id="start-time"
         />
   
-      </HorizontalFlex>
+      &lt;/HorizontalFlex>
 
-      <HorizontalFlex width="100%" id="end-date-time-flex">
-        <BasicDatePicker
+      &lt;HorizontalFlex width="100%" id="end-date-time-flex">
+        &lt;BasicDatePicker
           title="End Date *"
           width="49%"
           required={1}
@@ -195,7 +223,7 @@ const DateTime = (props) => {
           value={startDate}
           id="end-date"
         />
-        <DatalistField
+        &lt;DatalistField
           options={TimeSlots}
           onChange={onEndTimeChangeHandler}
           title="End Time"
@@ -203,21 +231,44 @@ const DateTime = (props) => {
           id="end-time"
         />
       
-      </HorizontalFlex>
+      &lt;/HorizontalFlex>
 
-      <br />
-      <LabeledDropdown options={TimeZones} title="Time Zone" width="50%"
+      &lt;br />
+      &lt;LabeledDropdown options={TimeZones} title="Time Zone" width="50%"
        id="time-zone"
        />
-      <LabeledDropdown
+      &lt;LabeledDropdown
         options={Languages}
         title="Event Page Language"
         width="50%"
         id="event-page-lang"
       />
-        <br />  <br />  <br />
-    </Panel>
+        &lt;br />  &lt;br />  &lt;br />
+    &lt;/Panel>
   );
 };
 
 export default DateTime;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BasicInfo.html">BasicInfo</a></li><li><a href="BrowseEvents.html">BrowseEvents</a></li><li><a href="DateTime.html">DateTime</a></li><li><a href="EventListContainer.html">EventListContainer</a></li><li><a href="EventSidenav.html">EventSidenav</a></li><li><a href="Location.html">Location</a></li><li><a href="PublishEvent.html">PublishEvent</a></li><li><a href="postRequest.html">postRequest</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue May 09 2023 17:20:23 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

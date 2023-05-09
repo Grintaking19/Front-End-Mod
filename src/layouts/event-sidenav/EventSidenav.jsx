@@ -16,7 +16,7 @@ import { icons, eventPublishSteps } from "./data"
  * @param {string} props.activeTab - The active tab of the sidenav
  * @param {string} props.eventName - The name of the event (Mandatory if the event has not been created in the backend yet and no eventId is provided)
  * @param {string} props.startDate - The start date of the event (Optional, will be displayed as TBD if not provided)
- * 
+ * @name EventSidenav
  * @example
  * const activeTab = 'details'
  * const eventName = 'Event Name'

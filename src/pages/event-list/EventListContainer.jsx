@@ -7,6 +7,21 @@ import NavBar from "../../layouts/navbar/NavBar";
 import Button from "../../layouts/UI/Button";
 import axios from "axios";
 
+/**
+ * Component for the Event list paage
+ * 
+ * @component
+ * @param {Fuction} onViewChangeHandler - Triggerd when the user chooses to shjow past or future events
+ * @param {Function} downloadCSVHandler  - Triggerd when the user clicks on csv donwload button
+ * @param {Function} onUserInputHandler - Triggerd when the user make any input
+ * @name EventListContainer
+ * @example
+ * <Button style={CSVButtonStyle} onClick={downloadCSVHandler}> Download CSV</Button>
+ * @example
+ * <OptionsBar onViewChange={onViewChangeHandler} onUserInput={onUserInputHandler}/>
+ */
+
+
 const getCSVRequest = async () => {
   let url = "https://www.hebtus.me/api/v1/creators/events/?page=1&limit=10&csv=true";
   let config = {
