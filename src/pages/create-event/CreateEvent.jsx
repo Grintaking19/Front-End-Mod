@@ -115,7 +115,7 @@ const CreateEvent = (props) => {
           </span>
 
           <div style={{ display: "flex", flexDirection: "row" }}>
-          <EventSidenav eventName={state.Title}  startDate={state.startDate} eventCurrentInfo={state}  />
+          <EventSidenav eventName={state.Title}  startDate={state.startDate} eventCurrentInfo={state}  activeTab="basic-info" />
 
             <div id="container---static" className={styles["container"]}>
               <BasicInfo

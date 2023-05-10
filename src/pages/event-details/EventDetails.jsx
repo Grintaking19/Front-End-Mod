@@ -103,7 +103,7 @@ const EventDetails = () => {
       <NavBar />
 
       <div className={styles["conatiner"]}>
-        <EventSidenav eventName={eventDetails.Title}  startDate={eventDetails.startDate} eventCurrentInfo={eventDetails}/>
+        <EventSidenav eventName={eventDetails.Title}  startDate={eventDetails.startDate} eventCurrentInfo={eventDetails}  activeTab="event-details"/>
         <div className={styles["event-details"]}>
 
           {

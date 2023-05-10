@@ -8,11 +8,13 @@ import NavBar from "../../layouts/navbar/NavBar";
 
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import { getTicketTypes, getBookings, getTicketsSummary, updateTodoListProps } from "./services";
 
 
 function EventDashboard() {
+    const {state} = useLocation();
     const { eventId } = useParams();
 
     const [ticketTypeData, setTicketTypeData] = useState([]);
@@ -100,6 +102,7 @@ function EventDashboard() {
                 <EventSidenav 
                     eventId={eventId}
                     activeTab="dashboard"
+                    eventCurrentInfo={state}
                 />
             </div>
             <div className={styles['body-container']}>

@@ -17,6 +17,8 @@ import { getEventTickets, createTicket, updateTicket } from "./services";
 
 function ManageTickets() {
     const { eventId } = useParams();
+    const {state} = useLocation();
+    console.log(state);
 
     const [acitveCardId, setActiveCardId] = useState('add-ticket--card');
     const [tickets, setTickets] = useState([{
@@ -86,6 +88,7 @@ function ManageTickets() {
                 <EventSidenav
                     eventId={eventId}
                     activeTab="tickets"
+                    eventCurrentInfo={state}
                 />
             </div>
             <div className={EventDashboardModule['body-container']}>
