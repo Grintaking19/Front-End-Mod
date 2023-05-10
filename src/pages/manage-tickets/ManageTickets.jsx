@@ -11,13 +11,14 @@ import {dateToReadableFormat, timeToReadableFormat, dateTimeToReadableFormat} fr
 
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import { getEventTickets, createTicket, updateTicket } from "./services";
 
 function ManageTickets() {
     const { eventId } = useParams();
 
-    const [acitveCardId, setActiveCardId] = useState(0);
+    const [acitveCardId, setActiveCardId] = useState('add-ticket--card');
     const [tickets, setTickets] = useState([{
         "ticketName" : "Lucky Draw",
         "ticketPriceType": "paid",

@@ -16,36 +16,3 @@ export const icons = {
     </svg>]
 }
 
-export const eventPublishSteps = [
-    {
-        id: 1,
-        title: 'Basic Info',
-        link: '/create-event',
-        status: 'completed'
-    }, {
-        id: 2,
-        title: 'Details',
-        link: '/event-details',
-        status: 'not-completed'
-    }, {
-        id: 3,
-        title: 'Tickets',
-        link: '/event/tickets',
-        status: 'not-completed'
-    }, {
-        id: 4,
-        title: 'Publish',
-        link: '/publish-event',
-        status: 'not-completed'
-    }, {
-        title: 'Dashboard',
-        link: '/event/dashboard',
-        selected: true
-    }, {
-        title: 'Orders',
-        link: '/event/orders',
-    }, {
-        title: 'Add Attendees',
-        link: '/event/add-attendees',
-    }
-]
