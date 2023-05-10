@@ -1,4 +1,4 @@
-import { TextField, Button, Box, Typography } from "@material-ui/core";
+import { TextField, Button, Box } from "@material-ui/core";
 import { Field, Form, Formik } from "formik";
 import { object, string } from "yup";
 import styles from "./CheckoutForm.module.css";
