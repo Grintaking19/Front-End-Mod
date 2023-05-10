@@ -30,6 +30,7 @@ function ManageTickets() {
         "sellingStartingDate": new Date().toUTCString(),
         "currentReservation": 30,
     }]);
+    const [formMessage, setFormMessage] = useState("");
 
     useEffect(() => {
         async function fetchData() {
@@ -59,11 +60,14 @@ function ManageTickets() {
             console.log(cardId);
         }
         setActiveCardId(cardId);
+        setFormMessage("");
     }
 
     async function handleAddTicket(ticket) {
         console.log(ticket);
-        await createTicket(eventId, ticket);
+        const message = await createTicket(eventId, ticket);
+        console.log(message);
+        setFormMessage(message);
     }
 
     async function handleEditTicket(ticket) {
@@ -74,6 +78,7 @@ function ManageTickets() {
             const updatedTickets = tickets.slice();
             updatedTickets[acitveCardId] = updatedTicket;
             setTickets(updatedTickets);
+            setFormMessage("Ticket updated successfully");
         }
         
     }
@@ -116,6 +121,7 @@ function ManageTickets() {
                     ticket={acitveCardId !== 'add-ticket--card' ? tickets[acitveCardId] : null}
                     onAddTicket={handleAddTicket}
                     onEditTicket={handleEditTicket}
+                    formMessage={formMessage}
                     />
             </div>
         </div>

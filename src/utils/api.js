@@ -28,9 +28,10 @@ export async function postData(endpoint, body, isProtected = false) {
             };
         }
         let response = await axios.post(url, body, { headers });
-        return response.data;
+        return response;
     } catch (error) {
         console.error(error);
+        return error.response.data;
     }
 }
 

@@ -44,3 +44,12 @@ form {
     align-items: center;
     width: 100%;
 }
+
+.form-message {
+    text-align: center;
+    margin-top: 4px;
+    /* show as message after submitting form */
+    color: #693429;
+    font-size: 1.2rem;
+    font-weight: 500;
+}

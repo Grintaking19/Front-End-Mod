@@ -34,9 +34,10 @@ export async function createTicket(eventId, ticket) {
     const res = await postData(`/tickets/`, body, true);
     if (!res || res.status === "fail") {
         console.log("Post failed for create ticket");
-        return null;
+        console.log(res);
+        return res ? res.message : "Failed to create ticket due to network error";
     }
-    return res.data.ticket;
+    return res.message;
 }
 
 export async function updateTicket(eventId, ticket) {

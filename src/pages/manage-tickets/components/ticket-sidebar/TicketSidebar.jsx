@@ -15,7 +15,7 @@ import { PM_24hoursConvert } from "../../../create-event/date-and-time/DateTime"
 import { useState, useEffect } from "react";
 
 function TicketSidebar(props) {
-    const { isNewTicket } = props;
+    const { isNewTicket, formMessage } = props;
     let ticket = isNewTicket ? {
         "ticketName": "",
         "ticketPriceType": "paid",
@@ -71,10 +71,6 @@ function TicketSidebar(props) {
         const { name, value } = event.target;
         console.log(name, value);
         setTicketValues({
-            ...ticketValues,
-            [name]: value,
-        });
-        props.onChange({
             ...ticketValues,
             [name]: value,
         });
@@ -188,6 +184,9 @@ function TicketSidebar(props) {
                             </div>
                         </div>
                     </form>
+                    <div className={styles["form-message"]} id="form-message">
+                        <p id="form-message-text">{formMessage}</p>
+                    </div>
                 </div >
             </div >
         </>
