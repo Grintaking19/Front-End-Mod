@@ -54,7 +54,7 @@ async function getEventData(parmas) {
   };
   try {
     response = await axios.get(
-      "https://www.hebtus.me/api/v1/events/" + parmas,
+      "https://www.hebtus.me/api/v1/events/?page=1&limit=50" + parmas,
       config
     );
 

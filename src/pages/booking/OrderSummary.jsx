@@ -43,7 +43,7 @@ export default function OrderSummary({ ticketsType }) {
                   return (
                     <div className={styles["summary-report--ticket-container"]} id="summary-report--ticket-container" >
                       <p className={styles["ticket-container--ticket-sales-name"]} id="ticket-container--ticket-sales-name">{ticket.sales} x {ticket.name}</p>
-                      <p className={styles["ticket-container--ticket-price"]} id="ticket-container--ticket-price">${ticket.price}</p>
+                      <p className={styles["ticket-container--ticket-price"]} id="ticket-container--ticket-price">${ticket.price * ticket.sales}</p>
                     </div>
                   )
                 })
