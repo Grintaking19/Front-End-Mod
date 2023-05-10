@@ -23,7 +23,7 @@ export async function getEventTickets(eventId) {
 
 export async function createTicket(eventId, ticket) {
     let body = {
-        eventId: eventId,
+        eventID: eventId,
         name: ticket.ticketName,
         type: ticket.ticketType,
         price: ticket.ticketPrice,

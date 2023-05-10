@@ -49,7 +49,7 @@ function EventSidenav(props) {
     useEffect(() => {
         async function fetchData() {
             if (!eventId) return
-            const {eventData} = await getEvent(eventId)
+            const eventData = await getEvent(eventId)
             setEventDetails(eventData)
             setIsDraft(eventData.draft)
             const ticketTypes = await getTicketTypes(eventId)
