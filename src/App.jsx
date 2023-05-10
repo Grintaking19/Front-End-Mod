@@ -15,12 +15,24 @@ import UpdatePassword from "./pages/update-password/UpdatePassword"
 import PublishEvent from "./pages/publish-event/PublishEvent"
 import EventDetails from "./pages/event-details/EventDetails";
 import BrowseEvents from "./pages/browse-events/BrowseEvents";
-import Booking from "./pages/booking/Booking";
-import Checkout from "./pages/booking/Checkout";
-import BillingInfoForm from "./pages/booking/CheckoutForm";
+import { GetTickets }  from "./pages/booking/GetTickets";
+
 export default function App() {
 
   let eventId = "642fda172c9619b9850f7102";
+  //  let selectedTickets = [{
+  //   name: "Regular",
+  //   price: 0,
+  //   sales: 2,
+  //   ticketId: "6439dabdb97119454f22e31f"
+  // },
+  // {
+  //   name: "Gamed",
+  //   price: 100,
+  //   sales: 1,
+  //   ticketId: "6453e3f00a1019f2f1346d55"
+  // }
+  // ]
   return (
     <div>
       {/* <BillingInfoForm /> */}
@@ -41,10 +53,10 @@ export default function App() {
           <Route path="/update-password" element={<UpdatePassword />} />
           <Route path="/event-details" element={<EventDetails />} />
           <Route path="/publish-event" element={<PublishEvent />} />
-          <Route path="/booking" element={<Booking eventId={eventId} />} />
+          <Route path="/booking" element={<GetTickets eventId={eventId} />} />
           <Route path="/browse-event" element={<BrowseEvents />} />
-          <Route path="/checkout" element={<Checkout eventId={eventId} />} />
-          <Route path="/billing-info" element={<BillingInfoForm />} />
+          {/* <Route path="/checkout" element={<Checkout eventId={eventId} />} /> */}
+          {/* <Route path="/billing-info" element={<BillingInfoForm eventId={eventId} selectedTickets={selectedTickets}/>} /> */}
         </Routes>
       </BrowserRouter>
     </div>

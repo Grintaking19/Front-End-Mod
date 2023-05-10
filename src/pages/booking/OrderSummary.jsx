@@ -1,19 +1,20 @@
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import styles from "./OrderSummary.module.css"
 import { Divider } from "@mui/material";
-
+import {AppContext} from "./GetTickets"
 export default function OrderSummary({ ticketsType }) {
   const [isEmpty, setIsEmpty] = useState(true);
-  const [selectedTickets, setSelectedTickets] = useState([]);
-
+  const {selectedTickets , setSelectedTickets} = useContext(AppContext); 
+  
   function getSeletedTickets(ticketsType) {
     let ticketsTypeSales = ticketsType.filter(ticket => {
       return ticket.sales > 0;
     })
     let selectedTickets = ticketsTypeSales.map(ticket => {
-      return { name: ticket.name, sales: ticket.sales, price: ticket.price }
+      return { name: ticket.name, sales: ticket.sales, price: ticket.price, ticketId: ticket._id }
     })
+    console.log(selectedTickets);
     setSelectedTickets(selectedTickets);
   }
 
@@ -32,10 +33,10 @@ export default function OrderSummary({ ticketsType }) {
       {
         isEmpty ?
           <div className={styles["empty-summary-report"]}>
-             <ShoppingCartOutlinedIcon fontSize="large" />
+            <ShoppingCartOutlinedIcon fontSize="large" />
           </div>
           :
-          <div className={styles["full-summary-report"]} id= "full-summary-report">
+          <div className={styles["full-summary-report"]} id="full-summary-report">
             <h3 className={styles["summary-report--title"]} id="summary-report--title">Order Summary</h3>
             <div className={styles["summary-report--container"]} id="summary-report--container">
               {
