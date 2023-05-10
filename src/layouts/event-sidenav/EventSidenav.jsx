@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { getTicketTypes } from "../../pages/event-dashboard/services"
 import { getEvent } from "./services"
 import { icons } from "./data"
+import { act } from "react-dom/test-utils"
 
 /**
  * Component for the sidenav of the event creation pages
@@ -70,26 +71,30 @@ function EventSidenav(props) {
             id: 1,
             title: 'Basic Info',
             link: '/create-event',
-            status: 'completed'
+            status: 'completed',
+            selected: activeTab === 'basic-info'
         }, {
             id: 2,
             title: 'Details',
             link: '/event-details',
-            status: 'not-completed'
+            status: 'not-completed',
+            selected: activeTab === 'event-details'
         }, {
             id: 3,
             title: 'Tickets',
             link: eventId ? `/manage/events/${eventId}/tickets` : null,
-            status: 'not-completed'
+            status: 'not-completed',
+            selected: activeTab === 'tickets'
         }, {
             id: 4,
             title: 'Publish',
             link: '/publish-event',
-            status: 'not-completed'
+            status: 'not-completed',
+            selected: activeTab === 'event-publish'
         }, {
             title: 'Dashboard',
             link: eventId ? `/event-dashboard/${eventId}` : null,
-            selected: true
+            selected: activeTab === 'dashboard'
         }, {
             title: 'Orders',
             link: '/event/orders',
