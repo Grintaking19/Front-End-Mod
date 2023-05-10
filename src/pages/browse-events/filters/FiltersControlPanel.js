@@ -7,51 +7,23 @@ import React, { useState } from "react";
 
 let FilterArray = [
   "Date",
-  "Price",
-  "Category",
-  "Format",
-  "Language",
-  "Currnecy",
+  "Price"
 ];
 
 let DateArray = [
   "Any day",
   "Today",
-  "Tommorow",
-  "This weekend",
-  "Pick a date",
-  "This week",
-  "Next week",
-  "This month",
-  "Next month",
+  "Tommorow"
 ];
 
 let PriceArray = ["Any Price", "Free", "Paid"];
 
 let CategoryArray = [
   "Any Category",
-  "Business",
   "Food & Drink",
   "Health",
   "Music",
-  "Art",
-  "Auto, Boat & Air",
-  "Chairty",
-  "Community",
-  "Family & Education",
-  "Fashion",
-  "Film & Media",
-  "Hobbies",
-  "Home & Lifestyle",
-  "Performing & Visual Arts",
-  "Government",
-  "Spirituality",
-  "School Activities",
-  "Science & Tech",
-  "Holiday",
-  "Sports & Fitness",
-  "Travel & Outdoor",
-  "Other",
+  "Chairty"
 ];
 
 let FormatArray = [

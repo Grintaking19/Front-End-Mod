@@ -3,6 +3,22 @@ import styles from "./NavBar.module.css";
 import { CgMathPlus } from "react-icons/cg";
 import { AiOutlineUser } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+
+/**
+ * A component that renders the navigation bar for the user who is logged in
+ * @component
+ * @param {object} props - React props object
+ * @param {function} props.setAccessToken  - Sets the Access Token
+ * @returns {JSX.Element} - Rendered component
+ * @name SignedInNavBar
+ * @example
+ * const [accessToken, setAccessToken]=useState(localStorage.getItem('user'))
+ * return (
+ * <NavBar setAccessToken={setAccessToken} />
+ * )
+ */
+
+
 export default function NavBar(props) {
   let navigate = useNavigate();
   return (

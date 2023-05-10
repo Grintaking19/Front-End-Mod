@@ -6,6 +6,28 @@ import { useNavigate } from 'react-router-dom';
 const NAMESPACE = "https://hebtus.me/api/v1/events/";
 const EVENTS_PER_PAGE = 12;
 
+/**
+
+    Events Component to fetch and display events data
+    @component Events
+    @name Events
+    @requires react
+    @requires react-router-dom
+    @requires axios
+    @requires useFetch
+    @param {object} props - Component props
+    @param {object} props.location - Object containing latitude, longitude and city values of user's location
+    @param {string} props.activeTab - Active tab value
+    @returns {JSX.Element} - The rendered events cards
+    @example
+    const [activeTab, setActiveTab] = useState('');
+    const [location, setLocation] = useState('');
+    return(
+    <Events activeTab={activeTab} location={location} />
+    )
+    */
+
+
 export default function Events(props) {
   const [events, setEvents] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -41,13 +63,13 @@ export default function Events(props) {
           }
         }
         // return `${NAMESPACE}?startDate=${startDate}&endDate=${endDate}&location=${props.location.latitude},${props.location.longitude}`;
-        return `${NAMESPACE}?startDate=${startDate}&endDate=${endDate}&location=31.2584644,30.0594885&page=${currentPage}&limit=${EVENTS_PER_PAGE}`;
+        return `${NAMESPACE}?startDate=${startDate}&endDate=${endDate}&location=${props.location.longitude},${props.location.latitude}&page=${currentPage}&limit=${EVENTS_PER_PAGE}`;
       } 
       else {
         if (props.activeTab === '') { return `${NAMESPACE}?location=${props.location.longitude},${props.location.latitude}&page=${currentPage}&limit=${EVENTS_PER_PAGE}`; }
         if (props.activeTab === 'online') { return `${NAMESPACE}?location=${props.location.longitude},${props.location.latitude}&page=${currentPage}&limit=${EVENTS_PER_PAGE}&online=1`; }
         // if (props.activeTab === 'free') { return `${NAMESPACE}?location=${props.location.longitude},${props.location.latitude}&page=${currentPage}&limit=${EVENTS_PER_PAGE}&free=1`; }
-        if (props.activeTab === 'free') { return `${NAMESPACE}?free=1`; }
+        if (props.activeTab === 'free') { return `${NAMESPACE}?free=1&page=${currentPage}&limit=${EVENTS_PER_PAGE}`; }
         if (props.activeTab === 'charity') { return `${NAMESPACE}?category=Charity %26 Causes&location=${props.location.longitude},${props.location.latitude}&page=${currentPage}&limit=${EVENTS_PER_PAGE}`; }
 
         else
@@ -104,7 +126,7 @@ return (
     <div id="events-album-container"> 
       { (!eventsLoading && events.length > 0) ? 
         <div className="album py-5" id="events-album">
-          <div className="container">
+          <div className={`container ${styles['_container']}`}>
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4" id="events-row">
               { events.map((event) => (
                 <div className="col" key={event._id}>

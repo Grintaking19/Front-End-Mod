@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/landing-page/categories/Categories.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/landing-page/categories/Categories.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import {React, useState, useEffect} from "react";
+import styles from "./Categories.module.css"
+import { FiMusic, FiHeart } from "react-icons/fi"
+import { FaTheaterMasks } from "react-icons/fa"
+import { MdOutlinePhotoLibrary, MdOutlineBusinessCenter } from "react-icons/md"
+import { TbDeviceGamepad2, TbShirtSport } from "react-icons/tb"
+import { BiDrink } from "react-icons/bi"
+import { useNavigate } from "react-router-dom";
+
+
+const OPENCAGE_API_KEY = "ca1e044266af4d9b92d96cd6a63f857f";
+// const OPENCAGE_API_KEY = "";
+
+/**
+ * This component is responsible for rendering categories (category tabs &amp; category cards) as well as getting user's location
+ * @component
+ * @name Categories
+ * @param {object} props - The props object.
+ * @param {function} props.setLocation - The setLocation function.
+ * @param {object} props.location - The location object.
+ * @param {boolean} props.location.loading - A boolean indicating whether the location is being loaded.
+ * @param {string} props.location.latitude - The latitude of the user's location.
+ * @param {string} props.location.longitude - The longitude of the user's location.
+ * @param {string} props.location.city - The city of the user's location.
+ * @param {string} props.activeTab - The active tab.
+ * @param {function} props.setActiveTab - The setActiveTab function.
+ * @returns {JSX.Element} The Categories component.
+ * 
+ * @example
+ * const [activeTab, setActiveTab] = useState('');
+ * const [location, setLocation] = useState('');
+ * return (
+ * &lt;Categories activeTab={activeTab} setActiveTab={setActiveTab} location={location} setLocation={setLocation}/>
+ * )
+ */
+
+
+export default function Categories(props) {
+
+  useEffect(() => {
+    if (localStorage.getItem("city")) {props.setLocation({ latitude: localStorage.getItem('latitude'), longitude:localStorage.getItem('longitude'), city:localStorage.getItem('city'), loading:false});}
+    else
+    {props.setLocation({loading:true})
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        // const loadingCity=''
+        const { latitude, longitude } = await(position.coords); // destructure latitude and longitude from the position object
+        // props.setLocation({ latitude, longitude, loadingCity }); // update the state with the latitude, longitude, and city
+        const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&amp;key=${OPENCAGE_API_KEY}`; // construct the OpenCage API URL with the latitude, longitude, and API key
+        const response = await fetch(url); // make a fetch request to the OpenCage API
+        const data = await response.json(); // parse the response body as JSON
+        const city = data.results[0].components.city; // extract the city from the OpenCage API response
+        props.setLocation({ latitude, longitude, city, loading:false}); // update the state with the latitude, longitude, and city
+        localStorage.setItem('longitude', longitude)
+        localStorage.setItem('latitude', latitude)
+        localStorage.setItem('city',city)
+      },
+      (error) => {
+        console.error(error); // log any errors that occur
+      }
+    );}
+  }, []);
+
+  const navigate = useNavigate()
+  const categoryCardClick = (selectedCategory) => {
+    // setSelectedEvent(event);
+    navigate(`/categorized/${selectedCategory}/${props.location.longitude}/${props.location.latitude}`);
+  }
+
+return (
+    &lt;div id="main-container">
+    &lt;div id= "popular-in-container" className="container">
+    &lt;div className={styles['location']} id="location-container">
+    &lt;h2 className={styles['popular-in']} id="popular-in-heading">Popular in&lt;/h2>
+    { !(props.location.loading) ? (
+    &lt;h2 className={styles['location--text']} style={{ color: '#3659E3' }} id="location-text">{props.location.city}&lt;/h2>
+    ) : (
+    &lt;h2 className={styles['location--text']} style={{ color: '#3659E3' }} id="location-loading">Loading Location ...&lt;/h2>
+    )}
+    &lt;/div>
+    
+        &lt;div className={styles['categories-tabs']} id="categories-container">
+          &lt;ul className={`nav nav-tabs nav-pills flex-wrap ${styles['_nav-tabs']}`} id="categories-tabs">
+            &lt;li className={`nav-item ${styles['_nav-item']}`} id="online-tab">
+            &lt;a
+                className={`nav-link ${props.activeTab === 'online' ? 'active' : ''}`}
+                aria-current="page"
+                onClick={() => props.setActiveTab('online')}
+                id="online-link"
+              >
+              Online
+              &lt;/a>
+            &lt;/li>
+            &lt;li className={`nav-item ${styles['_nav-item']}`} id="today-tab">
+            &lt;a
+                className={`nav-link ${props.activeTab === 'today' ? 'active' : ''}`}
+                onClick={() => props.setActiveTab('today')}
+                id="today-link"
+              >
+                Today
+              &lt;/a>
+            &lt;/li>
+            &lt;li className={`nav-item ${styles['_nav-item']}`} id="this-weekend-tab">
+            &lt;a
+                className={`nav-link ${props.activeTab === 'thisweekend' ? 'active' : ''}`}
+                onClick={() => props.setActiveTab('thisweekend')}
+                id="this-weekend-link"
+              >
+                This weekend
+              &lt;/a>
+            &lt;/li>
+            &lt;li className={`nav-item ${styles['_nav-item']}`} id="free-tab">
+            &lt;a
+                className={`nav-link ${props.activeTab === 'free' ? 'active' : ''}`}
+                onClick={() => props.setActiveTab('free')}
+                id="free-link"
+              >
+                Free
+              &lt;/a>
+            &lt;/li>
+            &lt;li className={`nav-item ${styles['_nav-item']}`} id="charity-tab">
+            &lt;a
+                className={`nav-link ${props.activeTab === 'charity' ? 'active' : ''}`}
+                onClick={() => props.setActiveTab('charity')}
+                id="charity-link"
+              >
+                Charity&amp;Causes
+              &lt;/a>
+            &lt;/li>
+          &lt;/ul>
+        &lt;/div>
+        &lt;div className={styles['trending-categories']} id="trending-categories-container">
+          &lt;h4 id="trending-categories-heading">Check out trending categories&lt;/h4>
+        &lt;/div>
+    
+        &lt;div className="album py" id="category-cards-container">
+          &lt;div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3" id="category-cards-row">
+            &lt;div className="col" id="music-card">
+              &lt;div className="card shadow-sm" style={{ width: '100%' }} onClick={() => categoryCardClick('Music')}>
+                &lt;div className="card-body" >
+                  &lt;FiMusic className={styles['category--icon']} />
+                  &lt;h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`} id="music-card-name">Music&lt;/h5>
+                &lt;/div>
+              &lt;/div>
+            &lt;/div>
+            &lt;div className="col" id="arts-card">
+              &lt;div className="card shadow-sm" style={{ width: '100%' }} onClick={() => categoryCardClick('Performing&amp;VisualArts')}>
+                &lt;div className="card-body">
+                  &lt;FaTheaterMasks className={styles['category--icon']} />
+                  &lt;h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`} id="arts-card-name">Performing &amp; Visual Arts&lt;/h5>
+                &lt;/div>
+              &lt;/div>
+            &lt;/div>
+            &lt;div className="col" id="holiday-card">
+              &lt;div className="card shadow-sm" style={{ width: '100%' }} onClick={() => categoryCardClick('Holiday')}>
+                &lt;div className="card-body">
+                  &lt;MdOutlinePhotoLibrary className={styles['category--icon']} />
+                  &lt;h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`} id="holiday-card-name">Holiday&lt;/h5>
+                &lt;/div>
+              &lt;/div>
+            &lt;/div>
+            &lt;div className="col" id="health-card">
+              &lt;div className="card shadow-sm" style={{ width: '100%' }} onClick={() => categoryCardClick('Health&amp;Fitness')}>
+                &lt;div className="card-body">
+                  &lt;FiHeart className={styles['category--icon']} />
+                  &lt;h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`} id="health-card-name">Health &amp; Fitness&lt;/h5>
+                &lt;/div>
+              &lt;/div>
+            &lt;/div>
+            &lt;div className="col" id="hobbies-card">
+              &lt;div className="card shadow-sm" style={{ width: '100%' }} onClick={() => categoryCardClick('Hobbies')}>
+                &lt;div className="card-body">
+                  &lt;TbDeviceGamepad2 className={styles['category--icon']} />
+                  &lt;h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`} id="hobbies-card-name">Hobbies&lt;/h5>
+                &lt;/div>
+              &lt;/div>
+            &lt;/div>
+            &lt;div className="col" id="business-card">
+              &lt;div className="card shadow-sm" style={{ width: '100%' }} onClick={() => categoryCardClick('Business')}>
+                &lt;div className="card-body">
+                  &lt;MdOutlineBusinessCenter className={styles['category--icon']} />
+                  &lt;h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`} id="business-card-name">Business&lt;/h5>
+                &lt;/div>
+              &lt;/div>
+            &lt;/div>
+            &lt;div className="col" id="food-card">
+              &lt;div className="card shadow-sm" style={{ width: '100%' }} onClick={() => categoryCardClick('Food&amp;Drink')}>
+                &lt;div className="card-body">
+                  &lt;BiDrink className={styles['category--icon']} />
+                  &lt;h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`} id="food-card-name">Food &amp; Drink&lt;/h5>
+                &lt;/div>
+              &lt;/div>
+            &lt;/div>
+            &lt;div className="col" id="sports-card">
+              &lt;div className="card shadow-sm" style={{ width: '100%' }} onClick={() => categoryCardClick('Sports&amp;Fitness')}>
+                &lt;div className="card-body">
+                  &lt;TbShirtSport className={styles['category--icon']} />
+                  &lt;h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`} id="sports-card-name">Sports &amp; Fitness&lt;/h5>
+                &lt;/div>
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+    &lt;div className={styles['events-in']} id="events-in">
+      &lt;h4 id="trending-categories--text">Events in {props.location.city }&lt;/h4>
+    &lt;/div>
+  &lt;/div>
+&lt;/div>
+)
+    }</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BasicInfo.html">BasicInfo</a></li><li><a href="BrowseEvents.html">BrowseEvents</a></li><li><a href="Categories.html">Categories</a></li><li><a href="CategorizedEvents.html">CategorizedEvents</a></li><li><a href="DateTime.html">DateTime</a></li><li><a href="EventListContainer.html">EventListContainer</a></li><li><a href="EventSidenav.html">EventSidenav</a></li><li><a href="Events.html">Events</a></li><li><a href="LandingPage.html">LandingPage</a></li><li><a href="Location.html">Location</a></li><li><a href="NavBar.html">NavBar</a></li><li><a href="PublishEvent.html">PublishEvent</a></li><li><a href="SignedInNavBar.html">SignedInNavBar</a></li><li><a href="SignedOutNavBar.html">SignedOutNavBar</a></li><li><a href="postRequest.html">postRequest</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed May 10 2023 03:02:02 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

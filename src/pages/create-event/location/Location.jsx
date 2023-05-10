@@ -5,6 +5,22 @@ import HorizontalFlex from "../../../layouts/UI/HorizontalFlex";
 import PanelChanger from "../../../layouts/UI/PanelChanger";
 import { useState } from "react";
 
+/**
+ * Component for the Location of the event creation pages
+ * 
+ * @component
+ * @param {Object} props
+ * @param {string} props.width  - Determine the width of the 
+ * @param {string} props.onCLick - Triggerd when the user click on the button (save and continue)
+ * @name Location
+
+ * @example
+ * <Panel
+ * image={LocationIcon}
+ * title="Location"
+ * description="Help people in the area discover your event and let attendees know where to show up."
+ * style={{ width: props.width }}>
+ */
 const Location = (props) => {
 
   const [choosenPanel, setChoosenPanel] = useState(1);

@@ -7,6 +7,28 @@ import useFetch from "../useFetch";
 import NavBar from "../../../layouts/navbar/NavBar";
 const EVENTS_PER_PAGE = 8;
 
+/**
+ * Renders - in a new page - a list of filtered events by a certain filter near the user's location.
+ * The available 8 filters are:
+ * 1- Food & Drink
+ * 2- Sports & Fitness
+ * 3- Health & Fitness
+ * 4- Performing & Visual Arts
+ * 5- Holiday
+ * 6- Business
+ * 7- Hobbies
+ * 8- Music
+ * 
+ * @component CategorizedEvents
+ * @name CategorizedEvents
+ * @returns {JSX.Element} A new page with filtered events.
+ * @example
+ * const navigate = useNavigate()
+  const categoryCardClick = (selectedCategory) => {
+    navigate(`/categorized/${selectedCategory}/${longitude}/${latitude}`);
+  }
+ */
+
 
 const NAMESPACE = "https://hebtus.me/api/v1/events/";
 export default function CategorizedEvents() {

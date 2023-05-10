@@ -11,6 +11,30 @@ import { useNavigate } from "react-router-dom";
 const OPENCAGE_API_KEY = "ca1e044266af4d9b92d96cd6a63f857f";
 // const OPENCAGE_API_KEY = "";
 
+/**
+ * This component is responsible for rendering categories (category tabs & category cards) as well as getting user's location
+ * @component
+ * @name Categories
+ * @param {object} props - The props object.
+ * @param {function} props.setLocation - The setLocation function.
+ * @param {object} props.location - The location object.
+ * @param {boolean} props.location.loading - A boolean indicating whether the location is being loaded.
+ * @param {string} props.location.latitude - The latitude of the user's location.
+ * @param {string} props.location.longitude - The longitude of the user's location.
+ * @param {string} props.location.city - The city of the user's location.
+ * @param {string} props.activeTab - The active tab.
+ * @param {function} props.setActiveTab - The setActiveTab function.
+ * @returns {JSX.Element} The Categories component.
+ * 
+ * @example
+ * const [activeTab, setActiveTab] = useState('');
+ * const [location, setLocation] = useState('');
+ * return (
+ * <Categories activeTab={activeTab} setActiveTab={setActiveTab} location={location} setLocation={setLocation}/>
+ * )
+ */
+
+
 export default function Categories(props) {
 
   useEffect(() => {
@@ -56,7 +80,7 @@ return (
     </div>
     
         <div className={styles['categories-tabs']} id="categories-container">
-          <ul className="nav nav-tabs" id="categories-tabs">
+          <ul className={`nav nav-tabs nav-pills flex-wrap ${styles['_nav-tabs']}`} id="categories-tabs">
             <li className={`nav-item ${styles['_nav-item']}`} id="online-tab">
             <a
                 className={`nav-link ${props.activeTab === 'online' ? 'active' : ''}`}
@@ -112,7 +136,7 @@ return (
         <div className="album py" id="category-cards-container">
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3" id="category-cards-row">
             <div className="col" id="music-card">
-              <div className="card shadow-sm" style={{ width: '18rem' }} onClick={() => categoryCardClick('Music')}>
+              <div className="card shadow-sm" style={{ width: '100%' }} onClick={() => categoryCardClick('Music')}>
                 <div className="card-body" >
                   <FiMusic className={styles['category--icon']} />
                   <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`} id="music-card-name">Music</h5>
@@ -120,7 +144,7 @@ return (
               </div>
             </div>
             <div className="col" id="arts-card">
-              <div className="card shadow-sm" style={{ width: '18rem' }} onClick={() => categoryCardClick('Performing&VisualArts')}>
+              <div className="card shadow-sm" style={{ width: '100%' }} onClick={() => categoryCardClick('Performing&VisualArts')}>
                 <div className="card-body">
                   <FaTheaterMasks className={styles['category--icon']} />
                   <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`} id="arts-card-name">Performing & Visual Arts</h5>
@@ -128,7 +152,7 @@ return (
               </div>
             </div>
             <div className="col" id="holiday-card">
-              <div className="card shadow-sm" style={{ width: '18rem' }} onClick={() => categoryCardClick('Holiday')}>
+              <div className="card shadow-sm" style={{ width: '100%' }} onClick={() => categoryCardClick('Holiday')}>
                 <div className="card-body">
                   <MdOutlinePhotoLibrary className={styles['category--icon']} />
                   <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`} id="holiday-card-name">Holiday</h5>
@@ -136,7 +160,7 @@ return (
               </div>
             </div>
             <div className="col" id="health-card">
-              <div className="card shadow-sm" style={{ width: '18rem' }} onClick={() => categoryCardClick('Health&Fitness')}>
+              <div className="card shadow-sm" style={{ width: '100%' }} onClick={() => categoryCardClick('Health&Fitness')}>
                 <div className="card-body">
                   <FiHeart className={styles['category--icon']} />
                   <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`} id="health-card-name">Health & Fitness</h5>
@@ -144,7 +168,7 @@ return (
               </div>
             </div>
             <div className="col" id="hobbies-card">
-              <div className="card shadow-sm" style={{ width: '18rem' }} onClick={() => categoryCardClick('Hobbies')}>
+              <div className="card shadow-sm" style={{ width: '100%' }} onClick={() => categoryCardClick('Hobbies')}>
                 <div className="card-body">
                   <TbDeviceGamepad2 className={styles['category--icon']} />
                   <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`} id="hobbies-card-name">Hobbies</h5>
@@ -152,7 +176,7 @@ return (
               </div>
             </div>
             <div className="col" id="business-card">
-              <div className="card shadow-sm" style={{ width: '18rem' }} onClick={() => categoryCardClick('Business')}>
+              <div className="card shadow-sm" style={{ width: '100%' }} onClick={() => categoryCardClick('Business')}>
                 <div className="card-body">
                   <MdOutlineBusinessCenter className={styles['category--icon']} />
                   <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`} id="business-card-name">Business</h5>
@@ -160,7 +184,7 @@ return (
               </div>
             </div>
             <div className="col" id="food-card">
-              <div className="card shadow-sm" style={{ width: '18rem' }} onClick={() => categoryCardClick('Food&Drink')}>
+              <div className="card shadow-sm" style={{ width: '100%' }} onClick={() => categoryCardClick('Food&Drink')}>
                 <div className="card-body">
                   <BiDrink className={styles['category--icon']} />
                   <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`} id="food-card-name">Food & Drink</h5>
@@ -168,7 +192,7 @@ return (
               </div>
             </div>
             <div className="col" id="sports-card">
-              <div className="card shadow-sm" style={{ width: '18rem' }} onClick={() => categoryCardClick('Sports&Fitness')}>
+              <div className="card shadow-sm" style={{ width: '100%' }} onClick={() => categoryCardClick('Sports&Fitness')}>
                 <div className="card-body">
                   <TbShirtSport className={styles['category--icon']} />
                   <h5 className={`d-inline-block align-text-top ${styles['category--name']} ${styles['event-card--name']}`} id="sports-card-name">Sports & Fitness</h5>

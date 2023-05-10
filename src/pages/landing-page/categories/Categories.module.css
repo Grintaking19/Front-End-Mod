@@ -60,4 +60,31 @@
     font-family: Montserrat, sans-serif;
 }
 
+/*  */
 
+@media (max-width: 767.98px) {
+    ._nav-tabs {
+      font-size: 0.85rem;
+    }
+    
+    ._nav-tabs li{
+        width: 17%;
+    }
+
+    .category--name {
+        font-size: 14px;
+        margin-left: 10px;
+      }
+      .category--icon {
+        font-size: 20px;
+      }
+
+      .trending-categories{
+        text-align: center;
+      }
+
+    .events-in{
+        text-align: center;
+    }
+    
+  }

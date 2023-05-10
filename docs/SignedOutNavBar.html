@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: EventSidenav</title>
+    <title>JSDoc: Class: SignedOutNavBar</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: EventSidenav</h1>
+    <h1 class="page-title">Class: SignedOutNavBar</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>EventSidenav<span class="signature">(props)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>SignedOutNavBar<span class="signature">(props)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h2>
         
     
 </header>
@@ -41,7 +41,7 @@
     
 
     
-    <h4 class="name" id="EventSidenav"><span class="type-signature"></span>new EventSidenav<span class="signature">(props)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="SignedOutNavBar"><span class="type-signature"></span>new SignedOutNavBar<span class="signature">(props)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
     
 
     
@@ -49,7 +49,7 @@
 
 
 <div class="description">
-    <p>Component for the sidenav of the event creation pages</p>
+    <p>A component that renders the navigation bar for the user who is not logged in.</p>
 </div>
 
 
@@ -91,7 +91,7 @@
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">object</span>
 
 
             
@@ -101,7 +101,7 @@
 
             
 
-            <td class="description last">
+            <td class="description last"><p>The props object.</p>
                 <h6>Properties</h6>
                 
 
@@ -127,13 +127,13 @@
 
         <tr>
             
-                <td class="name"><code>eventId</code></td>
+                <td class="name"><code>setAccessToken</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">function</span>
 
 
             
@@ -143,76 +143,7 @@
 
             
 
-            <td class="description last"><p>The id of the event (Mandatory if the event has been created in the backend)</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>activeTab</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The active tab of the sidenav</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>eventName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The name of the event (Mandatory if the event has not been created in the backend yet and no eventId is provided)</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>startDate</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The start date of the event (Optional, will be displayed as TBD if not provided)</p></td>
+            <td class="description last"><p>A function that sets the access token. Accepts a string parameter.</p></td>
         </tr>
 
     
@@ -260,7 +191,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="layouts_event-sidenav_EventSidenav.jsx.html">layouts/event-sidenav/EventSidenav.jsx</a>, <a href="layouts_event-sidenav_EventSidenav.jsx.html#line10">line 10</a>
+        <a href="layouts_navbar_SignedOutNavBar.jsx.html">layouts/navbar/SignedOutNavBar.jsx</a>, <a href="layouts_navbar_SignedOutNavBar.jsx.html#line7">line 7</a>
     </li></ul></dd>
     
 
@@ -285,15 +216,37 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>The rendered component.</li>
+</ul>
+</div>
 
 
 
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
 
-    <h5>Examples</h5>
+
+    </dd>
+</dl>
+
     
-    <pre class="prettyprint"><code>const activeTab = 'details'const eventName = 'Event Name'return ( &lt;EventSidenav activeTab={activeTab} eventName={eventName} />)</code></pre>
 
-    <pre class="prettyprint"><code>const eventId = '123'const activeTab = 'details'return (&lt;EventSidenav eventId={eventId} activeTab={activeTab} />)</code></pre>
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>const [accessToken, setAccessToken] = useState(localStorage.getItem('user'));return (  &lt;SignedOutNavBar setAccessToken={setAccessToken} />);</code></pre>
 
 
 

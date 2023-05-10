@@ -25,7 +25,7 @@ nav {
 
 
 .nav-bar--button{
-    height: 90px;
+    height: 70px;
     width:135px;
     /* background-color: blanchedalmond; */
     display: flex;
@@ -102,4 +102,34 @@ a:active { text-decoration: none; }
 
 .nav-bar--user:hover .drop-down-menu {
     display: block;
+  }
+
+
+
+  @media only screen and (max-width: 768px) {
+    /* On small screens, adjust the padding and font size of the logo */
+    .hebtus-logo-text {
+      font-size: 20px;
+      margin-left: 1px;
+      margin-top: 3px;
+      margin-right: 0;
+    }
+  
+    /* On small screens, make the button and user divs full width */
+    .nav-bar--button {
+      margin-left: 30px;
+      font-size: 70%;
+      /* padding: 5 5 5 5; */
+      width: 50%;
+    }
+  
+    .nav-bar--user {
+      width: 70%;
+      font-size: 70%;
+    }
+  
+    /* On small screens, hide the username */
+    .nav-bar--username {
+      display: none;
+    }
   }
