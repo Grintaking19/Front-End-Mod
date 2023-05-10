@@ -16,6 +16,7 @@ const InputField = (props) => {
         if (e.target.className == styles["input-field"]) {
           EventTitleClicked = 1;
         }
+        if (TitleInputRef.current == null) return;
         if (
           e.target.className != styles["input-field"] &&
           TitleInputRef.current.value.length == 0 &&

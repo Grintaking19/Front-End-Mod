@@ -94,7 +94,7 @@ const EventDetails = () => {
     formData.append("tags", eventDetails.choosenTag.toString());
     formData.append("image", eventDetails.image);
     let eventId = await postRequest(formData);
-
+    setEventDetails( {...eventDetails, id:eventId } );
     navigate("/publish-event", { state: {...eventDetails, id:eventId } });
   };
 

@@ -37,6 +37,7 @@ function EventSidenav(props) {
     const { eventId, activeTab, eventName, startDate } = props
     let eventCurrentInfo= props.eventCurrentInfo;
     
+    console.log(props.eventCurrentInfo);
     // TODO: Use the activeTab prop to set the active tab
 
     const [isDraft, setIsDraft] = useState(true)
