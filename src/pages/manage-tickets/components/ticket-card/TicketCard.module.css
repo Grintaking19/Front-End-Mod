@@ -39,19 +39,20 @@
 }
 
 .card-status > span,
-.check-icon > span {
+.card-body > span {
     font-size: 14px;
     font-weight: 500;
     margin-bottom: 8px;
     color: gray;
 }
 
-.check-icon > span {
+.card-body > span {
     margin-left: 8px;
 }
 
 .card-body {
     height: 54px;
+    margin-left: 12px;
 }
 
 .ticket-breakline {

@@ -1,8 +1,8 @@
 import styles from './AddTicketCard.module.css';
 
-function AddTicketCard() {
+function AddTicketCard(props) {
     return (
-        <div className={styles['card-button-container']} data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+        <div className={styles['card-button-container']} data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="add-ticket--card" onClick={props.onClick}>
             <div className={styles['card-content']}>
                 <div className={styles['plus-icon']}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="#3659e3" class="bi bi-plus-square-fill" viewBox="0 0 16 16">

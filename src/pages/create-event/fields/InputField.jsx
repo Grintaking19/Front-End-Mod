@@ -53,6 +53,7 @@ const InputField = (props) => {
         value={props.value}
         disabled={props.disable}
         type={props.type || "text"}
+        name={props.name}
       ></input>
       <span className={styles["input-field-monitor"]}>
         <div className={styles["input-field-warning"]} ref={TitleInputWarningRef}>
