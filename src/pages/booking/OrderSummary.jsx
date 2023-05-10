@@ -11,6 +11,7 @@ export default function OrderSummary({ ticketsType }) {
     let ticketsTypeSales = ticketsType.filter(ticket => {
       return ticket.sales > 0;
     })
+    console.log(ticketsType);
     let selectedTickets = ticketsTypeSales.map(ticket => {
       return { name: ticket.name, sales: ticket.sales, price: ticket.price, ticketId: ticket._id }
     })
@@ -44,7 +45,7 @@ export default function OrderSummary({ ticketsType }) {
                   return (
                     <div className={styles["summary-report--ticket-container"]} id="summary-report--ticket-container" >
                       <p className={styles["ticket-container--ticket-sales-name"]} id="ticket-container--ticket-sales-name">{ticket.sales} x {ticket.name}</p>
-                      <p className={styles["ticket-container--ticket-price"]} id="ticket-container--ticket-price">${ticket.price * ticket.sales}</p>
+                      <p className={styles["ticket-container--ticket-price"]} id="ticket-container--ticket-price">£{ticket.price * ticket.sales}</p>
                     </div>
                   )
                 })
@@ -52,7 +53,7 @@ export default function OrderSummary({ ticketsType }) {
               <Divider className={styles["summary-report--divider"]} id="summary-report--divider" />
               <div className={styles["summary-report--total-container"]} id="summary-report--total-container">
                 <p className={styles["total-container--total-text"]} id="total-container--total-text">Total</p>
-                <p className={styles["total-container--total-price"]} id="total-container--total-price">${selectedTickets.reduce((total, ticket) => total + ticket.sales * ticket.price, 0)}</p>
+                <p className={styles["total-container--total-price"]} id="total-container--total-price">£{selectedTickets.reduce((total, ticket) => total + ticket.sales * ticket.price, 0)}</p>
               </div>
             </div>
           </div>

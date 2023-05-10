@@ -73,7 +73,7 @@ export default function TicketsContainer({ name, type, price, capacity, reserved
         <Divider></Divider>
 
         <div className={styles["reservation--price"]}>
-          <h3>${price}</h3>
+          <h3>{price ? '£'+price : `Free`}</h3>
         </div>
 
         <div className={styles["reservation--end-date"]}>

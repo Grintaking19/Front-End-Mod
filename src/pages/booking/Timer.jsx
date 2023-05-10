@@ -16,6 +16,7 @@ const style = {
 export function Timer({ seconds, setTimeOut }) {
   const [time, setTime] = useState(seconds);
   const timerId = useRef();
+  const [about, setAbout] = useState(style);
 
   useEffect(() => {
     timerId.current = setInterval(() => {
@@ -29,10 +30,17 @@ export function Timer({ seconds, setTimeOut }) {
     if (time === 0) {
       setTimeOut(true);
     }
+
+    if (time < 60)
+    {
+      let near = { ...style };
+      near.color = "red";
+      setAbout(near);
+      }
   }, [time, setTimeOut]);
 
   return (
-    <p style= {style}>Time left {formateTime(time)}</p>
+    <p style= {about}>Time left {formateTime(time)}</p>
   )
 
 }

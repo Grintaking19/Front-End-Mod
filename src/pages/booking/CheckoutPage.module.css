@@ -95,11 +95,11 @@
   flex: 1;
   font-size: 18px;
   font-weight: 400;
+  margin-bottom: 0px;
+  padding-right: 40px;
 }
 
-.back-btn-container {
-  padding: 8px;
-}
+
 
 .header--back-btn {
   border: none;
@@ -113,10 +113,11 @@
   background-color: rgb(240, 240, 240);
 }
 
-.header--event-date {
-  flex: 1;
-  font-size: 12px;
-  font-weight: 400;
+.header--timer-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .content--body {

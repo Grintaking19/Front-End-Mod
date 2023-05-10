@@ -1,34 +1,44 @@
-import React, { useEffect, useRef, useContext } from "react";
+import React, { useEffect, useRef, useContext, useState } from "react";
 import styles from "./CheckoutPage.module.css";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import OrderSummary from "./OrderSummary";
 import { CheckoutForm } from "./CheckoutForm";
 import axios from "axios";
 import { AppContext } from "./GetTickets"
+import { Timer } from "./Timer";
+
+const config = {
+  headers: {
+    token: localStorage.getItem('user'),
+  }
+}
 
 export function CheckoutPage({ event, ticketsType, setCheckout, setModal }) {
 
+
+  
   const formikRef = useRef();
   const { selectedTickets } = useContext(AppContext);
-
+  const [timeOut, setTimeOut] = useState(false);
   const handleSubmit = async () => {
     if (formikRef.current) {
       const values = formikRef.current.values;
       const formikHelpers = formikRef.current.formik;
+      localStorage.setItem("user", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ0NWU4YWJiZTliNmY4MTcyZjQyMyIsImlhdCI6MTY4Mzc0NTUzNSwiZXhwIjoxNjkxNTIxNTM1fQ.uUJVeO-s8JLG04BfH__JWjQa-T0biT9N3Ut_WF5yUrk")
       console.log(values);
       console.log(values);
 
       const newBooking = selectedTickets.map((ticket) => {
         return {
-          ticketId: ticket._id,
+          ticketID: ticket.ticketId,
           quantity: ticket.sales,
           price: ticket.price,
         };
       })
       const bookingPost = {
-        "eventId": event._id,
+        "eventID": event._id,
         "guestEmail": values.email,
-        "phone": values.phone,
+        "phoneNumber": values.phone,
         "gender": values.gender,
         "name": {
           "firstName": values.firstName,
@@ -36,14 +46,15 @@ export function CheckoutPage({ event, ticketsType, setCheckout, setModal }) {
         },
         bookings: newBooking,
       }
-      const response = await axios.post(process.env.REACT_APP_BACKEND_URL + "/bookings", bookingPost);
-      if (!response || response.status === "fail") {
-        console.log("fetch failed for get events");
-      } else {
-        console.log(response.data)
+      console.log(bookingPost);
+      try {
+        const response = await axios.post(process.env.REACT_APP_API_DOMAIN + "/bookings", bookingPost, config);
+        console.log(response);
+      }
+      catch (error) {
+        console.log(error);
       }
 
-      formikHelpers.resetForm();
     }
   }
 
@@ -85,7 +96,7 @@ export function CheckoutPage({ event, ticketsType, setCheckout, setModal }) {
               <h2 className={styles["header--event-title"]}>Checkout</h2>
             </div>
             <div className={styles["header--timer-container"]}>
-
+              <Timer seconds={20} setTimeOut={setTimeOut} />
             </div>
           </div>
 
