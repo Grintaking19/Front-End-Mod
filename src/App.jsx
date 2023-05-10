@@ -15,6 +15,7 @@ import UpdatePassword from "./pages/update-password/UpdatePassword"
 import PublishEvent from "./pages/publish-event/PublishEvent"
 import EventDetails from "./pages/event-details/EventDetails";
 import BrowseEvents from "./pages/browse-events/BrowseEvents";
+import ManageTickets from "./pages/manage-tickets/ManageTickets";
 
 export default function App() {
 
@@ -39,6 +40,9 @@ export default function App() {
         <Route path="/event-details" element={<EventDetails/>} />
         <Route path="/publish-event" element={<PublishEvent/>} />
         <Route path="/browse-event" element={<BrowseEvents/>} />
+        <Route path="/manage/events/:eventId/tickets" element={<ManageTickets />} />
+        
+        <Route path="*" element={<h1>Not Found</h1>} />
 
 
 

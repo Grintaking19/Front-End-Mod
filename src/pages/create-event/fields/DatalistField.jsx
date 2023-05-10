@@ -4,9 +4,8 @@ import Autocomplete from "@mui/material/Autocomplete";
 
 const DatalistField = (props) => {
   return (
-    <div className={"datalist-field-frame"} id={props.id}>
+    <div className={"datalist-field-frame"} id={props.id} style={{ width: props.width }}>
       <Autocomplete
-        sx={{ width: props.width }}
         popupIcon={""}
         options={props.options}
         renderInput={(params) => <TextField {...params} />}

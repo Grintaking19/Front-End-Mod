@@ -147,6 +147,7 @@ const BasicInfo = (props) => {
         value={props.value.Title}
         disable={props.disable}
         id= "event-title-input"
+        maxLength={75}
       />
 
       <HorizontalFlex>

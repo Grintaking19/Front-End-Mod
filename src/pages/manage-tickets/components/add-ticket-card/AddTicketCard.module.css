@@ -1,0 +1,35 @@
+.card-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    margin-bottom: 50px;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    width: 270px;
+    min-width: 260px;
+    height: 230px;
+}
+
+.card-button-container:hover {
+    cursor: pointer;
+    border: 1px solid #4d42ee;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.plus-icon {
+    margin: auto;
+    margin-bottom: 16px;
+}
+
+.card-subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+}
