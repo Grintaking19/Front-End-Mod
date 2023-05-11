@@ -1,10 +1,9 @@
 .input-field-frame {
   display: flex;
   flex-direction: column;
-  width: 635px;
+  width: 100%;
   font-size: 12px;
   margin-bottom: 1rem;
-
 }
 
 .input-field {
@@ -14,6 +13,10 @@
   padding-top: 0.8rem;
   border: 1px solid #dfdee6;
   border-radius: 2px;
+}
+
+.input-field:disabled {
+  background-color: #f5f5f5;
 }
 
 .input-field-title {

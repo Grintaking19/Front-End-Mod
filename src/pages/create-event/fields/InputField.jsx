@@ -16,6 +16,7 @@ const InputField = (props) => {
         if (e.target.className == styles["input-field"]) {
           EventTitleClicked = 1;
         }
+        if (TitleInputRef.current == null) return;
         if (
           e.target.className != styles["input-field"] &&
           TitleInputRef.current.value.length == 0 &&
@@ -46,18 +47,20 @@ const InputField = (props) => {
       </p>
       <input
         className={styles["input-field"]}
-        id="input-field"
-        maxLength={75}
+        id={"input-field-" + props.title}
+        maxLength={props.maxLength || 500}
         onChange={inputHandler}
         ref={TitleInputRef}
         value={props.value}
         disabled={props.disable}
+        type={props.type || "text"}
+        name={props.name}
       ></input>
       <span className={styles["input-field-monitor"]}>
         <div className={styles["input-field-warning"]} ref={TitleInputWarningRef}>
           {" "}
         </div>
-        <div>{inputCount}/75 </div>
+        {props.maxLength ? <div>{inputCount}/{props.maxLength}</div> : null}
       </span>
     </div>
   );

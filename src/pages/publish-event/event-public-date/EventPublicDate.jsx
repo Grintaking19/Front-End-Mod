@@ -72,7 +72,7 @@ const EventPublicDate = (props) => {
         </span>
       </div>
       <div className={styles["event-publicdate-calender"]}>
-        <BasicDatePicker title={"Start Date"} onChange={DateChangeHandler} />
+        <BasicDatePicker title={"Start Date"} onChange={DateChangeHandler}  value={null} />
         <DatalistField
           options={TimeSlots}
           title="Start Time"

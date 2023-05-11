@@ -167,7 +167,7 @@ const DateTime = (props) => {
       <HorizontalFlex width="100%" id="start-date-time-flex">
         <BasicDatePicker
           title="Start Date *"
-          width="49%"
+          width="100%"
           required={1}
           onChange={onStartDateChangeHandler}
           error={dateError}
@@ -187,7 +187,7 @@ const DateTime = (props) => {
       <HorizontalFlex width="100%" id="end-date-time-flex">
         <BasicDatePicker
           title="End Date *"
-          width="49%"
+          width="100%"
           required={1}
           onChange={onEndDateChangeHandler}
           error={dateError}

@@ -93,6 +93,7 @@ const PublishEvent = () => {
           eventName={state.Title}
           startDate={state.startDate}
           eventCurrentInfo={eventPublishDetails}
+          activeTab="event-publish"
         />
         <div className={styles["components"]}>
           <h1 className={styles["heading"]}>Publish Your Event</h1>

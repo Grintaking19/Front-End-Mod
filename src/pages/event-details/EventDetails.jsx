@@ -94,7 +94,7 @@ const EventDetails = () => {
     formData.append("tags", eventDetails.choosenTag.toString());
     formData.append("image", eventDetails.image);
     let eventId = await postRequest(formData);
-
+    setEventDetails( {...eventDetails, id:eventId } );
     navigate("/publish-event", { state: {...eventDetails, id:eventId } });
   };
 
@@ -103,7 +103,7 @@ const EventDetails = () => {
       <NavBar />
 
       <div className={styles["conatiner"]}>
-        <EventSidenav eventName={eventDetails.Title}  startDate={eventDetails.startDate} eventCurrentInfo={eventDetails}/>
+        <EventSidenav eventName={eventDetails.Title}  startDate={eventDetails.startDate} eventCurrentInfo={eventDetails}  activeTab="event-details"/>
         <div className={styles["event-details"]}>
 
           {
