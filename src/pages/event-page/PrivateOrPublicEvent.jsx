@@ -6,13 +6,15 @@ import EventPage from "./EventPage"
 
 export function PrivateOrPublicEvent() {
   const [showEvent, setShowEvent] = useState(true);
-  const [event, setEventM] = useState({});
+  const [event, setEvent] = useState({});
   const { eventId } = useParams();
   console.log(eventId);
+  console.log("This is the PrivateOrPublicEvent");
   useEffect(() => {
     async function fetchData() {
 
       let res = await getEvent(eventId);
+      console.log("lool 5000");
       res.eventData.ticketPriceRange = res.ticketPriceRange;
       console.log ("res.eventData");
       console.log(res.eventData);
@@ -20,7 +22,8 @@ export function PrivateOrPublicEvent() {
         setShowEvent(false);
       }
       else {
-        setEventM(res.eventData);
+        console.log(res.eventData);
+        setEvent(res.eventData);
       }
     }
     fetchData();
@@ -31,7 +34,7 @@ export function PrivateOrPublicEvent() {
         showEvent ?
           (<EventPage event={event} />)
           :
-          (<PrivateEventRegistration eventId={eventId} setShowEvent={setShowEvent} setEvent={setEventM} />)
+          (<PrivateEventRegistration eventId={eventId} setShowEvent={setShowEvent} setEvent={setEvent} />)
       }
     </div>
 

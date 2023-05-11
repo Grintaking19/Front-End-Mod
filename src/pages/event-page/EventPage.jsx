@@ -1,12 +1,22 @@
 import styles from "./EventPage.module.css";
 import Navbar from "../../layouts/navbar/NavBar";
+import { GetTickets } from "../booking/GetTickets";
 import { useState } from "react";
 
 
 function Event({event}) {
-    // console.log("lol");
+    console.log("lol");
     console.log(event);
-    
+    const [modal, setModal] = useState(false);
+    const toggleModal = () => {
+        setModal(!modal);
+    };
+
+    if (modal) {
+        document.body.classList.add('active-modal')
+    } else {
+        document.body.classList.remove('active-modal')
+    }
     return (
         <div className={styles['event-page']} id="event-page">
             <div className={styles['ep-navbar-container']} id="ep-navbar-container">
@@ -69,9 +79,13 @@ function Event({event}) {
                             <p className={styles['ep-event-tickets-price']} id="ep-event-tickets-price">
                                 {event.ticketPriceRange}
                             </p>
-                            <div className={styles['ep-event-tickets-action-button']} id="ep-event-tickets-action-button">
+                            <button className={styles['ep-event-tickets-action-button']} id="ep-event-tickets-action-button" onClick={toggleModal}>
                                     Get Tickets
-                            </div>
+                            </button>
+                            {
+                                modal &&
+                                <GetTickets event={event} modal={modal} setModal={setModal} />
+                            }
                         </div>
                     </div>
                 </div>

@@ -10,10 +10,10 @@ import { SoldoutMessage } from "./SoldoutMessage";
 
 export const AppContext = createContext();
 
-export function GetTickets({ eventId }) {
-  const [modal, setModal] = useState(false);
+export function GetTickets({ event, modal, setModal }) {
+  // const [modal, setModal] = useState(false);
   const [ticketsType, setTicketsType] = useState([]); // [ {name, type, price, capacity, reserved, endDate} ]
-  const [event, setEvent] = useState({});
+  // const [event, setEvent] = useState({});
   const [selectedTickets, setSelectedTickets] = useState([]); // [ {ticketId, quantity, price, sales} ]
   const [checkout, setCheckout] = useState(false);
   const [soldOut, setSoldOut] = useState(false);
@@ -28,15 +28,16 @@ export function GetTickets({ eventId }) {
   } else {
     document.body.classList.remove('active-modal')
   }
+  
 
   useEffect(() => {
     async function fetchTickets() {
-      let eventRR = await getEvent(eventId);
+      // let eventRR = await getEvent(eventId);
       // console.log("this is after get event");
       // console.log(eventRR.eventData);
 
-      setEvent(eventRR.eventData);
-      let tickets = await getTicketsType(eventRR.eventData._id);
+      // setEvent(eventRR.eventData);
+      let tickets = await getTicketsType(event._id);
       console.log(tickets);
       if (tickets.length === 0) {
         setSoldOut(true);
@@ -59,9 +60,6 @@ export function GetTickets({ eventId }) {
   return (
     <>
       <AppContext.Provider value={{ selectedTickets, setSelectedTickets }}>
-        <button onClick={toggleModal} className={styles["btn-modal"]}>
-          Open
-        </button>
 
         {modal && (
           <div className={styles["modal"]}>
@@ -88,7 +86,7 @@ export function GetTickets({ eventId }) {
                       <LoginMessage setCheckout={setCheckout} setModal={setModal} />
                   )
                   :
-                  <SoldoutMessage setCheckout={setCheckout} />
+                  <SoldoutMessage setCheckout={setCheckout} setModal={setModal}/>
               }
 
             </div>

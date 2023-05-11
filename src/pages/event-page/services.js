@@ -2,17 +2,18 @@ import { fetchData } from "../../utils/api";
 
 export async function getEvent(eventId) {
     // TODO: Validate eventId
+    console.log("This is getEvent");
     let res = await fetchData(`/events/${eventId}`, true);
     if (!res || res.status === "fail") {
         console.log("fetch failed for get events");
         return null;
     }
-    // console.log("get event done successfully");
-    // console.log(res);
+    console.log("get event done successfully");
+    console.log(res);
     let eventData = res.data;
     eventData = await setDateFormat(eventData);
-    // console.log("lool-1");
-    // console.log(eventData);
+    console.log("lool-1");
+    console.log(eventData);
     const ticketPriceRange = await getTicketPriceRange(eventId);
     return { eventData, ticketPriceRange };
 }
