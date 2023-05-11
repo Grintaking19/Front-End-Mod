@@ -9,8 +9,6 @@
 .component {
   display: flex;
   width: 100%;
-  
-
 }
 
 .container {
@@ -72,6 +70,7 @@
   font-size: 16px;
   font-weight: 600;
   color: rgb(57, 54, 79);
+  margin-bottom: 0px;
 }
 
 .reservation--end-date {

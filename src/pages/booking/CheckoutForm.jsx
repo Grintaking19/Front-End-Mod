@@ -5,6 +5,8 @@ import { FormLabel, FormControl, RadioGroup, FormControlLabel, Radio } from "@mu
 import styles from "./CheckoutForm.module.css";
 import * as yup from "yup"
 import { makeStyles } from "@material-ui/core/styles";
+import axios from "axios";
+
 const initalValues = {
   firstName: "",
   lastName: "",
@@ -14,6 +16,11 @@ const initalValues = {
   gender: "",
 };
 
+const config = {
+  headers: {
+    token: localStorage.getItem('user'),
+  }
+}
 
 const useStyles = makeStyles((theme) => ({
   input: {
@@ -23,10 +30,50 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export function CheckoutForm({ formikRef }) {
+
+
+      
+
+export function CheckoutForm({ formikRef, selectedTickets, eventId, setShowDonePage }) {
 
   const classes = useStyles();
+////////////////////////////////////////////////////////////
+  const onSubmit = async (values, formikHelpers) => {
+    localStorage.setItem("user", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ0NWU4YWJiZTliNmY4MTcyZjQyMyIsImlhdCI6MTY4Mzc0NTUzNSwiZXhwIjoxNjkxNTIxNTM1fQ.uUJVeO-s8JLG04BfH__JWjQa-T0biT9N3Ut_WF5yUrk")
+    console.log(values);
+    console.log(values);
 
+
+    const newBooking = selectedTickets.map((ticket) => {
+      return {
+        ticketID: ticket.ticketId,
+        quantity: ticket.sales,
+        price: ticket.price,
+      };
+    })
+    const bookingPost = {
+      "eventID": eventId,
+      "guestEmail": values.email,
+      "phoneNumber": values.phone,
+      "gender": values.gender,
+      "name": {
+        "firstName": values.firstName,
+        "lastName": values.lastName,
+      },
+      bookings: newBooking,
+    }
+    console.log(bookingPost);
+    try {
+      const response = await axios.post(process.env.REACT_APP_API_DOMAIN + "/bookings", bookingPost, config);
+      console.log(response);
+      setShowDonePage(true);
+    }
+    catch (error) {
+      console.log(error);
+    }
+    formikHelpers.resetForm();
+  }
+///////////////////////////////////////////////////////////////////
   return (
     <div className={styles["form-container"]}>
       <Formik
@@ -38,9 +85,12 @@ export function CheckoutForm({ formikRef }) {
           lastName: string().required("Last Name is required").min(2, "Name too short"),
           confirmEmail: string().oneOf([yup.ref("email"), null], "Emails don't match").required("Confirm email is required"),
           phone: string().matches("^01[0-2,5]{1}[0-9]{8}$", "Please enter a valid phone number").required("Mobile number is required"),
-          gender: string().oneOf(["male", "female"], "Required").required("Required"),
+          gender: string().oneOf(["Male", "Female"], "Required").required("Required"),
         })}
-        onSubmit={() => { }}
+        onSubmit={onSubmit}
+        
+        
+
       >
         {({ errors, isValid, touched, dirty }) => (
           <Form>
@@ -125,6 +175,7 @@ export function CheckoutForm({ formikRef }) {
                   aria-labelledby="gender"
                   name="gender"
                   row
+                  error={Boolean(errors.gender) && Boolean(touched.gender)}
                 >
                   <FormControlLabel value="Female" control={<Radio />} label="Female" />
                   <FormControlLabel value="Male" control={<Radio />} label="Male" />

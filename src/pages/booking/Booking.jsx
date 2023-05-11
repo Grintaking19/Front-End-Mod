@@ -5,7 +5,7 @@ import OrderSummary from "./OrderSummary"
 import ErrorIcon from '@mui/icons-material/Error';
 
 
-export function Booking({event, ticketsType, setTicketsType, checkout, setCheckout}) {
+export function Booking({event, ticketsType, setTicketsType, checkout, setCheckout,setModal}) {
   const [errorEmpty, setErrorEmpty] = useState("");
   
   
@@ -73,6 +73,9 @@ export function Booking({event, ticketsType, setTicketsType, checkout, setChecko
       <div className={styles["booking--side"]}>
         <div className={styles["side--event-image-container"]}>
           <img src={event.img_url} alt="eventImage" className={styles["event-image"]} />
+          <button className={styles["close-button"]} id='close-button' onClick={() => { setModal(false) }}>
+            X
+          </button>
         </div>
 
         <div className={styles["side--order-summary"]}>

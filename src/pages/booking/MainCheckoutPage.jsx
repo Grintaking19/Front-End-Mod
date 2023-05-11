@@ -7,55 +7,25 @@ import axios from "axios";
 import { AppContext } from "./GetTickets"
 import { Timer } from "./Timer";
 
-const config = {
-  headers: {
-    token: localStorage.getItem('user'),
-  }
-}
 
 export function MainCheckoutPage({ event, ticketsType, setShowTimeoutMessage,
       setShowCloseMessage 
-      , setShowBackToTicketsMessage }) {
+      , setShowBackToTicketsMessage, setShowDonePage }) {
 
 
   console.log("MainCheckoutPage");
   const formikRef = useRef();
   const { selectedTickets } = useContext(AppContext);
 
-  const handleSubmit = async () => {
+
+
+
+  
+  const handleSubmit = () => {
     if (formikRef.current) {
-      const values = formikRef.current.values;
-      localStorage.setItem("user", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ0NWU4YWJiZTliNmY4MTcyZjQyMyIsImlhdCI6MTY4Mzc0NTUzNSwiZXhwIjoxNjkxNTIxNTM1fQ.uUJVeO-s8JLG04BfH__JWjQa-T0biT9N3Ut_WF5yUrk")
-      console.log(values);
-      console.log(values);
-
-      const newBooking = selectedTickets.map((ticket) => {
-        return {
-          ticketID: ticket.ticketId,
-          quantity: ticket.sales,
-          price: ticket.price,
-        };
-      })
-      const bookingPost = {
-        "eventID": event._id,
-        "guestEmail": values.email,
-        "phoneNumber": values.phone,
-        "gender": values.gender,
-        "name": {
-          "firstName": values.firstName,
-          "lastName": values.lastName,
-        },
-        bookings: newBooking,
-      }
-      console.log(bookingPost);
-      try {
-        const response = await axios.post(process.env.REACT_APP_API_DOMAIN + "/bookings", bookingPost, config);
-        console.log(response);
-      }
-      catch (error) {
-        console.log(error);
-      }
-
+      console.log("test")
+      console.log(formikRef.current)
+      formikRef.current.handleSubmit()
     }
   }
 
@@ -80,7 +50,6 @@ export function MainCheckoutPage({ event, ticketsType, setShowTimeoutMessage,
     //remove NEXT LINE when you integrate 
 
   }, [])
-
   return (
     <>
 
@@ -97,14 +66,14 @@ export function MainCheckoutPage({ event, ticketsType, setShowTimeoutMessage,
               <h2 className={styles["header--event-title"]}>Checkout</h2>
             </div>
             <div className={styles["header--timer-container"]}>
-              <Timer seconds={10} setTimeOut={setShowTimeoutMessage} />
+              <Timer seconds={30} setTimeOut={setShowTimeoutMessage} />
             </div>
           </div>
 
           <div className={styles["content--body"]}>
             <div className={styles["body--tickets"]}>
               <h3 className={styles["tickets--title"]}>Billing information</h3>
-              <CheckoutForm formikRef={formikRef} />
+              <CheckoutForm formikRef={formikRef} selectedTickets={selectedTickets} eventId={event._id} setShowDonePage={setShowDonePage} />
 
               <div className={styles["tickets--footer"]}>
                 <span className={styles["footer--powered-by"]}>Powered by </span>
@@ -119,7 +88,7 @@ export function MainCheckoutPage({ event, ticketsType, setShowTimeoutMessage,
 
             </div>
             <div className={styles["chekout-btn-container"]}>
-              <button className={styles["Register-btn"]} onClick={() => { handleSubmit(); }}>Register</button>
+              <button className={styles["Register-btn"]} type="submit" onClick={() => { handleSubmit() }} >Register</button>
             </div>
           </div>
 

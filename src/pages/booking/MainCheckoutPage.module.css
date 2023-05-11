@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;800&display=swap');
 
 * {
@@ -37,25 +38,27 @@
 .side--event-image-container {
   height: 265px;
   overflow: hidden;
-  
+  position: relative;
 }
 
 .event-image {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  position: relative;
 }
 
-.close-button{
+.close-button {
   position: absolute;
-  top: -10px;
-  right: -10px;
-  background-color: transparent;
-  color: white;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(248, 247, 250, .65);
   font-size: 24px;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  color: rgb(57, 54, 79);
 }
-
 .side--order-summary {
   overflow: auto;
   height: 100%;
@@ -91,7 +94,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  
+
   width: 100%;
 }
 
@@ -124,7 +127,7 @@
   background-color: rgb(240, 240, 240);
 }
 
-.header--timer-container{
+.header--timer-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
