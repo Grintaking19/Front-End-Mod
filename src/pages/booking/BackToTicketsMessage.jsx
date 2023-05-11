@@ -1,4 +1,4 @@
-import styles from "./TimeOutPage.module.css"
+import styles from "./CancelSessionPage.module.css"
 
 export function BackToTicketsMessage({ setCheckout, setShowBackToTicketsMessage }) {
 

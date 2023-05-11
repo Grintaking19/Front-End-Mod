@@ -21,6 +21,9 @@
 }
 
 .page--content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: rgb(111, 114, 135);
   font-size: 14px;
   font-weight: 400;
@@ -28,43 +31,31 @@
   letter-spacing: 0.25px;
   line-height: 20px;
   text-align: center;
+  padding: 0 10px;
 }
 
-.page--buttons-containers {
+.page--content-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: space-around;
-  width: 350px;
+  align-items: center;
+  flex-direction: column;
 }
 
-.button-stay {
+
+
+.page--button {
   background-color: white;
-  color: rgb(57, 54, 79);
+  color: rgb(54, 89, 227);
   font-size: 14px;
   font-weight: 600px;
-  border: 2px solid rgb(57, 54, 79);
+  border: none;
   border-radius: 4px;
-
+  width: 160px;
+  height: 45px;
+  margin-right: 20px;
 }
 
-.button-stay:hover {
-  background-color: rgb(236, 230, 230);
-  border: 2px solid rgb(41, 39, 58);
-  transition: 0.3s;
-
-}
-
-.button-leave {
-  background-color: rgb(209, 65, 12);
-  color: white;
-  font-size: 14px;
-  font-weight: 600px;
-  border: 2px solid rgb(57, 54, 79);
-  border-radius: 4px;
-}
-
-.button-leave:hover {
-  opacity: 0.88;
-  transition: 0.3s;
+.page--button:hover {
+  background-color: rgb(236, 239, 252);
+  transition: 0.1s;
 }
