@@ -3,6 +3,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 1050px;
+  height: 600px;
+  background-color: white;
 }
 
 .page--title {
@@ -37,8 +40,8 @@
 
 .button-stay {
   background-color: white;
-  color: rgb(57, 54, 79);
-  font-size: 14px;
+  color:rgb(57, 54, 79);
+  font-size:14px;
   font-weight: 600px;
   border: 2px solid rgb(57, 54, 79);
   border-radius: 4px;
@@ -54,14 +57,14 @@
 
 .button-leave {
   background-color: rgb(209, 65, 12);
-  color: white;
-  font-size: 14px;
-  font-weight: 600px;
-  border: 2px solid rgb(57, 54, 79);
-  border-radius: 4px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600px;
+    border: 2px solid rgb(57, 54, 79);
+    border-radius: 4px;
 }
 
 .button-leave:hover {
-  opacity: 0.88;
+  opacity:0.88;
   transition: 0.3s;
 }

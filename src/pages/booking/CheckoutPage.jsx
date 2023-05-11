@@ -29,10 +29,10 @@ export function CheckoutPage({ event, ticketsType, checkout, setCheckout, setMod
     return <TimeOutPage setCheckout={setCheckout} />;
   } else if (showCloseMessage && checkout) {
     console.log("this is close message");
-    return <CancelSessionPage setModal={setModal} setShowCloseMessage={setShowBackToTicketsMessage} />;
+    return <CancelSessionPage setModal={setModal} setShowCloseMessage={setShowCloseMessage} setCheckout={setCheckout} />;
   } else if (showBackToTicketsMessage && checkout) {
     console.log("this is back to tickets message");
-    return <BackToTicketsMessage setCheckout={setCheckout} setShowBackToTicketsMessage={setShowBackToTicketsMessage} />;
+    return <BackToTicketsMessage setCheckout={setCheckout} setShowBackToTicketsMessage={setShowBackToTicketsMessage}  />;
   }
 
   // Return null or fallback component if none of the conditions match
