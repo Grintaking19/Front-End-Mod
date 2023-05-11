@@ -74,7 +74,7 @@ export function Booking({event, ticketsType, setTicketsType, checkout, setChecko
         <div className={styles["side--event-image-container"]}>
           <img src={event.img_url} alt="eventImage" className={styles["event-image"]} />
           <button className={styles["close-button"]} id='close-button' onClick={() => { setModal(false) }}>
-            X
+            x
           </button>
         </div>
 

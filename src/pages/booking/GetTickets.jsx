@@ -4,10 +4,11 @@ import { getEvent } from "../event-page/services";
 import styles from "./GetTickets.module.css";
 import { Booking } from "./Booking";
 import { CheckoutPage } from "./CheckoutPage";
+import { LoginMessage } from "./LoginMessage";
+import { SoldoutMessage } from "./SoldoutMessage";
+
 
 export const AppContext = createContext();
-
-
 
 export function GetTickets({ eventId }) {
   const [modal, setModal] = useState(false);
@@ -16,7 +17,7 @@ export function GetTickets({ eventId }) {
   const [selectedTickets, setSelectedTickets] = useState([]); // [ {ticketId, quantity, price, sales} ]
   const [checkout, setCheckout] = useState(false);
   const [soldOut, setSoldOut] = useState(false);
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState(true);
 
   const toggleModal = () => {
     setModal(!modal);
@@ -46,9 +47,10 @@ export function GetTickets({ eventId }) {
         ticket.sales = 0;
       });
       setTicketsType(copyTickets);
-
-      
-
+      //User Not Logged In
+      if (localStorage.getItem("user") === "") {
+        setLogin(false);
+      }
     }
     fetchTickets();
   }, [])
@@ -70,13 +72,23 @@ export function GetTickets({ eventId }) {
               }
             }} className={styles["overlay"]}></div>
             <div className={styles["modal-content"]}>
+              {/* REFACTOR THIS !!!!1 */}
               {
-                //checkout? :
-                !checkout ?
-                  <Booking event={event} ticketsType={ticketsType} setTicketsType={setTicketsType} checkout={checkout} setCheckout={setCheckout} setModal={setModal} />
-                  :
+                !soldOut ?
+                  (
+                    login ?
+                      (
+                        !checkout ?
+                          <Booking event={event} ticketsType={ticketsType} setTicketsType={setTicketsType} checkout={checkout} setCheckout={setCheckout} setModal={setModal} />
+                          :
 
-                  <CheckoutPage event={event} ticketsType={ticketsType} setCheckout={setCheckout} setModal={setModal} checkout={checkout} />
+                          <CheckoutPage event={event} ticketsType={ticketsType} setCheckout={setCheckout} setModal={setModal} checkout={checkout} />
+                      )
+                      :
+                      <LoginMessage setCheckout={setCheckout} setModal={setModal} />
+                  )
+                  :
+                  <SoldoutMessage setCheckout={setCheckout} />
               }
 
             </div>

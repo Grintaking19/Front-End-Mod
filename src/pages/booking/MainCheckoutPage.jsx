@@ -1,9 +1,8 @@
-import React, { useEffect, useRef, useContext, useState } from "react";
+import React, { useRef, useContext} from "react";
 import styles from "./MainCheckoutPage.module.css";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import OrderSummary from "./OrderSummary";
 import { CheckoutForm } from "./CheckoutForm";
-import axios from "axios";
 import { AppContext } from "./GetTickets"
 import { Timer } from "./Timer";
 
@@ -16,10 +15,6 @@ export function MainCheckoutPage({ event, ticketsType, setShowTimeoutMessage,
   console.log("MainCheckoutPage");
   const formikRef = useRef();
   const { selectedTickets } = useContext(AppContext);
-
-
-
-
   
   const handleSubmit = () => {
     if (formikRef.current) {
@@ -29,27 +24,6 @@ export function MainCheckoutPage({ event, ticketsType, setShowTimeoutMessage,
     }
   }
 
-
-  // const schema = yup.object().shape({
-  //   name: yup.object({
-  //     firstName: yup.string().required("First name is requried"),
-  //     lastName: yup.string().required("Last name is requried"),
-  //   }),
-  //   email: yup.string().email().required("Email is required"),
-  //   confirmEmail: yup.string().oneOf([yup.ref("email"), null], "Emails don't match").required(),
-  //   phone: yup.number().min(10).max(11).required("Phone is required"),
-  //   gender: yup.boolean().required().oneOf([0, 1], 'Select a gender'),
-  // });
-
-  // const { register, handleSubmit, formState: { errors } } = useForm({
-  //   resolver: yupResolver(schema),
-  // });
-
-
-  useEffect(() => {
-    //remove NEXT LINE when you integrate 
-
-  }, [])
   return (
     <>
 
@@ -98,7 +72,7 @@ export function MainCheckoutPage({ event, ticketsType, setShowTimeoutMessage,
           <div className={styles["side--event-image-container"]}>
             <img src={event.img_url} alt="eventImage" className={styles["event-image"]} />
             <button className={styles["close-button"]} id='close-button' onClick={()=>{setShowCloseMessage(true)}}>
-              X
+              x
             </button>
           </div>
 
