@@ -1,12 +1,12 @@
 import styles from "./TimeOutPage.module.css"
 
-export function TimeOutPage() {
-
+export function TimeOutPage({setCheckout}) {
+  console.log("inside timeout page");
   return (
-    <div className={styles["Page"]}>
-      <p className={styles["Page--title"]}>Time Limit Reached</p>
-      <p className={styles["Page--content"]}>Your reservation has been released. Please re-start your purchase.</p>
-      <button className={styles["Page--button"]}>Back to Tickets</button>
+    <div className={styles["page"]}>
+      <p className={styles["page--title"]}>Time Limit Reached</p>
+      <p className={styles["page--content"]}>Your reservation has been released. Please re-start your purchase.</p>
+      <button className={styles["page--button"]} onClick={() => { setCheckout(false) }}>Back to Tickets</button>
 
     </div>
   )

@@ -29,7 +29,7 @@
 
 .page--buttons-containers {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: space-around;
   width: 350px;
@@ -37,8 +37,8 @@
 
 .button-stay {
   background-color: white;
-  color:rgb(57, 54, 79);
-  font-size:14px;
+  color: rgb(57, 54, 79);
+  font-size: 14px;
   font-weight: 600px;
   border: 2px solid rgb(57, 54, 79);
   border-radius: 4px;
@@ -54,14 +54,14 @@
 
 .button-leave {
   background-color: rgb(209, 65, 12);
-    color: white;
-    font-size: 14px;
-    font-weight: 600px;
-    border: 2px solid rgb(57, 54, 79);
-    border-radius: 4px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600px;
+  border: 2px solid rgb(57, 54, 79);
+  border-radius: 4px;
 }
 
 .button-leave:hover {
-  opacity:0.88;
+  opacity: 0.88;
   transition: 0.3s;
 }

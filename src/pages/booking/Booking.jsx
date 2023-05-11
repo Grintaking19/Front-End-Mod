@@ -5,7 +5,7 @@ import OrderSummary from "./OrderSummary"
 import ErrorIcon from '@mui/icons-material/Error';
 
 
-export function Booking({event, ticketsType, setTicketsType, checkout, setCheckout, setModal}) {
+export function Booking({event, ticketsType, setTicketsType, checkout, setCheckout}) {
   const [errorEmpty, setErrorEmpty] = useState("");
   
   
@@ -16,6 +16,7 @@ export function Booking({event, ticketsType, setTicketsType, checkout, setChecko
   function checkoutSubmit(ticketsType) {
     if (checkIfAnySelected(ticketsType)) {
       setCheckout(true);
+      console.log("checkout is true");
       setErrorEmpty("");
     }
     else {
@@ -58,7 +59,8 @@ export function Booking({event, ticketsType, setTicketsType, checkout, setChecko
         <div className={styles["content--footer"]}>
           <div className={styles["footer--error-container"]}>
             {!checkout &&
-              <div className={styles["error-empty"]}><ErrorIcon className={styles["error-empty--icon"]} /> {errorEmpty}</div>
+              <div className={styles["error-empty"]}>
+                {errorEmpty ==="" ? "":<ErrorIcon className={styles["error-empty--icon"]} />}{errorEmpty}</div>
             }
           </div>
           <div className={styles["chekout-btn-container"]}>

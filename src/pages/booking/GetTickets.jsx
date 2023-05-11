@@ -55,15 +55,19 @@ export function GetTickets({ eventId }) {
       {modal && (
         <div className={styles["modal"]}>
           <div onClick={() => {
-            setModal(false);
+              if (!checkout) { //if chekcout is 1 then you can't close the modal from the overlay
+                setModal(false);
+                setCheckout(false);
+              }
           }} className={styles["overlay"]}></div>
           <div className={styles["modal-content"]}>
             {
               //checkout? :
                 !checkout ?
-                  <Booking event={event} ticketsType={ticketsType} setTicketsType={setTicketsType} checkout={checkout} setCheckout={setCheckout} setModal={setModal} />
+                  <Booking event={event} ticketsType={ticketsType} setTicketsType={setTicketsType} checkout={checkout} setCheckout={setCheckout} />
                   :
-                  <CheckoutPage event={event} ticketsType={ticketsType} setCheckout={setCheckout} setModal={setModal} />
+                
+                  <CheckoutPage event={event} ticketsType={ticketsType} setCheckout={setCheckout} setModal={setModal} checkout={checkout} />
             }
 
           </div>
