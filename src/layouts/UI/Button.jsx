@@ -2,7 +2,7 @@ import styles from "./Button.module.css";
 
 const Button = (props) => {
   return (
-    <button
+    <div
       className={`button ${styles["button"]}`}
       style={props.style}
       type="button"
@@ -12,7 +12,7 @@ const Button = (props) => {
     >
 
       {props.children}
-    </button>
+    </div>
   );
 };
 

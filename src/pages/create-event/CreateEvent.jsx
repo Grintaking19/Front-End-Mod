@@ -128,10 +128,9 @@ const CreateEvent = (props) => {
               <Location onChange={LocationChangeHandler} width="85%"  disable="true"></Location>
               <Divider />
               <DateTimeStatic  value={state} width="85%"  disable="true" ></DateTimeStatic>
-              <Footer onSave={onSaveHandler} />
             </div>
           </div>
-
+          <Footer onSave={onSaveHandler} />
         </div>
       )}
     </div>
