@@ -32,45 +32,10 @@ const EventPublicDate = (props) => {
     if (nowOrLater == 0) props.onChange(goPublicDate)
   };
 
-  const publicDateChangeHandler = (event) => {
-    if (event.target.id == "now") {
-      setNowOrLater(1);
-      props.onChange(new Date());}
-
-    else{
-      setNowOrLater(0);
-      props.onChange(goPublicDate);}
-  };
 
   return (
     <div className={styles["event-public-date"]}>
-      <p className={styles["event-public-date-title"]}>
-        When should we publish your event?
-      </p>
-      <div
-        style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}
-      >
-        <input
-          id="now"
-          className={styles["event-publicdate-radiobutton"]}
-          type="radio"
-          name="public-date"
-          onChange={publicDateChangeHandler}
-        />
-        <span className={styles["event-publicdate-title"]}>Publish Now</span>
-      </div>
-      <div style={{ display: "flex", flexDirection: "row" }}>
-        <input
-          id="schedule"
-          className={styles["event-publicdate-radiobutton"]}
-          type="radio"
-          name="public-date"
-          onChange={publicDateChangeHandler}
-        />
-        <span className={styles["event-publicdate-title"]}>
-          Schedule for later
-        </span>
-      </div>
+     
       <div className={styles["event-publicdate-calender"]}>
         <BasicDatePicker title={"Start Date"} onChange={DateChangeHandler}  value={null} />
         <DatalistField

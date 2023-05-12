@@ -28,7 +28,6 @@ async function getUserData(parmas) {
 
 //axios delete events
 async function deleteEvent(parmas) {
-  console.log(parmas + "has been deleted");
   let response;
   let config = {
     headers: {
@@ -57,7 +56,6 @@ async function getEventData(parmas) {
       "https://www.hebtus.me/api/v1/creators/events/" + parmas,
       config
     );
-    console.log("getEventData");
     console.log(response);
     return response;
   } catch (error) {}
@@ -81,7 +79,7 @@ const List = (props) => {
     image: "",
     description: "",
     privacy: "",
-    gopublicDate: "",
+    goPublicDate: "",
     editOrCreate: "0", //0 Create, 1 Edit
   };
 
@@ -92,7 +90,6 @@ const List = (props) => {
 
   useEffect(() => {
     const callDeleteEvent = async () => {
-      console.log(eventToDelete +"mmm");
       const result = await deleteEvent(eventToDelete);
       setEventToDelete("");
     };
@@ -110,7 +107,6 @@ const List = (props) => {
   };
 
   const editEventHandler = async (e) => {
-    console.log(e.target.id);
     let x = await getEventData(e.target.id);
     eventDataToSend.id= x.data.data._id;
     eventDataToSend.Title= x.data.data.name;
@@ -122,8 +118,9 @@ const List = (props) => {
     eventDataToSend.image= x.data.data.img_url;
     eventDataToSend.description= x.data.data.description;
     eventDataToSend.privacy= x.data.data.privacy;
-    eventDataToSend.gopublicDate= x.data.data.gopublicDate;
+    eventDataToSend.goPublicDate= x.data.data.goPublicDate;
     eventDataToSend.editOrCreate= "1";
+    eventDataToSend.draft=x.data.data.draft;
     navigate("/event-details", { state: {...eventDataToSend} }) }
   
 

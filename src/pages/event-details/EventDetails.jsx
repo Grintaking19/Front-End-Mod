@@ -64,7 +64,6 @@ const EventDetails = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
 
-  console.log(state);
   const [eventDetails, setEventDetails] = useState({ ...state });
 
   const saveUploadedImage = (imageReceived) => {
@@ -76,7 +75,6 @@ const EventDetails = () => {
   };
 
   const onEditHandler = async () => {
-    console.log(eventDetails.id);
 
       const jsonData={
         "description": eventDetails.description

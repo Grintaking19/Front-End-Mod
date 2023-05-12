@@ -5,8 +5,7 @@ import { useState } from "react";
 
 
 function Event({event}) {
-    console.log("lol");
-    console.log(event);
+
     const [modal, setModal] = useState(false);
     const toggleModal = () => {
         setModal(!modal);

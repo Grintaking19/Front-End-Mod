@@ -41,8 +41,10 @@ const CreateEvent = (props) => {
     image: "",
     description: "",
     privacy: "",
-    gopublicDate: "",
+    goPublicDate: new Date(2100,5),
     editOrCreate: "0", //0 Create, 1 Edit
+    password: "",
+    draft:""
   });
 
   const BasicInfoChangeHandler = (basicInfoRecived, choosenTagRecived) => {

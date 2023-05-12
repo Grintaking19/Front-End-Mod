@@ -39,7 +39,7 @@ function EventSidenav(props) {
     let eventCurrentInfo = props.eventCurrentInfo;
     eventId = eventId || eventCurrentInfo.id;
 
-    console.log(props.eventCurrentInfo);
+    //console.log(props.eventCurrentInfo);
     // TODO: Use the activeTab prop to set the active tab
 
     const [isDraft, setIsDraft] = useState(true)
@@ -165,7 +165,7 @@ function EventSidenav(props) {
                     {eventPublishSteps.map((step, index) => {
                         let icon = step.status === 'completed' ? icons[step.status] : icons[step.id];
                         let className = step.selected ? styles['es-list-li'] + " " + styles['es-list-li-active'] : styles['es-list-li'];
-                        console.log(step);
+                        //console.log(step);
                         return (
                             <li className={className} key={index} id={`es-list-li-${step.title}`}>
                                 <a id={`es-list-li-${step.title}-link`} onClick={() => {

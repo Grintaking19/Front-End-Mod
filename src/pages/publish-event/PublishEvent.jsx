@@ -9,6 +9,7 @@ import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import EventDraft from "./event-draft/EventDraft";
 
 /**
  * Component for the publish event page
@@ -28,7 +29,6 @@ import { useNavigate } from "react-router-dom";
 
 */
 
-
 const patchRequest = async (bodyFormData, eventID) => {
   let url = "https://www.hebtus.me/api/v1/events/" + eventID;
   let data = bodyFormData;
@@ -47,9 +47,11 @@ const patchRequest = async (bodyFormData, eventID) => {
 const PublishEvent = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
-  const [eventPublishDetails, setEventPublishDetails] = useState({ ...state });
-
-
+  const [eventPublishDetails, setEventPublishDetails] = useState({
+    ...state,
+    goPublicDate: new Date(2100, 5),
+    password: null,
+  });
 
   const privacyChangeHandler = (privacyRecieved) => {
     console.log(privacyRecieved);
@@ -59,31 +61,77 @@ const PublishEvent = () => {
     });
   };
 
+  const onDraftChangeHandler = (draftRecieved) => {
+    console.log(draftRecieved);
+    setEventPublishDetails({
+      ...eventPublishDetails,
+      draft: draftRecieved,
+    });
+  };
+
+  const onPasswordChangeHandler = (e) => {
+    setEventPublishDetails({
+      ...eventPublishDetails,
+      password: e.target.value,
+    });
+  };
+
   const publicDateHandler = (dateRecieved) => {
     setEventPublishDetails({
       ...eventPublishDetails,
-      gopublicDate: dateRecieved,
+      goPublicDate: dateRecieved,
     });
   };
 
   const onSaveHandler = () => {
     const JSONbody = {
       privacy: eventPublishDetails.privacy,
-      goPublicDate: eventPublishDetails.gopublicDate.toISOString(),
+      goPublicDate: eventPublishDetails.goPublicDate.toISOString(),
+      password: eventPublishDetails.password,
+      draft: 1,
     };
-    console.log(eventPublishDetails.id);
+    console.log(eventPublishDetails);
     patchRequest(JSONbody, eventPublishDetails.id);
     setEventPublishDetails({ ...state, editOrCreate: "1" });
   };
 
   const onEditHandler = () => {
+    console.log(eventPublishDetails);
     const JSONbody = {
       privacy: eventPublishDetails.privacy,
+      draft: eventPublishDetails.draft,
     };
-    console.log(eventPublishDetails.id);
     patchRequest(JSONbody, eventPublishDetails.id);
     setEventPublishDetails({ ...state, editOrCreate: "1" });
-  }
+  };
+
+  const renderPrivateChoices = (privacy) => {
+    if (privacy == "1") {
+      return (
+        <div>
+          <EventDraft onClick={onDraftChangeHandler} />
+          <br />
+          <label for="password" style={{ paddingRight: "10px" }}>
+            Password:{" "}
+          </label>
+          <input
+            name="password"
+            type="input"
+            placeholder="Password"
+            onChange={onPasswordChangeHandler}
+          />
+          <EventPublicDate onChange={publicDateHandler} />
+        </div>
+      );
+    }
+    if (privacy == "0") {
+      return (
+        <div>
+          <EventDraft onClick={onDraftChangeHandler} />
+        </div>
+      );
+    }
+  };
 
   return (
     <div>
@@ -104,16 +152,19 @@ const PublishEvent = () => {
             image={state.image}
           />
           <EventPrivacy onPrivacyChange={privacyChangeHandler} />
-          {eventPublishDetails.editOrCreate == "0" && (
-            <EventPublicDate onChange={publicDateHandler} />
+
+          {eventPublishDetails.editOrCreate == "1" && (
+            <EventDraft onClick={onDraftChangeHandler} />
           )}
+          {eventPublishDetails.editOrCreate == "0" &&
+            renderPrivateChoices(eventPublishDetails.privacy)}
         </div>
       </div>
-      {(eventPublishDetails.editOrCreate == "0") ? (
-           <Footer onSave={onSaveHandler} />
-          ): (     <Footer onSave={onEditHandler} />)
-          }
- 
+      {eventPublishDetails.editOrCreate == "0" ? (
+        <Footer onSave={onSaveHandler} />
+      ) : (
+        <Footer onSave={onEditHandler} />
+      )}
     </div>
   );
 };

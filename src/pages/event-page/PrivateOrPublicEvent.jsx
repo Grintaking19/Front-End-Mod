@@ -14,14 +14,12 @@ export function PrivateOrPublicEvent() {
     async function fetchData() {
 
       let res = await getEvent(eventId);
-      console.log("lool 5000");
       if (res == null) {
         setShowEvent(false);
       }
       else {
         res.eventData.ticketPriceRange = res.ticketPriceRange;
-        console.log("res.eventData");
-        console.log(res.eventData);
+
         console.log(res.eventData);
         setEvent(res.eventData);
       }
