@@ -10,5 +10,8 @@
     height: 720px;
     width: 60vw;
     overflow-y: scroll;
+}
 
+.event-details::-webkit-scrollbar {
+    display: none;
 }
