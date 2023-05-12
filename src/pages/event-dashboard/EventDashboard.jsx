@@ -9,11 +9,14 @@ import NavBar from "../../layouts/navbar/NavBar";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"
+
 
 import { getTicketTypes, getBookings, getTicketsSummary, updateTodoListProps } from "./services";
 
 
 function EventDashboard() {
+    const navigate = useNavigate();
     const {state} = useLocation();
     const { eventId } = useParams();
 
@@ -36,7 +39,7 @@ function EventDashboard() {
             const ticketsSummaryData = await getTicketsSummary(eventId);
             setTicketsSummaryCardData(ticketsSummaryData);
 
-            const taskItem = await updateTodoListProps(ticketsSummaryData, eventId);
+            const taskItem = await updateTodoListProps(ticketsSummaryData, eventId, navigate, state);
             setTodoListTaskItems([taskItem]);
         }
 

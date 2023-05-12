@@ -66,7 +66,7 @@ export async function getEventPublishStatus(eventId) {
     return !res.data.draft;
 }
 
-export async function updateTodoListProps(ticketsSummaryCardData, eventId) {
+export async function updateTodoListProps(ticketsSummaryCardData, eventId, navigate, eventCurrentInfo) {
     let taskItems = [
         {
             icon: [
@@ -78,13 +78,17 @@ export async function updateTodoListProps(ticketsSummaryCardData, eventId) {
                 </i>
             ],
             content: "Your Event doesn't have any tickets",
-            action: [<a href="#">Create tickets</a>]
+            action: [<a id="create-tickets-task" onClick={() => {
+                navigate(`/manage/events/${eventId}/tickets`, { state: { ...eventCurrentInfo } })
+            }}>Create tickets</a>]
         }, {
             icon: [
                 <i class="eds-vector-image eds-icon--xsmall eds-vector-image--grey-700" data-spec="icon" data-testid="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><g fill-rule="evenodd"><path d="M19 4H5a2 2 0 00-2 2v12a2 2 0 002 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6a2 2 0 00-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"></path></g></svg></i>
             ],
             content: "Publish your event",
-            action: [<a href="#">Review your publish settings</a>]
+            action: [<a id="publish-event-task" onClick={() => {
+                navigate("/publish-event", { state: { ...eventCurrentInfo } })
+            }} > Review your publish settings</a >]
         }
     ]
 
