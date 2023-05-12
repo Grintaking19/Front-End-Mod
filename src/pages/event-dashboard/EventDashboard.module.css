@@ -25,6 +25,10 @@
     overflow: scroll;
 }
 
+.body-container::-webkit-scrollbar {
+    display: none;
+}
+
 .content-container {
     background-color: white;
     width: 960px;
@@ -78,6 +82,11 @@
     flex-direction: row;
     flex-wrap: nowrap;
     overflow: scroll;
+}
+
+
+.cards-container::-webkit-scrollbar {
+    display: none;
 }
 
 .todo-list-container {

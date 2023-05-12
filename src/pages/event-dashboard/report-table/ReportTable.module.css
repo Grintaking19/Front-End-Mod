@@ -3,16 +3,25 @@
     overflow: scroll;
 }
 
+.report-table-container::-webkit-scrollbar {
+    display: none;
+}
+
 .report-table-header h3 {
     font-size: 24px;
     font-weight: 700;
     font-family: "Roboto", sans-serif;
+    overflow: hidden;
 }
 
 .report-table-body {
     margin-top: 24px;
     margin-right: 12px;
     overflow: scroll;
+}
+
+.report-table-body::-webkit-scrollbar {
+    display: none;
 }
 
 .report-table-body table thead tr th {
