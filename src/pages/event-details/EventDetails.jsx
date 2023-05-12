@@ -95,7 +95,7 @@ const EventDetails = () => {
     formData.append("image", eventDetails.image);
     let eventId = await postRequest(formData);
     setEventDetails( {...eventDetails, id:eventId } );
-    navigate("/publish-event", { state: {...eventDetails, id:eventId } });
+    navigate(`/manage/events/${eventId}/tickets`, { state: {...eventDetails, id:eventId } });
   };
 
   return (

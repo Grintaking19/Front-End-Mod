@@ -68,6 +68,11 @@ function ManageTickets() {
         const message = await createTicket(eventId, ticket);
         console.log(message);
         setFormMessage(message);
+        if (message === "ticket created successfully") {
+            const oldTickets = tickets.slice();
+            oldTickets.push(ticket);
+            setTickets(oldTickets);
+        }
     }
 
     async function handleEditTicket(ticket) {

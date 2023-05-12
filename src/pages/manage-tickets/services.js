@@ -37,7 +37,8 @@ export async function createTicket(eventId, ticket) {
         console.log(res);
         return res ? res.message : "Failed to create ticket due to network error";
     }
-    return res.message;
+    console.log(res);
+    return res.data.message;
 }
 
 export async function updateTicket(eventId, ticket) {
