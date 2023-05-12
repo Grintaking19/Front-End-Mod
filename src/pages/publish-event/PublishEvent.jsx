@@ -49,8 +49,10 @@ const PublishEvent = () => {
   const { state } = useLocation();
   const [eventPublishDetails, setEventPublishDetails] = useState({
     ...state,
-    goPublicDate: new Date(2100, 5),
+    goPublicDate: new Date(2009, 5),
     password: null,
+    privacy: "1",
+    draft: false
   });
 
   const privacyChangeHandler = (privacyRecieved) => {
@@ -62,10 +64,12 @@ const PublishEvent = () => {
   };
 
   const onDraftChangeHandler = (draftRecieved) => {
-    console.log(draftRecieved);
+   let x;
+    if (  draftRecieved == "1" ) x=true;
+    else x=false;
     setEventPublishDetails({
       ...eventPublishDetails,
-      draft: draftRecieved,
+      draft: x,
     });
   };
 
@@ -88,7 +92,7 @@ const PublishEvent = () => {
       privacy: eventPublishDetails.privacy,
       goPublicDate: eventPublishDetails.goPublicDate.toISOString(),
       password: eventPublishDetails.password,
-      draft: 1,
+      draft: eventPublishDetails.draft
     };
     console.log(eventPublishDetails);
     patchRequest(JSONbody, eventPublishDetails.id);
@@ -99,7 +103,7 @@ const PublishEvent = () => {
     console.log(eventPublishDetails);
     const JSONbody = {
       privacy: eventPublishDetails.privacy,
-      draft: eventPublishDetails.draft,
+      draft: true,
     };
     patchRequest(JSONbody, eventPublishDetails.id);
     setEventPublishDetails({ ...state, editOrCreate: "1" });
