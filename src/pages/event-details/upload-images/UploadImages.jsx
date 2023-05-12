@@ -40,7 +40,6 @@ const UploadImages = (props) => {
               type="file"
               ref={uplaodImageRef}
               onChange={SaveImageHandler}
-              value={eventImage}
               hidden
               />
           </div>
