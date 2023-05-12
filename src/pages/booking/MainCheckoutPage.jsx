@@ -1,4 +1,4 @@
-import React, { useRef, useContext} from "react";
+import React, { useRef, useContext, useState } from "react";
 import styles from "./MainCheckoutPage.module.css";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import OrderSummary from "./OrderSummary";
@@ -8,14 +8,15 @@ import { Timer } from "./Timer";
 
 
 export function MainCheckoutPage({ event, ticketsType, setShowTimeoutMessage,
-      setShowCloseMessage 
-      , setShowBackToTicketsMessage, setShowDonePage }) {
+  setShowCloseMessage
+  , setShowBackToTicketsMessage, setShowDonePage }) {
 
 
   console.log("MainCheckoutPage");
   const formikRef = useRef();
   const { selectedTickets } = useContext(AppContext);
-  
+  const [timer, setTimer] = useState(300);
+
   const handleSubmit = () => {
     if (formikRef.current) {
       console.log("test")
@@ -40,7 +41,7 @@ export function MainCheckoutPage({ event, ticketsType, setShowTimeoutMessage,
               <h2 className={styles["header--event-title"]} id="header--event-title">Checkout</h2>
             </div>
             <div className={styles["header--timer-container"]} id="header--timer-container">
-              <Timer seconds={30} setTimeOut={setShowTimeoutMessage} />
+              <Timer seconds={timer} setTimeOut={setShowTimeoutMessage} /> 
             </div>
           </div>
 
@@ -57,11 +58,11 @@ export function MainCheckoutPage({ event, ticketsType, setShowTimeoutMessage,
 
           </div>
 
-          <div className={styles["content--footer"]} id ="content--footer">
+          <div className={styles["content--footer"]} id="content--footer">
             <div className={styles["footer--error-container"]} id="footer--error-container">
 
             </div>
-            <div className={styles["chekout-btn-container"]} id ="chekout-btn-container">
+            <div className={styles["chekout-btn-container"]} id="chekout-btn-container">
               <button className={styles["Register-btn"]} type="submit" onClick={() => { handleSubmit() }} id="Register-btn">Register</button>
             </div>
           </div>
@@ -70,8 +71,8 @@ export function MainCheckoutPage({ event, ticketsType, setShowTimeoutMessage,
 
         <div className={styles["booking--side"]} id="booking--side">
           <div className={styles["side--event-image-container"]} id="side--event-image-container">
-            <img src={event.img_url} alt="eventImage" className={styles["event-image"]} id="event-image"/>
-            <button className={styles["close-button"]} id='close-button' onClick={()=>{setShowCloseMessage(true)}} >
+            <img src={event.img_url} alt="eventImage" className={styles["event-image"]} id="event-image" />
+            <button className={styles["close-button"]} id='close-button' onClick={() => { setShowCloseMessage(true) }} >
               x
             </button>
           </div>

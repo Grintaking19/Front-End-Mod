@@ -66,16 +66,16 @@ export default function PrivateEventRegistration({ eventId, setShowEvent, setEve
       <section className={styles["container"]}>
         <div className={`${styles.form} ${styles["login"]}`}>
 
-          <h3 className={styles["hebtus-logo"]}>Hebtus</h3>
-          <header >Oops this looks like a private Event <span role="img" aria-label="upside-down">🙃</span></header>
+          <h3 className={styles["hebtus-logo"]} id="hebtus-logo">Hebtus</h3>
+          <header >Oops this looks like a private Event <span role="img" aria-label="upside-down" id="private-event-title">🙃</span></header>
 
           <form action="#" onSubmit={handleSubmit(onSubmit)} className="login-form">
 
 
-            <div className={`${styles.field} ${styles["form--password"]}`}>
+            <div className={`${styles.field} ${styles["form--password"]}`} >
               <input type={passwordType} id="password" className={styles.password} placeholder="Password" {...register("password")}
               />
-              <div className={styles["eye-holder"]} id="eyeHolderPassword" onClick={togglePassword}>
+              <div className={styles["eye-holder"]} id="eyeHolderPassword" onClick={togglePassword} >
                 {passwordType === "password" ?
                   <i className={`bx bxs-hide ${styles["eye-icon"]}`} id="hide-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
@@ -102,7 +102,7 @@ export default function PrivateEventRegistration({ eventId, setShowEvent, setEve
             </div>
 
             <div className={`${styles["field"]} ${styles["form--button"]}`} id="LogIn">
-              <button type="submit" id="form--button-login" className={styles["form--button-login"]}>Enter the password</button>
+              <button type="submit" id="form--button-login" className={styles["form--button-login"]} >Enter the password</button>
             </div>
 
           </form>

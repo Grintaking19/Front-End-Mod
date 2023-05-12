@@ -9,7 +9,7 @@ export function CheckoutPage({ event, ticketsType, checkout, setCheckout, setMod
   const [showCloseMessage, setShowCloseMessage] = useState(false);
   const [showBackToTicketsMessage, setShowBackToTicketsMessage] = useState(false);
   const [showDonePage, setShowDonePage] = useState(false);
-
+  const [timer, setTimer] = useState(300);
   useEffect(() => {
 
   }, [showTimeoutMessage, showCloseMessage, showBackToTicketsMessage]);
