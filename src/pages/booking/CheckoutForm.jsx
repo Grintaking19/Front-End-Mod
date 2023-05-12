@@ -104,6 +104,7 @@ export function CheckoutForm({ formikRef, selectedTickets, eventId, setShowDoneP
                 size="small"
                 label="First Name"
                 sx={{ bgcolor: 'text.primary' }}
+                id = "firstName"
                 disableUnderline={true}
                 InputProps={{ className: classes.input, disableUnderline: true }}
                 error={Boolean(errors.firstName) && Boolean(touched.firstName)}
@@ -119,6 +120,7 @@ export function CheckoutForm({ formikRef, selectedTickets, eventId, setShowDoneP
                 label="Last Name"
                 size="small"
                 sx={{ bgcolor: 'text.primary' }}
+                id = "lastName"
                 InputProps={{ className: classes.input, disableUnderline: true }}
                 error={Boolean(errors.lastName) && Boolean(touched.lastName)}
                 helperText={Boolean(touched.lastName) && errors.lastName}
@@ -133,6 +135,7 @@ export function CheckoutForm({ formikRef, selectedTickets, eventId, setShowDoneP
                 label="Email"
                 size="small"
                 sx={{ bgcolor: 'text.primary' }}
+                id = "email"
                 InputProps={{ className: classes.input, disableUnderline: true }}
                 error={Boolean(errors.email) && Boolean(touched.email)}
                 helperText={Boolean(touched.email) && errors.email}
@@ -146,6 +149,7 @@ export function CheckoutForm({ formikRef, selectedTickets, eventId, setShowDoneP
                 size="small"
                 label="Confirm Email"
                 sx={{ bgcolor: 'text.primary' }}
+                id = "confirmEmail"
                 InputProps={{ className: classes.input, disableUnderline: true }}
                 error={Boolean(errors.confirmEmail) && Boolean(touched.confirmEmail)}
                 helperText={Boolean(touched.confirmEmail) && errors.confirmEmail}
@@ -160,6 +164,7 @@ export function CheckoutForm({ formikRef, selectedTickets, eventId, setShowDoneP
                 color="primary"
                 size="small"
                 label="Mobile Number"
+                id="phone"
                 fullWidth
                 InputProps={{ className: classes.input, disableUnderline: true }}
                 className={classes.root}
@@ -175,22 +180,23 @@ export function CheckoutForm({ formikRef, selectedTickets, eventId, setShowDoneP
                   aria-labelledby="gender"
                   name="gender"
                   row
+                  id="gender"
                   error={Boolean(errors.gender) && Boolean(touched.gender)}
                 >
-                  <FormControlLabel value="Female" control={<Radio />} label="Female" />
-                  <FormControlLabel value="Male" control={<Radio />} label="Male" />
+                  <FormControlLabel value="Female" control={<Radio />} label="Female"  id="female"/>
+                  <FormControlLabel value="Male" control={<Radio />} label="Male" id="male"/>
                 </Field>
 
               </FormControl>
             </div>
             <div className={styles["form--checkbox-container"]}>
               <div className={styles["form-check"]}>
-                <input type="checkbox" id="keep-me-informed" name="keep-me-informed" value="Keep me" />
-                <label for="keep-me-informed"> Keep me updated on more events and news from this event organizer.</label>
+                <input type="checkbox" id="keep-me-informed" name="keep-me-informed" value="Keep me"  />
+                <label for="keep-me-informed" id="keep-me-informed-label"> Keep me updated on more events and news from this event organizer.</label>
               </div>
               <div className={styles["form-check"]}>
                 <input type="checkbox" id="send-email" name="send-email" value="Send Email" />
-                <label for="send-email"> Send me emails about the best events happening nearby or online.</label>
+                <label for="send-email" id="send-email"> Send me emails about the best events happening nearby or online.</label>
               </div>
             </div>
           </Form>

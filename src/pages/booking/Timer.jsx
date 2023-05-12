@@ -31,16 +31,15 @@ export function Timer({ seconds, setTimeOut }) {
       setTimeOut(true);
     }
 
-    if (time < 60)
-    {
+    if (time < 60) {
       let near = { ...style };
       near.color = "red";
       setAbout(near);
-      }
+    }
   }, [time, setTimeOut]);
 
   return (
-    <p style= {about}>Time left {formateTime(time)}</p>
+    <p style={about} id="timer">Time left {formateTime(time)}</p>
   )
 
 }
