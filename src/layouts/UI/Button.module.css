@@ -4,8 +4,10 @@
     border: 2px solid #6F7287;
     letter-spacing: 0.2px;
     padding: 0 30px 1px;
+    padding-top: 10px;
     border-radius: 3px;
     cursor: pointer;
+
 
 }
 

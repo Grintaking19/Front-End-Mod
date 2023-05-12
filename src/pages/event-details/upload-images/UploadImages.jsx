@@ -40,8 +40,9 @@ const UploadImages = (props) => {
               type="file"
               ref={uplaodImageRef}
               onChange={SaveImageHandler}
+              value={eventImage}
               hidden
-            />
+              />
           </div>
           <div className={styles["image-recommended"]}>
             <span> Recommended   size: 2160 x 1080px </span>

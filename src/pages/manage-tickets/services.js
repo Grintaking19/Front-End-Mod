@@ -32,12 +32,13 @@ export async function createTicket(eventId, ticket) {
         sellingEndTime: ticket.sellingEndingDate + "T" + ticket.sellingEndingTime + ":00.000Z",
     };
     const res = await postData(`/tickets/`, body, true);
-    if (!res || res.status === "fail") {
+    if (!res || res.status === "fail" || !res.data) {
         console.log("Post failed for create ticket");
         console.log(res);
         return res ? res.message : "Failed to create ticket due to network error";
     }
-    return res.message;
+    console.log(res);
+    return res.data.message;
 }
 
 export async function updateTicket(eventId, ticket) {
