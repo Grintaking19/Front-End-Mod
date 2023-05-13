@@ -43,8 +43,9 @@ const CreateEvent = (props) => {
     privacy: "",
     goPublicDate: new Date(2100,5),
     editOrCreate: "0", //0 Create, 1 Edit
-    password: "",
-    draft:""
+    password: null,
+    draft:"",
+    ticketsNo: 0,
   });
 
   const BasicInfoChangeHandler = (basicInfoRecived, choosenTagRecived) => {

@@ -98,7 +98,7 @@ function ManageTickets() {
                 <EventSidenav
                     eventId={eventId}
                     activeTab="tickets"
-                    eventCurrentInfo={state}
+                    eventCurrentInfo={{...state, ticketsNo: tickets.length}}
                 />
             </div>
             <div className={EventDashboardModule['body-container']}>

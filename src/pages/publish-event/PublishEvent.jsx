@@ -46,9 +46,9 @@ const patchRequest = async (bodyFormData, eventID) => {
 };
 
 const PublishEvent = () => {
-  console.log(localStorage.getItem("user"));
   const navigate = useNavigate();
   const { state } = useLocation();
+
   const [eventPublishDetails, setEventPublishDetails] = useState({
     ...state,
     goPublicDate: new Date(2050, 5),
@@ -57,8 +57,12 @@ const PublishEvent = () => {
     draft: false
   });
 
+  const [ticketsNo, setTicketsNo] = useState(state.ticketsNo);
+  const [ticketsError, setTicketsError] = useState(0);
+
+
   const privacyChangeHandler = (privacyRecieved) => {
-    console.log(privacyRecieved);
+
     setEventPublishDetails({
       ...eventPublishDetails,
       privacy: privacyRecieved,
@@ -91,28 +95,51 @@ console.log(x);
   };
 
   const onSaveHandler = () => {
+    console.log(eventPublishDetails);
+
+        let x;
+        if (eventPublishDetails.password=="") x= null;
+        else x=eventPublishDetails.password;
     const JSONbody = {
       privacy: eventPublishDetails.privacy,
       goPublicDate: eventPublishDetails.goPublicDate.toISOString(),
-      password: eventPublishDetails.password,
+      password: x,
       draft: eventPublishDetails.draft
     };
-    console.log(eventPublishDetails);
-    patchRequest(JSONbody, eventPublishDetails.id);
+
+    if (eventPublishDetails.draft == false && eventPublishDetails.ticketsNo == 0) {
+      console.log("hrr");
+      setTicketsError(1);
+    }
+    else{
+    const res = patchRequest(JSONbody, eventPublishDetails.id);
     setEventPublishDetails({ ...state, editOrCreate: "1" });
+    }
   };
 
   const onEditHandler = () => {
+    console.log(eventPublishDetails);
+
+    let x;
+    if (eventPublishDetails.password=="") x= null;
+    else x=eventPublishDetails.password;
 
     console.log(eventPublishDetails.draft);
     const JSONbody = {
       privacy: eventPublishDetails.privacy,
       draft: eventPublishDetails.draft,
-      goPublicDate: eventPublishDetails.goPublicDate.toISOString(),
-      password: eventPublishDetails.password
+      goPublicDate: eventPublishDetails.goPublicDate,
+      password: x
     };
+    if (eventPublishDetails.draft == false && ticketsNo == "0") {
+      console.log("hrr");
+      setTicketsError(1);
+    }
+    else {
+      console.log("asa");
     patchRequest(JSONbody, eventPublishDetails.id);
     setEventPublishDetails({ ...state, editOrCreate: "1" });
+    }
   };
 
   const renderPrivateChoices = (privacy) => {
@@ -161,14 +188,10 @@ console.log(x);
             location={state.location}
             image={state.image}
           />
+                    {(ticketsError ==1  ) && <p>To publish now you should add tickets </p>}
+
           <EventPrivacy onPrivacyChange={privacyChangeHandler} />
-
-          {eventPublishDetails.editOrCreate == "1" && (
-          renderPrivateChoices(eventPublishDetails.privacy)
-
-          )}
-          {eventPublishDetails.editOrCreate == "0" &&
-            renderPrivateChoices(eventPublishDetails.privacy)}
+          {renderPrivateChoices(eventPublishDetails.privacy)}
         </div>
       </div>
       {eventPublishDetails.editOrCreate == "0" ? (
