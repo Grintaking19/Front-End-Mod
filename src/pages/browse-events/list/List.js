@@ -9,6 +9,7 @@ const List = (props) => {
     setSearchInput(event);
   };
 
+  console.log(props.array);
   return (
     <div className={styles["__List"]}>
       <SearchContainer onChange={SearchInputHandler}></SearchContainer>
@@ -16,6 +17,7 @@ const List = (props) => {
       
         (event.name.toLowerCase().includes(searchInput.toLowerCase())?(
         <Item
+          id={event._id}
           key={event._id}
           title={event.name}
           time={event.startDate}

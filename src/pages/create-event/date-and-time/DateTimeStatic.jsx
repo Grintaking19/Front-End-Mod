@@ -30,7 +30,6 @@ export const PM_24hoursConvert = (time) => {
 
 const DateTimeStatic = (props) => {
 
-  console.log((new Date(props.value.startDate)).getHours());
   return (
     <Panel
       image={DateandTimeIcon}
@@ -96,7 +95,6 @@ const DateTimeStatic = (props) => {
         width="50%"
         id="event-page-lang"
       />
-        <br />  <br />  <br />
     </Panel>
   );
 };

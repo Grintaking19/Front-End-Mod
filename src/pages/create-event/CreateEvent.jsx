@@ -41,8 +41,10 @@ const CreateEvent = (props) => {
     image: "",
     description: "",
     privacy: "",
-    gopublicDate: "",
+    goPublicDate: new Date(2100,5),
     editOrCreate: "0", //0 Create, 1 Edit
+    password: "",
+    draft:""
   });
 
   const BasicInfoChangeHandler = (basicInfoRecived, choosenTagRecived) => {
@@ -127,10 +129,12 @@ const CreateEvent = (props) => {
               <Location onChange={LocationChangeHandler} width="85%"  disable="true"></Location>
               <Divider />
               <DateTimeStatic  value={state} width="85%"  disable="true" ></DateTimeStatic>
-              <Footer onSave={onSaveHandler} />
 
             </div>
+
           </div>
+          <Footer onSave={onSaveHandler} />
+
         </div>
       )}
     </div>

@@ -1,11 +1,13 @@
 .conatiner{
     display: flex;
     flex-direction: row;
+ 
 }
 .event-details{
     display: flex;
     flex-direction: column;
     padding-left: 15%;
+    padding-right: 1%;
     padding-top: 2%;
     height: 720px;
     width: 60vw;
@@ -13,5 +15,7 @@
 }
 
 .event-details::-webkit-scrollbar {
-    display: none;
+    scrollbar-width: none;
+
 }
+

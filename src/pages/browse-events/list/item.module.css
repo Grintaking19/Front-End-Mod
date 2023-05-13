@@ -3,9 +3,14 @@
 .item{
     display: flex;
     width: 700px;
-    height: 190px;
+    height: 200px;
     background-color: #f8f7fa;
     margin-bottom: 25px;
+    cursor: pointer;
+}
+.item:hover{
+    transition: all .2s ease-in-out; 
+    transform: scale(1.03);
 }
 
 .item--info{

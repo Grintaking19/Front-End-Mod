@@ -12,7 +12,6 @@ const UploadImages = (props) => {
 
   const ChooseImageHandler = () => {
     uplaodImageRef.current.click();
-    console.log(uplaodImageRef);
   };
 
   const SaveImageHandler = () => {
