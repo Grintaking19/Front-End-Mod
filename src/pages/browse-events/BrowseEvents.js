@@ -19,7 +19,7 @@ import { useEffect, useState } from "react";
  */
 
 const getAllEvents = async () => {
-  let url = "https://www.hebtus.me/api/v1/events";
+  let url = "https://hebtus.me/api/v1/events/?location=30.9820498,30.0352066&limit=100";
   let config = {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("user"),
