@@ -51,7 +51,7 @@ const PublishEvent = () => {
   const { state } = useLocation();
   const [eventPublishDetails, setEventPublishDetails] = useState({
     ...state,
-    goPublicDate: new Date(2009, 5),
+    goPublicDate: new Date(2050, 5),
     password: null,
     privacy: "1",
     draft: false
