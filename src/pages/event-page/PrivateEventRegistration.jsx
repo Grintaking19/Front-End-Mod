@@ -48,6 +48,7 @@ export default function PrivateEventRegistration({ eventId, setShowEvent, setEve
   async function onSubmit(rdata) {
     try {
       console.log(eventId);
+      console.log(rdata);
       const response = await axios.post(`${process.env.REACT_APP_API_DOMAIN}/events/${eventId}`, rdata, config);
       const eventData = await setDateFormat(response.data.data);
       setEvent(eventData);

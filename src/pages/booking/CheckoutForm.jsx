@@ -28,6 +28,8 @@ const useStyles = makeStyles((theme) => ({
     outline
       : "auto 0.2px rgb(223, 224, 235)"
   }
+
+  
 }));
 
 
@@ -71,7 +73,7 @@ export function CheckoutForm({ formikRef, selectedTickets, eventId, setShowDoneP
     catch (error) {
       console.log(error);
     }
-    formikHelpers.resetForm();
+    // formikHelpers.resetForm();
   }
 ///////////////////////////////////////////////////////////////////
   return (
@@ -191,12 +193,12 @@ export function CheckoutForm({ formikRef, selectedTickets, eventId, setShowDoneP
             </div>
             <div className={styles["form--checkbox-container"]}>
               <div className={styles["form-check"]}>
-                <input type="checkbox" id="keep-me-informed" name="keep-me-informed" value="Keep me"  />
+                <input type="checkbox" id="keep-me-informed" name="keep-me-informed" value="Keep me" className="form-check--input" />
                 <label for="keep-me-informed" id="keep-me-informed-label"> Keep me updated on more events and news from this event organizer.</label>
               </div>
               <div className={styles["form-check"]}>
-                <input type="checkbox" id="send-email" name="send-email" value="Send Email" />
-                <label for="send-email" id="send-email"> Send me emails about the best events happening nearby or online.</label>
+                <input type="checkbox" id="send-email" name="send-email" value="Send Email"  className="form-check--input"/>
+                <label for="send-email" id="send-email-text"> Send me emails about the best events happening nearby or online.</label>
               </div>
             </div>
           </Form>

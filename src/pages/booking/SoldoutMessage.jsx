@@ -1,7 +1,7 @@
 import styles from "./TimeOutPage.module.css"
 
 export function SoldoutMessage({ setCheckout,setModal }) {
-  console.log("inside timeout page");
+  console.log("inside sold out page");
   return (
     <div className={styles["page"]} id ="page">
       <p className={styles["page--title"]} id="page--title">Oops, Looks like tickets are sold out!</p>

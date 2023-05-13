@@ -28,7 +28,7 @@ export function GetTickets({ event, modal, setModal }) {
   } else {
     document.body.classList.remove('active-modal')
   }
-  
+
 
   useEffect(() => {
     async function fetchTickets() {
@@ -37,20 +37,23 @@ export function GetTickets({ event, modal, setModal }) {
       // console.log(eventRR.eventData);
 
       // setEvent(eventRR.eventData);
-      let tickets = await getTicketsType(event._id);
-      console.log(tickets);
-      if (tickets.length === 0) {
-        setSoldOut(true);
-      }
-      let copyTickets = [...tickets];
-      copyTickets.forEach(ticket => {
-        ticket.sellingEndTime = new Date(ticket.sellingEndTime).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-        ticket.sales = 0;
-      });
-      setTicketsType(copyTickets);
-      //User Not Logged In
+
       if (localStorage.getItem("user") === "") {
         setLogin(false);
+      }
+      else {
+        let tickets = await getTicketsType(event._id);
+        console.log(tickets);
+        if (tickets.length === 0) {
+          setSoldOut(true);
+        }
+        let copyTickets = [...tickets];
+        copyTickets.forEach(ticket => {
+          ticket.sellingEndTime = new Date(ticket.sellingEndTime).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+          ticket.sales = 0;
+        });
+        setTicketsType(copyTickets);
+        //User Not Logged In
       }
     }
     fetchTickets();
@@ -72,9 +75,9 @@ export function GetTickets({ event, modal, setModal }) {
             <div className={styles["modal-content"]}>
               {/* REFACTOR THIS !!!!1 */}
               {
-                !soldOut ?
+                login ?
                   (
-                    login ?
+                    !soldOut ?
                       (
                         !checkout ?
                           <Booking event={event} ticketsType={ticketsType} setTicketsType={setTicketsType} checkout={checkout} setCheckout={setCheckout} setModal={setModal} />
@@ -83,10 +86,10 @@ export function GetTickets({ event, modal, setModal }) {
                           <CheckoutPage event={event} ticketsType={ticketsType} setCheckout={setCheckout} setModal={setModal} checkout={checkout} />
                       )
                       :
-                      <LoginMessage setCheckout={setCheckout} setModal={setModal} />
+                      <SoldoutMessage setCheckout={setCheckout} setModal={setModal} />
                   )
                   :
-                  <SoldoutMessage setCheckout={setCheckout} setModal={setModal}/>
+                  <LoginMessage setCheckout={setCheckout} setModal={setModal} />
               }
 
             </div>
