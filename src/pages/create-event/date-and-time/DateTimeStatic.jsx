@@ -95,7 +95,6 @@ const DateTimeStatic = (props) => {
         width="50%"
         id="event-page-lang"
       />
-        <br />  <br />  <br />
     </Panel>
   );
 };

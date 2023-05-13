@@ -87,7 +87,7 @@ const EventDetails = () => {
     formData.append("name", eventDetails.Title);
     formData.append("startDate", eventDetails.startDate);
     formData.append("endDate", eventDetails.endDate);
-    formData.append("location", "11,22");
+    formData.append("location", "31.2064,30.1049");
     formData.append("category", eventDetails.Category);
     formData.append("tags", eventDetails.choosenTag.toString());
     formData.append("image", eventDetails.image);

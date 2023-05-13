@@ -3,6 +3,8 @@
     flex-direction: column;
     padding: 35px;
     background-color: white;
-    overflow-y:auto;
-    height: 50vw;
+    height: 780px;
+    overflow-y:scroll;
+    padding-right:120px;
+
 }

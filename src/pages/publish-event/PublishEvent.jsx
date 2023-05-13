@@ -30,6 +30,7 @@ import EventDraft from "./event-draft/EventDraft";
 */
 
 const patchRequest = async (bodyFormData, eventID) => {
+  console.log(bodyFormData);
   let url = "https://www.hebtus.me/api/v1/events/" + eventID;
   let data = bodyFormData;
   let config = {
@@ -45,6 +46,7 @@ const patchRequest = async (bodyFormData, eventID) => {
 };
 
 const PublishEvent = () => {
+  console.log(localStorage.getItem("user"));
   const navigate = useNavigate();
   const { state } = useLocation();
   const [eventPublishDetails, setEventPublishDetails] = useState({
@@ -67,6 +69,7 @@ const PublishEvent = () => {
    let x;
     if (  draftRecieved == "1" ) x=true;
     else x=false;
+console.log(x);
     setEventPublishDetails({
       ...eventPublishDetails,
       draft: x,
@@ -100,10 +103,10 @@ const PublishEvent = () => {
   };
 
   const onEditHandler = () => {
-    console.log(eventPublishDetails);
+    console.log(eventPublishDetails.draft);
     const JSONbody = {
       privacy: eventPublishDetails.privacy,
-      draft: true,
+      draft: eventPublishDetails.draft,
     };
     patchRequest(JSONbody, eventPublishDetails.id);
     setEventPublishDetails({ ...state, editOrCreate: "1" });

@@ -4,10 +4,11 @@
     justify-content: center;
     align-items: center;
     margin-top: 65px;  
-    margin-left: 100px; 
-    padding-top: 680px;
+    margin-left: 70px; 
+    padding-top: 650px;
     height: 700px;
     padding-right: 50px;
+    overflow-y: scroll;
     
 }
 
