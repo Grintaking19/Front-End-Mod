@@ -6,6 +6,7 @@ const Footer = (props) => {
     borderColor: "#d1410c",
     color: "white",
     fontSize: "0.9rem",
+    
   };
   let DiscardStyle = {
     backgroundColor: "white",
