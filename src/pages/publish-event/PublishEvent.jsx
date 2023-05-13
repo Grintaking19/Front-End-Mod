@@ -103,10 +103,13 @@ console.log(x);
   };
 
   const onEditHandler = () => {
+
     console.log(eventPublishDetails.draft);
     const JSONbody = {
       privacy: eventPublishDetails.privacy,
       draft: eventPublishDetails.draft,
+      goPublicDate: eventPublishDetails.goPublicDate.toISOString(),
+      password: eventPublishDetails.password
     };
     patchRequest(JSONbody, eventPublishDetails.id);
     setEventPublishDetails({ ...state, editOrCreate: "1" });
@@ -161,7 +164,8 @@ console.log(x);
           <EventPrivacy onPrivacyChange={privacyChangeHandler} />
 
           {eventPublishDetails.editOrCreate == "1" && (
-            <EventDraft onClick={onDraftChangeHandler} />
+          renderPrivateChoices(eventPublishDetails.privacy)
+
           )}
           {eventPublishDetails.editOrCreate == "0" &&
             renderPrivateChoices(eventPublishDetails.privacy)}

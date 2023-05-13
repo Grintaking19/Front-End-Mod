@@ -37,10 +37,10 @@ const EventPublicDate = (props) => {
     <div className={styles["event-public-date"]}>
      
       <div className={styles["event-publicdate-calender"]}>
-        <BasicDatePicker title={"Start Date"} onChange={DateChangeHandler}  value={null} />
+        <BasicDatePicker title={"Go Public Date"} onChange={DateChangeHandler}  value={null} />
         <DatalistField
           options={TimeSlots}
-          title="Start Time"
+          title="Go Public Time"
           defaultValue="7:00 PM"
           id="start-time"
           onChange={TimeChangeHandler }
