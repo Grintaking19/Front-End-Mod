@@ -1,0 +1,10 @@
+.__List{
+    display: flex;
+    flex-direction: column;
+    padding: 35px;
+    background-color: white;
+    height: 780px;
+    overflow-y:scroll;
+    padding-right:120px;
+
+}

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/create-event/basic-info/BasicInfo.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/create-event/basic-info/BasicInfo.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import styles from "./BasicInfo.module.css";
+
+import Panel from "../../../layouts/UI/Panel";
+import { BasicinfoIcon } from "../../../layouts/UI/SvgImages";
+import Dropdown from "../fields/Dropdown";
+import HorizontalFlex from "../../../layouts/UI/HorizontalFlex";
+import Button from "../../../layouts/UI/Button";
+import Tag from "../../../layouts/UI/Tag";
+import SubHeader from "../../../layouts/UI/SubHeader";
+import InputField from "../fields/InputField";
+import { Types, Categories, SubCategories, Tags } from "../Data";
+import TagsList from "../fields/TagsList";
+import { useState, useEffect } from "react";
+
+/**
+ * Component for the BasicInfo of the event creation pages
+ * 
+ * @component
+ * @param {Object} props
+ * @param {string} props.value  - The data of the event (Mandatory if the event has been created in the backend)
+ * @param {string} props.disabled - Determine whether the input fields is disabled or not
+ * @param {string} props.onClick - Triggerd when the user click on the button (save and continue)
+ * @name BasicInfo
+ * @example
+ *  let x = e.currentTarget.firstChild.id;
+ *  props.onChange(eventinfo, [...choosenTag, x]);
+ *  setChoosenTag((state) => [...state, x]);
+ * @example
+ *&lt;InputField
+ * title="Event Title"
+ * required={1}
+ * onChange={EventTitleInputHandler}
+ * value={props.value.Title}
+ * disable={props.disable}/>
+ **/
+
+const BasicInfo = (props) => {
+  let [choosenTag, setChoosenTag] = useState([]);
+  let [tagList, setTagList] = useState(Tags);
+  let [textBoxValue, setTextBoxValue] = useState("");
+  const [eventinfo, setEventInfo] = useState({
+    Title: "",
+    Type: "",
+    Category: "",
+    SubCategory: "",
+  });
+  const [AlreadyExists, setAlreadyExists] = useState(false);
+  const [tagsLimitReached, setTagsLimitReached] = useState(0);
+  const [regexRule, setRegexRule] = useState(true);
+
+  console.log(props.value.choosenTag);
+
+  //Event Name Handler
+  const EventTitleInputHandler = (e) => {
+    props.onChange({ ...eventinfo, Title: e.target.value }, choosenTag);
+    setEventInfo({ ...eventinfo, Title: e.target.value });
+  };
+  const Typehandler = (e) => {
+    props.onChange({ ...eventinfo, Type: e.target.value }, choosenTag);
+    setEventInfo({ ...eventinfo, Type: e.target.value });
+  };
+  const CategoryHandler = (e) => {
+    props.onChange({ ...eventinfo, Category: e.target.value }, choosenTag);
+    setEventInfo({ ...eventinfo, Category: e.target.value });
+  };
+  const SubCategoryHandler = (e) => {
+    props.onChange({ ...eventinfo, SubCategory: e.target.value }, choosenTag);
+    setEventInfo({ ...eventinfo, SubCategory: e.target.value });
+  };
+
+  //Tags Handlers
+  const chooseTagHandler = (e) => {
+    if (e.currentTarget.firstChild == null) return;
+    if (choosenTag.length &lt; 10) {
+      //TBH I don't know why this is needed, but it is
+      let x = e.currentTarget.firstChild.id;
+      props.onChange(eventinfo, [...choosenTag, x]);
+      setChoosenTag((state) => [...state, x]);
+      tagList = tagList.filter((a) => a.name !== e.currentTarget.firstChild.id);
+      setTagList((state) => [...tagList]);
+      setTextBoxValue("");
+      setAlreadyExists(false);
+    } else {
+      setTagsLimitReached(true);
+    }
+    setTextBoxValue("");
+  };
+
+  const cancelTagHandler = (e) => {
+    choosenTag = choosenTag.filter((a) => a !== e.currentTarget.firstChild.id);
+    props.onChange(eventinfo, [...choosenTag]);
+    setChoosenTag((state) => [...choosenTag]);
+    setTagsLimitReached(false);
+
+    if (
+      Tags.find((element) => element.name == e.currentTarget.firstChild.id) !=
+      undefined
+    ) {
+      let removed_tag = Tags.find(
+        (tag) => tag.name == e.currentTarget.firstChild.id
+      );
+      setTagList((state) => [...tagList, removed_tag]);
+    }
+  };
+
+  const tagTextChangeHandler = (e) => {
+    setTextBoxValue(e.target.value);
+  };
+
+  const typedTagHandler = (e) => {
+    let regex = /[\W\s\[\]\(\)\{\}-]/;
+
+    if (
+      textBoxValue != "" &amp;&amp;
+      choosenTag.includes(textBoxValue) == false &amp;&amp;
+      choosenTag.length &lt; 10 &amp;&amp;
+      textBoxValue.match(regex) == null
+    ) {
+      props.onChange(eventinfo, [...choosenTag, textBoxValue]);
+
+      setChoosenTag((state) => [...state, textBoxValue]);
+      setTextBoxValue("");
+      tagList = tagList.filter((a) => a.name !== textBoxValue);
+      setTagList((state) => [...tagList]);
+      setAlreadyExists(false);
+      setRegexRule(true);
+    } else {
+      if (choosenTag.length >= 10) {
+        setTagsLimitReached(true);
+      } else if (choosenTag.includes(textBoxValue)) setAlreadyExists(true);
+      else if (textBoxValue.match(regex) != null) setRegexRule(false);
+    }
+  };
+
+  return (
+    &lt;Panel
+      image={BasicinfoIcon}
+      title="Basic Info"
+      description="Name your event and tell event-goers why they should come. Add details that highlight what makes it unique."
+      style={{ width: props.width }}
+      id="basic-info-panel"
+    >
+      &lt;InputField
+        title="Event Title"
+        required={1}
+        onChange={EventTitleInputHandler}
+        value={props.value.Title}
+        disable={props.disable}
+        id= "event-title-input"
+        maxLength={75}
+      />
+
+      &lt;HorizontalFlex>
+        &lt;Dropdown
+          options={Types}
+          width="30%"
+          onChange={Typehandler}
+          id="type"
+          disable={props.disable}
+        />
+        &lt;Dropdown
+          options={Categories}
+          width="30%"
+          onChange={CategoryHandler}
+          id="category"
+          value={props.value.Category}
+          disable={props.disable}
+        />
+        &lt;Dropdown
+          options={SubCategories}
+          width="30%"
+          onChange={SubCategoryHandler}
+          id="subcategory"
+          disable={props.disable}
+        />
+      &lt;/HorizontalFlex>
+
+      &lt;SubHeader
+        title="Tags"
+        description="Improve discoverability of your event by adding tags relevant to the subject matter."
+        id="tags-subheader"
+      />
+
+      &lt;HorizontalFlex>
+        &lt;TagsList
+          options={tagList}
+          width={540}
+          onClick={chooseTagHandler}
+          onTextChange={tagTextChangeHandler}
+          textBoxValue={textBoxValue}
+          TagsCount={choosenTag.length}
+          Tagslimit={tagsLimitReached}
+          AlreadyChoosen={AlreadyExists}
+          CharsValid={regexRule}
+        />
+        &lt;Button
+          onClick={typedTagHandler}
+          id="add-tag-btn"
+          disable={props.disable}
+        >
+          Add
+        &lt;/Button>
+      &lt;/HorizontalFlex>
+
+      &lt;div className={styles["tags-div"]}>
+        {props.value.choosenTag == undefined
+          ? choosenTag.map((tag) => {
+              return (
+                &lt;Tag key={tag} id={tag} onCancel={cancelTagHandler}>
+                  {tag}
+                &lt;/Tag>
+              );
+            })
+          : props.value.choosenTag.map((tag) => {
+              return (
+                &lt;Tag key={tag} id={tag} onCancel={cancelTagHandler}>
+                  {tag}
+                &lt;/Tag>
+              );
+            })}
+      &lt;/div>
+    &lt;/Panel>
+  );
+};
+
+export default BasicInfo;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BasicInfo.html">BasicInfo</a></li><li><a href="BrowseEvents.html">BrowseEvents</a></li><li><a href="Categories.html">Categories</a></li><li><a href="CategorizedEvents.html">CategorizedEvents</a></li><li><a href="DateTime.html">DateTime</a></li><li><a href="EventListContainer.html">EventListContainer</a></li><li><a href="EventSidenav.html">EventSidenav</a></li><li><a href="Events.html">Events</a></li><li><a href="LandingPage.html">LandingPage</a></li><li><a href="Location.html">Location</a></li><li><a href="NavBar.html">NavBar</a></li><li><a href="PublishEvent.html">PublishEvent</a></li><li><a href="SignedInNavBar.html">SignedInNavBar</a></li><li><a href="SignedOutNavBar.html">SignedOutNavBar</a></li><li><a href="postRequest.html">postRequest</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sat May 13 2023 13:44:05 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+.MuiCheckbox-root{
+    height: 70px !important;
+    width: 50px !important;
+}   
+
+.checkbox-conatiner{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+
+}
+
+.checkbox-text-conatiner{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.checkbox-title{
+    margin-bottom: 0;
+    padding-bottom: 0;
+    margin-top: 18px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.checkbox-description{
+    margin-top: 0;
+    padding-top: 0;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 400;
+}

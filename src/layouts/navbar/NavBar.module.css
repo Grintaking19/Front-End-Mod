@@ -1,0 +1,137 @@
+
+/* * {
+    box-sizing: border-box;
+} */
+
+
+nav {
+    padding: 0px 20px;
+    display: flex;
+    /* background-color: blue; */
+    height: 70px;
+    align-items: center;
+    border-bottom: 1px solid #ece9f1;
+}
+
+.hebtus-logo-text {
+    font-family: Montserrat, sans-serif;
+    font-weight: 800;
+    font-size: 30px;
+    color: #F05537;
+    margin-right: auto;
+    margin-left: 20px;
+    
+}
+
+
+
+
+.nav-bar--button{
+    height: 70px;
+    width:135px;
+    /* background-color: blanchedalmond; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Montserrat, sans-serif;
+    text-align: center;
+    flex-direction: column;
+    font-weight: 400;
+    font-size: 13px;
+    
+}
+
+
+.nav-bar--button:hover{
+    background-color: #ece9f1;
+    transition: 0.3s;
+}
+
+
+.nav-bar--user:hover{
+    background-color: #ece9f1;
+    transition: 0.3s;
+}
+
+
+.nav-bar--button--icon{
+    font-size: 25px;
+}
+
+.nav-bar--user{
+    height: 70px;
+    width:300px;
+    /* background-color: blanchedalmond; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Montserrat, sans-serif;
+    /* text-align: center; */
+    /* flex-direction: row; */
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.nav-bar--username{
+    margin-left: 10px;
+}
+
+a:link { text-decoration: none; }
+
+a:visited { text-decoration: none; }
+
+a:hover { text-decoration: none; }
+
+a:active { text-decoration: none; }
+
+
+
+.nav-bar--user{
+    position:relative;
+    
+}
+
+
+.drop-down-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 1000;
+    width: 100%;
+    min-width: 10rem;
+  }
+
+.nav-bar--user:hover .drop-down-menu {
+    display: block;
+  }
+
+
+
+  @media only screen and (max-width: 768px) {
+    /* On small screens, adjust the padding and font size of the logo */
+    .hebtus-logo-text {
+      font-size: 20px;
+      margin-left: 1px;
+      margin-top: 3px;
+      margin-right: 0;
+    }
+  
+    /* On small screens, make the button and user divs full width */
+    .nav-bar--button {
+      margin-left: 30px;
+      font-size: 70%;
+      /* padding: 5 5 5 5; */
+      width: 50%;
+    }
+  
+    .nav-bar--user {
+      width: 70%;
+      font-size: 70%;
+    }
+  
+    /* On small screens, hide the username */
+    .nav-bar--username {
+      display: none;
+    }
+  }

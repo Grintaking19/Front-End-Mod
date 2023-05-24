@@ -1,0 +1,24 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 65px;  
+    margin-left: 70px; 
+    padding-top: 650px;
+    height: 700px;
+    padding-right: 50px;
+    overflow-y: scroll;
+    
+}
+
+
+.back-to-eventlist{
+color: #3659e3;
+text-decoration: underline;
+width: fit-content;
+cursor: pointer;
+position: relative;
+top: 20px;
+left:22%;
+}

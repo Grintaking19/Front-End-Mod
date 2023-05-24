@@ -1,0 +1,31 @@
+.MuiInputBase-input{
+  padding-top: 1.3rem !important;
+  padding-bottom: 0.3rem !important ;
+}
+.MuiOutlinedInput-notchedOutline{
+  border-radius: 0px !important;
+}
+
+.date-picker-title {
+  margin: 0;
+  position: relative;
+  top: -2.7rem;
+  left: 0.1rem;
+  padding-left: 0.75rem;
+  font-size: 12px;
+
+}
+.date-picker-warning {
+  margin: 0;
+  position: relative;
+  top: -1rem;
+  color: #c5162e;
+  font-size: 12px;
+}
+
+
+.MuiButtonBase-root{
+  margin-right: 0.25rem !important;
+}
+
+

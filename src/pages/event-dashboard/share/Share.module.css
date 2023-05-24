@@ -1,0 +1,63 @@
+.share {
+    background-color: #fff;
+    min-height: 140px;
+}
+
+.share-title {
+    font-size: 24px;
+    font-weight: 700;
+    font-family: "Roboto", sans-serif;
+    padding-left: 12px;
+    margin-top: 16px;
+}
+
+.event-url-container {
+    margin-top: 32px;
+    padding: 0 52px 0 12px;
+    display: grid;
+    grid-template-columns: 1fr 192px;
+    grid-template-rows: 22px 22px;
+    grid-template-areas: 
+    "h h"
+    "v i";
+}
+
+.event-url-title {
+    grid-area: h;
+}
+.event-url-value {
+    grid-area: v;
+    overflow: hidden;
+    font-size: 14px;
+}
+
+.event-url-icons {
+    grid-area: i;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    color: #3d64ff;
+}
+
+.copy-icon {
+    margin-right: 8px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.copy-icon:hover {
+    color: #98a9eb;
+}
+
+.copy-icon:active {
+    transform: translateY(1px);
+}
+
+.event-url-title {
+    font-size: 16px;
+    font-weight: 400;
+    font-family: sans-serif;
+    line-height: normal;
+}

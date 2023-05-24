@@ -1,0 +1,25 @@
+.event-public-date {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 75px;
+}
+.event-public-date-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: black;
+}
+.event-publicdate-radiobutton {
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+  margin-top: 2px;
+}
+
+.event-publicdate-calender{
+    width: 650px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+
+}

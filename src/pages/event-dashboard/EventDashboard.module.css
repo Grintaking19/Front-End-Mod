@@ -1,0 +1,155 @@
+.main-container {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 288px repeat(13, 1fr);
+    grid-template-rows: 90px auto;
+    grid-template-areas:
+    "n n n n n n n n n n n n n n"
+    "es b b b b b b b b b b b b b";
+}
+
+.navbar-container {
+    /* background-color: #ffffff; */
+    grid-area: n;
+}
+
+.sidenav-container {
+    grid-area: es;
+}
+
+.body-container {
+    background-color: rgb(255, 255, 255);
+    grid-area: b;
+    display: flex;
+    justify-content: center;
+    overflow: scroll;
+}
+
+.body-container::-webkit-scrollbar {
+    display: none;
+}
+
+.content-container {
+    background-color: white;
+    width: 960px;
+}
+
+.insights-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "h h h"
+    "c c t"
+    "s s t";
+}
+
+.divider {
+    height: 1px;
+    width: 100%;
+    margin: 16px 0;
+}
+
+.stats-container {
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    margin: 24px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "sc sc oac"
+    "oc oc oac";
+}
+
+.header {
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    min-height: 100px;
+    padding-left: 12px;
+    grid-area: h;
+    display: flex;
+    align-items: center;
+}
+
+.cards-container {
+    background-color: rgb(255, 255, 255);
+    min-height: 200px;
+    grid-area: c;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow: scroll;
+}
+
+
+.cards-container::-webkit-scrollbar {
+    display: none;
+}
+
+.todo-list-container {
+    grid-area: t;
+}
+
+.share-container {
+    grid-area: s;
+}
+
+.title {
+    font-size: 48px;
+    font-weight: 900;
+    font-family: "Roboto", sans-serif;
+}
+
+.ds-sales-container {
+    grid-area: sc;
+}
+
+.ds-orders-container {
+    grid-area: oc;
+}
+
+.ds-other-actions-container {
+    grid-area: oac;
+}
+
+
+
+@media screen and (max-width: 960px) {
+    .main-container {
+        grid-template-areas:
+        "n n n n n n n n n n n n n n"
+        "b b b b b b b b b b b b b b";
+    }
+
+    .sidenav-container {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 790px) {
+    .main-container {
+        grid-template-areas:
+        "n n n n n n n n n n n n n n"
+        "b b b b b b b b b b b b b b";
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .insights-container {
+        grid-template-areas: 
+        "h h h"
+        "c c c"
+        "t t t"
+        "s s s";
+    }
+
+    .stats-container {
+        grid-template-areas: 
+        "sc sc sc"
+        "oc oc oc"
+        "oac oac oac";
+    }
+}

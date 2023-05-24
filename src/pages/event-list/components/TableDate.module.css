@@ -1,0 +1,20 @@
+.table-date {
+  width: 3rem;
+  height: 3rem;
+  text-align: center;
+  padding-top: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.table-date-month {
+  margin: 0;
+  color: #d34b19;
+  font-size: 0.8rem;
+}
+
+.table-date-day {
+  margin: 0;
+  font-weight: 700;
+  color: #6f7287;
+  font-size: 1.2rem;
+}

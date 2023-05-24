@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/create-event/date-and-time/DateTime.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/create-event/date-and-time/DateTime.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import styles from "./DateTime.module.css";
+import Panel from "../../../layouts/UI/Panel";
+import { DateandTimeIcon } from "../../../layouts/UI/SvgImages";
+import HorizontalFlex from "../../../layouts/UI/HorizontalFlex";
+import PanelChanger from "../../../layouts/UI/PanelChanger";
+import CheckboxField from "../fields/CheckboxField";
+import DatalistField from "../fields/DatalistField";
+import LabeledDropdown from "../fields/LabeledDropdown";
+import BasicDatePicker from "../fields/BasicDatePicker";
+import { useState, useEffect } from "react";
+import { TimeSlots, Languages, TimeZones } from  "../Data";
+import dayjs from 'dayjs';
+
+/**
+ * Component for the Date and Time of the event creation pages
+ * 
+ * @component
+ * @param {Object} props
+ * @param {string} props.width  - Determine the width of the 
+ * @param {string} props.onCLick - Triggerd when the user click on the button (save and continue)
+ * @name DateTime
+
+ * @example
+ * if (endDate - startDate &lt; 0){
+ * props.onChange(startDate.toUTCString(),endDate.toUTCString(),true);
+ * setDateError(true);
+ * } 
+ * else {
+ * props.onChange(startDate.toUTCString(),endDate.toUTCString(),false);
+ * setDateError(false)    
+ * }
+ */
+
+export const PM_24hoursConvert = (time) => {
+  let hours = time.slice(0, 2);
+  if (hours[1] == ":") hours = hours[0];
+  let PM_AM = time.slice(-2, time.length);
+  if (PM_AM == "PM" &amp;&amp; hours != 12) {
+    hours = parseInt(hours) + 12;
+  } else if (PM_AM == "AM" &amp;&amp; hours == 12) {
+    hours = "00";
+  } else if (PM_AM == "AM") {
+    if (hours.length == 1) hours = "0" + hours;
+  }
+
+  let minutes = time.slice(time.indexOf(":") + 1);
+  minutes = minutes.slice(0, 2);
+
+  return [hours, minutes];
+};
+
+const DateTime = (props) => {
+  let [startDate, setStartDate] = useState(new Date());
+  let [endDate, setEndDate] = useState(new Date());
+  let [startHour, setStartHour] = useState("9");
+  let [startMinute, setStartMinute] = useState("0");
+  let [endHour, setEndHour] = useState("9");
+  let [endMinute, setEndMinute] = useState("00");
+  let [dateError, setDateError] = useState(false);
+
+  useEffect(() => {
+    props.onChange(startDate.toUTCString(),endDate.toUTCString(),dateError);
+  }, []);
+
+  const onStartDateChangeHandler = (date) => {
+    startDate = date.$d;
+    startDate.setUTCHours(startHour);
+    startDate.setUTCMinutes(startMinute);
+    startDate.setSeconds(0);
+    setStartDate(startDate);
+
+    if (endDate - startDate &lt; 0) {
+      props.onChange(startDate.toUTCString(),endDate.toUTCString(),true);
+
+      setDateError(true);
+    }
+    else{
+      props.onChange(startDate.toUTCString(),endDate.toUTCString(),false);
+
+      setDateError(false);
+    } 
+
+  };
+
+  const onEndDateChangeHandler = (date) => {
+    endDate = date.$d;
+    endDate.setUTCHours(endHour);
+    endDate.setUTCMinutes(endMinute);
+    endDate.setSeconds(0);
+    setEndDate(endDate);
+    console.log(endDate-startDate);
+    if (endDate - startDate &lt; 0){
+      props.onChange(startDate.toUTCString(),endDate.toUTCString(),true);
+      setDateError(true);
+    } 
+    else {
+      props.onChange(startDate.toUTCString(),endDate.toUTCString(),false);
+      setDateError(false)    
+    }
+  };
+
+  const onStartTimeChangeHandler = (e) => {
+    let time = PM_24hoursConvert(e.target.textContent);
+    setStartHour(time[0]);
+    setStartMinute(time[1]);
+    startDate.setUTCHours(time[0]);
+    startDate.setUTCMinutes(time[1]);
+    startDate.setSeconds(0);
+    setStartDate(startDate);
+    if (endDate - startDate &lt; 0){
+      props.onChange(startDate.toUTCString(),endDate.toUTCString(),true);
+      setDateError(true);
+    } 
+    else {
+      props.onChange(startDate.toUTCString(),endDate.toUTCString(),false);
+      setDateError(false)    
+    }
+
+  };
+
+  const onEndTimeChangeHandler = (e) => {
+    let time = PM_24hoursConvert(e.target.textContent);
+    setEndHour(time[0]);
+    setEndMinute(time[1]);
+    endDate.setUTCHours(time[0]);
+    endDate.setUTCMinutes(time[1]);
+    endDate.setSeconds(0);
+    setEndDate(endDate);
+    if (endDate - startDate &lt; 0){
+      props.onChange(startDate.toUTCString(),endDate.toUTCString(),true);
+      setDateError(true);
+    } 
+    else {
+      props.onChange(startDate.toUTCString(),endDate.toUTCString(),false);
+      setDateError(false)    
+    }
+
+  };
+
+  const onDisplayStartTimeHandler = (e) => {
+  };
+
+  const onTimeZoneChangeHandler = (e) => {
+  };
+
+  const onEventLangChangeHandler = (e) => {
+  };
+
+  const onDisplayEndTimeHandler = (e) => {
+  };
+
+
+  return (
+    &lt;Panel
+      image={DateandTimeIcon}
+      title="Date and Time"
+      description="Tell event-goers when your event starts and ends so they can make plans to attend."
+      style={{ width: props.width }}
+      id="date-time-panel"
+
+    >
+      &lt;PanelChanger className="panel-changer-clicked" id="single-event-panel">
+        Single Event
+      &lt;/PanelChanger>
+      &lt;p>Single event happens once and can last multiple days.&lt;/p>
+
+      &lt;HorizontalFlex width="100%" id="start-date-time-flex">
+        &lt;BasicDatePicker
+          title="Start Date *"
+          width="100%"
+          required={1}
+          onChange={onStartDateChangeHandler}
+          error={dateError}
+          id="start-date"
+          value={dayjs(new Date())}
+        />
+        &lt;DatalistField
+          options={TimeSlots}
+          onChange={onStartTimeChangeHandler}
+          title="Start Time"
+          defaultValue="7:00 PM"
+          id="start-time"
+        />
+  
+      &lt;/HorizontalFlex>
+
+      &lt;HorizontalFlex width="100%" id="end-date-time-flex">
+        &lt;BasicDatePicker
+          title="End Date *"
+          width="100%"
+          required={1}
+          onChange={onEndDateChangeHandler}
+          error={dateError}
+          minDate={startDate}
+          value={startDate}
+          id="end-date"
+        />
+        &lt;DatalistField
+          options={TimeSlots}
+          onChange={onEndTimeChangeHandler}
+          title="End Time"
+          defaultValue="10:00 PM"
+          id="end-time"
+        />
+      
+      &lt;/HorizontalFlex>
+
+      &lt;br />
+      &lt;LabeledDropdown options={TimeZones} title="Time Zone" width="50%"
+       id="time-zone"
+       />
+      &lt;LabeledDropdown
+        options={Languages}
+        title="Event Page Language"
+        width="50%"
+        id="event-page-lang"
+      />
+
+    &lt;/Panel>
+  );
+};
+
+export default DateTime;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BasicInfo.html">BasicInfo</a></li><li><a href="BrowseEvents.html">BrowseEvents</a></li><li><a href="Categories.html">Categories</a></li><li><a href="CategorizedEvents.html">CategorizedEvents</a></li><li><a href="DateTime.html">DateTime</a></li><li><a href="EventListContainer.html">EventListContainer</a></li><li><a href="EventSidenav.html">EventSidenav</a></li><li><a href="Events.html">Events</a></li><li><a href="LandingPage.html">LandingPage</a></li><li><a href="Location.html">Location</a></li><li><a href="NavBar.html">NavBar</a></li><li><a href="PublishEvent.html">PublishEvent</a></li><li><a href="SignedInNavBar.html">SignedInNavBar</a></li><li><a href="SignedOutNavBar.html">SignedOutNavBar</a></li><li><a href="postRequest.html">postRequest</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sat May 13 2023 13:44:05 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

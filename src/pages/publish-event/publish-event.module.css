@@ -1,0 +1,27 @@
+.heading{
+    font-size:1.875rem;
+    line-height:2.5rem;
+    letter-spacing:.5px;
+    margin-right:-.5px;
+    text-rendering: optimizeLegibility;
+    margin-bottom: 20px;
+    font-weight: 700;
+
+}
+
+
+.container{
+    display: flex;
+    flex-direction: row;
+
+
+}   
+
+.components{
+    display: flex;
+    flex-direction: column;
+    height: 700px;
+    padding-left: 10%;
+    padding-top: 30px;
+
+}

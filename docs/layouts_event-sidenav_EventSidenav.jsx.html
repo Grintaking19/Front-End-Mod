@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: layouts/event-sidenav/EventSidenav.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: layouts/event-sidenav/EventSidenav.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import styles from "./EventSideNav.module.css"
+
+import { useEffect, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+
+import { getTicketTypes } from "../../pages/event-dashboard/services"
+import { getEvent } from "./services"
+import { icons } from "./data"
+import { act } from "react-dom/test-utils"
+
+/**
+ * Component for the sidenav of the event creation pages
+ * 
+ * @component
+ * @param {Object} props
+ * @param {string} props.eventId - The id of the event (Mandatory if the event has been created in the backend)
+ * @param {string} props.activeTab - The active tab of the sidenav
+ * @param {string} props.eventName - The name of the event (Mandatory if the event has not been created in the backend yet and no eventId is provided)
+ * @param {string} props.startDate - The start date of the event (Optional, will be displayed as TBD if not provided)
+ * @name EventSidenav
+ * @example
+ * const activeTab = 'details'
+ * const eventName = 'Event Name'
+ * return (
+ *  &lt;EventSidenav activeTab={activeTab} eventName={eventName} />
+ * )
+ * 
+ * @example
+ * const eventId = '123'
+ * const activeTab = 'details'
+ * return (
+ * &lt;EventSidenav eventId={eventId} activeTab={activeTab} />
+ * )
+ */
+function EventSidenav(props) {
+    const navigate = useNavigate();
+    // TODO: Remove the eventName and startDate props and use the eventId to fetch the event details if the backend have implemented edit event details
+    let { eventId, activeTab, eventName, startDate } = props
+    let eventCurrentInfo = props.eventCurrentInfo;
+    eventId = eventId || eventCurrentInfo.id;
+
+    //console.log(props.eventCurrentInfo);
+    // TODO: Use the activeTab prop to set the active tab
+
+    const [isDraft, setIsDraft] = useState(true)
+    const [canBePublished, setCanBePublished] = useState(false)
+    const [eventDetails, setEventDetails] = useState({
+        name: eventName,
+        startDate: startDate || 'TBD'
+    })
+
+    useEffect(() => {
+        async function fetchData() {
+            if (!eventId) return
+            const eventData = await getEvent(eventId)
+            setEventDetails(eventData)
+            setIsDraft(eventData.draft)
+            const ticketTypes = await getTicketTypes(eventId)
+            if (ticketTypes.length === 0) {
+                setCanBePublished(false)
+            } else {
+                setCanBePublished(true)
+            }
+        }
+
+        fetchData()
+    }, [])
+
+    const eventPublishSteps = [
+        {
+            id: 1,
+            title: 'Basic Info',
+            link: '/create-event',
+            status: 'completed',
+            selected: activeTab === 'basic-info'
+        }, {
+            id: 2,
+            title: 'Details',
+            link: '/event-details',
+            status: 'not-completed',
+            selected: activeTab === 'event-details'
+        }, {
+            id: 3,
+            title: 'Tickets',
+            link: eventId ? `/manage/events/${eventId}/tickets` : null,
+            status: 'not-completed',
+            selected: activeTab === 'tickets'
+        }, {
+            id: 4,
+            title: 'Publish',
+            link: '/publish-event',
+            status: 'not-completed',
+            selected: activeTab === 'event-publish'
+        }, {
+            title: 'Dashboard',
+            link: eventId ? `/event-dashboard/${eventId}` : null,
+            selected: activeTab === 'dashboard'
+        }, {
+            title: 'Orders',
+            link: '/event/orders',
+        }, {
+            title: 'Add Attendees',
+            link: '/event/add-attendees',
+        }
+    ]
+
+    return (
+        &lt;div className={styles['es']}>
+            &lt;div className={styles['es-header']}>
+                &lt;div className={styles['es-go-back-container']}>
+                    &lt;Link to="/events-list/" id="go-back-to-events-list">
+                        &lt;svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                            &lt;path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+                        &lt;/svg>
+                        Events
+                    &lt;/Link>
+                &lt;/div>
+                {isDraft ?
+                    &lt;div className={styles['event-status-button']}>
+                        &lt;div className="dropdown">
+                            &lt;button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="event-status-button">
+                                {isDraft ? 'Draft' : 'Published'}
+                            &lt;/button>
+                            {isDraft ?
+
+                                &lt;ul class="dropdown-menu" id="event-status-dropdown-menu">
+                                    {canBePublished ?
+                                        &lt;>
+                                            &lt;li>&lt;Link to="/publish-event" class="dropdown-item" id="publish-now-option">Publish Now&lt;/Link>&lt;/li>
+                                            &lt;li>&lt;Link to="/publish-event" class="dropdown-item" id="schedule-publish-option">Schedule Publish&lt;/Link>&lt;/li>
+                                        &lt;/> :
+                                        &lt;>
+                                            &lt;li>&lt;a class="dropdown-item disabled">Publish Now&lt;/a>&lt;/li>
+                                            &lt;li>&lt;a class="dropdown-item disabled">Schedule Publish&lt;/a>&lt;/li>
+                                        &lt;/>
+                                    }
+                                &lt;/ul>
+                                : null}
+                        &lt;/div>
+                    &lt;/div> : null}
+                &lt;div className={styles['es-event-description']}>
+                    &lt;div className={styles['es-event-description-title']}>
+                        &lt;a href="#" id="event-name">&lt;h4>{eventDetails.name}&lt;/h4>&lt;/a>
+                    &lt;/div>
+                    &lt;div className={styles['es-event-description-date']}>
+                        {/* &lt;p>Wed, Apr 19, 2023 7:00 PM&lt;/p> */}
+                        &lt;p id="event-date">{`${eventDetails.startDate}`}&lt;/p>
+                    &lt;/div>
+                    {!isDraft ?
+                        &lt;div className={styles['es-event-description-preview']}>
+                            &lt;Link to={`/events/${eventId}`} id="preview-event">
+                                Preview your event
+                                &lt;svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
+                                    &lt;path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z" />
+                                    &lt;path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z" />
+                                &lt;/svg>
+                                {/* &lt;/a> */}
+                            &lt;/Link>
+                        &lt;/div>
+                        : null}
+                &lt;/div>
+            &lt;/div>
+            &lt;div className={styles['es-list']}>
+                &lt;ul className={styles['es-list-ul']}>
+                    {eventPublishSteps.map((step, index) => {
+                        let icon = step.status === 'completed' ? icons[step.status] : icons[step.id];
+                        let className = step.selected ? styles['es-list-li'] + " " + styles['es-list-li-active'] : styles['es-list-li'];
+                        //console.log(step);
+                        return (
+                            &lt;li className={className} key={index} id={`es-list-li-${step.title}`}>
+                                &lt;a id={`es-list-li-${step.title}-link`} onClick={() => {
+                                    if (step.link === null) return;
+                                    navigate(step.link, { state: { ...eventCurrentInfo } })
+                                }}>
+
+                                    &lt;div>
+                                        {step.status ? icon : null}
+                                        &lt;span>{step.title}&lt;/span>
+                                    &lt;/div>
+                                &lt;/a>
+                            &lt;/li>
+                        )
+                    })}
+
+                &lt;/ul>
+            &lt;/div>
+        &lt;/div>
+    );
+}
+
+export default EventSidenav;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BasicInfo.html">BasicInfo</a></li><li><a href="BrowseEvents.html">BrowseEvents</a></li><li><a href="Categories.html">Categories</a></li><li><a href="CategorizedEvents.html">CategorizedEvents</a></li><li><a href="DateTime.html">DateTime</a></li><li><a href="EventListContainer.html">EventListContainer</a></li><li><a href="EventSidenav.html">EventSidenav</a></li><li><a href="Events.html">Events</a></li><li><a href="LandingPage.html">LandingPage</a></li><li><a href="Location.html">Location</a></li><li><a href="NavBar.html">NavBar</a></li><li><a href="PublishEvent.html">PublishEvent</a></li><li><a href="SignedInNavBar.html">SignedInNavBar</a></li><li><a href="SignedOutNavBar.html">SignedOutNavBar</a></li><li><a href="postRequest.html">postRequest</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sat May 13 2023 13:44:05 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

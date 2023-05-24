@@ -1,0 +1,33 @@
+.datalist-field-frame {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  margin-bottom: 1rem;
+}
+
+.datalist-field-title {
+  position: relative;
+  bottom: 3.25rem;
+  left: 1rem;
+  padding-left: 0.75rem;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+
+.MuiOutlinedInput-root {
+    padding: 0 !important;
+  }
+  
+  .MuiAutocomplete-input {
+    height: 1.35rem !important;
+    border: 1px solid #dfdee6 !important;
+    padding-left: 1rem !important;
+    font-size: 15px !important;
+    width: 18rem !important;
+  }
+  .MuiAutocomplete-input:focus {
+    border: 2px solid #3659e3 !important;
+  }
+  

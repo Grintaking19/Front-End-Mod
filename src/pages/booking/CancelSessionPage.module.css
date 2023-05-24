@@ -1,0 +1,85 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 1050px;
+  height: 600px;
+  background-color: white;
+}
+
+.page--title {
+  color: rgb(57, 54, 79);
+  font-size: 24px;
+  font-weight: 700;
+  padding-top: 8px;
+  letter-spacing: 0.25px;
+}
+
+.page--content-container {
+  padding: 0 12px
+}
+
+.page--content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(111, 114, 135);
+  font-size: 14px;
+  font-weight: 400;
+  padding-bottom: 24px;
+  letter-spacing: 0.25px;
+  line-height: 20px;
+  text-align: center;
+  width: 450px;
+}
+
+.page--content-container{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+
+.page--buttons-containers {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 350px;
+}
+
+.button-stay {
+  background-color: white;
+  color: rgb(57, 54, 79);
+  font-size: 14px;
+  font-weight: 600px;
+  border: 2px solid rgb(57, 54, 79);
+  border-radius: 4px;
+  width: 160px;
+  height: 45px;
+  margin-right: 20px;
+}
+
+.button-stay:hover {
+  background-color: rgb(236, 230, 230);
+  border: 2px solid rgb(41, 39, 58);
+  transition: 0.3s;
+
+}
+
+.button-leave {
+  background-color: rgb(209, 65, 12);
+  color: white;
+  font-size: 14px;
+  font-weight: 600px;
+  border: none;
+  border-radius: 4px;
+  width: 160px;
+  height: 45px;
+}
+
+.button-leave:hover {
+  opacity: 0.88;
+  transition: 0.3s;
+}

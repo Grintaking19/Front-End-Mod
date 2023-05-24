@@ -1,0 +1,88 @@
+.es {
+    background-color: #f8f7fa;
+    width: 288px;
+    height: 100%;
+}
+
+.es-header {
+    height: 244px;
+}
+
+.es-list {
+}
+
+.es-go-back-container {
+    padding: 20px 0 16px 20px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.es-go-back-container svg {
+    margin-right: 12px;
+}
+
+.event-status-button {
+    margin: 16px 0 0 20px;
+}
+
+.es-event-description {
+    padding: 16px 24px 24px 24px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.es-event-description-title a {
+    font-size: 1.5rem;
+    color: black;
+}
+
+.es-event-description-title a:hover {
+    text-decoration: underline;
+    color: #3e60e4;
+}
+
+.es-event-description-date {
+    color: #4b4d63;
+}
+
+.es-event-description-preview a svg {
+    color: #3e60e4;
+    margin: 0 0 6px 6px;
+}
+
+.es-list {
+    margin-top: 18px;
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.es-list-ul {
+    width: 100%;
+    padding: 0;
+}
+
+.es-list-li {
+    display: flex;
+    width: 100%;
+    padding: 20px;
+}
+
+.es-list-li:hover {
+    background-color: #e6e6e6;
+}
+
+.es-list-li-active {
+    background-color: #ffffff;
+}
+
+.es-list li a {
+    color: #39364f;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.es-list-li a svg {
+    width: 24px;
+    height: 24px;
+    margin: 0 16px 0 0;
+    padding: 0 0 1px 0;
+}
